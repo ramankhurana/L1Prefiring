@@ -1,0 +1,44 @@
+## Inptructions to set up the L1Prefiring analyzer. 
+
+### Package depends on the L1Trigger packages. They can be installed using: 
+
+Instructions are copied from: https://twiki.cern.ch/twiki/bin/view/CMSPublic/SWGuideL1TStage2Instructions#Environment_Setup_with_Integrati  
+
+cmsrel CMSSW_10_2_1
+
+cd CMSSW_10_2_1/src
+
+cmsenv
+
+git cms-init
+
+git remote add cms-l1t-offline git@github.com:cms-l1t-offline/cmssw.git
+
+git fetch cms-l1t-offline l1t-integration-CMSSW_10_2_1
+
+git cms-merge-topic -u cms-l1t-offline:l1t-integration-v101.0
+
+git cms-addpkg L1Trigger/L1TCommon
+
+git cms-addpkg L1Trigger/L1TMuon
+
+git clone https://github.com/cms-l1t-offline/L1Trigger-L1TMuon.git L1Trigger/L1TMuon/data
+
+git cms-addpkg L1Trigger/L1TCalorimeter
+
+git clone https://github.com/cms-l1t-offline/L1Trigger-L1TCalorimeter.git L1Trigger/L1TCalorimeter/data
+
+
+git clone 
+
+scram b -j 8
+
+
+
+### Install the L1Prefiring package using: 
+
+git clone git@github.com:ramankhurana/L1Prefiring.git
+
+cd L1Prefiring/PrefiringTuplizer 
+
+export USER_CXXFLAGS="-Wno-delete-non-virtual-dtor -Wno-error=unused-but-set-variable -Wno-error=unused-variable -Wno-error=sign-compare -Wno-error=reorder"
