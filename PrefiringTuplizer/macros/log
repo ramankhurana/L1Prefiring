@@ -1,0 +1,4123 @@
+Info in <TUnixSystem::ACLiC>: creating shared library /afs/cern.ch/work/k/khurana/L1Prefiring/EDAnalyzer/CMSSW_10_2_1/src/L1Prefiring/PrefiringTuplizer/macros/./L1Prefiring_C.so
+In file included from /afs/cern.ch/work/k/khurana/L1Prefiring/EDAnalyzer/CMSSW_10_2_1/src/L1Prefiring/PrefiringTuplizer/macros/L1Prefiring_C_ACLiC_dict.cxx:40:0:
+/afs/cern.ch/work/k/khurana/L1Prefiring/EDAnalyzer/CMSSW_10_2_1/src/L1Prefiring/PrefiringTuplizer/macros/./L1Prefiring.C: In function 'void TowerVariablesShow(std::vector<TowerVariables>)':
+/afs/cern.ch/work/k/khurana/L1Prefiring/EDAnalyzer/CMSSW_10_2_1/src/L1Prefiring/PrefiringTuplizer/macros/./L1Prefiring.C:210:19: warning: comparison between signed and unsigned integer expressions [-Wsign-compare]
+   for (auto i=0; i<maxtowervec.size(); i++) {
+                  ~^~~~~~~~~~~~~~~~~~~
+/afs/cern.ch/work/k/khurana/L1Prefiring/EDAnalyzer/CMSSW_10_2_1/src/L1Prefiring/PrefiringTuplizer/macros/./L1Prefiring.C: In function 'void EGVariablesShow(std::vector<EGVariables>)':
+/afs/cern.ch/work/k/khurana/L1Prefiring/EDAnalyzer/CMSSW_10_2_1/src/L1Prefiring/PrefiringTuplizer/macros/./L1Prefiring.C:227:19: warning: comparison between signed and unsigned integer expressions [-Wsign-compare]
+   for (auto i=0; i<candvec.size(); i++){
+                  ~^~~~~~~~~~~~~~~
+/afs/cern.ch/work/k/khurana/L1Prefiring/EDAnalyzer/CMSSW_10_2_1/src/L1Prefiring/PrefiringTuplizer/macros/./L1Prefiring.C: In function 'int CalculateDeltaIPhi(std::vector<EGVariables>, std::vector<TowerVariables>)':
+/afs/cern.ch/work/k/khurana/L1Prefiring/EDAnalyzer/CMSSW_10_2_1/src/L1Prefiring/PrefiringTuplizer/macros/./L1Prefiring.C:276:20: warning: comparison between signed and unsigned integer expressions [-Wsign-compare]
+   for (auto i =0; i<candvec.size(); i++){
+                   ~^~~~~~~~~~~~~~~
+/afs/cern.ch/work/k/khurana/L1Prefiring/EDAnalyzer/CMSSW_10_2_1/src/L1Prefiring/PrefiringTuplizer/macros/./L1Prefiring.C:277:23: warning: comparison between signed and unsigned integer expressions [-Wsign-compare]
+     for (auto j = 0; j<maxtowervec.size(); j++){
+                      ~^~~~~~~~~~~~~~~~~~~
+ postname = 18
+ postname = 19
+ postname = 20
+ postname = 21
+ postname = 22
+ postname = 23
+ postname = 24
+ postname = 25
+ postname = 26
+ postname = 27
+ postname = 28
+Error in <TFile::TFile>: file /eos/cms/store/user/khurana/ZeroBias1/crab_prefiringanalysis2018_V1/190509_091144/0000/Merged_2018.root does not exist
+ postname = 18
+ postname = 19
+ postname = 20
+ postname = 21
+ postname = 22
+ postname = 23
+ postname = 24
+ postname = 25
+ postname = 26
+ postname = 27
+ postname = 28
+ time used to run the macro (in seconds):125
+Info in <TUnixSystem::ACLiC>: creating shared library /afs/cern.ch/work/k/khurana/L1Prefiring/EDAnalyzer/CMSSW_10_2_1/src/L1Prefiring/PrefiringTuplizer/macros/./L1Prefiring_C.so
+In file included from /afs/cern.ch/work/k/khurana/L1Prefiring/EDAnalyzer/CMSSW_10_2_1/src/L1Prefiring/PrefiringTuplizer/macros/L1Prefiring_C_ACLiC_dict.cxx:40:0:
+/afs/cern.ch/work/k/khurana/L1Prefiring/EDAnalyzer/CMSSW_10_2_1/src/L1Prefiring/PrefiringTuplizer/macros/./L1Prefiring.C: In function 'void TowerVariablesShow(std::vector<TowerVariables>)':
+/afs/cern.ch/work/k/khurana/L1Prefiring/EDAnalyzer/CMSSW_10_2_1/src/L1Prefiring/PrefiringTuplizer/macros/./L1Prefiring.C:210:19: warning: comparison between signed and unsigned integer expressions [-Wsign-compare]
+   for (auto i=0; i<maxtowervec.size(); i++) {
+                  ~^~~~~~~~~~~~~~~~~~~
+/afs/cern.ch/work/k/khurana/L1Prefiring/EDAnalyzer/CMSSW_10_2_1/src/L1Prefiring/PrefiringTuplizer/macros/./L1Prefiring.C: In function 'void EGVariablesShow(std::vector<EGVariables>)':
+/afs/cern.ch/work/k/khurana/L1Prefiring/EDAnalyzer/CMSSW_10_2_1/src/L1Prefiring/PrefiringTuplizer/macros/./L1Prefiring.C:227:19: warning: comparison between signed and unsigned integer expressions [-Wsign-compare]
+   for (auto i=0; i<candvec.size(); i++){
+                  ~^~~~~~~~~~~~~~~
+/afs/cern.ch/work/k/khurana/L1Prefiring/EDAnalyzer/CMSSW_10_2_1/src/L1Prefiring/PrefiringTuplizer/macros/./L1Prefiring.C: In function 'int CalculateDeltaIPhi(std::vector<EGVariables>, std::vector<TowerVariables>)':
+/afs/cern.ch/work/k/khurana/L1Prefiring/EDAnalyzer/CMSSW_10_2_1/src/L1Prefiring/PrefiringTuplizer/macros/./L1Prefiring.C:276:20: warning: comparison between signed and unsigned integer expressions [-Wsign-compare]
+   for (auto i =0; i<candvec.size(); i++){
+                   ~^~~~~~~~~~~~~~~
+/afs/cern.ch/work/k/khurana/L1Prefiring/EDAnalyzer/CMSSW_10_2_1/src/L1Prefiring/PrefiringTuplizer/macros/./L1Prefiring.C:277:23: warning: comparison between signed and unsigned integer expressions [-Wsign-compare]
+     for (auto j = 0; j<maxtowervec.size(); j++){
+                      ~^~~~~~~~~~~~~~~~~~~
+ postname = 18
+ postname = 19
+ postname = 20
+ postname = 21
+ postname = 22
+ postname = 23
+ postname = 24
+ postname = 25
+ postname = 26
+ postname = 27
+ postname = 28
+Error in <TFile::TFile>: file /eos/cms/store/user/khurana/ZeroBias1/crab_prefiringanalysis2018_V1/190509_091144/0000/Merged_2018.root does not exist
+ postname = 18
+ postname = 19
+ postname = 20
+ postname = 21
+ postname = 22
+ postname = 23
+ postname = 24
+ postname = 25
+ postname = 26
+ postname = 27
+ postname = 28
+ time used to run the macro (in seconds):190
+Info in <TUnixSystem::ACLiC>: creating shared library /afs/cern.ch/work/k/khurana/L1Prefiring/EDAnalyzer/CMSSW_10_2_1/src/L1Prefiring/PrefiringTuplizer/macros/./L1Prefiring_C.so
+In file included from /afs/cern.ch/work/k/khurana/L1Prefiring/EDAnalyzer/CMSSW_10_2_1/src/L1Prefiring/PrefiringTuplizer/macros/L1Prefiring_C_ACLiC_dict.cxx:40:0:
+/afs/cern.ch/work/k/khurana/L1Prefiring/EDAnalyzer/CMSSW_10_2_1/src/L1Prefiring/PrefiringTuplizer/macros/./L1Prefiring.C: In function 'void TowerVariablesShow(std::vector<TowerVariables>)':
+/afs/cern.ch/work/k/khurana/L1Prefiring/EDAnalyzer/CMSSW_10_2_1/src/L1Prefiring/PrefiringTuplizer/macros/./L1Prefiring.C:210:19: warning: comparison between signed and unsigned integer expressions [-Wsign-compare]
+   for (auto i=0; i<maxtowervec.size(); i++) {
+                  ~^~~~~~~~~~~~~~~~~~~
+/afs/cern.ch/work/k/khurana/L1Prefiring/EDAnalyzer/CMSSW_10_2_1/src/L1Prefiring/PrefiringTuplizer/macros/./L1Prefiring.C: In function 'void EGVariablesShow(std::vector<EGVariables>)':
+/afs/cern.ch/work/k/khurana/L1Prefiring/EDAnalyzer/CMSSW_10_2_1/src/L1Prefiring/PrefiringTuplizer/macros/./L1Prefiring.C:227:19: warning: comparison between signed and unsigned integer expressions [-Wsign-compare]
+   for (auto i=0; i<candvec.size(); i++){
+                  ~^~~~~~~~~~~~~~~
+/afs/cern.ch/work/k/khurana/L1Prefiring/EDAnalyzer/CMSSW_10_2_1/src/L1Prefiring/PrefiringTuplizer/macros/./L1Prefiring.C: In function 'int CalculateDeltaIPhi(std::vector<EGVariables>, std::vector<TowerVariables>)':
+/afs/cern.ch/work/k/khurana/L1Prefiring/EDAnalyzer/CMSSW_10_2_1/src/L1Prefiring/PrefiringTuplizer/macros/./L1Prefiring.C:276:20: warning: comparison between signed and unsigned integer expressions [-Wsign-compare]
+   for (auto i =0; i<candvec.size(); i++){
+                   ~^~~~~~~~~~~~~~~
+/afs/cern.ch/work/k/khurana/L1Prefiring/EDAnalyzer/CMSSW_10_2_1/src/L1Prefiring/PrefiringTuplizer/macros/./L1Prefiring.C:277:23: warning: comparison between signed and unsigned integer expressions [-Wsign-compare]
+     for (auto j = 0; j<maxtowervec.size(); j++){
+                      ~^~~~~~~~~~~~~~~~~~~
+ postname = 18
+ postname = 19
+ postname = 20
+ postname = 21
+ postname = 22
+ postname = 23
+ postname = 24
+ postname = 25
+ postname = 26
+ postname = 27
+ postname = 28
+Error in <TFile::TFile>: file /eos/cms/store/user/khurana/ZeroBias1/crab_prefiringanalysis2018_V1/190509_091144/0000/Merged_2018.root does not exist
+ postname = 18
+ postname = 19
+ postname = 20
+ postname = 21
+ postname = 22
+ postname = 23
+ postname = 24
+ postname = 25
+ postname = 26
+ postname = 27
+ postname = 28
+ time used to run the macro (in seconds):60
+Info in <TUnixSystem::ACLiC>: creating shared library /afs/cern.ch/work/k/khurana/L1Prefiring/EDAnalyzer/CMSSW_10_2_1/src/L1Prefiring/PrefiringTuplizer/macros/./L1Prefiring_C.so
+In file included from /afs/cern.ch/work/k/khurana/L1Prefiring/EDAnalyzer/CMSSW_10_2_1/src/L1Prefiring/PrefiringTuplizer/macros/L1Prefiring_C_ACLiC_dict.cxx:40:0:
+/afs/cern.ch/work/k/khurana/L1Prefiring/EDAnalyzer/CMSSW_10_2_1/src/L1Prefiring/PrefiringTuplizer/macros/./L1Prefiring.C: In function 'void TowerVariablesShow(std::vector<TowerVariables>)':
+/afs/cern.ch/work/k/khurana/L1Prefiring/EDAnalyzer/CMSSW_10_2_1/src/L1Prefiring/PrefiringTuplizer/macros/./L1Prefiring.C:210:19: warning: comparison between signed and unsigned integer expressions [-Wsign-compare]
+   for (auto i=0; i<maxtowervec.size(); i++) {
+                  ~^~~~~~~~~~~~~~~~~~~
+/afs/cern.ch/work/k/khurana/L1Prefiring/EDAnalyzer/CMSSW_10_2_1/src/L1Prefiring/PrefiringTuplizer/macros/./L1Prefiring.C: In function 'void EGVariablesShow(std::vector<EGVariables>)':
+/afs/cern.ch/work/k/khurana/L1Prefiring/EDAnalyzer/CMSSW_10_2_1/src/L1Prefiring/PrefiringTuplizer/macros/./L1Prefiring.C:227:19: warning: comparison between signed and unsigned integer expressions [-Wsign-compare]
+   for (auto i=0; i<candvec.size(); i++){
+                  ~^~~~~~~~~~~~~~~
+/afs/cern.ch/work/k/khurana/L1Prefiring/EDAnalyzer/CMSSW_10_2_1/src/L1Prefiring/PrefiringTuplizer/macros/./L1Prefiring.C: In function 'int CalculateDeltaIPhi(std::vector<EGVariables>, std::vector<TowerVariables>)':
+/afs/cern.ch/work/k/khurana/L1Prefiring/EDAnalyzer/CMSSW_10_2_1/src/L1Prefiring/PrefiringTuplizer/macros/./L1Prefiring.C:276:20: warning: comparison between signed and unsigned integer expressions [-Wsign-compare]
+   for (auto i =0; i<candvec.size(); i++){
+                   ~^~~~~~~~~~~~~~~
+/afs/cern.ch/work/k/khurana/L1Prefiring/EDAnalyzer/CMSSW_10_2_1/src/L1Prefiring/PrefiringTuplizer/macros/./L1Prefiring.C:277:23: warning: comparison between signed and unsigned integer expressions [-Wsign-compare]
+     for (auto j = 0; j<maxtowervec.size(); j++){
+                      ~^~~~~~~~~~~~~~~~~~~
+ postname = 18
+ postname = 19
+ postname = 20
+ postname = 21
+ postname = 22
+ postname = 23
+ postname = 24
+ postname = 25
+ postname = 26
+ postname = 27
+ postname = 28
+Error in <TFile::TFile>: file /eos/cms/store/user/khurana/ZeroBias1/crab_prefiringanalysis2018_V1/190509_091144/0000/Merged_2018.root does not exist
+ postname = 18
+ postname = 19
+ postname = 20
+ postname = 21
+ postname = 22
+ postname = 23
+ postname = 24
+ postname = 25
+ postname = 26
+ postname = 27
+ postname = 28
+ time used to run the macro (in seconds):60
+Info in <TUnixSystem::ACLiC>: creating shared library /afs/cern.ch/work/k/khurana/L1Prefiring/EDAnalyzer/CMSSW_10_2_1/src/L1Prefiring/PrefiringTuplizer/macros/./L1Prefiring_C.so
+In file included from /afs/cern.ch/work/k/khurana/L1Prefiring/EDAnalyzer/CMSSW_10_2_1/src/L1Prefiring/PrefiringTuplizer/macros/L1Prefiring_C_ACLiC_dict.cxx:40:0:
+/afs/cern.ch/work/k/khurana/L1Prefiring/EDAnalyzer/CMSSW_10_2_1/src/L1Prefiring/PrefiringTuplizer/macros/./L1Prefiring.C: In function 'void TowerVariablesShow(std::vector<TowerVariables>)':
+/afs/cern.ch/work/k/khurana/L1Prefiring/EDAnalyzer/CMSSW_10_2_1/src/L1Prefiring/PrefiringTuplizer/macros/./L1Prefiring.C:210:19: warning: comparison between signed and unsigned integer expressions [-Wsign-compare]
+   for (auto i=0; i<maxtowervec.size(); i++) {
+                  ~^~~~~~~~~~~~~~~~~~~
+/afs/cern.ch/work/k/khurana/L1Prefiring/EDAnalyzer/CMSSW_10_2_1/src/L1Prefiring/PrefiringTuplizer/macros/./L1Prefiring.C: In function 'void EGVariablesShow(std::vector<EGVariables>)':
+/afs/cern.ch/work/k/khurana/L1Prefiring/EDAnalyzer/CMSSW_10_2_1/src/L1Prefiring/PrefiringTuplizer/macros/./L1Prefiring.C:227:19: warning: comparison between signed and unsigned integer expressions [-Wsign-compare]
+   for (auto i=0; i<candvec.size(); i++){
+                  ~^~~~~~~~~~~~~~~
+/afs/cern.ch/work/k/khurana/L1Prefiring/EDAnalyzer/CMSSW_10_2_1/src/L1Prefiring/PrefiringTuplizer/macros/./L1Prefiring.C: In function 'int CalculateDeltaIPhi(std::vector<EGVariables>, std::vector<TowerVariables>)':
+/afs/cern.ch/work/k/khurana/L1Prefiring/EDAnalyzer/CMSSW_10_2_1/src/L1Prefiring/PrefiringTuplizer/macros/./L1Prefiring.C:276:20: warning: comparison between signed and unsigned integer expressions [-Wsign-compare]
+   for (auto i =0; i<candvec.size(); i++){
+                   ~^~~~~~~~~~~~~~~
+/afs/cern.ch/work/k/khurana/L1Prefiring/EDAnalyzer/CMSSW_10_2_1/src/L1Prefiring/PrefiringTuplizer/macros/./L1Prefiring.C:277:23: warning: comparison between signed and unsigned integer expressions [-Wsign-compare]
+     for (auto j = 0; j<maxtowervec.size(); j++){
+                      ~^~~~~~~~~~~~~~~~~~~
+ postname = 18
+ postname = 19
+ postname = 20
+ postname = 21
+ postname = 22
+ postname = 23
+ postname = 24
+ postname = 25
+ postname = 26
+ postname = 27
+ postname = 28
+Error in <TTree::SetBranchStatus>: unknown branch -> b_trig_tower_adc
+Error in <TTree::SetBranchStatus>: unknown branch -> b_trig_tower_sFGVB
+0 / 1073470 events processed
+ isolated eta works
+ non iso eta = 192  85
+inside non isolated cands 
+ isolated eta works
+ non iso eta = 144  64
+inside non isolated cands 
+ isolated eta works
+ non iso eta = 48  21
+inside non isolated cands 
+ non iso eta = 16  7
+ non iso eta = 48  21
+inside non isolated cands 
+ isolated eta works
+ non iso eta = 55  24
+inside non isolated cands 
+ non iso eta = 96  42
+inside non isolated cands 
+ isolated eta works
+ non iso eta = 49  21
+inside non isolated cands 
+ isolated eta works
+ non iso eta = 41  18
+inside non isolated cands 
+ non iso eta = 44  19
+inside non isolated cands 
+ non iso eta = 56  24
+inside non isolated cands 
+ isolated eta works
+ non iso eta = 42  18
+inside non isolated cands 
+ isolated eta works
+ non iso eta = 48  21
+inside non isolated cands 
+ non iso eta = 21  9
+5000 / 1073470 events processed
+ non iso eta = 240  106
+inside non isolated cands 
+ isolated eta works
+ non iso eta = 55  24
+inside non isolated cands 
+ non iso eta = 52  23
+inside non isolated cands 
+ non iso eta = 5  2
+ isolated eta works
+ non iso eta = 55  24
+inside non isolated cands 
+ non iso eta = 0  0
+ isolated eta works
+ non iso eta = 59  26
+inside non isolated cands 
+ isolated eta works
+ non iso eta = 55  24
+inside non isolated cands 
+ isolated eta works
+ non iso eta = 52  23
+inside non isolated cands 
+ isolated eta works
+ non iso eta = 55  24
+inside non isolated cands 
+ isolated eta works
+ non iso eta = 55  24
+inside non isolated cands 
+10000 / 1073470 events processed
+ non iso eta = 0  0
+ isolated eta works
+ non iso eta = 53  23
+inside non isolated cands 
+ non iso eta = 38  16
+15000 / 1073470 events processed
+ isolated eta works
+ non iso eta = 55  24
+inside non isolated cands 
+ isolated eta works
+ non iso eta = 54  24
+inside non isolated cands 
+ non iso eta = 0  0
+ isolated eta works
+ non iso eta = 55  24
+inside non isolated cands 
+ isolated eta works
+ non iso eta = 0  0
+ isolated eta works
+ non iso eta = 51  22
+inside non isolated cands 
+20000 / 1073470 events processed
+ isolated eta works
+ non iso eta = 0  0
+ isolated eta works
+ non iso eta = 0  0
+ isolated eta works
+ non iso eta = 54  24
+inside non isolated cands 
+ isolated eta works
+ non iso eta = 63  28
+inside non isolated cands 
+ isolated eta works
+ non iso eta = 0  0
+ isolated eta works
+ non iso eta = 54  24
+inside non isolated cands 
+ non iso eta = 28  12
+ non iso eta = 0  0
+ isolated eta works
+ non iso eta = 63  28
+inside non isolated cands 
+25000 / 1073470 events processed
+ isolated eta works
+ non iso eta = 55  24
+inside non isolated cands 
+30000 / 1073470 events processed
+ isolated eta works
+ non iso eta = 55  24
+inside non isolated cands 
+ isolated eta works
+ non iso eta = 0  0
+ isolated eta works
+ non iso eta = 46  20
+inside non isolated cands 
+ non iso eta = 29  12
+ isolated eta works
+ non iso eta = 55  24
+inside non isolated cands 
+ non iso eta = 43  19
+inside non isolated cands 
+ non iso eta = 11  4
+ isolated eta works
+ non iso eta = 0  0
+35000 / 1073470 events processed
+ isolated eta works
+ non iso eta = 56  24
+inside non isolated cands 
+ isolated eta works
+ non iso eta = 55  24
+inside non isolated cands 
+ isolated eta works
+ non iso eta = 0  0
+ isolated eta works
+ non iso eta = 48  21
+inside non isolated cands 
+ isolated eta works
+ non iso eta = 0  0
+ isolated eta works
+ non iso eta = 0  0
+40000 / 1073470 events processed
+ non iso eta = 0  0
+ isolated eta works
+ non iso eta = 55  24
+inside non isolated cands 
+ isolated eta works
+ non iso eta = 38  16
+ non iso eta = 20  8
+ non iso eta = 9  4
+ isolated eta works
+ non iso eta = 0  0
+45000 / 1073470 events processed
+ isolated eta works
+ non iso eta = 53  23
+inside non isolated cands 
+ non iso eta = 7  3
+ isolated eta works
+ non iso eta = 0  0
+ isolated eta works
+ non iso eta = 0  0
+ non iso eta = 56  24
+inside non isolated cands 
+ isolated eta works
+ non iso eta = 0  0
+ isolated eta works
+ non iso eta = 0  0
+50000 / 1073470 events processed
+ isolated eta works
+ non iso eta = 0  0
+ non iso eta = 6  2
+ non iso eta = 0  0
+ isolated eta works
+ non iso eta = 0  0
+ isolated eta works
+ non iso eta = 48  21
+inside non isolated cands 
+ isolated eta works
+ non iso eta = 46  20
+inside non isolated cands 
+ isolated eta works
+ non iso eta = 0  0
+ isolated eta works
+ non iso eta = 0  0
+ isolated eta works
+ non iso eta = 52  23
+inside non isolated cands 
+ isolated eta works
+ non iso eta = 0  0
+ non iso eta = 21  9
+ non iso eta = 0  0
+ isolated eta works
+ non iso eta = 0  0
+55000 / 1073470 events processed
+ isolated eta works
+ non iso eta = 46  20
+inside non isolated cands 
+ non iso eta = 3  1
+ isolated eta works
+ non iso eta = 0  0
+ isolated eta works
+ non iso eta = 0  0
+ isolated eta works
+ non iso eta = 0  0
+ isolated eta works
+ non iso eta = 54  24
+inside non isolated cands 
+60000 / 1073470 events processed
+ isolated eta works
+ non iso eta = 44  19
+inside non isolated cands 
+ isolated eta works
+ non iso eta = 55  24
+inside non isolated cands 
+ isolated eta works
+ non iso eta = 0  0
+ non iso eta = 11  4
+ isolated eta works
+ non iso eta = 55  24
+inside non isolated cands 
+ isolated eta works
+ non iso eta = 55  24
+inside non isolated cands 
+ non iso eta = 0  0
+ isolated eta works
+ non iso eta = 55  24
+inside non isolated cands 
+ isolated eta works
+ non iso eta = 55  24
+inside non isolated cands 
+ isolated eta works
+ non iso eta = 56  24
+inside non isolated cands 
+65000 / 1073470 events processed
+ isolated eta works
+ non iso eta = 0  0
+ isolated eta works
+ non iso eta = 56  24
+inside non isolated cands 
+ isolated eta works
+ non iso eta = 51  22
+inside non isolated cands 
+ non iso eta = 21  9
+ isolated eta works
+ non iso eta = 0  0
+ isolated eta works
+ non iso eta = 55  24
+inside non isolated cands 
+ isolated eta works
+ non iso eta = 55  24
+inside non isolated cands 
+70000 / 1073470 events processed
+ isolated eta works
+ non iso eta = 64  28
+inside non isolated cands 
+ isolated eta works
+ non iso eta = 0  0
+ isolated eta works
+ non iso eta = 0  0
+ isolated eta works
+ non iso eta = 0  0
+75000 / 1073470 events processed
+ isolated eta works
+ non iso eta = 55  24
+inside non isolated cands 
+ isolated eta works
+ non iso eta = 64  28
+inside non isolated cands 
+ isolated eta works
+ non iso eta = 0  0
+ isolated eta works
+ non iso eta = 49  21
+inside non isolated cands 
+ isolated eta works
+ non iso eta = 0  0
+ isolated eta works
+ non iso eta = 46  20
+inside non isolated cands 
+ isolated eta works
+ non iso eta = 0  0
+80000 / 1073470 events processed
+ isolated eta works
+ non iso eta = 55  24
+inside non isolated cands 
+ isolated eta works
+ non iso eta = 59  26
+inside non isolated cands 
+ isolated eta works
+ non iso eta = 54  24
+inside non isolated cands 
+ non iso eta = 32  14
+ isolated     non isolated    = 1  1
+ Isolated pre EGamma cadidates number 0 eta = -11 phi = 21 energy = 32765
+ non iso eta = 0  0
+ non iso eta = 24  10
+ isolated eta works
+ non iso eta = 52  23
+inside non isolated cands 
+ isolated eta works
+ non iso eta = 64  28
+inside non isolated cands 
+ isolated eta works
+ non iso eta = 55  24
+inside non isolated cands 
+ isolated     non isolated    = 1  1
+ Isolated pre EGamma cadidates number 0 eta = -7 phi = 7 energy = 32765
+ isolated eta works
+ non iso eta = 0  0
+ isolated eta works
+ non iso eta = 0  0
+ isolated eta works
+ non iso eta = 0  0
+85000 / 1073470 events processed
+ isolated eta works
+ non iso eta = 55  24
+inside non isolated cands 
+ non iso eta = 44  19
+inside non isolated cands 
+ isolated eta works
+ non iso eta = 55  24
+inside non isolated cands 
+ isolated eta works
+ non iso eta = 51  22
+inside non isolated cands 
+ isolated eta works
+ non iso eta = 52  23
+inside non isolated cands 
+ isolated eta works
+ non iso eta = 49  21
+inside non isolated cands 
+ isolated eta works
+ non iso eta = 55  24
+inside non isolated cands 
+ isolated eta works
+ non iso eta = 0  0
+90000 / 1073470 events processed
+ non iso eta = 0  0
+ isolated eta works
+ non iso eta = 55  24
+inside non isolated cands 
+ isolated eta works
+ non iso eta = 56  24
+inside non isolated cands 
+ isolated eta works
+ non iso eta = 51  22
+inside non isolated cands 
+95000 / 1073470 events processed
+ isolated eta works
+ non iso eta = 0  0
+ non iso eta = 0  0
+ isolated eta works
+ non iso eta = 55  24
+inside non isolated cands 
+ isolated eta works
+ non iso eta = 43  19
+inside non isolated cands 
+ isolated eta works
+ non iso eta = 0  0
+ isolated eta works
+ non iso eta = 63  28
+inside non isolated cands 
+ isolated eta works
+ non iso eta = 55  24
+inside non isolated cands 
+ non iso eta = 11  4
+ isolated eta works
+ non iso eta = 55  24
+inside non isolated cands 
+100000 / 1073470 events processed
+ isolated eta works
+ non iso eta = 0  0
+ isolated eta works
+ non iso eta = 55  24
+inside non isolated cands 
+ isolated eta works
+ non iso eta = 55  24
+inside non isolated cands 
+ isolated eta works
+ non iso eta = 55  24
+inside non isolated cands 
+ non iso eta = 4  1
+ isolated eta works
+ non iso eta = 0  0
+ isolated eta works
+ non iso eta = 55  24
+inside non isolated cands 
+ isolated eta works
+ non iso eta = 46  20
+inside non isolated cands 
+ isolated eta works
+ non iso eta = 0  0
+105000 / 1073470 events processed
+ isolated eta works
+ non iso eta = 43  19
+inside non isolated cands 
+ non iso eta = 16  7
+ non iso eta = 39  17
+ non iso eta = 0  0
+ non iso eta = 38  16
+ isolated eta works
+ non iso eta = 55  24
+inside non isolated cands 
+ isolated eta works
+ non iso eta = 55  24
+inside non isolated cands 
+ isolated eta works
+ non iso eta = 56  24
+inside non isolated cands 
+110000 / 1073470 events processed
+ isolated eta works
+ non iso eta = 42  18
+inside non isolated cands 
+ isolated eta works
+ non iso eta = 0  0
+ isolated eta works
+ non iso eta = 54  24
+inside non isolated cands 
+115000 / 1073470 events processed
+ isolated eta works
+ non iso eta = 55  24
+inside non isolated cands 
+ isolated eta works
+ non iso eta = 0  0
+ non iso eta = 19  8
+ isolated eta works
+ non iso eta = 0  0
+ isolated eta works
+ non iso eta = 54  24
+inside non isolated cands 
+ isolated eta works
+ non iso eta = 0  0
+ isolated eta works
+ non iso eta = 55  24
+inside non isolated cands 
+ non iso eta = 10  4
+ isolated eta works
+ non iso eta = 55  24
+inside non isolated cands 
+ isolated eta works
+ non iso eta = 31  13
+ isolated eta works
+ non iso eta = 0  0
+ isolated eta works
+ non iso eta = 0  0
+ isolated eta works
+ non iso eta = 0  0
+120000 / 1073470 events processed
+ isolated eta works
+ non iso eta = 0  0
+ non iso eta = 41  18
+inside non isolated cands 
+ isolated eta works
+ non iso eta = 0  0
+ isolated eta works
+ non iso eta = 52  23
+inside non isolated cands 
+ isolated eta works
+ non iso eta = 55  24
+inside non isolated cands 
+ isolated eta works
+ non iso eta = 0  0
+ isolated eta works
+ non iso eta = 55  24
+inside non isolated cands 
+ non iso eta = 4  1
+125000 / 1073470 events processed
+ non iso eta = 31  13
+ isolated eta works
+ non iso eta = 0  0
+ isolated eta works
+ non iso eta = 0  0
+ isolated eta works
+ non iso eta = 55  24
+inside non isolated cands 
+ isolated eta works
+ non iso eta = 0  0
+ isolated eta works
+ non iso eta = 0  0
+ non iso eta = 36  16
+ isolated eta works
+ non iso eta = 46  20
+inside non isolated cands 
+ isolated eta works
+ non iso eta = 55  24
+inside non isolated cands 
+ isolated eta works
+ non iso eta = 0  0
+130000 / 1073470 events processed
+ isolated eta works
+ non iso eta = 0  0
+ isolated eta works
+ non iso eta = 54  24
+inside non isolated cands 
+ isolated eta works
+ non iso eta = 0  0
+ isolated eta works
+ non iso eta = 55  24
+inside non isolated cands 
+ non iso eta = 41  18
+inside non isolated cands 
+ isolated eta works
+ non iso eta = 0  0
+ non iso eta = 29  12
+ non iso eta = 0  0
+ isolated eta works
+ non iso eta = 55  24
+inside non isolated cands 
+ isolated eta works
+ non iso eta = 0  0
+135000 / 1073470 events processed
+ non iso eta = 0  0
+ isolated eta works
+ non iso eta = 0  0
+ isolated eta works
+ non iso eta = 0  0
+ isolated eta works
+ non iso eta = 0  0
+ isolated eta works
+ non iso eta = 54  24
+inside non isolated cands 
+ isolated eta works
+ non iso eta = 0  0
+ isolated eta works
+ non iso eta = 0  0
+ isolated eta works
+ non iso eta = 58  25
+inside non isolated cands 
+ non iso eta = 11  4
+ isolated eta works
+ non iso eta = 45  20
+inside non isolated cands 
+140000 / 1073470 events processed
+ non iso eta = 17  7
+ isolated eta works
+ non iso eta = 55  24
+inside non isolated cands 
+ isolated eta works
+ non iso eta = 52  23
+inside non isolated cands 
+ isolated eta works
+ non iso eta = 0  0
+ non iso eta = 0  0
+ isolated eta works
+ non iso eta = 54  24
+inside non isolated cands 
+ isolated eta works
+ non iso eta = 55  24
+inside non isolated cands 
+ isolated eta works
+ non iso eta = 0  0
+ isolated eta works
+ non iso eta = 63  28
+inside non isolated cands 
+145000 / 1073470 events processed
+ non iso eta = 40  17
+ isolated eta works
+ non iso eta = 40  17
+ isolated eta works
+ non iso eta = 52  23
+inside non isolated cands 
+ isolated eta works
+ non iso eta = 0  0
+ non iso eta = 46  20
+inside non isolated cands 
+ isolated eta works
+ non iso eta = 64  28
+inside non isolated cands 
+ isolated eta works
+ non iso eta = 52  23
+inside non isolated cands 
+150000 / 1073470 events processed
+ non iso eta = 0  0
+ non iso eta = 38  16
+ non iso eta = 0  0
+ non iso eta = 32  14
+ non iso eta = 0  0
+155000 / 1073470 events processed
+ isolated eta works
+ non iso eta = 63  28
+inside non isolated cands 
+ isolated eta works
+ non iso eta = 52  23
+inside non isolated cands 
+ isolated eta works
+ non iso eta = 55  24
+inside non isolated cands 
+ isolated eta works
+ non iso eta = 59  26
+inside non isolated cands 
+160000 / 1073470 events processed
+ non iso eta = 27  12
+ non iso eta = 0  0
+ isolated eta works
+ non iso eta = 0  0
+ non iso eta = 43  19
+inside non isolated cands 
+ non iso eta = 39  17
+165000 / 1073470 events processed
+ non iso eta = 16  7
+ non iso eta = 23  10
+ isolated eta works
+ non iso eta = 54  24
+inside non isolated cands 
+ isolated eta works
+ non iso eta = 0  0
+ isolated eta works
+ non iso eta = 0  0
+ non iso eta = 19  8
+ non iso eta = 1  0
+ isolated eta works
+ non iso eta = 55  24
+inside non isolated cands 
+170000 / 1073470 events processed
+ isolated eta works
+ non iso eta = 0  0
+ isolated eta works
+ non iso eta = 0  0
+ non iso eta = 37  16
+ isolated eta works
+ non iso eta = 55  24
+inside non isolated cands 
+ isolated eta works
+ non iso eta = 55  24
+inside non isolated cands 
+ non iso eta = 28  12
+ isolated eta works
+ non iso eta = 63  28
+inside non isolated cands 
+ isolated eta works
+ non iso eta = 0  0
+ isolated eta works
+ non iso eta = 55  24
+inside non isolated cands 
+ isolated eta works
+ non iso eta = 55  24
+inside non isolated cands 
+ isolated eta works
+ non iso eta = 0  0
+175000 / 1073470 events processed
+ isolated eta works
+ non iso eta = 55  24
+inside non isolated cands 
+ isolated eta works
+ non iso eta = 56  24
+inside non isolated cands 
+ isolated eta works
+ non iso eta = 55  24
+inside non isolated cands 
+ non iso eta = 16  7
+ isolated eta works
+ non iso eta = 54  24
+inside non isolated cands 
+ isolated eta works
+ non iso eta = 0  0
+ non iso eta = 46  20
+inside non isolated cands 
+ isolated eta works
+ non iso eta = 54  24
+inside non isolated cands 
+ isolated eta works
+ non iso eta = 55  24
+inside non isolated cands 
+ isolated eta works
+ non iso eta = 56  24
+inside non isolated cands 
+ non iso eta = 0  0
+ isolated eta works
+ non iso eta = 55  24
+inside non isolated cands 
+180000 / 1073470 events processed
+ isolated eta works
+ non iso eta = 0  0
+ isolated eta works
+ non iso eta = 52  23
+inside non isolated cands 
+ isolated eta works
+ non iso eta = 0  0
+ isolated eta works
+ non iso eta = 0  0
+ isolated eta works
+ non iso eta = 55  24
+inside non isolated cands 
+185000 / 1073470 events processed
+ isolated eta works
+ non iso eta = 55  24
+inside non isolated cands 
+ isolated eta works
+ non iso eta = 0  0
+ non iso eta = 27  12
+ isolated eta works
+ non iso eta = 0  0
+ isolated eta works
+ non iso eta = 54  24
+inside non isolated cands 
+ non iso eta = 46  20
+inside non isolated cands 
+ isolated eta works
+ non iso eta = 59  26
+inside non isolated cands 
+ isolated eta works
+ non iso eta = 0  0
+ isolated eta works
+ non iso eta = 54  24
+inside non isolated cands 
+ non iso eta = 38  16
+ isolated eta works
+ non iso eta = 49  21
+inside non isolated cands 
+ isolated eta works
+ non iso eta = 53  23
+inside non isolated cands 
+ non iso eta = 33  14
+ isolated eta works
+ non iso eta = 55  24
+inside non isolated cands 
+ isolated eta works
+ non iso eta = 0  0
+ isolated eta works
+ non iso eta = 0  0
+ isolated eta works
+ non iso eta = 55  24
+inside non isolated cands 
+190000 / 1073470 events processed
+ isolated eta works
+ non iso eta = 54  24
+inside non isolated cands 
+ isolated eta works
+ non iso eta = 54  24
+inside non isolated cands 
+ non iso eta = 0  0
+ isolated eta works
+ non iso eta = 0  0
+ isolated eta works
+ non iso eta = 55  24
+inside non isolated cands 
+195000 / 1073470 events processed
+ non iso eta = 1  0
+ isolated eta works
+ non iso eta = 55  24
+inside non isolated cands 
+ isolated eta works
+ non iso eta = 48  21
+inside non isolated cands 
+ isolated eta works
+ non iso eta = 0  0
+ non iso eta = 5  2
+ isolated eta works
+ non iso eta = 5  2
+ isolated eta works
+ non iso eta = 55  24
+inside non isolated cands 
+ isolated eta works
+ non iso eta = 0  0
+ isolated eta works
+ non iso eta = 55  24
+inside non isolated cands 
+ non iso eta = 0  0
+200000 / 1073470 events processed
+ isolated eta works
+ non iso eta = 54  24
+inside non isolated cands 
+ isolated eta works
+ non iso eta = 0  0
+ isolated eta works
+ non iso eta = 0  0
+ isolated eta works
+ non iso eta = 0  0
+ non iso eta = 30  13
+ isolated eta works
+ non iso eta = 0  0
+ isolated eta works
+ non iso eta = 0  0
+205000 / 1073470 events processed
+ isolated eta works
+ non iso eta = 59  26
+inside non isolated cands 
+ isolated eta works
+ non iso eta = 54  24
+inside non isolated cands 
+210000 / 1073470 events processed
+ isolated eta works
+ non iso eta = 55  24
+inside non isolated cands 
+ non iso eta = 0  0
+ isolated eta works
+ non iso eta = 49  21
+inside non isolated cands 
+ isolated eta works
+ non iso eta = 51  22
+inside non isolated cands 
+ non iso eta = 11  4
+215000 / 1073470 events processed
+ isolated eta works
+ non iso eta = 63  28
+inside non isolated cands 
+ isolated eta works
+ non iso eta = 54  24
+inside non isolated cands 
+ isolated eta works
+ non iso eta = 48  21
+inside non isolated cands 
+ isolated eta works
+ non iso eta = 52  23
+inside non isolated cands 
+ isolated eta works
+ non iso eta = 0  0
+ isolated eta works
+ non iso eta = 55  24
+inside non isolated cands 
+ non iso eta = 27  12
+ isolated eta works
+ non iso eta = 0  0
+ isolated eta works
+ non iso eta = 52  23
+inside non isolated cands 
+ isolated eta works
+ non iso eta = 54  24
+inside non isolated cands 
+ isolated eta works
+ non iso eta = 55  24
+inside non isolated cands 
+220000 / 1073470 events processed
+ isolated eta works
+ non iso eta = 0  0
+ isolated eta works
+ non iso eta = 52  23
+inside non isolated cands 
+ isolated eta works
+ non iso eta = 0  0
+ isolated eta works
+ non iso eta = 49  21
+inside non isolated cands 
+225000 / 1073470 events processed
+ isolated eta works
+ non iso eta = 0  0
+ isolated eta works
+ non iso eta = 54  24
+inside non isolated cands 
+ isolated eta works
+ non iso eta = 55  24
+inside non isolated cands 
+ non iso eta = 7  3
+ isolated eta works
+ non iso eta = 0  0
+ isolated eta works
+ non iso eta = 49  21
+inside non isolated cands 
+ isolated eta works
+ non iso eta = 63  28
+inside non isolated cands 
+ isolated eta works
+ non iso eta = 48  21
+inside non isolated cands 
+230000 / 1073470 events processed
+ isolated eta works
+ non iso eta = 55  24
+inside non isolated cands 
+ isolated eta works
+ non iso eta = 54  24
+inside non isolated cands 
+ isolated eta works
+ non iso eta = 0  0
+ non iso eta = 23  10
+ isolated eta works
+ non iso eta = 56  24
+inside non isolated cands 
+ isolated eta works
+ non iso eta = 0  0
+ isolated eta works
+ non iso eta = 0  0
+ non iso eta = 22  9
+ isolated eta works
+ non iso eta = 55  24
+inside non isolated cands 
+ isolated eta works
+ non iso eta = 55  24
+inside non isolated cands 
+ isolated eta works
+ non iso eta = 0  0
+ isolated eta works
+ non iso eta = 44  19
+inside non isolated cands 
+235000 / 1073470 events processed
+ isolated eta works
+ non iso eta = 63  28
+inside non isolated cands 
+ isolated eta works
+ non iso eta = 0  0
+ isolated eta works
+ non iso eta = 54  24
+inside non isolated cands 
+ isolated eta works
+ non iso eta = 0  0
+ isolated eta works
+ non iso eta = 54  24
+inside non isolated cands 
+ non iso eta = 27  12
+ isolated eta works
+ non iso eta = 51  22
+inside non isolated cands 
+ isolated eta works
+ non iso eta = 54  24
+inside non isolated cands 
+240000 / 1073470 events processed
+ isolated eta works
+ non iso eta = 0  0
+ isolated eta works
+ non iso eta = 55  24
+inside non isolated cands 
+ non iso eta = 0  0
+ isolated eta works
+ non iso eta = 0  0
+ isolated eta works
+ non iso eta = 0  0
+ isolated eta works
+ non iso eta = 0  0
+ isolated eta works
+ non iso eta = 0  0
+ isolated eta works
+ non iso eta = 0  0
+245000 / 1073470 events processed
+ isolated eta works
+ non iso eta = 49  21
+inside non isolated cands 
+ isolated eta works
+ non iso eta = 0  0
+ non iso eta = 44  19
+inside non isolated cands 
+ isolated eta works
+ non iso eta = 63  28
+inside non isolated cands 
+ non iso eta = 0  0
+ isolated eta works
+ non iso eta = 0  0
+ isolated eta works
+ non iso eta = 0  0
+ non iso eta = 2  0
+ isolated eta works
+ non iso eta = 55  24
+inside non isolated cands 
+ isolated eta works
+ non iso eta = 0  0
+ isolated eta works
+ non iso eta = 0  0
+ isolated eta works
+ non iso eta = 0  0
+ non iso eta = 32  14
+ non iso eta = 0  0
+250000 / 1073470 events processed
+ isolated eta works
+ non iso eta = 0  0
+ isolated eta works
+ non iso eta = 0  0
+ isolated eta works
+ non iso eta = 0  0
+ isolated eta works
+ non iso eta = 0  0
+ isolated eta works
+ non iso eta = 0  0
+ isolated eta works
+ non iso eta = 0  0
+ isolated eta works
+ non iso eta = 0  0
+ isolated eta works
+ non iso eta = 0  0
+ non iso eta = 0  0
+ isolated eta works
+ non iso eta = 0  0
+255000 / 1073470 events processed
+ isolated eta works
+ non iso eta = 55  24
+inside non isolated cands 
+ isolated eta works
+ non iso eta = 55  24
+inside non isolated cands 
+ non iso eta = 31  13
+ isolated eta works
+ non iso eta = 63  28
+inside non isolated cands 
+ isolated eta works
+ non iso eta = 0  0
+ isolated eta works
+ non iso eta = 49  21
+inside non isolated cands 
+ non iso eta = 21  9
+ isolated eta works
+ non iso eta = 54  24
+inside non isolated cands 
+ non iso eta = 0  0
+ isolated eta works
+ non iso eta = 54  24
+inside non isolated cands 
+260000 / 1073470 events processed
+ isolated eta works
+ non iso eta = 0  0
+ isolated eta works
+ non iso eta = 64  28
+inside non isolated cands 
+ isolated eta works
+ non iso eta = 54  24
+inside non isolated cands 
+ non iso eta = 3  1
+ non iso eta = 0  0
+ isolated eta works
+ non iso eta = 52  23
+inside non isolated cands 
+ isolated eta works
+ non iso eta = 54  24
+inside non isolated cands 
+ isolated eta works
+ non iso eta = 0  0
+ isolated eta works
+ non iso eta = 64  28
+inside non isolated cands 
+ non iso eta = 0  0
+ non iso eta = 20  8
+ isolated eta works
+ non iso eta = 0  0
+ isolated eta works
+ non iso eta = 54  24
+inside non isolated cands 
+265000 / 1073470 events processed
+ isolated eta works
+ non iso eta = 41  18
+inside non isolated cands 
+ isolated eta works
+ non iso eta = 63  28
+inside non isolated cands 
+270000 / 1073470 events processed
+ isolated eta works
+ non iso eta = 0  0
+ isolated eta works
+ non iso eta = 0  0
+ non iso eta = 8  3
+ non iso eta = 2  0
+ isolated eta works
+ non iso eta = 0  0
+ non iso eta = 19  8
+ isolated eta works
+ non iso eta = 0  0
+275000 / 1073470 events processed
+ isolated eta works
+ non iso eta = 48  21
+inside non isolated cands 
+280000 / 1073470 events processed
+ isolated eta works
+ non iso eta = 0  0
+ isolated eta works
+ non iso eta = 0  0
+ isolated eta works
+ non iso eta = 54  24
+inside non isolated cands 
+ isolated eta works
+ non iso eta = 59  26
+inside non isolated cands 
+ isolated eta works
+ non iso eta = 54  24
+inside non isolated cands 
+285000 / 1073470 events processed
+ isolated eta works
+ non iso eta = 54  24
+inside non isolated cands 
+ isolated eta works
+ non iso eta = 64  28
+inside non isolated cands 
+ non iso eta = 0  0
+290000 / 1073470 events processed
+ isolated eta works
+ non iso eta = 0  0
+ isolated eta works
+ non iso eta = 64  28
+inside non isolated cands 
+ non iso eta = 31  13
+ isolated eta works
+ non iso eta = 55  24
+inside non isolated cands 
+295000 / 1073470 events processed
+ non iso eta = 2  0
+ isolated eta works
+ non iso eta = 51  22
+inside non isolated cands 
+ isolated eta works
+ non iso eta = 49  21
+inside non isolated cands 
+ isolated eta works
+ non iso eta = 46  20
+inside non isolated cands 
+ isolated eta works
+ non iso eta = 55  24
+inside non isolated cands 
+300000 / 1073470 events processed
+ non iso eta = 26  11
+ isolated eta works
+ non iso eta = 0  0
+ isolated eta works
+ non iso eta = 63  28
+inside non isolated cands 
+ non iso eta = 0  0
+ isolated eta works
+ non iso eta = 0  0
+ isolated eta works
+ non iso eta = 55  24
+inside non isolated cands 
+305000 / 1073470 events processed
+ isolated eta works
+ non iso eta = 54  24
+inside non isolated cands 
+ isolated eta works
+ non iso eta = 0  0
+ isolated eta works
+ non iso eta = 55  24
+inside non isolated cands 
+ non iso eta = 0  0
+ isolated eta works
+ non iso eta = 0  0
+ isolated eta works
+ non iso eta = 0  0
+ isolated eta works
+ non iso eta = 0  0
+ isolated eta works
+ non iso eta = 55  24
+inside non isolated cands 
+ isolated eta works
+ non iso eta = 43  19
+inside non isolated cands 
+ isolated eta works
+ non iso eta = 54  24
+inside non isolated cands 
+ isolated eta works
+ non iso eta = 56  24
+inside non isolated cands 
+ isolated eta works
+ non iso eta = 48  21
+inside non isolated cands 
+ isolated eta works
+ non iso eta = 0  0
+310000 / 1073470 events processed
+ non iso eta = 25  11
+ isolated eta works
+ non iso eta = 63  28
+inside non isolated cands 
+ isolated eta works
+ non iso eta = 0  0
+ non iso eta = 37  16
+ isolated eta works
+ non iso eta = 0  0
+ non iso eta = 6  2
+ isolated eta works
+ non iso eta = 0  0
+ isolated eta works
+ non iso eta = 0  0
+ isolated eta works
+ non iso eta = 59  26
+inside non isolated cands 
+315000 / 1073470 events processed
+ isolated eta works
+ non iso eta = 0  0
+ isolated eta works
+ non iso eta = 52  23
+inside non isolated cands 
+ isolated eta works
+ non iso eta = 54  24
+inside non isolated cands 
+ non iso eta = 0  0
+ non iso eta = 20  8
+ isolated eta works
+ non iso eta = 0  0
+ isolated eta works
+ non iso eta = 55  24
+inside non isolated cands 
+ isolated eta works
+ non iso eta = 55  24
+inside non isolated cands 
+ non iso eta = 51  22
+inside non isolated cands 
+ isolated eta works
+ non iso eta = 0  0
+ isolated eta works
+ non iso eta = 51  22
+inside non isolated cands 
+ isolated eta works
+ non iso eta = 55  24
+inside non isolated cands 
+ isolated eta works
+ non iso eta = 58  25
+inside non isolated cands 
+320000 / 1073470 events processed
+ isolated eta works
+ non iso eta = 55  24
+inside non isolated cands 
+ isolated eta works
+ non iso eta = 0  0
+ isolated eta works
+ non iso eta = 55  24
+inside non isolated cands 
+ non iso eta = 0  0
+ isolated eta works
+ non iso eta = 55  24
+inside non isolated cands 
+ non iso eta = 38  16
+ isolated eta works
+ non iso eta = 55  24
+inside non isolated cands 
+ isolated eta works
+ non iso eta = 0  0
+ non iso eta = 7  3
+ isolated eta works
+ non iso eta = 55  24
+inside non isolated cands 
+ isolated eta works
+ non iso eta = 0  0
+ non iso eta = 44  19
+inside non isolated cands 
+ isolated eta works
+ non iso eta = 0  0
+325000 / 1073470 events processed
+ isolated eta works
+ non iso eta = 0  0
+ isolated eta works
+ non iso eta = 0  0
+ isolated eta works
+ non iso eta = 0  0
+ non iso eta = 52  23
+inside non isolated cands 
+ isolated eta works
+ non iso eta = 0  0
+ isolated eta works
+ non iso eta = 0  0
+ isolated eta works
+ non iso eta = 55  24
+inside non isolated cands 
+ isolated eta works
+ non iso eta = 63  28
+inside non isolated cands 
+ isolated eta works
+ non iso eta = 45  20
+inside non isolated cands 
+ isolated eta works
+ non iso eta = 0  0
+330000 / 1073470 events processed
+ non iso eta = 28  12
+ non iso eta = 5  2
+ isolated     non isolated    = 1  1
+ Isolated pre EGamma cadidates number 0 eta = 55 phi = 69 energy = 32765
+ isolated eta works
+ non iso eta = 55  24
+inside non isolated cands 
+ isolated eta works
+ non iso eta = 54  24
+inside non isolated cands 
+ isolated eta works
+ non iso eta = 52  23
+inside non isolated cands 
+ isolated eta works
+ non iso eta = 64  28
+inside non isolated cands 
+ non iso eta = 8  3
+ non iso eta = 0  0
+ isolated eta works
+ non iso eta = 63  28
+inside non isolated cands 
+ isolated eta works
+ non iso eta = 0  0
+335000 / 1073470 events processed
+ isolated eta works
+ non iso eta = 55  24
+inside non isolated cands 
+ isolated eta works
+ non iso eta = 55  24
+inside non isolated cands 
+ isolated eta works
+ non iso eta = 54  24
+inside non isolated cands 
+ isolated eta works
+ non iso eta = 63  28
+inside non isolated cands 
+ isolated eta works
+ non iso eta = 55  24
+inside non isolated cands 
+ isolated eta works
+ non iso eta = 55  24
+inside non isolated cands 
+ isolated eta works
+ non iso eta = 0  0
+ isolated eta works
+ non iso eta = 0  0
+340000 / 1073470 events processed
+ non iso eta = 23  10
+ isolated eta works
+ non iso eta = 55  24
+inside non isolated cands 
+ isolated eta works
+ non iso eta = 51  22
+inside non isolated cands 
+ isolated eta works
+ non iso eta = 0  0
+ non iso eta = 38  16
+ non iso eta = 35  15
+345000 / 1073470 events processed
+ isolated eta works
+ non iso eta = 55  24
+inside non isolated cands 
+ isolated eta works
+ non iso eta = 63  28
+inside non isolated cands 
+ isolated eta works
+ non iso eta = 0  0
+ isolated eta works
+ non iso eta = 55  24
+inside non isolated cands 
+ isolated eta works
+ non iso eta = 0  0
+ isolated eta works
+ non iso eta = 51  22
+inside non isolated cands 
+ non iso eta = 3  1
+ isolated eta works
+ non iso eta = 46  20
+inside non isolated cands 
+ isolated eta works
+ non iso eta = 55  24
+inside non isolated cands 
+ non iso eta = 17  7
+ isolated eta works
+ non iso eta = 55  24
+inside non isolated cands 
+350000 / 1073470 events processed
+ isolated eta works
+ non iso eta = 55  24
+inside non isolated cands 
+ isolated eta works
+ non iso eta = 52  23
+inside non isolated cands 
+ isolated eta works
+ non iso eta = 0  0
+ non iso eta = 0  0
+ non iso eta = 15  6
+ non iso eta = 28  12
+ isolated eta works
+ non iso eta = 0  0
+ isolated eta works
+ non iso eta = 0  0
+ isolated eta works
+ non iso eta = 0  0
+ isolated eta works
+ non iso eta = 55  24
+inside non isolated cands 
+ non iso eta = 38  16
+ isolated eta works
+ non iso eta = 0  0
+355000 / 1073470 events processed
+ non iso eta = 0  0
+ isolated eta works
+ non iso eta = 0  0
+ isolated eta works
+ non iso eta = 55  24
+inside non isolated cands 
+ isolated eta works
+ non iso eta = 54  24
+inside non isolated cands 
+ isolated eta works
+ non iso eta = 0  0
+ isolated eta works
+ non iso eta = 0  0
+ isolated eta works
+ non iso eta = 0  0
+ isolated eta works
+ non iso eta = 0  0
+360000 / 1073470 events processed
+ non iso eta = 36  16
+ isolated eta works
+ non iso eta = 0  0
+ isolated eta works
+ non iso eta = 64  28
+inside non isolated cands 
+ isolated eta works
+ non iso eta = 0  0
+ isolated eta works
+ non iso eta = 63  28
+inside non isolated cands 
+ isolated eta works
+ non iso eta = 0  0
+ isolated eta works
+ non iso eta = 0  0
+365000 / 1073470 events processed
+ isolated eta works
+ non iso eta = 0  0
+ isolated eta works
+ non iso eta = 42  18
+inside non isolated cands 
+ isolated eta works
+ non iso eta = 55  24
+inside non isolated cands 
+ isolated eta works
+ non iso eta = 0  0
+ isolated eta works
+ non iso eta = 63  28
+inside non isolated cands 
+ isolated eta works
+ non iso eta = 54  24
+inside non isolated cands 
+ non iso eta = 0  0
+ isolated eta works
+ non iso eta = 54  24
+inside non isolated cands 
+370000 / 1073470 events processed
+ non iso eta = 27  12
+ isolated eta works
+ non iso eta = 0  0
+ isolated eta works
+ non iso eta = 0  0
+ isolated eta works
+ non iso eta = 0  0
+375000 / 1073470 events processed
+ non iso eta = 53  23
+inside non isolated cands 
+ isolated eta works
+ non iso eta = 55  24
+inside non isolated cands 
+ isolated eta works
+ non iso eta = 55  24
+inside non isolated cands 
+ non iso eta = 0  0
+ isolated eta works
+ non iso eta = 0  0
+ isolated eta works
+ non iso eta = 55  24
+inside non isolated cands 
+ isolated eta works
+ non iso eta = 55  24
+inside non isolated cands 
+ non iso eta = 0  0
+ non iso eta = 35  15
+ non iso eta = 22  9
+ isolated eta works
+ non iso eta = 0  0
+380000 / 1073470 events processed
+ isolated eta works
+ non iso eta = 55  24
+inside non isolated cands 
+ isolated eta works
+ non iso eta = 45  20
+inside non isolated cands 
+ non iso eta = 13  5
+ isolated eta works
+ non iso eta = 0  0
+ isolated eta works
+ non iso eta = 46  20
+inside non isolated cands 
+ isolated eta works
+ non iso eta = 0  0
+ isolated eta works
+ non iso eta = 0  0
+ isolated eta works
+ non iso eta = 59  26
+inside non isolated cands 
+385000 / 1073470 events processed
+ non iso eta = 43  19
+inside non isolated cands 
+ isolated eta works
+ non iso eta = 48  21
+inside non isolated cands 
+ isolated eta works
+ non iso eta = 59  26
+inside non isolated cands 
+ isolated eta works
+ non iso eta = 54  24
+inside non isolated cands 
+ isolated eta works
+ non iso eta = 56  24
+inside non isolated cands 
+ non iso eta = 38  16
+ non iso eta = 32  14
+ isolated eta works
+ non iso eta = 0  0
+ isolated eta works
+ non iso eta = 49  21
+inside non isolated cands 
+ isolated eta works
+ non iso eta = 64  28
+inside non isolated cands 
+390000 / 1073470 events processed
+ isolated eta works
+ non iso eta = 52  23
+inside non isolated cands 
+ isolated eta works
+ non iso eta = 43  19
+inside non isolated cands 
+ isolated eta works
+ non iso eta = 43  19
+inside non isolated cands 
+ isolated eta works
+ non iso eta = 54  24
+inside non isolated cands 
+ isolated eta works
+ non iso eta = 48  21
+inside non isolated cands 
+395000 / 1073470 events processed
+ isolated eta works
+ non iso eta = 48  21
+inside non isolated cands 
+ isolated eta works
+ non iso eta = 55  24
+inside non isolated cands 
+ isolated eta works
+ non iso eta = 0  0
+ isolated eta works
+ non iso eta = 44  19
+inside non isolated cands 
+ isolated eta works
+ non iso eta = 55  24
+inside non isolated cands 
+ non iso eta = 11  4
+ isolated eta works
+ non iso eta = 55  24
+inside non isolated cands 
+ isolated eta works
+ non iso eta = 59  26
+inside non isolated cands 
+ isolated eta works
+ non iso eta = 55  24
+inside non isolated cands 
+ isolated eta works
+ non iso eta = 41  18
+inside non isolated cands 
+ isolated eta works
+ non iso eta = 55  24
+inside non isolated cands 
+ isolated eta works
+ non iso eta = 55  24
+inside non isolated cands 
+ isolated eta works
+ non iso eta = 45  20
+inside non isolated cands 
+ non iso eta = 11  4
+ isolated eta works
+ non iso eta = 55  24
+inside non isolated cands 
+400000 / 1073470 events processed
+405000 / 1073470 events processed
+ isolated eta works
+ non iso eta = 0  0
+ isolated eta works
+ non iso eta = 55  24
+inside non isolated cands 
+ isolated eta works
+ non iso eta = 59  26
+inside non isolated cands 
+ isolated eta works
+ non iso eta = 49  21
+inside non isolated cands 
+ non iso eta = 0  0
+ non iso eta = 32  14
+ non iso eta = 3  1
+ isolated eta works
+ non iso eta = 0  0
+ non iso eta = 0  0
+ isolated eta works
+ non iso eta = 54  24
+inside non isolated cands 
+ non iso eta = 4  1
+410000 / 1073470 events processed
+ non iso eta = 23  10
+ isolated eta works
+ non iso eta = 0  0
+ isolated eta works
+ non iso eta = 55  24
+inside non isolated cands 
+ non iso eta = 19  8
+ isolated eta works
+ non iso eta = 0  0
+ isolated eta works
+ non iso eta = 55  24
+inside non isolated cands 
+ non iso eta = 0  0
+ isolated eta works
+ non iso eta = 55  24
+inside non isolated cands 
+ isolated eta works
+ non iso eta = 0  0
+ isolated eta works
+ non iso eta = 55  24
+inside non isolated cands 
+ isolated eta works
+ non iso eta = 55  24
+inside non isolated cands 
+ isolated eta works
+ non iso eta = 0  0
+ isolated eta works
+ non iso eta = 55  24
+inside non isolated cands 
+ non iso eta = 9  4
+415000 / 1073470 events processed
+ isolated eta works
+ non iso eta = 0  0
+ isolated eta works
+ non iso eta = 63  28
+inside non isolated cands 
+ non iso eta = 37  16
+ isolated eta works
+ non iso eta = 53  23
+inside non isolated cands 
+ isolated eta works
+ non iso eta = 63  28
+inside non isolated cands 
+ isolated eta works
+ non iso eta = 0  0
+ isolated eta works
+ non iso eta = 0  0
+ isolated eta works
+ non iso eta = 54  24
+inside non isolated cands 
+ isolated eta works
+ non iso eta = 55  24
+inside non isolated cands 
+ isolated eta works
+ non iso eta = 0  0
+ isolated eta works
+ non iso eta = 55  24
+inside non isolated cands 
+ non iso eta = 18  8
+ isolated eta works
+ non iso eta = 0  0
+ isolated eta works
+ non iso eta = 60  26
+inside non isolated cands 
+420000 / 1073470 events processed
+ non iso eta = 38  16
+ non iso eta = 0  0
+ non iso eta = 5  2
+ non iso eta = 35  15
+ non iso eta = 0  0
+ non iso eta = 33  14
+ isolated eta works
+ non iso eta = 55  24
+inside non isolated cands 
+ isolated eta works
+ non iso eta = 0  0
+ isolated eta works
+ non iso eta = 63  28
+inside non isolated cands 
+ isolated eta works
+ non iso eta = 0  0
+425000 / 1073470 events processed
+ isolated eta works
+ non iso eta = 55  24
+inside non isolated cands 
+ isolated     non isolated    = 1  1
+ Isolated pre EGamma cadidates number 0 eta = -55 phi = 127 energy = 32765
+ isolated eta works
+ non iso eta = 54  24
+inside non isolated cands 
+430000 / 1073470 events processed
+ isolated eta works
+ non iso eta = 0  0
+ isolated eta works
+ non iso eta = 0  0
+ isolated eta works
+ non iso eta = 55  24
+inside non isolated cands 
+ isolated eta works
+ non iso eta = 0  0
+ isolated eta works
+ non iso eta = 54  24
+inside non isolated cands 
+435000 / 1073470 events processed
+ isolated eta works
+ non iso eta = 55  24
+inside non isolated cands 
+ isolated eta works
+ non iso eta = 63  28
+inside non isolated cands 
+440000 / 1073470 events processed
+445000 / 1073470 events processed
+ isolated eta works
+ non iso eta = 0  0
+ isolated eta works
+ non iso eta = 0  0
+ non iso eta = 0  0
+ isolated eta works
+ non iso eta = 0  0
+ isolated eta works
+ non iso eta = 55  24
+inside non isolated cands 
+ isolated eta works
+ non iso eta = 55  24
+inside non isolated cands 
+ isolated eta works
+ non iso eta = 46  20
+inside non isolated cands 
+450000 / 1073470 events processed
+ isolated eta works
+ non iso eta = 63  28
+inside non isolated cands 
+ isolated eta works
+ non iso eta = 0  0
+ isolated eta works
+ non iso eta = 63  28
+inside non isolated cands 
+455000 / 1073470 events processed
+460000 / 1073470 events processed
+ isolated eta works
+ non iso eta = 0  0
+ isolated eta works
+ non iso eta = 55  24
+inside non isolated cands 
+465000 / 1073470 events processed
+ isolated eta works
+ non iso eta = 48  21
+inside non isolated cands 
+ isolated eta works
+ non iso eta = 64  28
+inside non isolated cands 
+ isolated eta works
+ non iso eta = 52  23
+inside non isolated cands 
+ isolated eta works
+ non iso eta = 54  24
+inside non isolated cands 
+ non iso eta = 13  5
+ isolated eta works
+ non iso eta = 59  26
+inside non isolated cands 
+ isolated eta works
+ non iso eta = 63  28
+inside non isolated cands 
+ isolated eta works
+ non iso eta = 49  21
+inside non isolated cands 
+470000 / 1073470 events processed
+ isolated eta works
+ non iso eta = 54  24
+inside non isolated cands 
+ non iso eta = 12  5
+ isolated eta works
+ non iso eta = 46  20
+inside non isolated cands 
+ isolated eta works
+ non iso eta = 51  22
+inside non isolated cands 
+ isolated eta works
+ non iso eta = 55  24
+inside non isolated cands 
+ isolated eta works
+ non iso eta = 55  24
+inside non isolated cands 
+ isolated eta works
+ non iso eta = 55  24
+inside non isolated cands 
+475000 / 1073470 events processed
+ isolated eta works
+ non iso eta = 0  0
+ isolated eta works
+ non iso eta = 0  0
+ isolated eta works
+ non iso eta = 0  0
+ non iso eta = 9  4
+480000 / 1073470 events processed
+485000 / 1073470 events processed
+490000 / 1073470 events processed
+ isolated eta works
+ non iso eta = 63  28
+inside non isolated cands 
+ isolated eta works
+ non iso eta = 0  0
+ isolated eta works
+ non iso eta = 0  0
+ isolated eta works
+ non iso eta = 0  0
+ isolated eta works
+ non iso eta = 59  26
+inside non isolated cands 
+ isolated eta works
+ non iso eta = 63  28
+inside non isolated cands 
+ non iso eta = 0  0
+ isolated eta works
+ non iso eta = 11  4
+ isolated eta works
+ non iso eta = 54  24
+inside non isolated cands 
+ isolated eta works
+ non iso eta = 64  28
+inside non isolated cands 
+ isolated eta works
+ non iso eta = 0  0
+495000 / 1073470 events processed
+ isolated eta works
+ non iso eta = 55  24
+inside non isolated cands 
+ isolated eta works
+ non iso eta = 54  24
+inside non isolated cands 
+ isolated eta works
+ non iso eta = 48  21
+inside non isolated cands 
+ isolated eta works
+ non iso eta = 0  0
+ isolated eta works
+ non iso eta = 43  19
+inside non isolated cands 
+ isolated eta works
+ non iso eta = 55  24
+inside non isolated cands 
+ isolated eta works
+ non iso eta = 0  0
+500000 / 1073470 events processed
+ isolated eta works
+ non iso eta = 64  28
+inside non isolated cands 
+ isolated eta works
+ non iso eta = 0  0
+ isolated eta works
+ non iso eta = 0  0
+ isolated eta works
+ non iso eta = 55  24
+inside non isolated cands 
+ isolated eta works
+ non iso eta = 0  0
+ isolated eta works
+ non iso eta = 54  24
+inside non isolated cands 
+ isolated eta works
+ non iso eta = 0  0
+ isolated eta works
+ non iso eta = 0  0
+ non iso eta = 36  16
+505000 / 1073470 events processed
+ isolated eta works
+ non iso eta = 0  0
+ non iso eta = 5  2
+ isolated eta works
+ non iso eta = 0  0
+ isolated eta works
+ non iso eta = 46  20
+inside non isolated cands 
+ isolated eta works
+ non iso eta = 0  0
+ isolated eta works
+ non iso eta = 45  20
+inside non isolated cands 
+ isolated eta works
+ non iso eta = 0  0
+ isolated eta works
+ non iso eta = 0  0
+ isolated eta works
+ non iso eta = 54  24
+inside non isolated cands 
+ isolated eta works
+ non iso eta = 55  24
+inside non isolated cands 
+ isolated eta works
+ non iso eta = 55  24
+inside non isolated cands 
+510000 / 1073470 events processed
+ isolated eta works
+ non iso eta = 54  24
+inside non isolated cands 
+ isolated eta works
+ non iso eta = 55  24
+inside non isolated cands 
+ isolated eta works
+ non iso eta = 0  0
+ isolated eta works
+ non iso eta = 44  19
+inside non isolated cands 
+ isolated eta works
+ non iso eta = 55  24
+inside non isolated cands 
+ non iso eta = 41  18
+inside non isolated cands 
+ isolated eta works
+ non iso eta = 0  0
+515000 / 1073470 events processed
+ isolated eta works
+ non iso eta = 48  21
+inside non isolated cands 
+ isolated eta works
+ non iso eta = 55  24
+inside non isolated cands 
+ isolated eta works
+ non iso eta = 36  16
+520000 / 1073470 events processed
+ non iso eta = 10  4
+ isolated eta works
+ non iso eta = 48  21
+inside non isolated cands 
+525000 / 1073470 events processed
+ isolated eta works
+ non iso eta = 0  0
+ isolated eta works
+ non iso eta = 56  24
+inside non isolated cands 
+ isolated eta works
+ non iso eta = 55  24
+inside non isolated cands 
+ isolated eta works
+ non iso eta = 0  0
+ non iso eta = 13  5
+ isolated eta works
+ non iso eta = 0  0
+ isolated eta works
+ non iso eta = 0  0
+ isolated eta works
+ non iso eta = 48  21
+inside non isolated cands 
+530000 / 1073470 events processed
+ non iso eta = 17  7
+ isolated eta works
+ non iso eta = 54  24
+inside non isolated cands 
+ isolated eta works
+ non iso eta = 55  24
+inside non isolated cands 
+ non iso eta = 35  15
+ non iso eta = 38  16
+ isolated eta works
+ non iso eta = 0  0
+ isolated eta works
+ non iso eta = 0  0
+ non iso eta = 5  2
+ isolated eta works
+ non iso eta = 54  24
+inside non isolated cands 
+535000 / 1073470 events processed
+ isolated eta works
+ non iso eta = 46  20
+inside non isolated cands 
+ isolated eta works
+ non iso eta = 52  23
+inside non isolated cands 
+ isolated eta works
+ non iso eta = 0  0
+ isolated eta works
+ non iso eta = 55  24
+inside non isolated cands 
+ non iso eta = 13  5
+ isolated eta works
+ non iso eta = 63  28
+inside non isolated cands 
+ non iso eta = 29  12
+ isolated eta works
+ non iso eta = 45  20
+inside non isolated cands 
+ isolated eta works
+ non iso eta = 0  0
+540000 / 1073470 events processed
+ isolated eta works
+ non iso eta = 55  24
+inside non isolated cands 
+ isolated eta works
+ non iso eta = 49  21
+inside non isolated cands 
+ isolated eta works
+ non iso eta = 46  20
+inside non isolated cands 
+ isolated eta works
+ non iso eta = 55  24
+inside non isolated cands 
+ isolated eta works
+ non iso eta = 45  20
+inside non isolated cands 
+ isolated eta works
+ non iso eta = 0  0
+ isolated eta works
+ non iso eta = 0  0
+ isolated eta works
+ non iso eta = 55  24
+inside non isolated cands 
+ isolated eta works
+ non iso eta = 55  24
+inside non isolated cands 
+545000 / 1073470 events processed
+ non iso eta = 37  16
+ non iso eta = 19  8
+ isolated eta works
+ non iso eta = 0  0
+ isolated eta works
+ non iso eta = 59  26
+inside non isolated cands 
+ isolated eta works
+ non iso eta = 0  0
+ isolated eta works
+ non iso eta = 59  26
+inside non isolated cands 
+ isolated eta works
+ non iso eta = 63  28
+inside non isolated cands 
+ non iso eta = 16  7
+550000 / 1073470 events processed
+ isolated eta works
+ non iso eta = 0  0
+ isolated eta works
+ non iso eta = 54  24
+inside non isolated cands 
+ isolated     non isolated    = 1  1
+ Isolated pre EGamma cadidates number 0 eta = -55 phi = 127 energy = -999
+ isolated eta works
+ non iso eta = 0  0
+ isolated eta works
+ non iso eta = 55  24
+inside non isolated cands 
+ isolated eta works
+ non iso eta = 46  20
+inside non isolated cands 
+ isolated eta works
+ non iso eta = 0  0
+ isolated eta works
+ non iso eta = 0  0
+555000 / 1073470 events processed
+ non iso eta = 0  0
+ non iso eta = 0  0
+ isolated eta works
+ non iso eta = 0  0
+ isolated eta works
+ non iso eta = 63  28
+inside non isolated cands 
+ isolated eta works
+ non iso eta = 0  0
+ non iso eta = 0  0
+ isolated eta works
+ non iso eta = 49  21
+inside non isolated cands 
+ isolated eta works
+ non iso eta = 0  0
+ non iso eta = 7  3
+ isolated eta works
+ non iso eta = 0  0
+560000 / 1073470 events processed
+ non iso eta = 20  8
+ isolated eta works
+ non iso eta = 46  20
+inside non isolated cands 
+ isolated eta works
+ non iso eta = 59  26
+inside non isolated cands 
+ isolated eta works
+ non iso eta = 0  0
+ isolated eta works
+ non iso eta = 51  22
+inside non isolated cands 
+ non iso eta = 0  0
+ non iso eta = 0  0
+565000 / 1073470 events processed
+ isolated eta works
+ non iso eta = 55  24
+inside non isolated cands 
+ non iso eta = 39  17
+ non iso eta = 3  1
+ isolated eta works
+ non iso eta = 55  24
+inside non isolated cands 
+ isolated eta works
+ non iso eta = 0  0
+ non iso eta = 39  17
+ isolated eta works
+ non iso eta = 54  24
+inside non isolated cands 
+570000 / 1073470 events processed
+ non iso eta = 0  0
+ non iso eta = 0  0
+ isolated eta works
+ non iso eta = 52  23
+inside non isolated cands 
+ non iso eta = 29  12
+ isolated eta works
+ non iso eta = 24  10
+ non iso eta = 18  8
+575000 / 1073470 events processed
+ isolated eta works
+ non iso eta = 54  24
+inside non isolated cands 
+ isolated eta works
+ non iso eta = 41  18
+inside non isolated cands 
+ isolated eta works
+ non iso eta = 44  19
+inside non isolated cands 
+ isolated eta works
+ non iso eta = 55  24
+inside non isolated cands 
+ isolated eta works
+ non iso eta = 55  24
+inside non isolated cands 
+ non iso eta = 31  13
+ isolated eta works
+ non iso eta = 0  0
+ isolated eta works
+ non iso eta = 0  0
+ non iso eta = 0  0
+ isolated eta works
+ non iso eta = 48  21
+inside non isolated cands 
+580000 / 1073470 events processed
+ isolated eta works
+ non iso eta = 54  24
+inside non isolated cands 
+ isolated eta works
+ non iso eta = 0  0
+ isolated eta works
+ non iso eta = 54  24
+inside non isolated cands 
+ isolated eta works
+ non iso eta = 0  0
+ non iso eta = 20  8
+ isolated eta works
+ non iso eta = 42  18
+inside non isolated cands 
+ non iso eta = 4  1
+ isolated eta works
+ non iso eta = 51  22
+inside non isolated cands 
+ isolated eta works
+ non iso eta = 41  18
+inside non isolated cands 
+ non iso eta = 51  22
+inside non isolated cands 
+585000 / 1073470 events processed
+ isolated eta works
+ non iso eta = 0  0
+ non iso eta = 39  17
+ isolated eta works
+ non iso eta = 0  0
+ isolated eta works
+ non iso eta = 55  24
+inside non isolated cands 
+ isolated eta works
+ non iso eta = 52  23
+inside non isolated cands 
+590000 / 1073470 events processed
+ isolated eta works
+ non iso eta = 54  24
+inside non isolated cands 
+ isolated eta works
+ non iso eta = 0  0
+ isolated eta works
+ non iso eta = 0  0
+ non iso eta = 40  17
+ isolated eta works
+ non iso eta = 0  0
+ isolated eta works
+ non iso eta = 0  0
+ isolated eta works
+ non iso eta = 0  0
+595000 / 1073470 events processed
+ isolated eta works
+ non iso eta = 55  24
+inside non isolated cands 
+ isolated eta works
+ non iso eta = 52  23
+inside non isolated cands 
+ isolated eta works
+ non iso eta = 0  0
+ non iso eta = 10  4
+ isolated eta works
+ non iso eta = 0  0
+ isolated eta works
+ non iso eta = 54  24
+inside non isolated cands 
+ isolated eta works
+ non iso eta = 43  19
+inside non isolated cands 
+ isolated eta works
+ non iso eta = 64  28
+inside non isolated cands 
+ isolated eta works
+ non iso eta = 43  19
+inside non isolated cands 
+ non iso eta = 35  15
+600000 / 1073470 events processed
+ isolated eta works
+ non iso eta = 0  0
+ isolated eta works
+ non iso eta = 0  0
+ isolated eta works
+ non iso eta = 54  24
+inside non isolated cands 
+ isolated eta works
+ non iso eta = 0  0
+ isolated eta works
+ non iso eta = 49  21
+inside non isolated cands 
+ isolated eta works
+ non iso eta = 0  0
+ non iso eta = 39  17
+605000 / 1073470 events processed
+ non iso eta = 4  1
+ non iso eta = 0  0
+ isolated eta works
+ non iso eta = 0  0
+ isolated eta works
+ non iso eta = 0  0
+ isolated eta works
+ non iso eta = 0  0
+ isolated eta works
+ non iso eta = 46  20
+inside non isolated cands 
+ non iso eta = 41  18
+inside non isolated cands 
+ isolated eta works
+ non iso eta = 52  23
+inside non isolated cands 
+ isolated eta works
+ non iso eta = 54  24
+inside non isolated cands 
+610000 / 1073470 events processed
+ isolated eta works
+ non iso eta = 0  0
+ isolated eta works
+ non iso eta = 0  0
+ isolated eta works
+ non iso eta = 55  24
+inside non isolated cands 
+ isolated eta works
+ non iso eta = 55  24
+inside non isolated cands 
+ isolated eta works
+ non iso eta = 0  0
+ non iso eta = 36  16
+ isolated eta works
+ non iso eta = 0  0
+ isolated eta works
+ non iso eta = 0  0
+615000 / 1073470 events processed
+ isolated eta works
+ non iso eta = 56  24
+inside non isolated cands 
+ isolated eta works
+ non iso eta = 63  28
+inside non isolated cands 
+ isolated eta works
+ non iso eta = 55  24
+inside non isolated cands 
+ isolated eta works
+ non iso eta = 0  0
+ isolated eta works
+ non iso eta = 43  19
+inside non isolated cands 
+ isolated eta works
+ non iso eta = 0  0
+ isolated eta works
+ non iso eta = 55  24
+inside non isolated cands 
+ isolated eta works
+ non iso eta = 55  24
+inside non isolated cands 
+ non iso eta = 36  16
+ isolated eta works
+ non iso eta = 54  24
+inside non isolated cands 
+620000 / 1073470 events processed
+ isolated eta works
+ non iso eta = 55  24
+inside non isolated cands 
+ isolated eta works
+ non iso eta = 54  24
+inside non isolated cands 
+ isolated eta works
+ non iso eta = 0  0
+ isolated eta works
+ non iso eta = 54  24
+inside non isolated cands 
+ isolated eta works
+ non iso eta = 0  0
+ isolated eta works
+ non iso eta = 52  23
+inside non isolated cands 
+ isolated eta works
+ non iso eta = 42  18
+inside non isolated cands 
+ isolated eta works
+ non iso eta = 63  28
+inside non isolated cands 
+ isolated eta works
+ non iso eta = 0  0
+ isolated eta works
+ non iso eta = 55  24
+inside non isolated cands 
+ isolated eta works
+ non iso eta = 48  21
+inside non isolated cands 
+625000 / 1073470 events processed
+ isolated eta works
+ non iso eta = 59  26
+inside non isolated cands 
+ non iso eta = 38  16
+ isolated eta works
+ non iso eta = 0  0
+ isolated eta works
+ non iso eta = 59  26
+inside non isolated cands 
+ non iso eta = 39  17
+ isolated eta works
+ non iso eta = 58  25
+inside non isolated cands 
+ non iso eta = 27  12
+ isolated eta works
+ non iso eta = 56  24
+inside non isolated cands 
+ isolated eta works
+ non iso eta = 63  28
+inside non isolated cands 
+ isolated eta works
+ non iso eta = 48  21
+inside non isolated cands 
+630000 / 1073470 events processed
+ isolated eta works
+ non iso eta = 0  0
+ isolated eta works
+ non iso eta = 55  24
+inside non isolated cands 
+ isolated eta works
+ non iso eta = 52  23
+inside non isolated cands 
+ isolated eta works
+ non iso eta = 0  0
+ isolated eta works
+ non iso eta = 54  24
+inside non isolated cands 
+ non iso eta = 42  18
+inside non isolated cands 
+ isolated eta works
+ non iso eta = 0  0
+ non iso eta = 19  8
+635000 / 1073470 events processed
+ isolated eta works
+ non iso eta = 0  0
+ isolated eta works
+ non iso eta = 55  24
+inside non isolated cands 
+ isolated eta works
+ non iso eta = 0  0
+ isolated eta works
+ non iso eta = 52  23
+inside non isolated cands 
+ isolated eta works
+ non iso eta = 0  0
+ isolated eta works
+ non iso eta = 0  0
+ non iso eta = 3  1
+ non iso eta = 19  8
+ isolated eta works
+ non iso eta = 48  21
+inside non isolated cands 
+ isolated eta works
+ non iso eta = 64  28
+inside non isolated cands 
+640000 / 1073470 events processed
+ isolated eta works
+ non iso eta = 46  20
+inside non isolated cands 
+ isolated eta works
+ non iso eta = 0  0
+ isolated eta works
+ non iso eta = 0  0
+ isolated eta works
+ non iso eta = 54  24
+inside non isolated cands 
+ isolated eta works
+ non iso eta = 63  28
+inside non isolated cands 
+ non iso eta = 0  0
+ isolated eta works
+ non iso eta = 51  22
+inside non isolated cands 
+645000 / 1073470 events processed
+ non iso eta = 48  21
+inside non isolated cands 
+650000 / 1073470 events processed
+ non iso eta = 11  4
+655000 / 1073470 events processed
+ isolated eta works
+ non iso eta = 0  0
+ isolated eta works
+ non iso eta = 46  20
+inside non isolated cands 
+ non iso eta = 25  11
+ isolated eta works
+ non iso eta = 55  24
+inside non isolated cands 
+ isolated eta works
+ non iso eta = 54  24
+inside non isolated cands 
+ isolated eta works
+ non iso eta = 55  24
+inside non isolated cands 
+ non iso eta = 0  0
+660000 / 1073470 events processed
+ isolated eta works
+ non iso eta = 49  21
+inside non isolated cands 
+ isolated eta works
+ non iso eta = 55  24
+inside non isolated cands 
+ isolated eta works
+ non iso eta = 55  24
+inside non isolated cands 
+ isolated eta works
+ non iso eta = 41  18
+inside non isolated cands 
+ non iso eta = 19  8
+ isolated eta works
+ non iso eta = 0  0
+ isolated eta works
+ non iso eta = 0  0
+ isolated eta works
+ non iso eta = 46  20
+inside non isolated cands 
+ isolated eta works
+ non iso eta = 46  20
+inside non isolated cands 
+ isolated eta works
+ non iso eta = 55  24
+inside non isolated cands 
+ non iso eta = 0  0
+ isolated eta works
+ non iso eta = 48  21
+inside non isolated cands 
+665000 / 1073470 events processed
+ isolated eta works
+ non iso eta = 54  24
+inside non isolated cands 
+ isolated eta works
+ non iso eta = 54  24
+inside non isolated cands 
+ non iso eta = 0  0
+ non iso eta = 13  5
+ isolated eta works
+ non iso eta = 0  0
+ isolated eta works
+ non iso eta = 55  24
+inside non isolated cands 
+ non iso eta = 15  6
+ isolated eta works
+ non iso eta = 55  24
+inside non isolated cands 
+ isolated eta works
+ non iso eta = 48  21
+inside non isolated cands 
+ isolated eta works
+ non iso eta = 0  0
+670000 / 1073470 events processed
+ isolated eta works
+ non iso eta = 55  24
+inside non isolated cands 
+ isolated eta works
+ non iso eta = 55  24
+inside non isolated cands 
+ isolated eta works
+ non iso eta = 55  24
+inside non isolated cands 
+ isolated eta works
+ non iso eta = 0  0
+ isolated eta works
+ non iso eta = 55  24
+inside non isolated cands 
+ non iso eta = 39  17
+ non iso eta = 11  4
+675000 / 1073470 events processed
+ isolated eta works
+ non iso eta = 55  24
+inside non isolated cands 
+ non iso eta = 38  16
+ isolated eta works
+ non iso eta = 52  23
+inside non isolated cands 
+680000 / 1073470 events processed
+685000 / 1073470 events processed
+ isolated eta works
+ non iso eta = 52  23
+inside non isolated cands 
+ isolated eta works
+ non iso eta = 0  0
+ isolated eta works
+ non iso eta = 0  0
+ isolated eta works
+ non iso eta = 0  0
+ non iso eta = 0  0
+690000 / 1073470 events processed
+ isolated eta works
+ non iso eta = 0  0
+ isolated eta works
+ non iso eta = 0  0
+ non iso eta = 48  21
+inside non isolated cands 
+ isolated eta works
+ non iso eta = 41  18
+inside non isolated cands 
+ non iso eta = 43  19
+inside non isolated cands 
+ isolated eta works
+ non iso eta = 0  0
+ isolated eta works
+ non iso eta = 55  24
+inside non isolated cands 
+ isolated eta works
+ non iso eta = 45  20
+inside non isolated cands 
+ isolated eta works
+ non iso eta = 0  0
+ non iso eta = 36  16
+ isolated eta works
+ non iso eta = 0  0
+ non iso eta = 41  18
+inside non isolated cands 
+ non iso eta = 15  6
+ isolated eta works
+ non iso eta = 45  20
+inside non isolated cands 
+695000 / 1073470 events processed
+ isolated eta works
+ non iso eta = 55  24
+inside non isolated cands 
+ isolated eta works
+ non iso eta = 55  24
+inside non isolated cands 
+ isolated eta works
+ non iso eta = 0  0
+ isolated eta works
+ non iso eta = 48  21
+inside non isolated cands 
+ isolated eta works
+ non iso eta = 55  24
+inside non isolated cands 
+ isolated eta works
+ non iso eta = 0  0
+ non iso eta = 0  0
+ non iso eta = 0  0
+ isolated eta works
+ non iso eta = 59  26
+inside non isolated cands 
+ isolated eta works
+ non iso eta = 55  24
+inside non isolated cands 
+ isolated eta works
+ non iso eta = 55  24
+inside non isolated cands 
+ isolated eta works
+ non iso eta = 55  24
+inside non isolated cands 
+ isolated eta works
+ non iso eta = 0  0
+ non iso eta = 0  0
+ non iso eta = 38  16
+700000 / 1073470 events processed
+ isolated eta works
+ non iso eta = 48  21
+inside non isolated cands 
+ non iso eta = 0  0
+ isolated eta works
+ non iso eta = 0  0
+ isolated eta works
+ non iso eta = 44  19
+inside non isolated cands 
+ isolated eta works
+ non iso eta = 0  0
+ isolated eta works
+ non iso eta = 0  0
+ isolated eta works
+ non iso eta = 55  24
+inside non isolated cands 
+ non iso eta = 30  13
+ isolated eta works
+ non iso eta = 55  24
+inside non isolated cands 
+ non iso eta = 37  16
+ isolated eta works
+ non iso eta = 0  0
+705000 / 1073470 events processed
+ non iso eta = 39  17
+ isolated eta works
+ non iso eta = 43  19
+inside non isolated cands 
+ isolated eta works
+ non iso eta = 0  0
+ non iso eta = 0  0
+ isolated eta works
+ non iso eta = 54  24
+inside non isolated cands 
+ non iso eta = 17  7
+ isolated eta works
+ non iso eta = 0  0
+ isolated eta works
+ non iso eta = 54  24
+inside non isolated cands 
+ non iso eta = 0  0
+ isolated eta works
+ non iso eta = 0  0
+ isolated eta works
+ non iso eta = 0  0
+ isolated eta works
+ non iso eta = 54  24
+inside non isolated cands 
+710000 / 1073470 events processed
+ non iso eta = 48  21
+inside non isolated cands 
+ isolated eta works
+ non iso eta = 54  24
+inside non isolated cands 
+ isolated eta works
+ non iso eta = 55  24
+inside non isolated cands 
+ isolated eta works
+ non iso eta = 55  24
+inside non isolated cands 
+ isolated eta works
+ non iso eta = 0  0
+ isolated eta works
+ non iso eta = 56  24
+inside non isolated cands 
+ non iso eta = 0  0
+ isolated eta works
+ non iso eta = 49  21
+inside non isolated cands 
+ isolated eta works
+ non iso eta = 54  24
+inside non isolated cands 
+ isolated eta works
+ non iso eta = 0  0
+ isolated eta works
+ non iso eta = 64  28
+inside non isolated cands 
+715000 / 1073470 events processed
+ isolated eta works
+ non iso eta = 0  0
+ isolated eta works
+ non iso eta = 55  24
+inside non isolated cands 
+ isolated eta works
+ non iso eta = 55  24
+inside non isolated cands 
+ isolated eta works
+ non iso eta = 55  24
+inside non isolated cands 
+ isolated eta works
+ non iso eta = 63  28
+inside non isolated cands 
+720000 / 1073470 events processed
+ isolated eta works
+ non iso eta = 48  21
+inside non isolated cands 
+ isolated eta works
+ non iso eta = 55  24
+inside non isolated cands 
+725000 / 1073470 events processed
+ isolated eta works
+ non iso eta = 51  22
+inside non isolated cands 
+ isolated eta works
+ non iso eta = 63  28
+inside non isolated cands 
+ isolated eta works
+ non iso eta = 55  24
+inside non isolated cands 
+ isolated eta works
+ non iso eta = 55  24
+inside non isolated cands 
+730000 / 1073470 events processed
+ isolated eta works
+ non iso eta = 51  22
+inside non isolated cands 
+ isolated eta works
+ non iso eta = 0  0
+ non iso eta = 34  15
+ isolated eta works
+ non iso eta = 0  0
+ non iso eta = 18  8
+ isolated eta works
+ non iso eta = 55  24
+inside non isolated cands 
+735000 / 1073470 events processed
+ isolated eta works
+ non iso eta = 0  0
+ isolated eta works
+ non iso eta = 59  26
+inside non isolated cands 
+ isolated eta works
+ non iso eta = 0  0
+ isolated eta works
+ non iso eta = 55  24
+inside non isolated cands 
+ isolated eta works
+ non iso eta = 0  0
+ isolated eta works
+ non iso eta = 55  24
+inside non isolated cands 
+ isolated eta works
+ non iso eta = 63  28
+inside non isolated cands 
+740000 / 1073470 events processed
+ isolated eta works
+ non iso eta = 56  24
+inside non isolated cands 
+ isolated eta works
+ non iso eta = 54  24
+inside non isolated cands 
+ isolated eta works
+ non iso eta = 0  0
+ isolated eta works
+ non iso eta = 0  0
+ non iso eta = 7  3
+ isolated eta works
+ non iso eta = 59  26
+inside non isolated cands 
+745000 / 1073470 events processed
+ non iso eta = 2  0
+ isolated eta works
+ non iso eta = 52  23
+inside non isolated cands 
+ isolated eta works
+ non iso eta = 64  28
+inside non isolated cands 
+ isolated eta works
+ non iso eta = 55  24
+inside non isolated cands 
+ isolated eta works
+ non iso eta = 0  0
+ isolated eta works
+ non iso eta = 55  24
+inside non isolated cands 
+ isolated eta works
+ non iso eta = 55  24
+inside non isolated cands 
+ non iso eta = 6  2
+ isolated eta works
+ non iso eta = 52  23
+inside non isolated cands 
+ isolated eta works
+ non iso eta = 39  17
+ isolated eta works
+ non iso eta = 54  24
+inside non isolated cands 
+ isolated eta works
+ non iso eta = 0  0
+ isolated eta works
+ non iso eta = 46  20
+inside non isolated cands 
+750000 / 1073470 events processed
+ non iso eta = 20  8
+ isolated eta works
+ non iso eta = 53  23
+inside non isolated cands 
+ isolated eta works
+ non iso eta = 55  24
+inside non isolated cands 
+ isolated eta works
+ non iso eta = 51  22
+inside non isolated cands 
+ isolated eta works
+ non iso eta = 0  0
+ non iso eta = 28  12
+ isolated eta works
+ non iso eta = 0  0
+ isolated eta works
+ non iso eta = 0  0
+ isolated eta works
+ non iso eta = 54  24
+inside non isolated cands 
+ isolated eta works
+ non iso eta = 55  24
+inside non isolated cands 
+755000 / 1073470 events processed
+ isolated eta works
+ non iso eta = 0  0
+ isolated eta works
+ non iso eta = 55  24
+inside non isolated cands 
+ isolated eta works
+ non iso eta = 0  0
+ isolated eta works
+ non iso eta = 52  23
+inside non isolated cands 
+ non iso eta = 14  6
+ isolated eta works
+ non iso eta = 0  0
+ isolated eta works
+ non iso eta = 54  24
+inside non isolated cands 
+ isolated eta works
+ non iso eta = 64  28
+inside non isolated cands 
+ isolated eta works
+ non iso eta = 55  24
+inside non isolated cands 
+ isolated eta works
+ non iso eta = 41  18
+inside non isolated cands 
+ non iso eta = 41  18
+inside non isolated cands 
+760000 / 1073470 events processed
+ isolated eta works
+ non iso eta = 55  24
+inside non isolated cands 
+ isolated eta works
+ non iso eta = 63  28
+inside non isolated cands 
+ isolated eta works
+ non iso eta = 45  20
+inside non isolated cands 
+ isolated eta works
+ non iso eta = 0  0
+ isolated eta works
+ non iso eta = 59  26
+inside non isolated cands 
+ non iso eta = 18  8
+ isolated eta works
+ non iso eta = 54  24
+inside non isolated cands 
+ isolated eta works
+ non iso eta = 0  0
+ isolated eta works
+ non iso eta = 0  0
+ isolated eta works
+ non iso eta = 0  0
+ isolated eta works
+ non iso eta = 53  23
+inside non isolated cands 
+ non iso eta = 0  0
+ non iso eta = 0  0
+765000 / 1073470 events processed
+ isolated eta works
+ non iso eta = 0  0
+ non iso eta = 2  0
+ isolated eta works
+ non iso eta = 52  23
+inside non isolated cands 
+ isolated eta works
+ non iso eta = 0  0
+ isolated eta works
+ non iso eta = 54  24
+inside non isolated cands 
+ non iso eta = 24  10
+ isolated eta works
+ non iso eta = 55  24
+inside non isolated cands 
+770000 / 1073470 events processed
+ non iso eta = 11  4
+ isolated eta works
+ non iso eta = 0  0
+ isolated eta works
+ non iso eta = 55  24
+inside non isolated cands 
+ isolated eta works
+ non iso eta = 0  0
+ isolated eta works
+ non iso eta = 55  24
+inside non isolated cands 
+ isolated eta works
+ non iso eta = 0  0
+ isolated eta works
+ non iso eta = 55  24
+inside non isolated cands 
+ isolated eta works
+ non iso eta = 55  24
+inside non isolated cands 
+775000 / 1073470 events processed
+ non iso eta = 38  16
+ isolated eta works
+ non iso eta = 0  0
+ non iso eta = 15  6
+ isolated eta works
+ non iso eta = 55  24
+inside non isolated cands 
+ isolated eta works
+ non iso eta = 55  24
+inside non isolated cands 
+ non iso eta = 0  0
+ non iso eta = 39  17
+ isolated eta works
+ non iso eta = 55  24
+inside non isolated cands 
+ isolated eta works
+ non iso eta = 56  24
+inside non isolated cands 
+ isolated eta works
+ non iso eta = 0  0
+ isolated eta works
+ non iso eta = 55  24
+inside non isolated cands 
+780000 / 1073470 events processed
+ isolated eta works
+ non iso eta = 0  0
+ isolated eta works
+ non iso eta = 0  0
+ isolated eta works
+ non iso eta = 0  0
+ isolated eta works
+ non iso eta = 54  24
+inside non isolated cands 
+ isolated eta works
+ non iso eta = 55  24
+inside non isolated cands 
+ isolated eta works
+ non iso eta = 0  0
+ isolated eta works
+ non iso eta = 0  0
+ non iso eta = 6  2
+ non iso eta = 18  8
+ isolated eta works
+ non iso eta = 0  0
+ isolated eta works
+ non iso eta = 0  0
+ isolated eta works
+ non iso eta = 63  28
+inside non isolated cands 
+ non iso eta = 1  0
+785000 / 1073470 events processed
+ non iso eta = 7  3
+ isolated eta works
+ non iso eta = 48  21
+inside non isolated cands 
+ non iso eta = 3  1
+ non iso eta = 20  8
+ isolated eta works
+ non iso eta = 54  24
+inside non isolated cands 
+ isolated eta works
+ non iso eta = 52  23
+inside non isolated cands 
+ isolated eta works
+ non iso eta = 0  0
+790000 / 1073470 events processed
+ isolated eta works
+ non iso eta = 43  19
+inside non isolated cands 
+ isolated eta works
+ non iso eta = 0  0
+ isolated eta works
+ non iso eta = 0  0
+ isolated eta works
+ non iso eta = 63  28
+inside non isolated cands 
+ non iso eta = 13  5
+ isolated eta works
+ non iso eta = 0  0
+ isolated eta works
+ non iso eta = 0  0
+ isolated eta works
+ non iso eta = 0  0
+795000 / 1073470 events processed
+ non iso eta = 5  2
+ isolated eta works
+ non iso eta = 0  0
+ non iso eta = 39  17
+ isolated eta works
+ non iso eta = 54  24
+inside non isolated cands 
+800000 / 1073470 events processed
+805000 / 1073470 events processed
+ isolated eta works
+ non iso eta = 52  23
+inside non isolated cands 
+ isolated eta works
+ non iso eta = 0  0
+810000 / 1073470 events processed
+ isolated eta works
+ non iso eta = 44  19
+inside non isolated cands 
+ isolated eta works
+ non iso eta = 55  24
+inside non isolated cands 
+ non iso eta = 5  2
+ isolated eta works
+ non iso eta = 56  24
+inside non isolated cands 
+ isolated eta works
+ non iso eta = 0  0
+ isolated eta works
+ non iso eta = 59  26
+inside non isolated cands 
+ isolated eta works
+ non iso eta = 0  0
+815000 / 1073470 events processed
+ isolated eta works
+ non iso eta = 0  0
+ isolated eta works
+ non iso eta = 63  28
+inside non isolated cands 
+ isolated eta works
+ non iso eta = 0  0
+ isolated eta works
+ non iso eta = 42  18
+inside non isolated cands 
+ non iso eta = 31  13
+ isolated eta works
+ non iso eta = 55  24
+inside non isolated cands 
+ isolated eta works
+ non iso eta = 0  0
+ non iso eta = 54  24
+inside non isolated cands 
+ isolated eta works
+ non iso eta = 0  0
+ isolated eta works
+ non iso eta = 55  24
+inside non isolated cands 
+820000 / 1073470 events processed
+ isolated eta works
+ non iso eta = 55  24
+inside non isolated cands 
+ non iso eta = 7  3
+ isolated eta works
+ non iso eta = 0  0
+ isolated eta works
+ non iso eta = 48  21
+inside non isolated cands 
+ isolated eta works
+ non iso eta = 64  28
+inside non isolated cands 
+ non iso eta = 9  4
+825000 / 1073470 events processed
+ isolated eta works
+ non iso eta = 0  0
+ isolated eta works
+ non iso eta = 0  0
+ non iso eta = 26  11
+ isolated eta works
+ non iso eta = 54  24
+inside non isolated cands 
+ isolated eta works
+ non iso eta = 64  28
+inside non isolated cands 
+830000 / 1073470 events processed
+ isolated eta works
+ non iso eta = 54  24
+inside non isolated cands 
+ isolated eta works
+ non iso eta = 0  0
+ isolated eta works
+ non iso eta = 0  0
+ isolated eta works
+ non iso eta = 0  0
+ isolated eta works
+ non iso eta = 55  24
+inside non isolated cands 
+ isolated eta works
+ non iso eta = 43  19
+inside non isolated cands 
+ isolated eta works
+ non iso eta = 46  20
+inside non isolated cands 
+ isolated eta works
+ non iso eta = 48  21
+inside non isolated cands 
+ isolated eta works
+ non iso eta = 55  24
+inside non isolated cands 
+ non iso eta = 13  5
+835000 / 1073470 events processed
+ isolated eta works
+ non iso eta = 46  20
+inside non isolated cands 
+840000 / 1073470 events processed
+ isolated eta works
+ non iso eta = 0  0
+ isolated eta works
+ non iso eta = 0  0
+ isolated eta works
+ non iso eta = 55  24
+inside non isolated cands 
+ non iso eta = 13  5
+ isolated eta works
+ non iso eta = 52  23
+inside non isolated cands 
+ isolated eta works
+ non iso eta = 54  24
+inside non isolated cands 
+845000 / 1073470 events processed
+ isolated eta works
+ non iso eta = 54  24
+inside non isolated cands 
+ isolated eta works
+ non iso eta = 54  24
+inside non isolated cands 
+ isolated eta works
+ non iso eta = 43  19
+inside non isolated cands 
+ isolated eta works
+ non iso eta = 54  24
+inside non isolated cands 
+ isolated eta works
+ non iso eta = 0  0
+ isolated eta works
+ non iso eta = 54  24
+inside non isolated cands 
+ non iso eta = 30  13
+ isolated eta works
+ non iso eta = 55  24
+inside non isolated cands 
+ isolated eta works
+ non iso eta = 48  21
+inside non isolated cands 
+ non iso eta = 0  0
+ isolated eta works
+ non iso eta = 0  0
+ isolated eta works
+ non iso eta = 0  0
+850000 / 1073470 events processed
+ non iso eta = 27  12
+ isolated eta works
+ non iso eta = 0  0
+ isolated eta works
+ non iso eta = 0  0
+ isolated eta works
+ non iso eta = 55  24
+inside non isolated cands 
+ isolated eta works
+ non iso eta = 55  24
+inside non isolated cands 
+ isolated eta works
+ non iso eta = 64  28
+inside non isolated cands 
+ isolated eta works
+ non iso eta = 55  24
+inside non isolated cands 
+ non iso eta = 14  6
+ non iso eta = 40  17
+ isolated eta works
+ non iso eta = 54  24
+inside non isolated cands 
+855000 / 1073470 events processed
+ isolated eta works
+ non iso eta = 54  24
+inside non isolated cands 
+ isolated eta works
+ non iso eta = 0  0
+ non iso eta = 1  0
+ isolated eta works
+ non iso eta = 54  24
+inside non isolated cands 
+ non iso eta = 43  19
+inside non isolated cands 
+ isolated eta works
+ non iso eta = 0  0
+ isolated eta works
+ non iso eta = 55  24
+inside non isolated cands 
+ non iso eta = 16  7
+ isolated eta works
+ non iso eta = 0  0
+ isolated eta works
+ non iso eta = 54  24
+inside non isolated cands 
+ isolated eta works
+ non iso eta = 0  0
+ non iso eta = 15  6
+860000 / 1073470 events processed
+ non iso eta = 54  24
+inside non isolated cands 
+ non iso eta = 43  19
+inside non isolated cands 
+ isolated eta works
+ non iso eta = 0  0
+ non iso eta = 1  0
+ isolated eta works
+ non iso eta = 52  23
+inside non isolated cands 
+ isolated eta works
+ non iso eta = 55  24
+inside non isolated cands 
+ isolated eta works
+ non iso eta = 43  19
+inside non isolated cands 
+ isolated eta works
+ non iso eta = 55  24
+inside non isolated cands 
+ isolated eta works
+ non iso eta = 55  24
+inside non isolated cands 
+ isolated eta works
+ non iso eta = 0  0
+ isolated eta works
+ non iso eta = 46  20
+inside non isolated cands 
+ isolated eta works
+ non iso eta = 54  24
+inside non isolated cands 
+ isolated eta works
+ non iso eta = 51  22
+inside non isolated cands 
+865000 / 1073470 events processed
+ isolated eta works
+ non iso eta = 54  24
+inside non isolated cands 
+ non iso eta = 37  16
+ isolated eta works
+ non iso eta = 48  21
+inside non isolated cands 
+870000 / 1073470 events processed
+ isolated eta works
+ non iso eta = 48  21
+inside non isolated cands 
+ isolated eta works
+ non iso eta = 55  24
+inside non isolated cands 
+ isolated eta works
+ non iso eta = 0  0
+ isolated eta works
+ non iso eta = 51  22
+inside non isolated cands 
+ isolated eta works
+ non iso eta = 0  0
+ isolated eta works
+ non iso eta = 59  26
+inside non isolated cands 
+ non iso eta = 0  0
+875000 / 1073470 events processed
+ isolated eta works
+ non iso eta = 54  24
+inside non isolated cands 
+ isolated eta works
+ non iso eta = 42  18
+inside non isolated cands 
+ non iso eta = 0  0
+ isolated eta works
+ non iso eta = 0  0
+880000 / 1073470 events processed
+ non iso eta = 6  2
+ non iso eta = 38  16
+ isolated eta works
+ non iso eta = 63  28
+inside non isolated cands 
+ non iso eta = 19  8
+ isolated eta works
+ non iso eta = 45  20
+inside non isolated cands 
+ non iso eta = 27  12
+ non iso eta = 0  0
+ non iso eta = 29  12
+885000 / 1073470 events processed
+ isolated eta works
+ non iso eta = 55  24
+inside non isolated cands 
+ non iso eta = 0  0
+ non iso eta = 33  14
+ isolated eta works
+ non iso eta = 55  24
+inside non isolated cands 
+ isolated eta works
+ non iso eta = 55  24
+inside non isolated cands 
+ isolated eta works
+ non iso eta = 0  0
+ non iso eta = 19  8
+ isolated eta works
+ non iso eta = 51  22
+inside non isolated cands 
+ isolated eta works
+ non iso eta = 43  19
+inside non isolated cands 
+ isolated eta works
+ non iso eta = 0  0
+890000 / 1073470 events processed
+ isolated eta works
+ non iso eta = 0  0
+ isolated eta works
+ non iso eta = 0  0
+ non iso eta = 0  0
+ isolated eta works
+ non iso eta = 64  28
+inside non isolated cands 
+ non iso eta = 0  0
+ non iso eta = 7  3
+ isolated eta works
+ non iso eta = 56  24
+inside non isolated cands 
+ isolated eta works
+ non iso eta = 55  24
+inside non isolated cands 
+ non iso eta = 25  11
+ isolated eta works
+ non iso eta = 54  24
+inside non isolated cands 
+ isolated eta works
+ non iso eta = 49  21
+inside non isolated cands 
+ isolated eta works
+ non iso eta = 0  0
+895000 / 1073470 events processed
+ isolated eta works
+ non iso eta = 0  0
+ isolated eta works
+ non iso eta = 60  26
+inside non isolated cands 
+ non iso eta = 5  2
+ isolated eta works
+ non iso eta = 48  21
+inside non isolated cands 
+ isolated eta works
+ non iso eta = 55  24
+inside non isolated cands 
+ isolated eta works
+ non iso eta = 54  24
+inside non isolated cands 
+ non iso eta = 28  12
+ non iso eta = 5  2
+ isolated eta works
+ non iso eta = 55  24
+inside non isolated cands 
+ non iso eta = 0  0
+ isolated eta works
+ non iso eta = 55  24
+inside non isolated cands 
+ isolated eta works
+ non iso eta = 59  26
+inside non isolated cands 
+ isolated eta works
+ non iso eta = 54  24
+inside non isolated cands 
+ non iso eta = 23  10
+900000 / 1073470 events processed
+ isolated eta works
+ non iso eta = 51  22
+inside non isolated cands 
+ isolated eta works
+ non iso eta = 0  0
+ non iso eta = 2  0
+ non iso eta = 0  0
+ isolated eta works
+ non iso eta = 0  0
+ non iso eta = 19  8
+ isolated eta works
+ non iso eta = 0  0
+ isolated eta works
+ non iso eta = 0  0
+ isolated eta works
+ non iso eta = 0  0
+ isolated eta works
+ non iso eta = 54  24
+inside non isolated cands 
+ isolated eta works
+ non iso eta = 0  0
+ isolated eta works
+ non iso eta = 54  24
+inside non isolated cands 
+905000 / 1073470 events processed
+ isolated eta works
+ non iso eta = 0  0
+ isolated eta works
+ non iso eta = 0  0
+ isolated eta works
+ non iso eta = 46  20
+inside non isolated cands 
+ non iso eta = 0  0
+ isolated eta works
+ non iso eta = 0  0
+ isolated eta works
+ non iso eta = 55  24
+inside non isolated cands 
+ isolated eta works
+ non iso eta = 0  0
+910000 / 1073470 events processed
+ isolated eta works
+ non iso eta = 55  24
+inside non isolated cands 
+ isolated eta works
+ non iso eta = 0  0
+ non iso eta = 0  0
+ isolated eta works
+ non iso eta = 7  3
+ non iso eta = 42  18
+inside non isolated cands 
+ isolated eta works
+ non iso eta = 0  0
+915000 / 1073470 events processed
+ isolated eta works
+ non iso eta = 55  24
+inside non isolated cands 
+ isolated eta works
+ non iso eta = 63  28
+inside non isolated cands 
+ non iso eta = 35  15
+ isolated eta works
+ non iso eta = 0  0
+ non iso eta = 23  10
+ non iso eta = 17  7
+ isolated eta works
+ non iso eta = 53  23
+inside non isolated cands 
+ isolated eta works
+ non iso eta = 59  26
+inside non isolated cands 
+ isolated eta works
+ non iso eta = 48  21
+inside non isolated cands 
+920000 / 1073470 events processed
+ isolated eta works
+ non iso eta = 55  24
+inside non isolated cands 
+ non iso eta = 36  16
+ isolated eta works
+ non iso eta = 55  24
+inside non isolated cands 
+ isolated eta works
+ non iso eta = 54  24
+inside non isolated cands 
+ non iso eta = 0  0
+ non iso eta = 28  12
+ isolated eta works
+ non iso eta = 41  18
+inside non isolated cands 
+ isolated eta works
+ non iso eta = 55  24
+inside non isolated cands 
+ non iso eta = 0  0
+925000 / 1073470 events processed
+ isolated eta works
+ non iso eta = 52  23
+inside non isolated cands 
+ non iso eta = 29  12
+ non iso eta = 38  16
+ isolated eta works
+ non iso eta = 0  0
+ isolated eta works
+ non iso eta = 0  0
+ isolated eta works
+ non iso eta = 51  22
+inside non isolated cands 
+ isolated eta works
+ non iso eta = 63  28
+inside non isolated cands 
+ isolated eta works
+ non iso eta = 46  20
+inside non isolated cands 
+930000 / 1073470 events processed
+ isolated eta works
+ non iso eta = 55  24
+inside non isolated cands 
+ isolated eta works
+ non iso eta = 43  19
+inside non isolated cands 
+ isolated eta works
+ non iso eta = 48  21
+inside non isolated cands 
+ isolated eta works
+ non iso eta = 54  24
+inside non isolated cands 
+ isolated eta works
+ non iso eta = 55  24
+inside non isolated cands 
+ isolated eta works
+ non iso eta = 56  24
+inside non isolated cands 
+ isolated eta works
+ non iso eta = 0  0
+935000 / 1073470 events processed
+ isolated eta works
+ non iso eta = 0  0
+ non iso eta = 3  1
+ isolated eta works
+ non iso eta = 0  0
+ isolated eta works
+ non iso eta = 0  0
+ isolated eta works
+ non iso eta = 51  22
+inside non isolated cands 
+ non iso eta = 44  19
+inside non isolated cands 
+ isolated eta works
+ non iso eta = 55  24
+inside non isolated cands 
+ isolated eta works
+ non iso eta = 55  24
+inside non isolated cands 
+ isolated eta works
+ non iso eta = 0  0
+940000 / 1073470 events processed
+ non iso eta = 17  7
+ non iso eta = 0  0
+945000 / 1073470 events processed
+950000 / 1073470 events processed
+ isolated eta works
+ non iso eta = 0  0
+955000 / 1073470 events processed
+ isolated eta works
+ non iso eta = 54  24
+inside non isolated cands 
+ isolated eta works
+ non iso eta = 55  24
+inside non isolated cands 
+ isolated eta works
+ non iso eta = 0  0
+ isolated eta works
+ non iso eta = 0  0
+ isolated eta works
+ non iso eta = 42  18
+inside non isolated cands 
+ non iso eta = 0  0
+ isolated eta works
+ non iso eta = 0  0
+ non iso eta = 1  0
+ non iso eta = 38  16
+960000 / 1073470 events processed
+ isolated eta works
+ non iso eta = 0  0
+ isolated eta works
+ non iso eta = 43  19
+inside non isolated cands 
+ isolated eta works
+ non iso eta = 0  0
+ isolated eta works
+ non iso eta = 0  0
+ isolated eta works
+ non iso eta = 63  28
+inside non isolated cands 
+965000 / 1073470 events processed
+ isolated eta works
+ non iso eta = 63  28
+inside non isolated cands 
+ isolated eta works
+ non iso eta = 48  21
+inside non isolated cands 
+ isolated eta works
+ non iso eta = 45  20
+inside non isolated cands 
+ isolated eta works
+ non iso eta = 0  0
+ isolated eta works
+ non iso eta = 46  20
+inside non isolated cands 
+ non iso eta = 27  12
+970000 / 1073470 events processed
+ isolated eta works
+ non iso eta = 0  0
+ isolated eta works
+ non iso eta = 55  24
+inside non isolated cands 
+ isolated eta works
+ non iso eta = 0  0
+ isolated eta works
+ non iso eta = 0  0
+ isolated eta works
+ non iso eta = 55  24
+inside non isolated cands 
+ isolated eta works
+ non iso eta = 45  20
+inside non isolated cands 
+ non iso eta = 5  2
+ isolated eta works
+ non iso eta = 0  0
+ isolated eta works
+ non iso eta = 64  28
+inside non isolated cands 
+ non iso eta = 25  11
+ isolated eta works
+ non iso eta = 60  26
+inside non isolated cands 
+975000 / 1073470 events processed
+ isolated eta works
+ non iso eta = 55  24
+inside non isolated cands 
+ isolated eta works
+ non iso eta = 52  23
+inside non isolated cands 
+ isolated eta works
+ non iso eta = 0  0
+ non iso eta = 0  0
+ isolated eta works
+ non iso eta = 0  0
+ isolated eta works
+ non iso eta = 59  26
+inside non isolated cands 
+ non iso eta = 0  0
+ isolated eta works
+ non iso eta = 54  24
+inside non isolated cands 
+ isolated eta works
+ non iso eta = 0  0
+980000 / 1073470 events processed
+ isolated eta works
+ non iso eta = 55  24
+inside non isolated cands 
+ non iso eta = 31  13
+ isolated eta works
+ non iso eta = 0  0
+ isolated eta works
+ non iso eta = 46  20
+inside non isolated cands 
+985000 / 1073470 events processed
+ isolated eta works
+ non iso eta = 0  0
+ isolated eta works
+ non iso eta = 55  24
+inside non isolated cands 
+ isolated eta works
+ non iso eta = 54  24
+inside non isolated cands 
+ isolated eta works
+ non iso eta = 55  24
+inside non isolated cands 
+ isolated eta works
+ non iso eta = 64  28
+inside non isolated cands 
+ non iso eta = 21  9
+ non iso eta = 44  19
+inside non isolated cands 
+ isolated eta works
+ non iso eta = 64  28
+inside non isolated cands 
+ isolated eta works
+ non iso eta = 0  0
+ isolated eta works
+ non iso eta = 0  0
+ non iso eta = 4  1
+ isolated eta works
+ non iso eta = 0  0
+990000 / 1073470 events processed
+ isolated eta works
+ non iso eta = 54  24
+inside non isolated cands 
+ isolated eta works
+ non iso eta = 55  24
+inside non isolated cands 
+ isolated eta works
+ non iso eta = 54  24
+inside non isolated cands 
+ non iso eta = 16  7
+ non iso eta = 0  0
+ isolated eta works
+ non iso eta = 54  24
+inside non isolated cands 
+ isolated eta works
+ non iso eta = 0  0
+995000 / 1073470 events processed
+ isolated eta works
+ non iso eta = 48  21
+inside non isolated cands 
+ isolated eta works
+ non iso eta = 54  24
+inside non isolated cands 
+ isolated eta works
+ non iso eta = 0  0
+ isolated eta works
+ non iso eta = 63  28
+inside non isolated cands 
+ isolated eta works
+ non iso eta = 59  26
+inside non isolated cands 
+ isolated eta works
+ non iso eta = 0  0
+ isolated eta works
+ non iso eta = 63  28
+inside non isolated cands 
+ isolated eta works
+ non iso eta = 46  20
+inside non isolated cands 
+ isolated eta works
+ non iso eta = 53  23
+inside non isolated cands 
+ isolated eta works
+ non iso eta = 0  0
+ isolated eta works
+ non iso eta = 0  0
+1000000 / 1073470 events processed
+ non iso eta = 16  7
+ non iso eta = 0  0
+ isolated eta works
+ non iso eta = 0  0
+ non iso eta = 39  17
+ isolated eta works
+ non iso eta = 55  24
+inside non isolated cands 
+ isolated eta works
+ non iso eta = 0  0
+ isolated eta works
+ non iso eta = 56  24
+inside non isolated cands 
+ isolated eta works
+ non iso eta = 55  24
+inside non isolated cands 
+ isolated eta works
+ non iso eta = 48  21
+inside non isolated cands 
+ isolated eta works
+ non iso eta = 52  23
+inside non isolated cands 
+ isolated eta works
+ non iso eta = 0  0
+1005000 / 1073470 events processed
+ isolated eta works
+ non iso eta = 0  0
+ isolated eta works
+ non iso eta = 55  24
+inside non isolated cands 
+ isolated eta works
+ non iso eta = 64  28
+inside non isolated cands 
+ isolated eta works
+ non iso eta = 48  21
+inside non isolated cands 
+ isolated eta works
+ non iso eta = 55  24
+inside non isolated cands 
+1010000 / 1073470 events processed
+ isolated eta works
+ non iso eta = 52  23
+inside non isolated cands 
+ isolated eta works
+ non iso eta = 54  24
+inside non isolated cands 
+ isolated eta works
+ non iso eta = 54  24
+inside non isolated cands 
+ non iso eta = 39  17
+ isolated eta works
+ non iso eta = 48  21
+inside non isolated cands 
+ isolated eta works
+ non iso eta = 55  24
+inside non isolated cands 
+ isolated eta works
+ non iso eta = 59  26
+inside non isolated cands 
+ isolated     non isolated    = 1  1
+ Isolated pre EGamma cadidates number 0 eta = 9 phi = 51 energy = -999
+ non iso eta = 26  11
+ non iso eta = 27  12
+ isolated eta works
+ non iso eta = 60  26
+inside non isolated cands 
+ non iso eta = 6  2
+1015000 / 1073470 events processed
+ isolated eta works
+ non iso eta = 0  0
+ isolated eta works
+ non iso eta = 0  0
+ isolated eta works
+ non iso eta = 55  24
+inside non isolated cands 
+ isolated eta works
+ non iso eta = 0  0
+ non iso eta = 13  5
+ isolated eta works
+ non iso eta = 0  0
+ non iso eta = 36  16
+ isolated eta works
+ non iso eta = 55  24
+inside non isolated cands 
+1020000 / 1073470 events processed
+ isolated eta works
+ non iso eta = 54  24
+inside non isolated cands 
+ isolated eta works
+ non iso eta = 63  28
+inside non isolated cands 
+ isolated eta works
+ non iso eta = 54  24
+inside non isolated cands 
+ isolated eta works
+ non iso eta = 59  26
+inside non isolated cands 
+ isolated eta works
+ non iso eta = 0  0
+ isolated     non isolated    = 1  1
+ Isolated pre EGamma cadidates number 0 eta = 55 phi = 0 energy = -999
+ isolated eta works
+ non iso eta = 0  0
+ isolated eta works
+ non iso eta = 0  0
+ non iso eta = 3  1
+1025000 / 1073470 events processed
+ isolated eta works
+ non iso eta = 55  24
+inside non isolated cands 
+ non iso eta = 55  24
+inside non isolated cands 
+ isolated eta works
+ non iso eta = 0  0
+ non iso eta = 30  13
+ isolated eta works
+ non iso eta = 0  0
+ isolated eta works
+ non iso eta = 0  0
+ isolated eta works
+ non iso eta = 64  28
+inside non isolated cands 
+1030000 / 1073470 events processed
+ isolated eta works
+ non iso eta = 44  19
+inside non isolated cands 
+ isolated eta works
+ non iso eta = 55  24
+inside non isolated cands 
+ isolated eta works
+ non iso eta = 41  18
+inside non isolated cands 
+ non iso eta = 13  5
+ isolated eta works
+ non iso eta = 54  24
+inside non isolated cands 
+ isolated eta works
+ non iso eta = 41  18
+inside non isolated cands 
+ isolated eta works
+ non iso eta = 0  0
+ isolated eta works
+ non iso eta = 55  24
+inside non isolated cands 
+1035000 / 1073470 events processed
+ isolated eta works
+ non iso eta = 0  0
+ isolated eta works
+ non iso eta = 0  0
+ isolated eta works
+ non iso eta = 54  24
+inside non isolated cands 
+ isolated eta works
+ non iso eta = 0  0
+ isolated eta works
+ non iso eta = 0  0
+ isolated eta works
+ non iso eta = 0  0
+ non iso eta = 23  10
+ isolated eta works
+ non iso eta = 0  0
+ isolated eta works
+ non iso eta = 0  0
+ non iso eta = 23  10
+ isolated eta works
+ non iso eta = 55  24
+inside non isolated cands 
+ non iso eta = 22  9
+ isolated eta works
+ non iso eta = 55  24
+inside non isolated cands 
+ non iso eta = 17  7
+1040000 / 1073470 events processed
+ non iso eta = 0  0
+ isolated eta works
+ non iso eta = 54  24
+inside non isolated cands 
+ isolated eta works
+ non iso eta = 54  24
+inside non isolated cands 
+ non iso eta = 39  17
+ isolated eta works
+ non iso eta = 0  0
+ isolated eta works
+ non iso eta = 46  20
+inside non isolated cands 
+ isolated eta works
+ non iso eta = 0  0
+1045000 / 1073470 events processed
+ isolated eta works
+ non iso eta = 59  26
+inside non isolated cands 
+ isolated eta works
+ non iso eta = 54  24
+inside non isolated cands 
+ isolated eta works
+ non iso eta = 54  24
+inside non isolated cands 
+ isolated eta works
+ non iso eta = 64  28
+inside non isolated cands 
+ isolated eta works
+ non iso eta = 0  0
+ isolated eta works
+ non iso eta = 0  0
+ non iso eta = 5  2
+ isolated eta works
+ non iso eta = 55  24
+inside non isolated cands 
+ isolated eta works
+ non iso eta = 53  23
+inside non isolated cands 
+1050000 / 1073470 events processed
+ isolated eta works
+ non iso eta = 59  26
+inside non isolated cands 
+ non iso eta = 0  0
+ isolated eta works
+ non iso eta = 0  0
+ isolated eta works
+ non iso eta = 0  0
+ isolated eta works
+ non iso eta = 64  28
+inside non isolated cands 
+1055000 / 1073470 events processed
+ isolated eta works
+ non iso eta = 0  0
+ non iso eta = 16  7
+ isolated eta works
+ non iso eta = 0  0
+ non iso eta = 3  1
+ isolated eta works
+ non iso eta = 0  0
+1060000 / 1073470 events processed
+ non iso eta = 19  8
+ isolated eta works
+ non iso eta = 0  0
+ isolated eta works
+ non iso eta = 0  0
+ non iso eta = 15  6
+ isolated eta works
+ non iso eta = 0  0
+ non iso eta = 30  13
+1065000 / 1073470 events processed
+ isolated eta works
+ non iso eta = 0  0
+ isolated eta works
+ non iso eta = 43  19
+inside non isolated cands 
+ isolated eta works
+ non iso eta = 0  0
+ isolated eta works
+ non iso eta = 51  22
+inside non isolated cands 
+ isolated eta works
+ non iso eta = 0  0
+ isolated eta works
+ non iso eta = 55  24
+inside non isolated cands 
+1070000 / 1073470 events processed
+ postname = 18
+ postname = 19
+ postname = 20
+ postname = 21
+ postname = 22
+ postname = 23
+ postname = 24
+ postname = 25
+ postname = 26
+ postname = 27
+ postname = 28
+ time used to run the macro (in seconds):430

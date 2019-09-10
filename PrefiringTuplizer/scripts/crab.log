@@ -1,0 +1,95 @@
+DEBUG 2019-05-02 12:47:58,764: 	 Executing command: 'submit'
+ERROR 2019-05-02 12:47:59,025: 	 Keyboard Interrupted
+DEBUG 2019-05-08 14:53:14,810: 	 Executing command: 'submit'
+DEBUG 2019-05-08 14:53:14,812: 	 Found CRAB cache file /afs/cern.ch/user/k/khurana/.crab3
+DEBUG 2019-05-08 14:53:14,856: 	 Checking credentials
+DEBUG 2019-05-08 14:53:14,857: 	 Found proxy file /tmp/x509up_u55959
+DEBUG 2019-05-08 14:53:14,857: 	 Getting proxy life time left
+DEBUG 2019-05-08 14:53:15,762: 	 Executing : 
+ command : voms-proxy-info -file /tmp/x509up_u55959 -timeleft
+ output : 42985
+
+ error: 
+ retcode : 0
+DEBUG 2019-05-08 14:53:16,775: 	 Executing : 
+ command : voms-proxy-info -file /tmp/x509up_u55959 -actimeleft
+ output : 42984
+
+ error: 
+ retcode : 0
+DEBUG 2019-05-08 14:53:16,776: 	 Proxy lifetime 42985 secs is different from voms extension lifetime 42984 secs for proxy: /tmp/x509up_u55959
+DEBUG 2019-05-08 14:53:16,776: 	 Proxy valid for 11:56:24 hours
+INFO 2019-05-08 14:53:16,776: 	 Will use CRAB configuration file crabConfig.py
+DEBUG 2019-05-08 14:53:16,776: 	 Loading CRAB configuration file.
+DEBUG 2019-05-08 14:53:16,781: 	 Will use CRAB Analysis plugin (i.e. will run an analysis job type).
+ERROR 2019-05-08 14:53:16,783: 	 Working area '/afs/cern.ch/work/k/khurana/L1Prefiring/EDAnalyzer/CMSSW_10_2_1/src/L1Prefiring/PrefiringTuplizer/scripts/crab_projects/crab_prefiringanalysis2018_V1' already exists 
+Please change the requestName in the config file
+ERROR 2019-05-08 14:53:16,783: 	 Caught exception
+Traceback (most recent call last):
+  File "/cvmfs/cms.cern.ch/crab3/slc6_amd64_gcc493/cms/crabclient/3.3.1904/bin/crab", line 161, in <module>
+    client()
+  File "/cvmfs/cms.cern.ch/crab3/slc6_amd64_gcc493/cms/crabclient/3.3.1904/bin/crab", line 146, in __call__
+    self.cmd = sub_cmd(self.logger, args[1:])
+  File "/cvmfs/cms.cern.ch/crab3/slc6_amd64_gcc493/cms/crabclient/3.3.1904/lib/python2.7/site-packages/CRABClient/Commands/submit.py", line 34, in __init__
+    SubCommand.__init__(self, logger, cmdargs, disable_interspersed_args=True)
+  File "/cvmfs/cms.cern.ch/crab3/slc6_amd64_gcc493/cms/crabclient/3.3.1904/lib/python2.7/site-packages/CRABClient/Commands/SubCommand.py", line 315, in __init__
+    getattr(self.configuration.General, 'requestName', None))
+  File "/cvmfs/cms.cern.ch/crab3/slc6_amd64_gcc493/cms/crabclient/3.3.1904/lib/python2.7/site-packages/CRABClient/ClientUtilities.py", line 404, in createWorkArea
+    raise ConfigException("Working area '%s' already exists \nPlease change the requestName in the config file" % fullpath)
+ConfigException: Working area '/afs/cern.ch/work/k/khurana/L1Prefiring/EDAnalyzer/CMSSW_10_2_1/src/L1Prefiring/PrefiringTuplizer/scripts/crab_projects/crab_prefiringanalysis2018_V1' already exists 
+Please change the requestName in the config file
+DEBUG 2019-05-09 11:03:44,347: 	 Executing command: 'status'
+DEBUG 2019-05-09 11:03:44,347: 	 Found CRAB cache file /afs/cern.ch/user/k/khurana/.crab3
+ERROR 2019-05-09 11:03:44,516: 	 Cannot find .requestcache file in CRAB project directory /afs/cern.ch/work/k/khurana/L1Prefiring/EDAnalyzer/CMSSW_10_2_1/src/L1Prefiring/PrefiringTuplizer/scripts/crab_projects/crab_prefiringanalysis2018_V1
+ERROR 2019-05-09 11:03:44,516: 	 Caught exception
+Traceback (most recent call last):
+  File "/cvmfs/cms.cern.ch/crab3/slc6_amd64_gcc493/cms/crabclient/3.3.1904/bin/crab", line 161, in <module>
+    client()
+  File "/cvmfs/cms.cern.ch/crab3/slc6_amd64_gcc493/cms/crabclient/3.3.1904/bin/crab", line 146, in __call__
+    self.cmd = sub_cmd(self.logger, args[1:])
+  File "/cvmfs/cms.cern.ch/crab3/slc6_amd64_gcc493/cms/crabclient/3.3.1904/lib/python2.7/site-packages/CRABClient/Commands/status.py", line 40, in __init__
+    SubCommand.__init__(self, logger, cmdargs)
+  File "/cvmfs/cms.cern.ch/crab3/slc6_amd64_gcc493/cms/crabclient/3.3.1904/lib/python2.7/site-packages/CRABClient/Commands/SubCommand.py", line 268, in __init__
+    SubCommand.validateOptions(self)
+  File "/cvmfs/cms.cern.ch/crab3/slc6_amd64_gcc493/cms/crabclient/3.3.1904/lib/python2.7/site-packages/CRABClient/Commands/SubCommand.py", line 590, in validateOptions
+    self.loadLocalCache()
+  File "/cvmfs/cms.cern.ch/crab3/slc6_amd64_gcc493/cms/crabclient/3.3.1904/lib/python2.7/site-packages/CRABClient/Commands/SubCommand.py", line 452, in loadLocalCache
+    raise ex
+CachefileNotFoundException: Cannot find .requestcache file in CRAB project directory /afs/cern.ch/work/k/khurana/L1Prefiring/EDAnalyzer/CMSSW_10_2_1/src/L1Prefiring/PrefiringTuplizer/scripts/crab_projects/crab_prefiringanalysis2018_V1
+DEBUG 2019-05-11 00:49:30,510: 	 Executing command: 'submit'
+DEBUG 2019-05-11 00:49:30,510: 	 Found CRAB cache file /afs/cern.ch/user/k/khurana/.crab3
+DEBUG 2019-05-11 00:49:30,516: 	 Checking credentials
+DEBUG 2019-05-11 00:49:30,517: 	 Found proxy file /tmp/x509up_u55959
+DEBUG 2019-05-11 00:49:30,517: 	 Getting proxy life time left
+DEBUG 2019-05-11 00:49:31,327: 	 Executing : 
+ command : voms-proxy-info -file /tmp/x509up_u55959 -timeleft
+ output : 40904
+
+ error: 
+ retcode : 0
+DEBUG 2019-05-11 00:49:32,037: 	 Executing : 
+ command : voms-proxy-info -file /tmp/x509up_u55959 -actimeleft
+ output : 40904
+
+ error: 
+ retcode : 0
+DEBUG 2019-05-11 00:49:32,037: 	 Proxy valid for 11:21:44 hours
+INFO 2019-05-11 00:49:32,037: 	 Will use CRAB configuration file crabConfig.py
+DEBUG 2019-05-11 00:49:32,037: 	 Loading CRAB configuration file.
+DEBUG 2019-05-11 00:49:32,050: 	 Will use CRAB Analysis plugin (i.e. will run an analysis job type).
+ERROR 2019-05-11 00:49:32,051: 	 Working area '/afs/cern.ch/work/k/khurana/L1Prefiring/EDAnalyzer/CMSSW_10_2_1/src/L1Prefiring/PrefiringTuplizer/scripts/crab_projects/crab_prefiringanalysis2018_V1' already exists 
+Please change the requestName in the config file
+ERROR 2019-05-11 00:49:32,051: 	 Caught exception
+Traceback (most recent call last):
+  File "/cvmfs/cms.cern.ch/crab3/slc6_amd64_gcc493/cms/crabclient/3.3.1904/bin/crab", line 161, in <module>
+    client()
+  File "/cvmfs/cms.cern.ch/crab3/slc6_amd64_gcc493/cms/crabclient/3.3.1904/bin/crab", line 146, in __call__
+    self.cmd = sub_cmd(self.logger, args[1:])
+  File "/cvmfs/cms.cern.ch/crab3/slc6_amd64_gcc493/cms/crabclient/3.3.1904/lib/python2.7/site-packages/CRABClient/Commands/submit.py", line 34, in __init__
+    SubCommand.__init__(self, logger, cmdargs, disable_interspersed_args=True)
+  File "/cvmfs/cms.cern.ch/crab3/slc6_amd64_gcc493/cms/crabclient/3.3.1904/lib/python2.7/site-packages/CRABClient/Commands/SubCommand.py", line 315, in __init__
+    getattr(self.configuration.General, 'requestName', None))
+  File "/cvmfs/cms.cern.ch/crab3/slc6_amd64_gcc493/cms/crabclient/3.3.1904/lib/python2.7/site-packages/CRABClient/ClientUtilities.py", line 404, in createWorkArea
+    raise ConfigException("Working area '%s' already exists \nPlease change the requestName in the config file" % fullpath)
+ConfigException: Working area '/afs/cern.ch/work/k/khurana/L1Prefiring/EDAnalyzer/CMSSW_10_2_1/src/L1Prefiring/PrefiringTuplizer/scripts/crab_projects/crab_prefiringanalysis2018_V1' already exists 
+Please change the requestName in the config file

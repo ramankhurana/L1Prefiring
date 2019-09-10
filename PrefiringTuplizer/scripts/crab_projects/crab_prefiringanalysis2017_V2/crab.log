@@ -1,0 +1,271 @@
+DEBUG 2019-07-29 12:46:21,741: 	 Executing command: 'submit'
+DEBUG 2019-07-29 12:46:21,742: 	 Found CRAB cache file /afs/cern.ch/user/k/khurana/.crab3
+DEBUG 2019-07-29 12:46:21,805: 	 Checking credentials
+DEBUG 2019-07-29 12:46:21,806: 	 Found proxy file /tmp/x509up_u55959
+DEBUG 2019-07-29 12:46:21,806: 	 Getting proxy life time left
+DEBUG 2019-07-29 12:46:22,409: 	 Executing : 
+ command : voms-proxy-info -file /tmp/x509up_u55959 -timeleft
+ output : 41400
+
+ error: 
+ retcode : 0
+DEBUG 2019-07-29 12:46:23,014: 	 Executing : 
+ command : voms-proxy-info -file /tmp/x509up_u55959 -actimeleft
+ output : 41400
+
+ error: 
+ retcode : 0
+DEBUG 2019-07-29 12:46:23,014: 	 Proxy valid for 11:30:00 hours
+INFO 2019-07-29 12:46:23,014: 	 Will use CRAB configuration file crabConfig.py
+DEBUG 2019-07-29 12:46:23,014: 	 Loading CRAB configuration file.
+DEBUG 2019-07-29 12:46:23,016: 	 Will use CRAB Analysis plugin (i.e. will run an analysis job type).
+DEBUG 2019-07-29 12:46:23,158: 	 Executing : 
+ command : openssl x509 -in ~/.globus/usercert.pem -subject -noout
+ output : subject= /DC=ch/DC=cern/OU=Organic Units/OU=Users/CN=khurana/CN=706548/CN=Raman Khurana
+
+ error: 
+ retcode : 0
+DEBUG 2019-07-29 12:46:23,158: 	 Checking credentials
+DEBUG 2019-07-29 12:46:23,158: 	 Found proxy file /tmp/x509up_u55959
+DEBUG 2019-07-29 12:46:23,158: 	 Getting proxy life time left
+DEBUG 2019-07-29 12:46:23,763: 	 Executing : 
+ command : voms-proxy-info -file /tmp/x509up_u55959 -timeleft
+ output : 41399
+
+ error: 
+ retcode : 0
+DEBUG 2019-07-29 12:46:24,367: 	 Executing : 
+ command : voms-proxy-info -file /tmp/x509up_u55959 -actimeleft
+ output : 41398
+
+ error: 
+ retcode : 0
+DEBUG 2019-07-29 12:46:24,367: 	 Proxy lifetime 41399 secs is different from voms extension lifetime 41398 secs for proxy: /tmp/x509up_u55959
+DEBUG 2019-07-29 12:46:24,367: 	 Proxy valid for 11:29:58 hours
+DEBUG 2019-07-29 12:46:24,971: 	 Executing : 
+ command : env X509_USER_PROXY=/tmp/x509up_u55959 voms-proxy-info -fqan
+ output : /cms/Role=NULL/Capability=NULL
+
+ error: 
+ retcode : 0
+DEBUG 2019-07-29 12:46:25,115: 	 Registering user credentials for server /DC=ch/DC=cern/OU=computers/CN=vocms(052|058|030|0118|0105|0109).cern.ch|/DC=ch/DC=cern/OU=computers/CN=crab-(preprod|prod)-tw(02|01).cern.ch
+DEBUG 2019-07-29 12:46:25,222: 	 Executing : 
+ command : openssl x509 -in ~/.globus/usercert.pem -subject -noout
+ output : subject= /DC=ch/DC=cern/OU=Organic Units/OU=Users/CN=khurana/CN=706548/CN=Raman Khurana
+
+ error: 
+ retcode : 0
+DEBUG 2019-07-29 12:46:25,222: 	 Getting myproxy life time left for myproxy.cern.ch
+DEBUG 2019-07-29 12:46:25,222: 	 Calculating hash of /DC=ch/DC=cern/OU=Organic Units/OU=Users/CN=khurana/CN=706548/CN=Raman Khurana_cmsweb.cern.ch for credential name
+DEBUG 2019-07-29 12:46:25,526: 	 Executing : 
+ command : myproxy-info -l 5ceae1dcbb1e32ac55100741757b8e5381e47365 -s myproxy.cern.ch
+ output : username: 5ceae1dcbb1e32ac55100741757b8e5381e47365
+owner: /DC=ch/DC=cern/OU=Organic Units/OU=Users/CN=khurana/CN=706548/CN=Raman Khurana
+  renewal policy: /DC=ch/DC=cern/OU=computers/CN=vocms(052|058|030|0118|0105|0109).cern.ch|/DC=ch/DC=cern/OU=computers/CN=crab-(preprod|prod)-tw(02|01).cern.ch
+  trusted retrieval policy: /DC=ch/DC=cern/OU=computers/CN=vocms(052|058|030|0118|0105|0109).cern.ch|/DC=ch/DC=cern/OU=computers/CN=crab-(preprod|prod)-tw(02|01).cern.ch
+  timeleft: 0:00:00
+
+ error: 
+ retcode : 0
+DEBUG 2019-07-29 12:46:25,527: 	 Myproxy is valid: 0
+DEBUG 2019-07-29 12:46:25,633: 	 Executing : 
+ command : openssl x509 -noout -in ~/.globus/usercert.pem -dates
+ output : notBefore=Jul  1 20:32:04 2018 GMT
+notAfter=Aug  5 20:32:04 2019 GMT
+
+ error: 
+ retcode : 0
+INFO 2019-07-29 12:46:25,639: 	 Your user certificate is going to expire in 7 days.  https://twiki.cern.ch/twiki/bin/view/CMSPublic/WorkBookStartingGrid#ObtainingCert 
+INFO 2019-07-29 12:46:25,639: 	 Delegating your proxy for 7 days instead of 30 
+DEBUG 2019-07-29 12:46:25,639: 	 Delegating a myproxy for 168:00 hours
+DEBUG 2019-07-29 12:46:25,639: 	 Calculating hash of /DC=ch/DC=cern/OU=Organic Units/OU=Users/CN=khurana/CN=706548/CN=Raman Khurana_cmsweb.cern.ch for credential name
+DEBUG 2019-07-29 12:46:43,192: 	 Executing : 
+ command : export GT_PROXY_MODE=rfc ; myproxy-init -d -n -s myproxy.cern.ch -x -R '/DC=ch/DC=cern/OU=computers/CN=vocms(052|058|030|0118|0105|0109).cern.ch|/DC=ch/DC=cern/OU=computers/CN=crab-(preprod|prod)-tw(02|01).cern.ch' -x -Z '/DC=ch/DC=cern/OU=computers/CN=vocms(052|058|030|0118|0105|0109).cern.ch|/DC=ch/DC=cern/OU=computers/CN=crab-(preprod|prod)-tw(02|01).cern.ch' -l '5ceae1dcbb1e32ac55100741757b8e5381e47365' -t 168:00 -c 168:00
+ output : Your identity: /DC=ch/DC=cern/OU=Organic Units/OU=Users/CN=khurana/CN=706548/CN=Raman Khurana
+Creating proxy ........................................................................ Done
+Proxy Verify OK
+Your proxy is valid until: Mon Aug  5 12:46:42 2019
+A proxy valid for 168 hours (7.0 days) for user 5ceae1dcbb1e32ac55100741757b8e5381e47365 now exists on myproxy.cern.ch.
+
+ error: 
+ retcode : 0
+DEBUG 2019-07-29 12:46:43,192: 	 Calculating hash of /DC=ch/DC=cern/OU=Organic Units/OU=Users/CN=khurana/CN=706548/CN=Raman Khurana_cmsweb.cern.ch for credential name
+DEBUG 2019-07-29 12:46:43,597: 	 Executing : 
+ command : myproxy-info -l 5ceae1dcbb1e32ac55100741757b8e5381e47365 -s myproxy.cern.ch
+ output : username: 5ceae1dcbb1e32ac55100741757b8e5381e47365
+owner: /DC=ch/DC=cern/OU=Organic Units/OU=Users/CN=khurana/CN=706548/CN=Raman Khurana
+  renewal policy: /DC=ch/DC=cern/OU=computers/CN=vocms(052|058|030|0118|0105|0109).cern.ch|/DC=ch/DC=cern/OU=computers/CN=crab-(preprod|prod)-tw(02|01).cern.ch
+  trusted retrieval policy: /DC=ch/DC=cern/OU=computers/CN=vocms(052|058|030|0118|0105|0109).cern.ch|/DC=ch/DC=cern/OU=computers/CN=crab-(preprod|prod)-tw(02|01).cern.ch
+  timeleft: 167:59:59  (7.0 days)
+
+ error: 
+ retcode : 0
+DEBUG 2019-07-29 12:46:43,597: 	 My-proxy delegated.
+DEBUG 2019-07-29 12:46:43,597: 	 Command use: submit
+DEBUG 2019-07-29 12:46:43,597: 	 Options use: []
+DEBUG 2019-07-29 12:46:43,664: 	 CRABClient version: 3.3.1904
+DEBUG 2019-07-29 12:46:43,664: 	 Instance is prod
+DEBUG 2019-07-29 12:46:43,664: 	 Server base url is cmsweb.cern.ch
+DEBUG 2019-07-29 12:46:43,664: 	 Command url /crabserver/prod/workflow
+DEBUG 2019-07-29 12:46:43,664: 	 Started submission
+DEBUG 2019-07-29 12:46:43,664: 	 Working on /afs/cern.ch/work/k/khurana/L1Prefiring/EDAnalyzer/CMSSW_10_2_1/src/L1Prefiring/PrefiringTuplizer/scripts/crab_projects/crab_prefiringanalysis2017_V2
+DEBUG 2019-07-29 12:46:43,818: 	 Loading required information from the environment
+DEBUG 2019-07-29 12:46:43,818: 	 Found CMSSW_10_2_1 for slc7_amd64_gcc700 with base /afs/cern.ch/work/k/khurana/L1Prefiring/EDAnalyzer/CMSSW_10_2_1
+DEBUG 2019-07-29 12:46:43,818: 	 Loading required information from the environment
+DEBUG 2019-07-29 12:46:43,818: 	 Found CMSSW_10_2_1 for slc7_amd64_gcc700 with base /afs/cern.ch/work/k/khurana/L1Prefiring/EDAnalyzer/CMSSW_10_2_1
+DEBUG 2019-07-29 12:46:43,833: 	 UNIQUE NAME: tarUUID 373f94f7-bcbc-4038-a8ca-41a873867e70 
+DEBUG 2019-07-29 12:46:43,834: 	 self.config: from WMCore.Configuration import Configuration
+config = Configuration()
+config.section_('General')
+config.General.transferLogs = False
+config.General.transferOutputs = True
+config.General.workArea = 'crab_projects'
+config.General.requestName = 'prefiringanalysis2017_V2'
+config.section_('JobType')
+config.JobType.outputFiles = ['Histo_L1Prefiring.root']
+config.JobType.maxMemoryMB = 2500
+config.JobType.pluginName = 'Analysis'
+config.JobType.allowUndistributedCMSSW = True
+config.JobType.psetName = 'conf.py'
+config.JobType.maxJobRuntimeMin = 2600
+config.section_('Data')
+config.Data.inputDataset = '/ZeroBias2/Run2017F-05Apr2018-v1/RAW-RECO'
+config.Data.publication = False
+config.Data.unitsPerJob = 10
+config.Data.inputDBS = 'global'
+config.Data.splitting = 'FileBased'
+config.Data.runRange = '306425'
+config.section_('Site')
+config.Site.storageSite = 'T2_CH_CERN'
+config.section_('User')
+config.section_('Debug')
+
+DEBUG 2019-07-29 12:46:43,834: 	 self.config.JobType.psetName: conf.py
+INFO 2019-07-29 12:46:43,834: 	 Importing CMSSW configuration conf.py
+INFO 2019-07-29 12:46:46,179: 	 Finished importing CMSSW configuration conf.py
+DEBUG 2019-07-29 12:46:46,179: 	 Writing CMSSW configuration to /afs/cern.ch/work/k/khurana/L1Prefiring/EDAnalyzer/CMSSW_10_2_1/src/L1Prefiring/PrefiringTuplizer/scripts/crab_projects/crab_prefiringanalysis2017_V2/inputs/PSet.py
+DEBUG 2019-07-29 12:46:46,353: 	 The following EDM output files will be collected: []
+DEBUG 2019-07-29 12:46:46,353: 	 The following TFile output files will be collected: ['Histo_L1Prefiring.root']
+DEBUG 2019-07-29 12:46:46,353: 	 The following user output files will be collected: []
+DEBUG 2019-07-29 12:46:46,353: 	 Loading required information from the environment
+DEBUG 2019-07-29 12:46:46,353: 	 Found CMSSW_10_2_1 for slc7_amd64_gcc700 with base /afs/cern.ch/work/k/khurana/L1Prefiring/EDAnalyzer/CMSSW_10_2_1
+DEBUG 2019-07-29 12:46:46,353: 	 Making tarball in /afs/cern.ch/work/k/khurana/L1Prefiring/EDAnalyzer/CMSSW_10_2_1/src/L1Prefiring/PrefiringTuplizer/scripts/crab_projects/crab_prefiringanalysis2017_V2/inputs/373f94f7-bcbc-4038-a8ca-41a873867e70default.tgz
+DEBUG 2019-07-29 12:46:46,354: 	 Checking directory /afs/cern.ch/work/k/khurana/L1Prefiring/EDAnalyzer/CMSSW_10_2_1/lib
+DEBUG 2019-07-29 12:46:46,354: 	 Adding directory /afs/cern.ch/work/k/khurana/L1Prefiring/EDAnalyzer/CMSSW_10_2_1/lib to tarball
+DEBUG 2019-07-29 12:46:48,409: 	 Checking directory /afs/cern.ch/work/k/khurana/L1Prefiring/EDAnalyzer/CMSSW_10_2_1/biglib
+DEBUG 2019-07-29 12:46:48,409: 	 Adding directory /afs/cern.ch/work/k/khurana/L1Prefiring/EDAnalyzer/CMSSW_10_2_1/biglib to tarball
+DEBUG 2019-07-29 12:46:48,410: 	 Checking directory /afs/cern.ch/work/k/khurana/L1Prefiring/EDAnalyzer/CMSSW_10_2_1/module
+DEBUG 2019-07-29 12:46:48,456: 	 Adding data directory /afs/cern.ch/work/k/khurana/L1Prefiring/EDAnalyzer/CMSSW_10_2_1/src/EventFilter/L1TRawToDigi/interface to tarball
+DEBUG 2019-07-29 12:46:48,625: 	 Adding data directory /afs/cern.ch/work/k/khurana/L1Prefiring/EDAnalyzer/CMSSW_10_2_1/src/DataFormats/L1TMuon/interface to tarball
+DEBUG 2019-07-29 12:46:48,812: 	 Adding data directory /afs/cern.ch/work/k/khurana/L1Prefiring/EDAnalyzer/CMSSW_10_2_1/src/DataFormats/L1Trigger/interface to tarball
+DEBUG 2019-07-29 12:46:48,949: 	 Adding data directory /afs/cern.ch/work/k/khurana/L1Prefiring/EDAnalyzer/CMSSW_10_2_1/src/L1Trigger/L1TCalorimeter/interface to tarball
+DEBUG 2019-07-29 12:46:49,250: 	 Adding data directory /afs/cern.ch/work/k/khurana/L1Prefiring/EDAnalyzer/CMSSW_10_2_1/src/L1Trigger/L1TCalorimeter/data to tarball
+DEBUG 2019-07-29 12:46:58,384: 	 Adding data directory /afs/cern.ch/work/k/khurana/L1Prefiring/EDAnalyzer/CMSSW_10_2_1/src/L1Trigger/L1TCommon/interface to tarball
+DEBUG 2019-07-29 12:46:58,435: 	 Adding data directory /afs/cern.ch/work/k/khurana/L1Prefiring/EDAnalyzer/CMSSW_10_2_1/src/L1Trigger/L1TMuonBarrel/interface to tarball
+DEBUG 2019-07-29 12:46:58,549: 	 Adding data directory /afs/cern.ch/work/k/khurana/L1Prefiring/EDAnalyzer/CMSSW_10_2_1/src/L1Trigger/L1TMuonOverlap/interface to tarball
+DEBUG 2019-07-29 12:46:58,655: 	 Adding data directory /afs/cern.ch/work/k/khurana/L1Prefiring/EDAnalyzer/CMSSW_10_2_1/src/L1Trigger/L1TNtuples/interface to tarball
+DEBUG 2019-07-29 12:46:58,838: 	 Adding data directory /afs/cern.ch/work/k/khurana/L1Prefiring/EDAnalyzer/CMSSW_10_2_1/src/L1Trigger/L1TMuon/interface to tarball
+DEBUG 2019-07-29 12:46:58,956: 	 Adding data directory /afs/cern.ch/work/k/khurana/L1Prefiring/EDAnalyzer/CMSSW_10_2_1/src/L1Trigger/L1TMuon/data to tarball
+DEBUG 2019-07-29 12:47:24,567: 	 Uploading archive /afs/cern.ch/work/k/khurana/L1Prefiring/EDAnalyzer/CMSSW_10_2_1/src/L1Prefiring/PrefiringTuplizer/scripts/crab_projects/crab_prefiringanalysis2017_V2/inputs/373f94f7-bcbc-4038-a8ca-41a873867e70default.tgz (18 MB) to the CRAB cache. Using URI https://cmsweb.cern.ch/crabcache
+DEBUG 2019-07-29 12:47:47,528: 	 Loading required information from the environment
+DEBUG 2019-07-29 12:47:47,529: 	 Found CMSSW_10_2_1 for slc7_amd64_gcc700 with base /afs/cern.ch/work/k/khurana/L1Prefiring/EDAnalyzer/CMSSW_10_2_1
+DEBUG 2019-07-29 12:47:47,529: 	 Making tarball in /afs/cern.ch/work/k/khurana/L1Prefiring/EDAnalyzer/CMSSW_10_2_1/src/L1Prefiring/PrefiringTuplizer/scripts/crab_projects/crab_prefiringanalysis2017_V2/inputs/debugFiles.tgz
+DEBUG 2019-07-29 12:47:47,536: 	 Uploading archive /afs/cern.ch/work/k/khurana/L1Prefiring/EDAnalyzer/CMSSW_10_2_1/src/L1Prefiring/PrefiringTuplizer/scripts/crab_projects/crab_prefiringanalysis2017_V2/inputs/debugFiles.tgz (2 KB) to the CRAB cache. Using URI https://cmsweb.cern.ch/crabcache
+DEBUG 2019-07-29 12:47:47,650: 	 Result uploading input files: 5162702f02ee1e837e3bffb89b6815636a1687c5c0460b70073786d2ec352712.tar.gz 
+INFO 2019-07-29 12:47:47,651: 	 Sending the request to the server
+DEBUG 2019-07-29 12:47:47,651: 	 Submitting {'maxjobruntime': 2600, 'extrajdl': [], 'ignorelocality': 0, 'savelogsflag': 0, 'useparent': 0, 'asyncdest': 'T2_CH_CERN', 'algoargs': 10, 'cachefilename': '5162702f02ee1e837e3bffb89b6815636a1687c5c0460b70073786d2ec352712.tar.gz', 'numcores': 1, 'addoutputfiles': [], 'generator': 'pythia', 'maxmemory': 2500, 'publishdbsurl': 'https://cmsweb.cern.ch/dbs/prod/phys03/DBSWriter', 'priority': 10, 'jobsw': 'CMSSW_10_2_1', 'edmoutfiles': [], 'userfiles': [], 'primarydataset': '', 'inputdata': '/ZeroBias2/Run2017F-05Apr2018-v1/RAW-RECO', 'dryrun': 0, 'workflow': 'crab_prefiringanalysis2017_V2', 'cacheurl': u'https://cmsweb.cern.ch/crabcache', 'runs': ['306425'], 'lumis': ['1,268435455'], 'nonprodsw': 1, 'tfileoutfiles': ['Histo_L1Prefiring.root'], 'oneEventMode': 0, 'debugfilename': 'd2e5af5613911e4584f56cdae95d8e4019efdc81cbe268f4eb429e9a744bd8a9.tar.gz', 'saveoutput': 1, 'publication': 0, 'jobarch': 'slc7_amd64_gcc700', 'totalunits': 0, 'splitalgo': 'FileBased', 'ignoreglobalblacklist': 0, 'nonvaliddata': 0, 'dbsurl': 'https://cmsweb.cern.ch/dbs/prod/global/DBSReader', 'publishgroupname': 0, 'jobtype': 'Analysis', 'publishname2': ''} 
+DEBUG 2019-07-29 12:47:47,652: 	 Encoded submit request: maxjobruntime=2600&ignorelocality=0&savelogsflag=0&useparent=0&asyncdest=T2_CH_CERN&algoargs=10&cachefilename=5162702f02ee1e837e3bffb89b6815636a1687c5c0460b70073786d2ec352712.tar.gz&numcores=1&generator=pythia&maxmemory=2500&publishdbsurl=https%3A%2F%2Fcmsweb.cern.ch%2Fdbs%2Fprod%2Fphys03%2FDBSWriter&priority=10&jobsw=CMSSW_10_2_1&primarydataset=&inputdata=%2FZeroBias2%2FRun2017F-05Apr2018-v1%2FRAW-RECO&dryrun=0&workflow=crab_prefiringanalysis2017_V2&cacheurl=https%3A%2F%2Fcmsweb.cern.ch%2Fcrabcache&nonprodsw=1&oneEventMode=0&debugfilename=d2e5af5613911e4584f56cdae95d8e4019efdc81cbe268f4eb429e9a744bd8a9.tar.gz&saveoutput=1&publication=0&jobarch=slc7_amd64_gcc700&totalunits=0&splitalgo=FileBased&ignoreglobalblacklist=0&nonvaliddata=0&dbsurl=https%3A%2F%2Fcmsweb.cern.ch%2Fdbs%2Fprod%2Fglobal%2FDBSReader&publishgroupname=0&jobtype=Analysis&publishname2=&tfileoutfiles=Histo_L1Prefiring.root&runs=306425&lumis=1%2C268435455
+DEBUG 2019-07-29 12:47:47,766: 	 Result: {u'result': [{u'RequestName': u'190729_104747:khurana_crab_prefiringanalysis2017_V2'}]}
+INFO 2019-07-29 12:47:47,769: 	 Success: Your task has been delivered to the CRAB3 server.
+INFO 2019-07-29 12:47:47,769: 	 Task name: 190729_104747:khurana_crab_prefiringanalysis2017_V2
+INFO 2019-07-29 12:47:47,769: 	 Project dir: crab_projects/crab_prefiringanalysis2017_V2
+INFO 2019-07-29 12:47:47,770: 	 Please use 'crab status -d crab_projects/crab_prefiringanalysis2017_V2' to check how the submission process proceeds.
+DEBUG 2019-07-29 12:47:47,770: 	 About to return
+INFO 2019-07-29 12:47:47,773: 	 Log file is /afs/cern.ch/work/k/khurana/L1Prefiring/EDAnalyzer/CMSSW_10_2_1/src/L1Prefiring/PrefiringTuplizer/scripts/crab_projects/crab_prefiringanalysis2017_V2/crab.log
+DEBUG 2019-07-29 12:48:28,001: 	 Executing command: 'status'
+DEBUG 2019-07-29 12:48:28,001: 	 Found CRAB cache file /afs/cern.ch/user/k/khurana/.crab3
+DEBUG 2019-07-29 12:48:28,009: 	 Checking credentials
+DEBUG 2019-07-29 12:48:28,009: 	 Found proxy file /tmp/x509up_u55959
+DEBUG 2019-07-29 12:48:28,009: 	 Getting proxy life time left
+DEBUG 2019-07-29 12:48:28,613: 	 Executing : 
+ command : voms-proxy-info -file /tmp/x509up_u55959 -timeleft
+ output : 41274
+
+ error: 
+ retcode : 0
+DEBUG 2019-07-29 12:48:29,219: 	 Executing : 
+ command : voms-proxy-info -file /tmp/x509up_u55959 -actimeleft
+ output : 41273
+
+ error: 
+ retcode : 0
+DEBUG 2019-07-29 12:48:29,219: 	 Proxy lifetime 41274 secs is different from voms extension lifetime 41273 secs for proxy: /tmp/x509up_u55959
+DEBUG 2019-07-29 12:48:29,219: 	 Proxy valid for 11:27:53 hours
+DEBUG 2019-07-29 12:48:29,401: 	 Executing : 
+ command : openssl x509 -in ~/.globus/usercert.pem -subject -noout
+ output : subject= /DC=ch/DC=cern/OU=Organic Units/OU=Users/CN=khurana/CN=706548/CN=Raman Khurana
+
+ error: 
+ retcode : 0
+DEBUG 2019-07-29 12:48:29,401: 	 Checking credentials
+DEBUG 2019-07-29 12:48:29,401: 	 Found proxy file /tmp/x509up_u55959
+DEBUG 2019-07-29 12:48:29,401: 	 Getting proxy life time left
+DEBUG 2019-07-29 12:48:30,005: 	 Executing : 
+ command : voms-proxy-info -file /tmp/x509up_u55959 -timeleft
+ output : 41273
+
+ error: 
+ retcode : 0
+DEBUG 2019-07-29 12:48:30,615: 	 Executing : 
+ command : voms-proxy-info -file /tmp/x509up_u55959 -actimeleft
+ output : 41272
+
+ error: 
+ retcode : 0
+DEBUG 2019-07-29 12:48:30,615: 	 Proxy lifetime 41273 secs is different from voms extension lifetime 41272 secs for proxy: /tmp/x509up_u55959
+DEBUG 2019-07-29 12:48:30,615: 	 Proxy valid for 11:27:52 hours
+DEBUG 2019-07-29 12:48:30,693: 	 Registering user credentials for server /DC=ch/DC=cern/OU=computers/CN=vocms(052|058|030|0118|0105|0109).cern.ch|/DC=ch/DC=cern/OU=computers/CN=crab-(preprod|prod)-tw(02|01).cern.ch
+DEBUG 2019-07-29 12:48:30,801: 	 Executing : 
+ command : openssl x509 -in ~/.globus/usercert.pem -subject -noout
+ output : subject= /DC=ch/DC=cern/OU=Organic Units/OU=Users/CN=khurana/CN=706548/CN=Raman Khurana
+
+ error: 
+ retcode : 0
+DEBUG 2019-07-29 12:48:30,801: 	 Getting myproxy life time left for myproxy.cern.ch
+DEBUG 2019-07-29 12:48:30,801: 	 Calculating hash of /DC=ch/DC=cern/OU=Organic Units/OU=Users/CN=khurana/CN=706548/CN=Raman Khurana_cmsweb.cern.ch for credential name
+DEBUG 2019-07-29 12:48:31,005: 	 Executing : 
+ command : myproxy-info -l 5ceae1dcbb1e32ac55100741757b8e5381e47365 -s myproxy.cern.ch
+ output : username: 5ceae1dcbb1e32ac55100741757b8e5381e47365
+owner: /DC=ch/DC=cern/OU=Organic Units/OU=Users/CN=khurana/CN=706548/CN=Raman Khurana
+  renewal policy: /DC=ch/DC=cern/OU=computers/CN=vocms(052|058|030|0118|0105|0109).cern.ch|/DC=ch/DC=cern/OU=computers/CN=crab-(preprod|prod)-tw(02|01).cern.ch
+  trusted retrieval policy: /DC=ch/DC=cern/OU=computers/CN=vocms(052|058|030|0118|0105|0109).cern.ch|/DC=ch/DC=cern/OU=computers/CN=crab-(preprod|prod)-tw(02|01).cern.ch
+  timeleft: 167:58:12  (7.0 days)
+
+ error: 
+ retcode : 0
+DEBUG 2019-07-29 12:48:31,006: 	 Myproxy is valid: 604692
+DEBUG 2019-07-29 12:48:31,110: 	 Executing : 
+ command : openssl x509 -noout -in ~/.globus/usercert.pem -dates
+ output : notBefore=Jul  1 20:32:04 2018 GMT
+notAfter=Aug  5 20:32:04 2019 GMT
+
+ error: 
+ retcode : 0
+INFO 2019-07-29 12:48:31,115: 	 Your user certificate is going to expire in 7 days.  https://twiki.cern.ch/twiki/bin/view/CMSPublic/WorkBookStartingGrid#ObtainingCert 
+DEBUG 2019-07-29 12:48:31,116: 	 Command use: status
+DEBUG 2019-07-29 12:48:31,116: 	 Options use: []
+DEBUG 2019-07-29 12:48:31,197: 	 CRABClient version: 3.3.1904
+DEBUG 2019-07-29 12:48:31,197: 	 Instance is prod
+DEBUG 2019-07-29 12:48:31,197: 	 Server base url is cmsweb.cern.ch
+DEBUG 2019-07-29 12:48:31,197: 	 Command url /crabserver/prod/workflow
+DEBUG 2019-07-29 12:48:31,289: 	 Got information from server oracle database: {u'result': [u'190729_104747:khurana_crab_prefiringanalysis2017_V2', u'None', u'None', u'QUEUED', u'SUBMIT', u'2019-07-29 10:47:47.747270', u'None', u'None', u'None', u'CMSSW_10_2_1', u'slc7_amd64_gcc700', u'/ZeroBias2/Run2017F-05Apr2018-v1/RAW-RECO', u'F', u'0', u'[]', u'[]', u'FileBased', u"{'splitOnRun': False, 'halt_job_on_file_boundaries': False, 'files_per_job': 10, 'runs': ['306425'], 'lumis': ['1,268435455']}", u'5162702f02ee1e837e3bffb89b6815636a1687c5c0460b70073786d2ec352712.tar.gz', u'https://cmsweb.cern.ch/crabcache', u'khurana', u'/DC=ch/DC=cern/OU=Organic Units/OU=Users/CN=khurana/CN=706548/CN=Raman Khurana', u'cms', u'None', u'None', u'crab_prefiringanalysis2017_V2-00000000000000000000000000000000', u'F', u'T2_CH_CERN', u'https://cmsweb.cern.ch/dbs/prod/global/DBSReader', u'https://cmsweb.cern.ch/dbs/prod/phys03/DBSWriter', u'F', u'[]', u"['Histo_L1Prefiring.root']", u'[]', u'Analysis', u'pythia', u'None', u'{}', u'[]', u'F', u'crab-prod-tw01', u'[]', u'2600', u'1', u'2500', u'10', u'None', u'[]', u'None', u'None', u'[]', u'[]', u'https://cmsweb.cern.ch/crabserver/prod', u'cmsgwms-collector-global.cern.ch:9620,cmssrv221.fnal.gov:9620', u'None', u'F', u'[]', u'T', u'/store/user/khurana/', u'F', u'None', u'F', u'None', u'ZeroBias2', u'None', u'd2e5af5613911e4584f56cdae95d8e4019efdc81cbe268f4eb429e9a744bd8a9.tar.gz', u'None', u'filetransfers', u'F', u'2001:1458:201:e4::100:31f', u'0.0', u'None'], u'desc': {u'columns': [u'tm_taskname', u'tm_activity', u'panda_jobset_id', u'tm_task_status', u'tm_task_command', u'tm_start_time', u'tm_start_injection', u'tm_end_injection', u'tm_task_failure', u'tm_job_sw', u'tm_job_arch', u'tm_input_dataset', u'tm_nonvalid_input_dataset', u'tm_use_parent', u'tm_site_whitelist', u'tm_site_blacklist', u'tm_split_algo', u'tm_split_args', u'tm_user_sandbox', u'tm_cache_url', u'tm_username', u'tm_user_dn', u'tm_user_vo', u'tm_user_role', u'tm_user_group', u'tm_publish_name', u'tm_publish_groupname', u'tm_asyncdest', u'tm_dbs_url', u'tm_publish_dbs_url', u'tm_publication', u'tm_outfiles', u'tm_tfile_outfiles', u'tm_edm_outfiles', u'tm_job_type', u'tm_generator', u'tm_events_per_lumi', u'tm_arguments', u'panda_resubmitted_jobs', u'tm_save_logs', u'tw_name', u'tm_user_infiles', u'tm_maxjobruntime', u'tm_numcores', u'tm_maxmemory', u'tm_priority', u'tm_output_dataset', u'tm_task_warnings', u'tm_user_webdir', u'tm_scriptexe', u'tm_scriptargs', u'tm_extrajdl', u'tm_asourl', u'tm_collector', u'tm_schedd', u'tm_dry_run', u'tm_user_files', u'tm_transfer_outputs', u'tm_output_lfn', u'tm_ignore_locality', u'tm_fail_limit', u'tm_one_event_mode', u'tm_secondary_input_dataset', u'tm_primary_dataset', u'tm_last_publication', u'tm_debug_files', u'clusterid', u'tm_asodb', u'tm_ignore_global_blacklist', u'tm_submitter_ip_addr', u'tm_totalunits', u'tm_ddm_reqid']}}
+INFO 2019-07-29 12:48:31,289: 	 CRAB project directory:		/afs/cern.ch/work/k/khurana/L1Prefiring/EDAnalyzer/CMSSW_10_2_1/src/L1Prefiring/PrefiringTuplizer/scripts/crab_projects/crab_prefiringanalysis2017_V2
+INFO 2019-07-29 12:48:31,289: 	 Task name:			190729_104747:khurana_crab_prefiringanalysis2017_V2
+INFO 2019-07-29 12:48:31,290: 	 Grid scheduler - Task Worker:	N/A yet - crab-prod-tw01
+INFO 2019-07-29 12:48:31,290: 	 Status on the CRAB server:	QUEUED on command SUBMIT
+INFO 2019-07-29 12:48:31,290: 	 Task URL to use for HELP:	https://cmsweb.cern.ch/crabserver/ui/task/190729_104747%3Akhurana_crab_prefiringanalysis2017_V2
+INFO 2019-07-29 12:48:31,290: 	 Dashboard monitoring URL:	http://dashb-cms-job.cern.ch/dashboard/templates/task-analysis/#user=khurana&refresh=0&table=Jobs&p=1&records=25&activemenu=2&status=&site=&tid=190729_104747%3Akhurana_crab_prefiringanalysis2017_V2
+INFO 2019-07-29 12:48:31,290: 	 New dashboard monitoring URL:	https://monit-grafana.cern.ch/d/cmsTMDetail/cms-task-monitoring-task-view?orgId=11&var-user=khurana&var-task=190729_104747%3Akhurana_crab_prefiringanalysis2017_V2
+INFO 2019-07-29 12:48:31,290: 	 In case of issues with the new dashboard, please provide feedback to hn-cms-computing-tools@cern.ch
+DEBUG 2019-07-29 12:48:31,290: 	 The task has not been submitted to the Grid scheduler yet. Not printing job information.
+INFO 2019-07-29 12:48:31,296: 	 Log file is /afs/cern.ch/work/k/khurana/L1Prefiring/EDAnalyzer/CMSSW_10_2_1/src/L1Prefiring/PrefiringTuplizer/scripts/crab_projects/crab_prefiringanalysis2017_V2/crab.log

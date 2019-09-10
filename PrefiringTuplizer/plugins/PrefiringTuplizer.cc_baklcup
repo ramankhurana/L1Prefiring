@@ -1,0 +1,403 @@
+// -*- C++ -*-
+//
+// Package:    L1Prefiring/PrefiringTuplizer
+// Class:      PrefiringTuplizer
+//
+/**\class PrefiringTuplizer PrefiringTuplizer.cc L1Prefiring/PrefiringTuplizer/plugins/PrefiringTuplizer.cc
+
+ Description: [one line class summary]
+
+ Implementation:
+     [Notes on implementation]
+*/
+//
+// Original Author:  Raman Khurana
+//         Created:  Wed, 24 Apr 2019 08:53:01 GMT
+//
+//
+
+
+// system include files
+#include <memory>
+#include <memory>
+#include <vector>
+#include <array>
+#include <algorithm>
+#include <string>
+#include <TH2F.h> 
+
+#include "FWCore/ServiceRegistry/interface/Service.h"
+#include "CommonTools/UtilAlgos/interface/TFileService.h"
+
+
+
+#include "DataFormats/L1Trigger/interface/Muon.h"
+#include "DataFormats/L1Trigger/interface/EGamma.h"
+#include "DataFormats/L1Trigger/interface/Jet.h"
+#include "DataFormats/L1Trigger/interface/EtSum.h"
+#include "DataFormats/L1Trigger/interface/Tau.h"
+
+#include "DataFormats/L1Trigger/interface/BXVector.h"
+#include "L1Trigger/L1TGlobal/interface/L1TGlobalUtil.h"
+
+
+#include "FWCore/Framework/interface/Frameworkfwd.h"
+#include "FWCore/Framework/interface/one/EDAnalyzer.h"
+
+#include "FWCore/Framework/interface/Event.h"
+#include "FWCore/Framework/interface/MakerMacros.h"
+
+#include "FWCore/ParameterSet/interface/ParameterSet.h"
+ #include "FWCore/Utilities/interface/InputTag.h"
+ #include "DataFormats/TrackReco/interface/Track.h"
+ #include "DataFormats/TrackReco/interface/TrackFwd.h"
+//
+// class declaration
+//
+
+// If the analyzer does not use TFileService, please remove
+// the template argument to the base class so the class inherits
+// from  edm::one::EDAnalyzer<>
+// This will improve performance in multithreaded jobs.
+
+
+
+class PrefiringTuplizer : public edm::one::EDAnalyzer<edm::one::SharedResources>  {
+
+
+public:
+  explicit PrefiringTuplizer(const edm::ParameterSet&);
+  
+  ~PrefiringTuplizer();
+
+  static void fillDescriptions(edm::ConfigurationDescriptions& descriptions);
+  
+  
+private:
+  virtual void beginJob() override;
+  virtual void analyze(const edm::Event&, const edm::EventSetup&) override;
+  virtual void endJob() override;
+  void beginRun(edm::Run const& iEvent, edm::EventSetup const&);
+
+  //virtual void beginRun(const edm::Run&, const edm::EventSetup&) override;
+  
+  edm::EDGetTokenT<GlobalAlgBlkBxCollection> l1tStage2uGtProducer_; // input tag for L1 uGT DAQ readout record
+  edm::EDGetTokenT<l1t::EGammaBxCollection> stage2CaloLayer2EGammaToken_;
+  
+  std::string monitorDir_;
+  
+  // To get the algo bits corresponding to algo names
+  std::shared_ptr<l1t::L1TGlobalUtil> gtUtil_;
+  std::vector<double> egammaPtCuts_;
+
+
+  
+  // not all of the following are needed, clean later on 
+  // For the timing histograms
+  int algoBitFirstBxInTrain_;
+  int algoBitLastBxInTrain_;
+  int algoBitIsoBx_;
+  const std::string algoNameFirstBxInTrain_;
+  const std::string algoNameLastBxInTrain_;
+  const std::string algoNameIsoBx_;
+  //const unsigned int bxrange_; //this is the out bx range
+
+  unsigned int useAlgoDecision_;
+  edm::Service<TFileService> fs;
+
+
+
+  // Define histograms 
+  TH2F* ibx_vs_ieta_Iso;
+  TH2F* ibx_vs_ieta_NonIso;
+  
+  
+};
+
+//
+// constants, enums and typedefs
+//
+
+//
+// static data member definitions
+//
+
+//
+// constructors and destructor
+//
+PrefiringTuplizer::PrefiringTuplizer(const edm::ParameterSet& ps)
+  :
+  l1tStage2uGtProducer_(consumes<GlobalAlgBlkBxCollection>(ps.getParameter<edm::InputTag>("ugtProducer"))),
+  gtUtil_(new l1t::L1TGlobalUtil(ps, consumesCollector(), *this, ps.getParameter<edm::InputTag>("ugtProducer"), ps.getParameter<edm::InputTag>("ugtProducer"))),
+  algoNameFirstBxInTrain_(ps.getUntrackedParameter<std::string>("firstBXInTrainAlgo","")),
+  algoNameLastBxInTrain_(ps.getUntrackedParameter<std::string>("lastBXInTrainAlgo","")),
+  algoNameIsoBx_(ps.getUntrackedParameter<std::string>("isoBXAlgo","")),
+  algoBitFirstBxInTrain_(-1),
+  algoBitLastBxInTrain_(-1),
+  algoBitIsoBx_(-1),
+  stage2CaloLayer2EGammaToken_(consumes<l1t::EGammaBxCollection>(ps.getParameter<edm::InputTag>("stage2CaloLayer2EGammaProducer")))
+
+{
+  useAlgoDecision_ = 0;
+  /*
+  if (ps.getUntrackedParameter<std::string>("useAlgoDecision").find("final") == 0) {
+    useAlgoDecision_ = 2;
+  } else if (ps.getUntrackedParameter<std::string>("useAlgoDecision").find("intermediate") == 0) {
+    useAlgoDecision_ = 1;
+  } else {
+    useAlgoDecision_ = 0;
+  }
+  */
+  egammaPtCuts_.clear();
+  egammaPtCuts_.push_back(10.0);
+  //egammaPtCuts_.push_back(20.0);
+  //egammaPtCuts_.push_back(30.0);
+
+  
+  //ibx_vs_ieta_Iso = new TH2F("ibx_vs_ieta_Iso","ibx_vs_ieta_Iso", 5, -2.5, 2.5, 70, -70, 70);
+  //ibx_vs_ieta_NonIso = new TH2F("ibx_vs_ieta_NonIso","ibx_vs_ieta_NonIso", 5, -2.5, 2.5, 70, -70, 70);
+  
+  ibx_vs_ieta_Iso = fs->make<TH2F>("ibx_vs_ieta_Iso","ibx_vs_ieta_Iso", 5, -2.5, 2.5, 70, -70, 70);
+  ibx_vs_ieta_NonIso = fs->make<TH2F>("ibx_vs_ieta_NonIso","ibx_vs_ieta_NonIso", 5, -2.5, 2.5, 70, -70, 70);
+}
+
+
+PrefiringTuplizer::~PrefiringTuplizer()
+{
+
+   // do anything here that needs to be done at desctruction time
+   // (e.g. close files, deallocate resources etc.)
+
+}
+
+
+//
+// member functions
+//
+
+// ------------ method called for each event  ------------
+void
+PrefiringTuplizer::analyze(const edm::Event& e, const edm::EventSetup& c)
+{
+   using namespace edm;
+
+   // Open uGT readout record
+   edm::Handle<GlobalAlgBlkBxCollection> uGtAlgs;
+   e.getByToken(l1tStage2uGtProducer_, uGtAlgs);
+   
+
+   
+   // EGamma Collection
+   edm::Handle<l1t::EGammaBxCollection> EGammaBxCollection;
+   e.getByToken(stage2CaloLayer2EGammaToken_, EGammaBxCollection);
+
+   
+     
+   
+   // Find out in which BX the first collision in train, isolated bunch, and last collision in train have fired.
+   // In case of pre firing it will be in BX 1 or BX 2 and this will determine the BX shift that
+   // will be applied to the timing histogram later.
+   int bxShiftFirst = -999;
+   int bxShiftIso = -999;
+   int bxShiftLast = -999;
+   for (int bx = uGtAlgs->getFirstBX(); bx <= uGtAlgs->getLastBX(); ++bx) {
+     for (GlobalAlgBlkBxCollection::const_iterator itr = uGtAlgs->begin(bx); itr != uGtAlgs->end(bx); ++itr) {
+       // first bunch in train
+       if (algoBitFirstBxInTrain_ != -1) {
+	 bool bit = false;
+	 switch (useAlgoDecision_) {
+	 case 0:
+	   bit = itr->getAlgoDecisionInitial(algoBitFirstBxInTrain_);
+	   break;
+	 case 1:
+	   bit = itr->getAlgoDecisionInterm(algoBitFirstBxInTrain_);
+	   break;
+	 case 2:
+	   bit = itr->getAlgoDecisionFinal(algoBitFirstBxInTrain_);
+	   break;
+	 }
+	 if (bit) {
+	   bxShiftFirst = bx;
+	 }
+       }
+       // last bunch in train
+       if(algoBitLastBxInTrain_ != -1) {
+	 bool bit = false;
+	 switch (useAlgoDecision_) {
+	 case 0:
+	   bit = itr->getAlgoDecisionInitial(algoBitLastBxInTrain_);
+	   break;
+	 case 1:
+	   bit = itr->getAlgoDecisionInterm(algoBitLastBxInTrain_);
+	   break;
+	 case 2:
+	   bit = itr->getAlgoDecisionFinal(algoBitLastBxInTrain_);
+	   break;
+	 }
+	 if (bit) {
+	   bxShiftLast = bx;
+	 }
+       }
+       // isolated bunch
+       if (algoBitIsoBx_ != -1) {
+	 bool bit = false;
+	 switch (useAlgoDecision_) {
+	 case 0:
+	   bit = itr->getAlgoDecisionInitial(algoBitIsoBx_);
+	   break;
+	 case 1:
+	   bit = itr->getAlgoDecisionInterm(algoBitIsoBx_);
+	   break;
+	 case 2:
+	   bit = itr->getAlgoDecisionFinal(algoBitIsoBx_);
+	   break;
+	 }
+	 if (bit) {
+	   bxShiftIso = bx;
+	 }
+       }
+     }
+   }
+   
+   
+   
+   if (bxShiftFirst > -999) std::cout<<" bxShiftFirst = " << bxShiftFirst<< " "<<bxShiftIso<< " "<<bxShiftLast<<std::endl;
+   
+   // the following shifting is needed for following reason: 
+   // we want to use only those events which comes as a result of the begining of the bunch train, each bunch train can have crossings multiple times. 
+   // if the egamma triggering happended one bx before the begining of bunch train i.e. egamma trigger pre-fired then we need to correct for this effect. 
+   // The data is written only once, for all the five bunch crossings. if the egamma trigger was prefired then (-1 bx) then everything needs to be translated. 
+   
+   
+   
+   for (int itBX = std::max(EGammaBxCollection->getFirstBX(), EGammaBxCollection->getFirstBX() + bxShiftFirst); itBX <= std::min(EGammaBxCollection->getLastBX(), EGammaBxCollection->getLastBX() + bxShiftFirst); ++itBX) {
+     std::cout<<"inside itBx" <<std::endl;
+     int index = itBX - bxShiftFirst - uGtAlgs->getFirstBX();
+     for (l1t::EGammaBxCollection::const_iterator egamma = EGammaBxCollection->begin(itBX); egamma != EGammaBxCollection->end(itBX); ++egamma) {
+       std::cout<<"inside egamma" <<std::endl;
+       for (size_t i = 0; i < egammaPtCuts_.size(); ++i) {
+	 std::cout<<" for pt cut "<<egammaPtCuts_[i]<<"  "<<egamma->pt() << std::endl;
+	 if (egamma->pt() >= egammaPtCuts_.at(i)) {
+	   //if (index >= 0 and index < (int)egamma_eta_phi_firstbunch.size()) {
+	   //denominator_egamma_firstbunch.at(i)->Fill(egamma->eta(), egamma->phi());
+	   //egamma_eta_phi_firstbunch.at(i).at(index)->Fill(egamma->eta(), egamma->phi());
+	   //}
+	   if ((bool)egamma->hwIso()) {
+	     std::cout<<" isolated "<<itBX - bxShiftFirst<<"  "<< egamma->hwEta()<<std::endl;
+	     ibx_vs_ieta_Iso->Fill(itBX - bxShiftFirst, egamma->hwEta() );
+	     //egamma_iso_bx_ieta_firstbunch.at(i)->Fill(itBX - bxShiftFirst, egamma->hwEta());
+	   }
+	   ibx_vs_ieta_NonIso->Fill(itBX - bxShiftFirst, egamma->hwEta());
+	   
+	 }
+       }
+     }
+   }
+   
+   
+   // for the last bunch crossing 
+   /*
+
+
+   for (int itBX = std::max(EGammaBxCollection->getFirstBX(), EGammaBxCollection->getFirstBX() + bxShiftLast); itBX <= std::min(EGammaBxCollection->getLastBX(), EGammaBxCollection->getLastBX() + bxShiftLast); ++itBX) {
+     std::cout<<"inside itBx" <<std::endl;
+     auto correctedBx = itBX - bxShiftLast;
+     for (l1t::EGammaBxCollection::const_iterator egamma = EGammaBxCollection->begin(itBX); egamma != EGammaBxCollection->end(itBX); ++egamma) {
+       std::cout<<"inside egamma" <<std::endl;
+       for (size_t i = 0; i < egammaPtCuts_.size(); ++i) {
+	 if (egamma->pt() >= egammaPtCuts_.at(i)) {
+	   //if (correctedBx >= 0 and correctedBx < (int)egamma_eta_phi_lastbunch.size()) {
+	     //denominator_egamma_lastbunch.at(i)->Fill(egamma->eta(), egamma->phi());
+	     //egamma_eta_phi_lastbunch.at(i).at(correctedBx)->Fill(egamma->eta(), egamma->phi());
+	   //}
+	   if ((bool)egamma->hwIso()) {
+	     std::cout<<" isolated "<<correctedBx<<"  "<< egamma->hwEta()<<std::endl;
+	     //egamma_iso_bx_ieta_lastbunch.at(i)->Fill(correctedBx, egamma->hwEta());
+	   }
+	   //egamma_noniso_bx_ieta_lastbunch.at(i)->Fill(correctedBx, egamma->hwEta());
+	   std::cout<<" non-isolated "<<correctedBx<<"  "<< egamma->hwEta()<<std::endl;
+	   
+	 }
+       }
+     }
+   }
+
+   */
+   
+#ifdef THIS_IS_AN_EVENT_EXAMPLE
+   Handle<ExampleData> pIn;
+   iEvent.getByLabel("example",pIn);
+#endif
+
+#ifdef THIS_IS_AN_EVENTSETUP_EXAMPLE
+   ESHandle<SetupData> pSetup;
+   iSetup.get<SetupRecord>().get(pSetup);
+#endif
+}
+
+
+// ------------ method called once each job just before starting event loop  ------------
+void
+PrefiringTuplizer::beginJob()
+{
+  
+}
+
+void PrefiringTuplizer::beginRun(const edm::Run& r, const edm::EventSetup& c) {
+ // this should be moved to begin run 
+   // but where is begin run 
+   // begin job does not have the event setup infp 
+   // Get the trigger menu information
+   gtUtil_->retrieveL1Setup(c);
+   
+   // Get the algo bits needed for the timing histograms
+   if (!gtUtil_->getAlgBitFromName(algoNameFirstBxInTrain_, algoBitFirstBxInTrain_)) {
+     edm::LogWarning("L1TObjectsTiming") << "Algo \"" << algoNameFirstBxInTrain_ << "\" not found in the trigger menu " << gtUtil_->gtTriggerMenuName() << ". Could not retrieve algo bit number.";
+   }
+   
+   if (!gtUtil_->getAlgBitFromName(algoNameLastBxInTrain_, algoBitLastBxInTrain_)) {
+     edm::LogWarning("L1TObjectsTiming") << "Algo \"" << algoNameLastBxInTrain_ << "\" not found in the trigger menu " << gtUtil_->gtTriggerMenuName() << ". Could not retrieve algo bit number.";
+   }
+   
+   if (!gtUtil_->getAlgBitFromName(algoNameIsoBx_, algoBitIsoBx_)) {
+     edm::LogWarning("L1TObjectsTiming") << "Algo \"" << algoNameIsoBx_ << "\" not found in the trigger menu " << gtUtil_->gtTriggerMenuName() << ". Could not retrieve algo bit number.";
+   }
+  
+}
+
+
+
+// ------------ method called once each job just after ending the event loop  ------------
+void
+PrefiringTuplizer::endJob()
+{
+
+  ibx_vs_ieta_Iso->Write();
+  ibx_vs_ieta_NonIso->Write();
+  
+}
+
+// ------------ method fills 'descriptions' with the allowed parameters for the module  ------------
+void
+PrefiringTuplizer::fillDescriptions(edm::ConfigurationDescriptions& descriptions) {
+  //The following says we do not know what parameters are allowed so do no validation
+  // Please change this to state exactly what you do use, even if it is no parameters
+  edm::ParameterSetDescription desc;
+  desc.setUnknown();
+  desc.addUntracked<std::string>("useAlgoDecision", "initial")->setComment("Which algo decision should be checked [initial, intermediate, final].");
+  desc.addUntracked<std::vector<double>>("egammaPtCuts", {20., 10., 30.})->setComment("List if min egamman pT vaules");
+
+    
+  
+  descriptions.addDefault(desc);
+  
+  
+  //Specify that only 'tracks' is allowed
+  //To use, remove the default given above and uncomment below
+  //ParameterSetDescription desc;
+  //desc.addUntracked<edm::InputTag>("tracks","ctfWithMaterialTracks");
+  //descriptions.addDefault(desc);
+}
+
+//define this as a plug-in
+DEFINE_FWK_MODULE(PrefiringTuplizer);
