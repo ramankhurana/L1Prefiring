@@ -42,3 +42,10 @@ git clone git@github.com:ramankhurana/L1Prefiring.git
 cd L1Prefiring/PrefiringTuplizer 
 
 export USER_CXXFLAGS="-Wno-delete-non-virtual-dtor -Wno-error=unused-but-set-variable -Wno-error=unused-variable -Wno-error=sign-compare -Wno-error=reorder"
+
+You can test the code by running conf_17.py 
+
+cmsRun conf_17.py 
+
+''' uncomment one of the .root file from the .py to run. '''
+
