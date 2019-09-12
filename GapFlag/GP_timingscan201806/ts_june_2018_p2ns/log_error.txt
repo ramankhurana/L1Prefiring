@@ -1,0 +1,393 @@
+error TCC=2 channel=40
+Values around the central BX 10 0
+should move by +1 3470
+TCC=2 bin=40 time_delay_before=3 time_delay=4
+error TCC=3 channel=37
+Values around the central BX 10 0
+should move by +1 3470
+TCC=3 bin=37 time_delay_before=2 time_delay=3
+error TCC=3 channel=38
+Values around the central BX 10 0
+should move by +1 3470
+TCC=3 bin=38 time_delay_before=2 time_delay=3
+error TCC=3 channel=39
+Values around the central BX 10 0
+should move by +1 3470
+TCC=3 bin=39 time_delay_before=2 time_delay=3
+error TCC=4 channel=25
+Values around the central BX 10 0
+should move by +1 3470
+TCC=4 bin=25 time_delay_before=2 time_delay=3
+error TCC=4 channel=28
+Values around the central BX 10 0
+should move by +1 3470
+TCC=4 bin=28 time_delay_before=2 time_delay=3
+error TCC=4 channel=32
+Values around the central BX 10 0
+should move by +1 3470
+TCC=4 bin=32 time_delay_before=2 time_delay=3
+error TCC=4 channel=33
+Values around the central BX 10 0
+should move by +1 3470
+TCC=4 bin=33 time_delay_before=2 time_delay=3
+error TCC=4 channel=34
+Values around the central BX 10 0
+should move by +1 3470
+TCC=4 bin=34 time_delay_before=2 time_delay=3
+error TCC=4 channel=36
+Values around the central BX 10 0
+should move by +1 3470
+TCC=4 bin=36 time_delay_before=2 time_delay=3
+error TCC=8 channel=15
+Values around the central BX 10 0
+should move by +1 3470
+TCC=8 bin=15 time_delay_before=1 time_delay=2
+error TCC=8 channel=18
+Values around the central BX 10 0
+should move by +1 3470
+TCC=8 bin=18 time_delay_before=1 time_delay=2
+error TCC=8 channel=38
+Values around the central BX 10 0
+should move by +1 3470
+TCC=8 bin=38 time_delay_before=2 time_delay=3
+error TCC=9 channel=17
+Values around the central BX 10 0
+should move by +1 3470
+TCC=9 bin=17 time_delay_before=2 time_delay=3
+error TCC=9 channel=19
+Values around the central BX 7 1
+should move by +1 3470
+phase problem with channel = 19
+TCC=9 bin=19 time_delay_before=2 time_delay=3
+error TCC=9 channel=23
+Values around the central BX 10 0
+should move by +1 3470
+TCC=9 bin=23 time_delay_before=2 time_delay=3
+error TCC=9 channel=26
+Values around the central BX 10 0
+should move by +1 3470
+TCC=9 bin=26 time_delay_before=2 time_delay=3
+error TCC=9 channel=27
+Values around the central BX 10 0
+should move by +1 3470
+TCC=9 bin=27 time_delay_before=2 time_delay=3
+error TCC=9 channel=30
+Values around the central BX 10 0
+should move by +1 3470
+TCC=9 bin=30 time_delay_before=2 time_delay=3
+error TCC=9 channel=35
+Values around the central BX 10 0
+should move by +1 3470
+TCC=9 bin=35 time_delay_before=2 time_delay=3
+error TCC=9 channel=39
+Values around the central BX 3 7
+should move by +1 3470
+should move by -1 3470
+TCC=9 bin=39 time_delay_before=2 time_delay=1
+error TCC=10 channel=27
+Values around the central BX 10 0
+should move by +1 3470
+TCC=10 bin=27 time_delay_before=2 time_delay=3
+error TCC=10 channel=34
+Values around the central BX 10 0
+should move by +1 3470
+TCC=10 bin=34 time_delay_before=2 time_delay=3
+error TCC=10 channel=36
+Values around the central BX 10 0
+should move by +1 3470
+TCC=10 bin=36 time_delay_before=2 time_delay=3
+error TCC=10 channel=38
+Values around the central BX 7 0
+should move by +1 3470
+phase problem with channel = 38
+TCC=10 bin=38 time_delay_before=2 time_delay=3
+error TCC=10 channel=39
+Values around the central BX 0 0
+error TCC=10 channel=41
+Values around the central BX 10 0
+should move by +1 3470
+TCC=10 bin=41 time_delay_before=2 time_delay=3
+error TCC=12 channel=20
+Values around the central BX 10 0
+should move by +1 3470
+TCC=12 bin=20 time_delay_before=2 time_delay=3
+error TCC=12 channel=24
+Values around the central BX 10 0
+should move by +1 3470
+TCC=12 bin=24 time_delay_before=2 time_delay=3
+error TCC=12 channel=38
+Values around the central BX 8 0
+should move by +1 3470
+phase problem with channel = 38
+TCC=12 bin=38 time_delay_before=3 time_delay=4
+error TCC=13 channel=27
+Values around the central BX 10 0
+should move by +1 3470
+TCC=13 bin=27 time_delay_before=2 time_delay=3
+error TCC=13 channel=29
+Values around the central BX 10 0
+should move by +1 3470
+TCC=13 bin=29 time_delay_before=3 time_delay=4
+error TCC=13 channel=31
+Values around the central BX 10 0
+should move by +1 3470
+TCC=13 bin=31 time_delay_before=3 time_delay=4
+error TCC=13 channel=33
+Values around the central BX 10 0
+should move by +1 3470
+TCC=13 bin=33 time_delay_before=3 time_delay=4
+error TCC=13 channel=34
+Values around the central BX 10 0
+should move by +1 3470
+TCC=13 bin=34 time_delay_before=3 time_delay=4
+error TCC=13 channel=35
+Values around the central BX 1 0
+should move by +1 3470
+TCC=13 bin=35 time_delay_before=3 time_delay=4
+error TCC=13 channel=36
+Values around the central BX 10 0
+should move by +1 3470
+TCC=13 bin=36 time_delay_before=3 time_delay=4
+error TCC=13 channel=40
+Values around the central BX 10 0
+should move by +1 3470
+TCC=13 bin=40 time_delay_before=3 time_delay=4
+error TCC=14 channel=38
+Values around the central BX 10 0
+should move by +1 3470
+TCC=14 bin=38 time_delay_before=3 time_delay=4
+error TCC=14 channel=39
+Values around the central BX 0 10
+should move by -1 3470
+TCC=14 bin=39 time_delay_before=3 time_delay=2
+error TCC=22 channel=28
+Values around the central BX 10 0
+should move by +1 3470
+TCC=22 bin=28 time_delay_before=2 time_delay=3
+error TCC=36 channel=28
+Values around the central BX 10 0
+should move by +1 3470
+TCC=36 bin=28 time_delay_before=3 time_delay=4
+error TCC=66 channel=68
+Values around the central BX 0 0
+error TCC=75 channel=12
+Values around the central BX 10 0
+should move by +1 3470
+TCC=75 bin=12 time_delay_before=1 time_delay=2
+error TCC=76 channel=28
+Values around the central BX 2 0
+phase problem with channel = 28
+TCC=76 bin=28 time_phase_before=1 time_phase=0
+error TCC=80 channel=23
+Values around the central BX 10 0
+should move by +1 3470
+TCC=80 bin=23 time_delay_before=1 time_delay=2
+error TCC=82 channel=28
+Values around the central BX 10 0
+should move by +1 3470
+TCC=82 bin=28 time_delay_before=2 time_delay=3
+error TCC=91 channel=30
+Values around the central BX 10 0
+should move by +1 3470
+TCC=91 bin=30 time_delay_before=2 time_delay=3
+error TCC=91 channel=32
+Values around the central BX 10 0
+should move by +1 3470
+TCC=91 bin=32 time_delay_before=2 time_delay=3
+error TCC=91 channel=39
+Values around the central BX 10 0
+should move by +1 3470
+TCC=91 bin=39 time_delay_before=2 time_delay=3
+error TCC=92 channel=18
+Values around the central BX 10 0
+should move by +1 3470
+TCC=92 bin=18 time_delay_before=2 time_delay=3
+error TCC=92 channel=20
+Values around the central BX 3 0
+should move by +1 3470
+phase problem with channel = 20
+TCC=92 bin=20 time_delay_before=2 time_delay=3
+error TCC=92 channel=23
+Values around the central BX 10 0
+should move by +1 3470
+TCC=92 bin=23 time_delay_before=2 time_delay=3
+error TCC=92 channel=31
+Values around the central BX 0 0
+phase problem with channel = 31
+TCC=92 bin=31 time_phase_before=0 time_phase=1
+error TCC=92 channel=32
+Values around the central BX 10 0
+should move by +1 3470
+TCC=92 bin=32 time_delay_before=2 time_delay=3
+error TCC=92 channel=33
+Values around the central BX 10 0
+should move by +1 3470
+TCC=92 bin=33 time_delay_before=2 time_delay=3
+error TCC=92 channel=34
+Values around the central BX 10 0
+should move by +1 3470
+TCC=92 bin=34 time_delay_before=2 time_delay=3
+error TCC=92 channel=40
+Values around the central BX 10 0
+should move by +1 3470
+TCC=92 bin=40 time_delay_before=2 time_delay=3
+error TCC=93 channel=20
+Values around the central BX 10 0
+should move by +1 3470
+TCC=93 bin=20 time_delay_before=1 time_delay=2
+error TCC=93 channel=33
+Values around the central BX 7 2
+should move by +1 3470
+should move by -1 3470
+phase problem with channel = 33
+TCC=93 bin=33 time_delay_before=2 time_delay=1
+error TCC=93 channel=36
+Values around the central BX 10 0
+should move by +1 3470
+TCC=93 bin=36 time_delay_before=2 time_delay=3
+error TCC=93 channel=37
+Values around the central BX 10 0
+should move by +1 3470
+TCC=93 bin=37 time_delay_before=2 time_delay=3
+error TCC=93 channel=38
+Values around the central BX 10 0
+should move by +1 3470
+TCC=93 bin=38 time_delay_before=2 time_delay=3
+error TCC=93 channel=40
+Values around the central BX 10 0
+should move by +1 3470
+TCC=93 bin=40 time_delay_before=2 time_delay=3
+error TCC=94 channel=23
+Values around the central BX 10 0
+should move by +1 3470
+TCC=94 bin=23 time_delay_before=1 time_delay=2
+error TCC=94 channel=24
+Values around the central BX 0 0
+phase problem with channel = 24
+TCC=94 bin=24 time_phase_before=0 time_phase=1
+error TCC=95 channel=22
+Values around the central BX 0 0
+phase problem with channel = 22
+TCC=95 bin=22 time_phase_before=1 time_phase=0
+error TCC=95 channel=30
+Values around the central BX 10 0
+should move by +1 3470
+TCC=95 bin=30 time_delay_before=1 time_delay=2
+error TCC=95 channel=31
+Values around the central BX 10 0
+should move by +1 3470
+TCC=95 bin=31 time_delay_before=1 time_delay=2
+error TCC=95 channel=33
+Values around the central BX 10 0
+should move by +1 3470
+TCC=95 bin=33 time_delay_before=1 time_delay=2
+error TCC=96 channel=25
+Values around the central BX 10 0
+should move by +1 3470
+TCC=96 bin=25 time_delay_before=1 time_delay=2
+error TCC=96 channel=31
+Values around the central BX 10 0
+should move by +1 3470
+TCC=96 bin=31 time_delay_before=1 time_delay=2
+error TCC=100 channel=25
+Values around the central BX 10 0
+should move by +1 3470
+TCC=100 bin=25 time_delay_before=1 time_delay=2
+error TCC=100 channel=26
+Values around the central BX 10 0
+should move by +1 3470
+TCC=100 bin=26 time_delay_before=1 time_delay=2
+error TCC=100 channel=27
+Values around the central BX 10 0
+should move by +1 3470
+TCC=100 bin=27 time_delay_before=1 time_delay=2
+error TCC=100 channel=29
+Values around the central BX 10 0
+should move by +1 3470
+TCC=100 bin=29 time_delay_before=2 time_delay=3
+error TCC=100 channel=31
+Values around the central BX 0 1
+phase problem with channel = 31
+TCC=100 bin=31 time_phase_before=1 time_phase=0
+error TCC=100 channel=33
+Values around the central BX 10 0
+should move by +1 3470
+TCC=100 bin=33 time_delay_before=2 time_delay=3
+error TCC=100 channel=35
+Values around the central BX 2 0
+phase problem with channel = 35
+TCC=100 bin=35 time_phase_before=1 time_phase=0
+error TCC=100 channel=40
+Values around the central BX 10 0
+should move by +1 3470
+TCC=100 bin=40 time_delay_before=2 time_delay=3
+error TCC=101 channel=37
+Values around the central BX 10 0
+should move by +1 3470
+TCC=101 bin=37 time_delay_before=2 time_delay=3
+error TCC=101 channel=38
+Values around the central BX 10 0
+should move by +1 3470
+TCC=101 bin=38 time_delay_before=2 time_delay=3
+error TCC=101 channel=40
+Values around the central BX 1 0
+phase problem with channel = 40
+TCC=101 bin=40 time_phase_before=0 time_phase=1
+error TCC=102 channel=20
+Values around the central BX 10 0
+should move by +1 3470
+TCC=102 bin=20 time_delay_before=2 time_delay=3
+error TCC=102 channel=24
+Values around the central BX 10 0
+should move by +1 3470
+TCC=102 bin=24 time_delay_before=2 time_delay=3
+error TCC=102 channel=39
+Values around the central BX 10 0
+should move by +1 3470
+TCC=102 bin=39 time_delay_before=2 time_delay=3
+error TCC=103 channel=33
+Values around the central BX 10 0
+should move by +1 3470
+TCC=103 bin=33 time_delay_before=2 time_delay=3
+error TCC=103 channel=35
+Values around the central BX 10 0
+should move by +1 3470
+TCC=103 bin=35 time_delay_before=2 time_delay=3
+error TCC=103 channel=37
+Values around the central BX 10 0
+should move by +1 3470
+TCC=103 bin=37 time_delay_before=2 time_delay=3
+error TCC=103 channel=39
+Values around the central BX 10 0
+should move by +1 3470
+TCC=103 bin=39 time_delay_before=2 time_delay=3
+error TCC=103 channel=40
+Values around the central BX 5 0
+should move by +1 3470
+TCC=103 bin=40 time_delay_before=2 time_delay=3
+error TCC=105 channel=32
+Values around the central BX 0 0
+error TCC=106 channel=33
+Values around the central BX 10 0
+should move by +1 3470
+TCC=106 bin=33 time_delay_before=3 time_delay=4
+error TCC=106 channel=36
+Values around the central BX 10 0
+should move by +1 3470
+TCC=106 bin=36 time_delay_before=3 time_delay=4
+error TCC=106 channel=37
+Values around the central BX 10 0
+should move by +1 3470
+TCC=106 bin=37 time_delay_before=3 time_delay=4
+error TCC=107 channel=27
+Values around the central BX 8 0
+should move by +1 3470
+TCC=107 bin=27 time_delay_before=2 time_delay=3
+error TCC=107 channel=37
+Values around the central BX 10 0
+should move by +1 3470
+TCC=107 bin=37 time_delay_before=3 time_delay=4
+error TCC=107 channel=39
+Values around the central BX 10 0
+should move by +1 3470
+TCC=107 bin=39 time_delay_before=3 time_delay=4

@@ -1,0 +1,11 @@
+## Step 1: Run the .C macro to analyze the scan data in .txt files. 
+
+  - the input path and dir name can be chnaged in the script, gapflag_utgz.sh and run using source gapflag_utgz.sh. 
+
+  - this will create one rootfile for one time shift. This will contain one histogram for one channel.  
+
+## Step 2: Use the rootfile with each channel histogram for each TCC and make all kind of plots needed for the study. Everything is done inside just one python script. Different functions are there to perform different tasks. 
+
+  - python gapFlagSummary.py
+
+     

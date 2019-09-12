@@ -1,0 +1,28 @@
+error TCC=2 channel=40
+Values around the central BX 0 0
+phase problem with channel = 40
+TCC=2 bin=40 time_phase_before=1 time_phase=0
+error TCC=3 channel=37
+Values around the central BX 0 0
+error TCC=3 channel=38
+Values around the central BX 7 0
+should move by +1 3470
+TCC=3 bin=38 time_delay_before=2 time_delay=3
+error TCC=10 channel=34
+Values around the central BX 0 0
+phase problem with channel = 34
+TCC=10 bin=34 time_phase_before=0 time_phase=1
+error TCC=66 channel=68
+Values around the central BX 0 0
+error TCC=101 channel=37
+Values around the central BX 0 0
+phase problem with channel = 37
+TCC=101 bin=37 time_phase_before=0 time_phase=1
+error TCC=103 channel=33
+Values around the central BX 10 0
+should move by +1 3470
+TCC=103 bin=33 time_delay_before=2 time_delay=3
+error TCC=103 channel=37
+Values around the central BX 0 0
+error TCC=105 channel=32
+Values around the central BX 0 0
