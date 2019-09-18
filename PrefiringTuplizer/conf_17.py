@@ -86,7 +86,10 @@ process.maxEvents = cms.untracked.PSet( input = cms.untracked.int32(-1) )
 process.source = cms.Source("PoolSource",
                             # replace 'myfile.root' with the source file you want to use
                             fileNames = cms.untracked.vstring(
-                                'file:/tmp/khurana/test.root'
+                                #'file:/afs/cern.ch/work/k/khurana/L1Prefiring/EDAnalyzer/CMSSW_10_2_1/src/L1Prefiring/EventGeenration/step2_default.root'
+                                'file:/afs/cern.ch/work/k/khurana/L1Prefiring/EDAnalyzer/CMSSW_10_2_1/src/L1Prefiring/EventGeenration/step2_m17.root'
+                                #'file:/tmp/khurana/test.root' on lkxplus 791
+                                #'file:/afs/cern.ch/user/t/theofil/public/preFiring/step2_m17ns.root'
                                 #'file:/tmp/00464706-0339-E811-88D8-1866DAEA6C40.root' ## 2017
                                 #'/store/data/Run2017F/ZeroBias2/RAW-RECO/05Apr2018-v1/30000/00464706-0339-E811-88D8-1866DAEA6C40.root'
                                 #'/store/data/Run2018D/ZeroBias/RAW/v1/000/324/725/00000/38CB8BDB-53A8-9643-A7A1-623BC3992B15.root'
@@ -115,7 +118,11 @@ process.tuplizer = cms.EDAnalyzer('PrefiringTuplizer',
                                   isoBXAlgo = cms.untracked.string("L1_IsolatedBunch"),
                                   stage2CaloLayer2EGammaProducer = cms.InputTag("gtStage2Digis","EGamma"),
                                   TPCollection = cms.InputTag("ecalDigis","EcalTriggerPrimitives"),
-                                  EBdigis      = cms.InputTag("selectDigi","selectedEcalEBDigiCollection")
+                                  #EBdigis      = cms.InputTag("selectDigi","selectedEcalEBDigiCollection"),
+                                  #EEdigis      = cms.InputTag("selectDigi","selectedEcalEEDigiCollection")
+                                  
+                                  EBdigis      = cms.InputTag("simEcalDigis","ebDigis"),
+                                  EEdigis      = cms.InputTag("simEcalDigis","eeDigis")
 )
 
 

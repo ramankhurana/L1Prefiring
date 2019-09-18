@@ -143,6 +143,7 @@ private:
   edm::EDGetTokenT<EcalTrigPrimDigiCollection> tpCollection_ ;
   
   edm::EDGetTokenT<EBDigiCollection> EBdigistoken_ ;
+  edm::EDGetTokenT<EEDigiCollection> EEdigistoken_ ;
   
   
   std::string monitorDir_;
@@ -181,7 +182,16 @@ private:
 
   uint nbOfActiveTechTriggers ;
   int activeTechTriggers[64] ;
-
+  
+  // variables for pulse shape
+  uint ndataframe;
+  uint nADC;
+  int index_df[14032];
+  int index_ts[14032];
+  int count_ADC[14032];
+  
+  
+  
   uint nbOfTowers ; //max 4032 EB+EE                                                                                                                                                                      
   int ieta[4032] ;
   int iphi[4032] ;
@@ -263,100 +273,6 @@ private:
   Int_t L1preNonisoRankp1[10];
   Int_t L1preNonisoRankp2[10];
 
-  /*
-  // Branches 
-  TBranch b_runNb ;
-  TBranch b_evtNb ;
-  TBranch b_bxNb ;
-  //TBranch b_bxGT ;
-  TBranch b_orbitNb ;
-  TBranch b_lumiBlocL1preIsoRankm2k ;
-  TBranch b_timeStamp; 
-  
-  TBranch *b_nbOfTowers; 
-  TBranch *b_ieta[4032] ;
-  TBranch *b_iphi[4032] ;
-  TBranch *b_nbOfXtals[4032] ;
-  TBranch *b_rawTPData[4032] ;
-  TBranch *b_rawTPEmul1[4032] ;
-  TBranch *b_rawTPEmul2[4032] ;
-  TBranch *b_rawTPEmul3[4032] ;
-  TBranch *b_rawTPEmul4[4032] ;
-  TBranch *b_rawTPEmul5[4032] ;
-  TBranch *b_rawTPEmulttFlag1[4032] ;
-  TBranch *b_rawTPEmulttFlag2[4032] ;
-  TBranch *b_rawTPEmulttFlag3[4032] ;
-  TBranch *b_rawTPEmulttFlag4[4032] ;
-  TBranch *b_rawTPEmulttFlag5[4032] ;
-  TBranch *b_rawTPEmulsFGVB1[4032] ;
-  TBranch *b_rawTPEmulsFGVB2[4032] ;
-  TBranch *b_rawTPEmulsFGVB3[4032] ;
-  TBranch *b_rawTPEmulsFGVB4[4032] ;
-  TBranch *b_rawTPEmulsFGVB5[4032] ;
-  TBranch *b_eRec[4032] ;
-  TBranch *b_crystNb[4032];
-  TBranch *b_sevlv[4032];
-  TBranch *b_spike[4032] ;
-  TBranch *b_twrADC[4032];
-  TBranch *b_sFGVB[4032];
-  TBranch *b_ttFlag[4032];
-  TBranch *b_TCCid[4032];
-  TBranch *b_TowerInTCC[4032] ;
-  TBranch *b_strip[4032];
-
-  
-  TBranch *b_nonisocounterm2   ;
-  TBranch *b_nonisocounterm1    ;
-  TBranch *b_nonisocounterzero ;
-  TBranch *b_nonisocounterp1    ;
-  TBranch *b_nonisocounterp2   ;
-
-  TBranch *b_isocounterm2    ;
-  TBranch *b_isocounterm1    ;
-  TBranch *b_isocounterzero  ;
-  TBranch *b_isocounterp1    ;
-  TBranch *b_isocounterp2    ;
-
-  TBranch *b_L1preIsoIetam2[20];
-  TBranch *b_L1preIsoIetam1[20];
-  TBranch *b_L1preIsoIetazero[20];
-  TBranch *b_L1preIsoIetap1[20];
-  TBranch *b_L1preIsoIetap2[20];
-
-  TBranch *b_L1preNonisoIetam2[20];
-  TBranch *b_L1preNonisoIetam1[20];
-  TBranch *b_L1preNonisoIetazero[20];
-  TBranch *b_L1preNonisoIetap1[20];
-  TBranch *b_L1preNonisoIetap2[20];
-
-
-  TBranch *b_L1preIsoIphim2[20];
-  TBranch *b_L1preIsoIphim1[20];
-  TBranch *b_L1preIsoIphizero[20];
-  TBranch *b_L1preIsoIphip1[20];
-  TBranch *b_L1preIsoIphip2[20];
-
-  TBranch *b_L1preNonisoIphim2[20];
-  TBranch *b_L1preNonisoIphim1[20];
-  TBranch *b_L1preNonisoIphizero[20];
-  TBranch *b_L1preNonisoIphip1[20];
-  TBranch *b_L1preNonisoIphip2[20];
-
-
-
-  TBranch *b_L1preIsoRankm2[20];
-  TBranch *b_L1preIsoRankm1[20];
-  TBranch *b_L1preIsoRankzero[20];
-  TBranch *b_L1preIsoRankp1[20];
-  TBranch *b_L1preIsoRankp2[20];
-
-  TBranch *b_L1preNonisoRankm2[20];
-  TBranch *b_L1preNonisoRankm1[20];
-  TBranch *b_L1preNonisoRankzero[20];
-  TBranch *b_L1preNonisoRankp1[20];
-  TBranch *b_L1preNonisoRankp2[20];
-  
-  */
   // Define histograms 
   TH2F* ibx_vs_ieta_Iso;
   TH2F* ibx_vs_ieta_NonIso;
@@ -389,7 +305,8 @@ PrefiringTuplizer::PrefiringTuplizer(const edm::ParameterSet& ps)
   stage2CaloLayer2EGammaToken_(consumes<l1t::EGammaBxCollection>(ps.getParameter<edm::InputTag>("stage2CaloLayer2EGammaProducer"))),
   tpEmulatorCollection_(consumes<EcalTrigPrimDigiCollection>(ps.getParameter<edm::InputTag>("TPEmulatorCollection"))),
   tpCollection_(consumes<EcalTrigPrimDigiCollection>(ps.getParameter<edm::InputTag>("TPCollection"))),
-  EBdigistoken_(consumes<EBDigiCollection>(ps.getParameter<edm::InputTag>("EBdigis") )  )
+  EBdigistoken_(consumes<EBDigiCollection>(ps.getParameter<edm::InputTag>("EBdigis") )  ),
+  EEdigistoken_(consumes<EEDigiCollection>(ps.getParameter<edm::InputTag>("EEdigis") )  )
 
 
 {
@@ -448,6 +365,15 @@ O : [the letter o, not a zero] a boolean (Bool_t)
   prefiringTree->Branch("b_lumiBlock", &lumiBlock ,"b_lumiBlock/i");
   prefiringTree->Branch("b_timeStamp", &timeStamp ,"b_timeStamp/i");
     
+  
+  
+  // ADC counts for 10 samples when there is some significant energy deposit. 
+  prefiringTree->Branch("b_ndataframe", &ndataframe ,"b_ndataframe/i");
+  prefiringTree->Branch("b_nADC", &nADC ,"b_nADC/i");
+  prefiringTree->Branch("b_index_df", index_df,"b_index_df[b_nADC]/I");
+  prefiringTree->Branch("b_index_ts", index_ts,"b_index_ts[b_nADC]/I");
+  prefiringTree->Branch("b_count_ADC", count_ADC,"b_count_ADC[b_nADC]/I");
+  
   
   prefiringTree->Branch ("b_nbOfTowers",&nbOfTowers, "b_nbOfTowers/i");
   prefiringTree->Branch("b_ieta", ieta ,"b_ieta[b_nbOfTowers]/I");
@@ -561,6 +487,11 @@ PrefiringTuplizer::analyze(const edm::Event& e, const edm::EventSetup& c)
    using namespace edm;
 
    
+   for (int i=0; i<4032;i++){
+     index_df[i] = -999;
+     index_ts[i] = -999;
+     count_ADC[i] = -999;
+   }
 
    for (int i=0; i<10; i++){
      L1preIsoIetam2[i] = -999;
@@ -941,28 +872,45 @@ PrefiringTuplizer::analyze(const edm::Event& e, const edm::EventSetup& c)
    
    std::vector<int> Rechit_adc;
    Rechit_adc.clear();
-   edm::Handle<EBDigiCollection>  EBdigis;
+   edm::Handle<EEDigiCollection>  EEdigis;
    if(true)     {
-     e.getByToken(EBdigistoken_,EBdigis);
-     if(not e.getByToken(EBdigistoken_,EBdigis)){
+     e.getByToken(EEdigistoken_,EEdigis);
+     if(not e.getByToken(EEdigistoken_,EEdigis)){
        std::cout<<"FATAL EXCEPTION: "<<"Following Not Found: "<<"simEcalUnsuppressedDigis:APD"<<std::endl;
        exit(0);
      }
    }
 
    int j=0;
-   for ( EBDigiCollection::const_iterator hitItr = EBdigis->begin(); hitItr != EBdigis->end(); ++hitItr ) {
-     EBDataFrame df(*hitItr);
+   int countNadc=0;
+   for ( EEDigiCollection::const_iterator hitItr = EEdigis->begin(); hitItr != EEdigis->end(); ++hitItr ) {
+     EEDataFrame df(*hitItr);
+     
      for(int i=0; i<10;++i){
-       if (df.sample(i).adc()>250) std::cout<<" ADC count for EBDataFrame number = "<<j << "  "<<df.sample(i).adc()<<std::endl;
-       Rechit_adc.push_back(df.sample(i).adc());
+       std::cout<<" ADC count for EEDataFrame number = "<<j << "  sample number "<<i<<"  "<<df.sample(i).adc()<<std::endl;
+       //Rechit_adc.push_back(df.sample(i).adc());
+       index_df[countNadc] = j;
+       index_ts[countNadc] = i;
+       count_ADC[countNadc] = df.sample(i).adc();
+       countNadc++;
+       
      }
      j++;
      
    }
-
    
-   // pulseshape
+   ndataframe = j;
+   nADC       = countNadc;
+   
+   /*
+       uint ndataframe;
+  uint nADC;
+  uint index_df[4032];
+  uint index_ts[4032];
+  int count_ADC[4032];
+   */
+   
+   // pulseshape setup ends here 
 
 
    for (unsigned int i=0;i<tp.product()->size();i++) {
@@ -1126,3 +1074,4 @@ PrefiringTuplizer::fillDescriptions(edm::ConfigurationDescriptions& descriptions
 
 //define this as a plug-in
 DEFINE_FWK_MODULE(PrefiringTuplizer);
+

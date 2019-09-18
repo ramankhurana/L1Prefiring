@@ -94,7 +94,7 @@ def SaveSummary():
         for ih in h_out: ih.Write()
 
 
-def PDFSummary(histname):
+def PDFSummary(histname, timeid):
     print "histo", histname
     c = canvasL.EPCanvas2DLongXColz()
     gStyle.SetPalette(1)
@@ -103,8 +103,11 @@ def PDFSummary(histname):
     h2.Draw("colz")
     h2.GetXaxis().SetTitle("TCC Id")
     h2.GetYaxis().SetTitle("Channel #")
+    
     latextext="Gap Flag data                                            "+Era+" 2018"
     latexL.EPLatex(latextext)
+    
+    latexL.EPLatex(timeid, 0.48, 0.8)
     
     c.SaveAs("plots/"+histname+".pdf")
     print "will work here"
@@ -137,12 +140,15 @@ def MisFireProbability(probf,ihname):
 
 
 
+
+print "------- Now calling save sumnmary ------ "
+
 ## to save summary plots in the rootfile 
-SaveSummary()
+#SaveSummary()
 
 
 print "going to sleep for 60 sec"
-os.system("sleep 60")
+os.system("sleep 5")
 ## to save summmary plots in pdf format 
 
 
@@ -152,9 +158,14 @@ os.system("mkdir plots")
 
 allhistnames=["gapFlag_errorFrac_ts_"+era_+"_2018_"+ itime +"ns" for itime in timeshifts]
 
-for ih in allhistnames:
-    PDFSummary(ih)
 
+print "------- Now calling save sumnmary in PDF files ------ "
+
+index_=0
+for ih in allhistnames:
+    print ih
+    PDFSummary(ih, timeshifts[index_])
+    index_=index_+1
 
 
 
@@ -183,6 +194,8 @@ if not june18:
 h_final_prob_EB = TH1F("h_final_prob_EB", "h_final_prob_EB", nbins, xlow_, xhi_)
 h_final_prob_EE = TH1F("h_final_prob_EE", "h_final_prob_EE", nbins, xlow_, xhi_)
 
+
+print "------- Now calling save probability summary ------ "
 
 probf = TFile(probrootfilename)
 ibin=1
