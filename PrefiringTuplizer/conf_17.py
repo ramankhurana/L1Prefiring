@@ -87,7 +87,7 @@ process.source = cms.Source("PoolSource",
                             # replace 'myfile.root' with the source file you want to use
                             fileNames = cms.untracked.vstring(
                                 #'file:/afs/cern.ch/work/k/khurana/L1Prefiring/EDAnalyzer/CMSSW_10_2_1/src/L1Prefiring/EventGeenration/step2_default.root'
-                                'file:/afs/cern.ch/work/k/khurana/L1Prefiring/EDAnalyzer/CMSSW_10_2_1/src/L1Prefiring/EventGeenration/step2_m17.root'
+                                'file:/afs/cern.ch/work/k/khurana/L1Prefiring/EDAnalyzer/CMSSW_10_2_1/src/L1Prefiring/EventGeneration/rootfiles/step2_p17_singleEle.root'
                                 #'file:/tmp/khurana/test.root' on lkxplus 791
                                 #'file:/afs/cern.ch/user/t/theofil/public/preFiring/step2_m17ns.root'
                                 #'file:/tmp/00464706-0339-E811-88D8-1866DAEA6C40.root' ## 2017
