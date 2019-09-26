@@ -1,1 +1,4 @@
 all macros related to simulation studies will end up in this repository
+the macro to analyse the digis and dump all the relevant dataframe into a .csv file is PulseShapeComparison.py
+
+you can run it using python PulseShapeComparison.py
