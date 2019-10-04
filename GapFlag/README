@@ -9,3 +9,53 @@
   - python gapFlagSummary.py
 
      
+
+## folllowing text is from David's email, conmvert it into readme, 
+
+
+I found the trigger tower timing offsets from the online DB, that are derived from the gap flag data. See attached zip file
+
+The files inside this archive give two parameters for each tower in EB and each strip in EE, for a given database ID (CONF_ID):
+
+delay (in BX units)
+phase (0,1, presumably in 1/2 BX units)
+
+I extracted them for a number of CONF_ID values, starting from 2011 and ending in Dec 2018.
+The dates corresponding to these ID values can be seen from this table:
+
+https://twiki.cern.ch/twiki/bin/viewauth/CMS/EcalChannelStatus#ECALTrigger_Status_evolution
+
+Inside the files, I reset the conf_id to 0000 to make it easier to do a diff between files.
+
+The Logic ID corresponds to the following format:
+
+EB:   1220NN00MM      with NN being the TCC ID and MM being the Tower ID
+EE:   2140NNNMMY     with NNN being the TCC_ID, MM being the Tower ID and Y being the strip ID within each tower  - we would need to convert this to the TCC channel ID, that we use for the gap flag data, using EcalTPGParam.root or a look-up table.
+
+TIME_PAR1 is the delay (in BX)
+TIME_PAR2 is the phase (in 1/2 BX)
+
+When doing a diff, I found a significant change between Run 1 and Run 2 (which could simply be a global trigger timing shift - TBC) and smaller changes during Run 2.
+
+I think it would be useful to plot these values, and, more importantly, their changes, using the same TCC, TCCch 2D plots that you are using for the gap flag measurements, to see if there is any correlation between the two.
+
+
+## Following are the steps to make the 2d TCCID vs TCCChID plots for delay and phase using the database files provided by David. 
+
+### to convert the ECALTPG rootfile into a dataframe without any repetition of rows. 
+python RootTreeToDataFrame.py 
+
+## use the output of previous step and database .txt files to make updated database file with TCC Channel ID in the text file. 
+python gapFlagDataBaseAnalyzer.py 
+
+## to run this for all the .txt file run 
+runall.sh
+
+## now all the files are ready. 
+
+### we first convert them to .root and then make the 2d histogram due to lack of knowledge about how to make 2d histogram using dataframe yet. 
+
+python analyzeupdatedDataBase.py 
+
+### to run previous step for all updated database files run 
+source makeHistAll.sh 
