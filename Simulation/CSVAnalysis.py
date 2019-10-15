@@ -3,6 +3,7 @@ from pandas import  DataFrame, concat, Series, read_csv
 
 def PrintTProfileData(csvfilename):
     print "-----------------------------------------------------------------------------------------"
+    print "  CSV_file_name                             bin_number  mean     rms "
     df = read_csv(csvfilename)
     df_out=DataFrame(columns=['adc'])
     
