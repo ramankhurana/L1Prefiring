@@ -87,3 +87,54 @@ for filename in dbFileList:
     
     idx=idx+1
 
+
+
+
+
+''' save the difference of 2d histograms to see how big is the difference, '''
+
+def AddDiffHisto(histname1, histname2, phase=True):
+
+    prefix_=""
+    if phase: prefix_  = "h2_phase"
+    if not phase: prefix_  = "h2_delay"
+    
+    hname1 = prefix_ + "_" + histname1
+    hname2 = prefix_ + "_" + histname2
+    
+    hname = prefix_ + "_" + histname1 + "_Minus_" + histname2  
+    print hname1, hname2, hname
+    
+    f_in = TFile("databaseHist.root","UPDATE")
+    
+    h_target = f_in.Get(hname1)
+    h_base =   f_in.Get(hname2)
+    
+    h_target.Add(h_base,-1)
+    h_target.SetName(hname)
+    h_target.Write()
+    
+    c = canvasL.EPCanvas2DLongXColz()
+    gStyle.SetPalette(1)
+    h_target.Draw("colz")
+    latextext = histname1 + "_Minus_" + histname2
+    latexL.EPLatex(latextext)
+    histname=h_target.GetName()+".pdf"
+    print " name of the hist is ", histname
+    if h_target.Integral()>0:
+        c.SaveAs("plots/"+histname)
+
+    
+    print h_target.Integral()
+    f_in.Close()
+
+    
+    
+AddDiffHisto("Jun_2015", "Dec_2012", True)
+AddDiffHisto("Jun_2015", "Dec_2012", False)
+
+AddDiffHisto("Mar_2018", "Jun_2015", True)
+AddDiffHisto("Mar_2018", "Jun_2015", False)
+
+AddDiffHisto("Sep_2018", "Mar_2018", True)
+AddDiffHisto("Sep_2018", "Mar_2018", False)
