@@ -117,11 +117,11 @@ def AddDiffHisto(histname1, histname2, phase=True):
     c = canvasL.EPCanvas2DLongXColz()
     gStyle.SetPalette(1)
     h_target.Draw("colz")
-    latextext = histname1 + "_Minus_" + histname2
+    latextext = prefix_+histname1 + "_Minus_" + histname2
     latexL.EPLatex(latextext)
     histname=h_target.GetName()+".pdf"
     print " name of the hist is ", histname
-    if h_target.Integral()>0:
+    if h_target.Integral()!=0:
         c.SaveAs("plots/"+histname)
 
     

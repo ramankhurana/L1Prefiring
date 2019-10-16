@@ -1,0 +1,22 @@
+## details about the dataset for timing scan. 
+
+
+For the June 2018 scan,  Tanmay processed run 318714 using these four streams:
+
+/HLTPhysics1/Run2018B-v1/RAW
+/HLTPhysics2/Run2018B-v1/RAW
+/HLTPhysics3/Run2018B-v1/RAW
+/HLTPhysics4/Run2018B-v1/RAW
+
+For the September 2018 scan, he processed run 323391, using:
+
+/HLTPhysics1/Run2018D-v1/RAW
+/HLTPhysics2/Run2018D-v1/RAW
+/HLTPhysics3/Run2018D-v1/RAW
+/HLTPhysics4/Run2018D-v1/RAW
+
+## ELOG Link 
+
+June: http://cmsonline.cern.ch/cms-elog/1049680
+
+Sep: http://cmsonline.cern.ch/cms-elog/1064860
