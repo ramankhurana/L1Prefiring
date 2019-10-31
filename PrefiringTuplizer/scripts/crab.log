@@ -93,3 +93,189 @@ Traceback (most recent call last):
     raise ConfigException("Working area '%s' already exists \nPlease change the requestName in the config file" % fullpath)
 ConfigException: Working area '/afs/cern.ch/work/k/khurana/L1Prefiring/EDAnalyzer/CMSSW_10_2_1/src/L1Prefiring/PrefiringTuplizer/scripts/crab_projects/crab_prefiringanalysis2018_V1' already exists 
 Please change the requestName in the config file
+DEBUG 2019-10-21 10:18:56.194 UTC: 	 Executing command: 'submit'
+DEBUG 2019-10-21 10:18:56.195 UTC: 	 Found CRAB cache file /afs/cern.ch/user/k/khurana/.crab3
+DEBUG 2019-10-21 10:18:56.234 UTC: 	 Checking credentials
+DEBUG 2019-10-21 10:18:56.234 UTC: 	 Found proxy file /tmp/x509up_u55959
+DEBUG 2019-10-21 10:18:56.234 UTC: 	 Getting proxy life time left
+DEBUG 2019-10-21 10:18:57.245 UTC: 	 Executing : 
+ command : voms-proxy-info -file /tmp/x509up_u55959 -timeleft
+ output : 40487
+
+ error: 
+ retcode : 0
+DEBUG 2019-10-21 10:18:57.955 UTC: 	 Executing : 
+ command : voms-proxy-info -file /tmp/x509up_u55959 -actimeleft
+ output : 
+ error: No VOMS attributes found!
+
+ retcode : 1
+DEBUG 2019-10-21 10:18:57.955 UTC: 	 Proxy lifetime 40487 secs is different from voms extension lifetime 0 secs for proxy: /tmp/x509up_u55959
+DEBUG 2019-10-21 10:18:57.955 UTC: 	 Proxy valid for 00:00:00 hours
+DEBUG 2019-10-21 10:18:57.955 UTC: 	 Creating new proxy for 24:00 hours with VO group '' and VO role 'NULL'.
+ERROR 2019-10-21 10:38:58.059 UTC: 	 Timeout in voms-proxy-init -voms cms:/cms -valid 24:00 -rfc execution.
+DEBUG 2019-10-21 10:38:58.969 UTC: 	 Executing : 
+ command : voms-proxy-info -file /tmp/x509up_u55959 -timeleft
+ output : 39286
+
+ error: 
+ retcode : 0
+DEBUG 2019-10-21 10:38:59.677 UTC: 	 Executing : 
+ command : voms-proxy-info -file /tmp/x509up_u55959 -actimeleft
+ output : 
+ error: No VOMS attributes found!
+
+ retcode : 1
+DEBUG 2019-10-21 10:38:59.678 UTC: 	 Proxy lifetime 39286 secs is different from voms extension lifetime 0 secs for proxy: /tmp/x509up_u55959
+DEBUG 2019-10-21 10:39:00.388 UTC: 	 Executing : 
+ command : env X509_USER_PROXY=/tmp/x509up_u55959 voms-proxy-info -fqan
+ output : 
+ error: No VOMS attributes found!
+
+ retcode : 1
+ERROR 2019-10-21 10:39:00.388 UTC: 	 Problems creating proxy.
+ERROR 2019-10-21 10:39:00.389 UTC: 	 Caught exception
+Traceback (most recent call last):
+  File "/cvmfs/cms.cern.ch/crab3/slc6_amd64_gcc493/cms/crabclient/3.3.1909/bin/crab", line 160, in <module>
+    client()
+  File "/cvmfs/cms.cern.ch/crab3/slc6_amd64_gcc493/cms/crabclient/3.3.1909/bin/crab", line 145, in __call__
+    self.cmd = sub_cmd(self.logger, args[1:])
+  File "/cvmfs/cms.cern.ch/crab3/slc6_amd64_gcc493/cms/crabclient/3.3.1909/lib/python2.7/site-packages/CRABClient/Commands/submit.py", line 34, in __init__
+    SubCommand.__init__(self, logger, cmdargs, disable_interspersed_args=True)
+  File "/cvmfs/cms.cern.ch/crab3/slc6_amd64_gcc493/cms/crabclient/3.3.1909/lib/python2.7/site-packages/CRABClient/Commands/SubCommand.py", line 305, in __init__
+    self.proxyCreated = self.proxy.createNewVomsProxySimple(timeLeftThreshold = 720)
+  File "/cvmfs/cms.cern.ch/crab3/slc6_amd64_gcc493/cms/crabclient/3.3.1909/lib/python2.7/site-packages/CRABClient/CredentialInteractions.py", line 126, in createNewVomsProxySimple
+    raise ProxyCreationException("Problems creating proxy.")
+ProxyCreationException: Problems creating proxy.
+DEBUG 2019-10-22 14:27:38.420 UTC: 	 Running on: Linux lxplus736.cern.ch 3.10.0-1062.1.1.el7.x86_64 #1 SMP Fri Sep 13 22:55:44 UTC 2019 x86_64 x86_64 x86_64 GNU/Linux
+Description:	CentOS Linux release 7.7.1908 (Core) 
+
+DEBUG 2019-10-22 14:27:38.420 UTC: 	 Executing command: 'submit'
+DEBUG 2019-10-22 14:27:38.424 UTC: 	 Found CRAB cache file /afs/cern.ch/user/k/khurana/.crab3
+DEBUG 2019-10-22 14:27:38.477 UTC: 	 Checking credentials
+DEBUG 2019-10-22 14:27:38.478 UTC: 	 Proxy file /tmp/x509up_u55959 not found
+DEBUG 2019-10-22 14:27:38.479 UTC: 	 Creating new proxy for 24:00 hours with VO group '' and VO role 'NULL'.
+DEBUG 2019-10-22 14:33:20.769 UTC: 	 Executing : 
+ command : voms-proxy-init -voms cms:/cms -valid 24:00 -rfc
+ output : None
+ error: None
+ retcode : 1
+DEBUG 2019-10-22 14:33:23.379 UTC: 	 Executing : 
+ command : voms-proxy-info -file /tmp/x509up_u55959 -timeleft
+ output : 
+ error: Proxy not found: /tmp/x509up_u55959 (No such file or directory)
+
+ retcode : 1
+ERROR 2019-10-22 14:33:23.380 UTC: 	 Error while checking proxy timeleft for /tmp/x509up_u55959
+DEBUG 2019-10-22 14:33:24.530 UTC: 	 Executing : 
+ command : env X509_USER_PROXY=/tmp/x509up_u55959 voms-proxy-info -fqan
+ output : 
+ error: Proxy not found: /tmp/x509up_u55959 (No such file or directory)
+
+ retcode : 1
+ERROR 2019-10-22 14:33:24.531 UTC: 	 Problems creating proxy.
+ERROR 2019-10-22 14:33:24.531 UTC: 	 Caught exception
+Traceback (most recent call last):
+  File "/cvmfs/cms.cern.ch/crab3/slc7_amd64_gcc630/cms/crabclient/3.3.1910.patch1/bin/crab", line 160, in <module>
+    client()
+  File "/cvmfs/cms.cern.ch/crab3/slc7_amd64_gcc630/cms/crabclient/3.3.1910.patch1/bin/crab", line 145, in __call__
+    self.cmd = sub_cmd(self.logger, args[1:])
+  File "/cvmfs/cms.cern.ch/crab3/slc7_amd64_gcc630/cms/crabclient/3.3.1910.patch1/lib/python2.7/site-packages/CRABClient/Commands/submit.py", line 34, in __init__
+    SubCommand.__init__(self, logger, cmdargs, disable_interspersed_args=True)
+  File "/cvmfs/cms.cern.ch/crab3/slc7_amd64_gcc630/cms/crabclient/3.3.1910.patch1/lib/python2.7/site-packages/CRABClient/Commands/SubCommand.py", line 299, in __init__
+    self.proxyCreated = self.proxy.createNewVomsProxySimple(timeLeftThreshold = 720)
+  File "/cvmfs/cms.cern.ch/crab3/slc7_amd64_gcc630/cms/crabclient/3.3.1910.patch1/lib/python2.7/site-packages/CRABClient/CredentialInteractions.py", line 126, in createNewVomsProxySimple
+    raise ProxyCreationException("Problems creating proxy.")
+ProxyCreationException: Problems creating proxy.
+DEBUG 2019-10-22 14:33:37.567 UTC: 	 Running on: Linux lxplus736.cern.ch 3.10.0-1062.1.1.el7.x86_64 #1 SMP Fri Sep 13 22:55:44 UTC 2019 x86_64 x86_64 x86_64 GNU/Linux
+Description:	CentOS Linux release 7.7.1908 (Core) 
+
+DEBUG 2019-10-22 14:33:37.567 UTC: 	 Executing command: 'submit'
+DEBUG 2019-10-22 14:33:37.567 UTC: 	 Found CRAB cache file /afs/cern.ch/user/k/khurana/.crab3
+DEBUG 2019-10-22 14:33:37.581 UTC: 	 Checking credentials
+DEBUG 2019-10-22 14:33:37.581 UTC: 	 Proxy file /tmp/x509up_u55959 not found
+DEBUG 2019-10-22 14:33:37.581 UTC: 	 Creating new proxy for 24:00 hours with VO group '' and VO role 'NULL'.
+DEBUG 2019-10-22 14:34:04.145 UTC: 	 Executing : 
+ command : voms-proxy-init -voms cms:/cms -valid 24:00 -rfc
+ output : None
+ error: None
+ retcode : 1
+DEBUG 2019-10-22 14:34:04.762 UTC: 	 Executing : 
+ command : voms-proxy-info -file /tmp/x509up_u55959 -timeleft
+ output : 
+ error: Proxy not found: /tmp/x509up_u55959 (No such file or directory)
+
+ retcode : 1
+ERROR 2019-10-22 14:34:04.762 UTC: 	 Error while checking proxy timeleft for /tmp/x509up_u55959
+DEBUG 2019-10-22 14:34:05.382 UTC: 	 Executing : 
+ command : env X509_USER_PROXY=/tmp/x509up_u55959 voms-proxy-info -fqan
+ output : 
+ error: Proxy not found: /tmp/x509up_u55959 (No such file or directory)
+
+ retcode : 1
+ERROR 2019-10-22 14:34:05.382 UTC: 	 Problems creating proxy.
+ERROR 2019-10-22 14:34:05.383 UTC: 	 Caught exception
+Traceback (most recent call last):
+  File "/cvmfs/cms.cern.ch/crab3/slc7_amd64_gcc630/cms/crabclient/3.3.1910.patch1/bin/crab", line 160, in <module>
+    client()
+  File "/cvmfs/cms.cern.ch/crab3/slc7_amd64_gcc630/cms/crabclient/3.3.1910.patch1/bin/crab", line 145, in __call__
+    self.cmd = sub_cmd(self.logger, args[1:])
+  File "/cvmfs/cms.cern.ch/crab3/slc7_amd64_gcc630/cms/crabclient/3.3.1910.patch1/lib/python2.7/site-packages/CRABClient/Commands/submit.py", line 34, in __init__
+    SubCommand.__init__(self, logger, cmdargs, disable_interspersed_args=True)
+  File "/cvmfs/cms.cern.ch/crab3/slc7_amd64_gcc630/cms/crabclient/3.3.1910.patch1/lib/python2.7/site-packages/CRABClient/Commands/SubCommand.py", line 299, in __init__
+    self.proxyCreated = self.proxy.createNewVomsProxySimple(timeLeftThreshold = 720)
+  File "/cvmfs/cms.cern.ch/crab3/slc7_amd64_gcc630/cms/crabclient/3.3.1910.patch1/lib/python2.7/site-packages/CRABClient/CredentialInteractions.py", line 126, in createNewVomsProxySimple
+    raise ProxyCreationException("Problems creating proxy.")
+ProxyCreationException: Problems creating proxy.
+DEBUG 2019-10-22 14:34:07.350 UTC: 	 Running on: Linux lxplus736.cern.ch 3.10.0-1062.1.1.el7.x86_64 #1 SMP Fri Sep 13 22:55:44 UTC 2019 x86_64 x86_64 x86_64 GNU/Linux
+Description:	CentOS Linux release 7.7.1908 (Core) 
+
+DEBUG 2019-10-22 14:34:07.350 UTC: 	 Executing command: 'submit'
+DEBUG 2019-10-22 14:34:07.351 UTC: 	 Found CRAB cache file /afs/cern.ch/user/k/khurana/.crab3
+DEBUG 2019-10-22 14:34:07.362 UTC: 	 Checking credentials
+DEBUG 2019-10-22 14:34:07.362 UTC: 	 Proxy file /tmp/x509up_u55959 not found
+DEBUG 2019-10-22 14:34:07.362 UTC: 	 Creating new proxy for 24:00 hours with VO group '' and VO role 'NULL'.
+DEBUG 2019-10-22 14:34:20.739 UTC: 	 Executing : 
+ command : voms-proxy-init -voms cms:/cms -valid 24:00 -rfc
+ output : None
+ error: None
+ retcode : 0
+DEBUG 2019-10-22 14:34:21.650 UTC: 	 Executing : 
+ command : voms-proxy-info -file /tmp/x509up_u55959 -timeleft
+ output : 86397
+
+ error: 
+ retcode : 0
+DEBUG 2019-10-22 14:34:22.459 UTC: 	 Executing : 
+ command : voms-proxy-info -file /tmp/x509up_u55959 -actimeleft
+ output : 86396
+
+ error: 
+ retcode : 0
+DEBUG 2019-10-22 14:34:22.459 UTC: 	 Proxy lifetime 86397 secs is different from voms extension lifetime 86396 secs for proxy: /tmp/x509up_u55959
+DEBUG 2019-10-22 14:34:23.168 UTC: 	 Executing : 
+ command : env X509_USER_PROXY=/tmp/x509up_u55959 voms-proxy-info -fqan
+ output : /cms/Role=NULL/Capability=NULL
+
+ error: 
+ retcode : 0
+DEBUG 2019-10-22 14:34:23.168 UTC: 	 Proxy created.
+INFO 2019-10-22 14:34:23.168 UTC: 	 Will use CRAB configuration file crabConfig.py
+DEBUG 2019-10-22 14:34:23.168 UTC: 	 Loading CRAB configuration file.
+DEBUG 2019-10-22 14:34:23.194 UTC: 	 Will use CRAB Analysis plugin (i.e. will run an analysis job type).
+ERROR 2019-10-22 14:34:23.196 UTC: 	 Working area '/afs/cern.ch/work/k/khurana/L1Prefiring/EDAnalyzer/CMSSW_10_2_1/src/L1Prefiring/PrefiringTuplizer/scripts/crab_projects/crab_prefiringanalysis2017_V3' already exists 
+Please change the requestName in the config file
+ERROR 2019-10-22 14:34:23.196 UTC: 	 Caught exception
+Traceback (most recent call last):
+  File "/cvmfs/cms.cern.ch/crab3/slc7_amd64_gcc630/cms/crabclient/3.3.1910.patch1/bin/crab", line 160, in <module>
+    client()
+  File "/cvmfs/cms.cern.ch/crab3/slc7_amd64_gcc630/cms/crabclient/3.3.1910.patch1/bin/crab", line 145, in __call__
+    self.cmd = sub_cmd(self.logger, args[1:])
+  File "/cvmfs/cms.cern.ch/crab3/slc7_amd64_gcc630/cms/crabclient/3.3.1910.patch1/lib/python2.7/site-packages/CRABClient/Commands/submit.py", line 34, in __init__
+    SubCommand.__init__(self, logger, cmdargs, disable_interspersed_args=True)
+  File "/cvmfs/cms.cern.ch/crab3/slc7_amd64_gcc630/cms/crabclient/3.3.1910.patch1/lib/python2.7/site-packages/CRABClient/Commands/SubCommand.py", line 309, in __init__
+    getattr(self.configuration.General, 'requestName', None))
+  File "/cvmfs/cms.cern.ch/crab3/slc7_amd64_gcc630/cms/crabclient/3.3.1910.patch1/lib/python2.7/site-packages/CRABClient/ClientUtilities.py", line 413, in createWorkArea
+    raise ConfigException("Working area '%s' already exists \nPlease change the requestName in the config file" % fullpath)
+ConfigException: Working area '/afs/cern.ch/work/k/khurana/L1Prefiring/EDAnalyzer/CMSSW_10_2_1/src/L1Prefiring/PrefiringTuplizer/scripts/crab_projects/crab_prefiringanalysis2017_V3' already exists 
+Please change the requestName in the config file

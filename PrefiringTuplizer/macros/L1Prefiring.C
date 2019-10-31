@@ -20,7 +20,6 @@
 
 /*
  Author: Raman Khurana
-
 */
 
 
@@ -106,81 +105,49 @@ struct EcalTPGVariables
   int iMaskedRCTcrate[100] ;
   */
   
-  /*
-  
-  UInt_t nbOfL1IsoCands ;
-  int L1IsoIeta[8] ;
-  int L1IsoIphi[8] ;
-  int L1IsoRank[8] ; 
-  UInt_t nbOfL1NonisoCands ;
-  int L1NonisoIeta[8] ;
-  int L1NonisoIphi[8] ;
-  int L1NonisoRank[8] ; 
-   
-  UInt_t nbOfL1preIsoCands ;
-  int L1preIsoIeta[8] ;
-  int L1preIsoIphi[8] ;
-  int L1preIsoRank[8] ; 
-  UInt_t nbOfL1preNonisoCands ;
-  int L1preNonisoIeta[8] ;
-  int L1preNonisoIphi[8] ;
-  int L1preNonisoRank[8] ; 
-   
-  UInt_t nbOfL1postIsoCands ;
-  int L1postIsoIeta[8] ;
-  int L1postIsoIphi[8] ;
-  int L1postIsoRank[8] ; 
-  UInt_t nbOfL1postNonisoCands ;
-  int L1postNonisoIeta[8] ;
-  int L1postNonisoIphi[8] ;
-  int L1postNonisoRank[8] ; 
-  */
 
+  // new branches isolated and non isolated candidates, older ones are removed. 
   
-  
-  // new branches 
-
-
   UInt_t          nbOfL1preNonisoCandsm2;
   Int_t           L1preNonisoIetam2[9]; 
   Int_t           L1preNonisoIphim2[9]; 
-  Int_t           L1preNonisoRankm2[9]; 
+  Int_t           L1preNonisoEnergym2[9]; 
   UInt_t          nbOfL1preIsoCandsm2;
   Int_t           L1preIsoIetam2[12];   
   Int_t           L1preIsoIphim2[12];   
-  Int_t           L1preIsoRankm2[12];   
+  Int_t           L1preIsoEnergym2[12];   
   UInt_t          nbOfL1preNonisoCandsm1;
   Int_t           L1preNonisoIetam1[10];
   Int_t           L1preNonisoIphim1[10];
-  Int_t           L1preNonisoRankm1[10];
+  Int_t           L1preNonisoEnergym1[10];
   UInt_t          nbOfL1preIsoCandsm1;
   Int_t           L1preIsoIetam1[12];   
   Int_t           L1preIsoIphim1[12];   
-  Int_t           L1preIsoRankm1[12];   
+  Int_t           L1preIsoEnergym1[12];   
   UInt_t          nbOfL1preNonisoCandszero;
   Int_t           L1preNonisoIetazero[10];
   Int_t           L1preNonisoIphizero[10];
-  Int_t           L1preNonisoRankzero[10];
+  Int_t           L1preNonisoEnergyzero[10];
   UInt_t          nbOfL1preIsoCandszero;
   Int_t           L1preIsoIetazero[12];   
   Int_t           L1preIsoIphizero[12];   
-  Int_t           L1preIsoRankzero[12];   
+  Int_t           L1preIsoEnergyzero[12];   
   UInt_t          nbOfL1preNonisoCandsp1;
   Int_t           L1preNonisoIetap1[9];   
   Int_t           L1preNonisoIphip1[9];   
-  Int_t           L1preNonisoRankp1[9];   
+  Int_t           L1preNonisoEnergyp1[9];   
   UInt_t          nbOfL1preIsoCandsp1;
   Int_t           L1preIsoIetap1[12];   
   Int_t           L1preIsoIphip1[12];   
-  Int_t           L1preIsoRankp1[12];   
+  Int_t           L1preIsoEnergyp1[12];   
   UInt_t          nbOfL1preNonisoCandsp2;
   Int_t           L1preNonisoIetap2[9]; 
   Int_t           L1preNonisoIphip2[9]; 
-  Int_t           L1preNonisoRankp2[9]; 
+  Int_t           L1preNonisoEnergyp2[9]; 
   UInt_t          nbOfL1preIsoCandsp2;
   Int_t           L1preIsoIetap2[12];   
   Int_t           L1preIsoIphip2[12];   
-  Int_t           L1preIsoRankp2[12];   
+  Int_t           L1preIsoEnergyp2[12];   
 
   
 } ;
@@ -412,98 +379,58 @@ void setBranchAddresses (TChain * chain, EcalTPGVariables & treeVars)
   chain->SetBranchAddress ("iMaskedRCTphi", treeVars.iMaskedRCTphi);//
   */
   
-  /*
-  chain->SetBranchAddress ("nbOfL1IsoCands",&treeVars.nbOfL1IsoCands); //
-  chain->SetBranchAddress ("L1IsoIeta", treeVars.L1IsoIeta);//
-  chain->SetBranchAddress ("L1IsoIphi", treeVars.L1IsoIphi);//
-  chain->SetBranchAddress ("L1IsoRank", treeVars.L1IsoRank);//
-   
-  chain->SetBranchAddress ("nbOfL1NonisoCands",&treeVars.nbOfL1NonisoCands); //
-  chain->SetBranchAddress ("L1NonisoIeta", treeVars.L1NonisoIeta);//
-  chain->SetBranchAddress ("L1NonisoIphi", treeVars.L1NonisoIphi);//
-  chain->SetBranchAddress ("L1NonisoRank", treeVars.L1NonisoRank);//
-   
-  chain->SetBranchAddress ("nbOfL1preIsoCands",&treeVars.nbOfL1preIsoCands); //
-  chain->SetBranchAddress ("L1preIsoIeta", treeVars.L1preIsoIeta);//
-  chain->SetBranchAddress ("L1preIsoIphi", treeVars.L1preIsoIphi);//
-  chain->SetBranchAddress ("L1preIsoRank", treeVars.L1preIsoRank);//
-   
-  chain->SetBranchAddress ("nbOfL1preNonisoCands",&treeVars.nbOfL1preNonisoCands); //
-  chain->SetBranchAddress ("L1preNonisoIeta", treeVars.L1preNonisoIeta);//
-  chain->SetBranchAddress ("L1preNonisoIphi", treeVars.L1preNonisoIphi);//
-  chain->SetBranchAddress ("L1preNonisoRank", treeVars.L1preNonisoRank);//
-   
-  chain->SetBranchAddress ("nbOfL1postIsoCands",&treeVars.nbOfL1postIsoCands); //
-  chain->SetBranchAddress ("L1postIsoIeta", treeVars.L1postIsoIeta);//
-  chain->SetBranchAddress ("L1postIsoIphi", treeVars.L1postIsoIphi);//
-  chain->SetBranchAddress ("L1postIsoRank", treeVars.L1postIsoRank);//
-   
-  chain->SetBranchAddress ("nbOfL1postNonisoCands",&treeVars.nbOfL1postNonisoCands); //
-  chain->SetBranchAddress ("L1postNonisoIeta", treeVars.L1postNonisoIeta);//
-  chain->SetBranchAddress ("L1postNonisoIphi", treeVars.L1postNonisoIphi);//
-  chain->SetBranchAddress ("L1postNonisoRank", treeVars.L1postNonisoRank);//
-  */
-  
   // new variables 
   
   chain->SetBranchAddress("b_nonisocounterm2", &treeVars.nbOfL1preNonisoCandsm2);
   chain->SetBranchAddress("b_L1preNonisoIetam2", treeVars.L1preNonisoIetam2);
   chain->SetBranchAddress("b_L1preNonisoIphim2", treeVars.L1preNonisoIphim2);
-  chain->SetBranchAddress("b_L1preNonisoRankm2", treeVars.L1preNonisoRankm2);
+  chain->SetBranchAddress("b_L1preNonisoEnergym2", treeVars.L1preNonisoEnergym2);
   chain->SetBranchAddress("b_isocounterm2", &treeVars.nbOfL1preIsoCandsm2);
   chain->SetBranchAddress("b_L1preIsoIetam2", treeVars.L1preIsoIetam2);
   chain->SetBranchAddress("b_L1preIsoIphim2", treeVars.L1preIsoIphim2);
-  chain->SetBranchAddress("b_L1preIsoRankm2", treeVars.L1preIsoRankm2);
+  chain->SetBranchAddress("b_L1preIsoEnergym2", treeVars.L1preIsoEnergym2);
   
   chain->SetBranchAddress("b_nonisocounterm1", &treeVars.nbOfL1preNonisoCandsm1);
   chain->SetBranchAddress("b_L1preNonisoIetam1", treeVars.L1preNonisoIetam1);
   chain->SetBranchAddress("b_L1preNonisoIphim1", treeVars.L1preNonisoIphim1);
-  chain->SetBranchAddress("b_L1preNonisoRankm1", treeVars.L1preNonisoRankm1);
+  chain->SetBranchAddress("b_L1preNonisoEnergym1", treeVars.L1preNonisoEnergym1);
   chain->SetBranchAddress("b_isocounterm1", &treeVars.nbOfL1preIsoCandsm1);
   chain->SetBranchAddress("b_L1preIsoIetam1", treeVars.L1preIsoIetam1);
   chain->SetBranchAddress("b_L1preIsoIphim1", treeVars.L1preIsoIphim1);
-  chain->SetBranchAddress("b_L1preIsoRankm1", treeVars.L1preIsoRankm1);
+  chain->SetBranchAddress("b_L1preIsoEnergym1", treeVars.L1preIsoEnergym1);
   
   chain->SetBranchAddress("b_nonisocounterzero", &treeVars.nbOfL1preNonisoCandszero);
   chain->SetBranchAddress("b_L1preNonisoIetazero", treeVars.L1preNonisoIetazero);
   chain->SetBranchAddress("b_L1preNonisoIphizero", treeVars.L1preNonisoIphizero);
-  chain->SetBranchAddress("b_L1preNonisoRankzero", treeVars.L1preNonisoRankzero);
+  chain->SetBranchAddress("b_L1preNonisoEnergyzero", treeVars.L1preNonisoEnergyzero);
   chain->SetBranchAddress("b_isocounterzero", &treeVars.nbOfL1preIsoCandszero);
   chain->SetBranchAddress("b_L1preIsoIetazero", treeVars.L1preIsoIetazero);
   chain->SetBranchAddress("b_L1preIsoIphizero", treeVars.L1preIsoIphizero);
-  chain->SetBranchAddress("b_L1preIsoRankzero", treeVars.L1preIsoRankzero);
+  chain->SetBranchAddress("b_L1preIsoEnergyzero", treeVars.L1preIsoEnergyzero);
   
   chain->SetBranchAddress("b_nonisocounterp1", &treeVars.nbOfL1preNonisoCandsp1);
   chain->SetBranchAddress("b_L1preNonisoIetap1", treeVars.L1preNonisoIetap1);
   chain->SetBranchAddress("b_L1preNonisoIphip1", treeVars.L1preNonisoIphip1);
-  chain->SetBranchAddress("b_L1preNonisoRankp1", treeVars.L1preNonisoRankp1);
+  chain->SetBranchAddress("b_L1preNonisoEnergyp1", treeVars.L1preNonisoEnergyp1);
   chain->SetBranchAddress("b_isocounterp1", &treeVars.nbOfL1preIsoCandsp1);
   chain->SetBranchAddress("b_L1preIsoIetap1", treeVars.L1preIsoIetap1);
   chain->SetBranchAddress("b_L1preIsoIphip1", treeVars.L1preIsoIphip1);
-  chain->SetBranchAddress("b_L1preIsoRankp1", treeVars.L1preIsoRankp1);
+  chain->SetBranchAddress("b_L1preIsoEnergyp1", treeVars.L1preIsoEnergyp1);
   
   chain->SetBranchAddress("b_nonisocounterp2", &treeVars.nbOfL1preNonisoCandsp2);
   chain->SetBranchAddress("b_L1preNonisoIetap2", treeVars.L1preNonisoIetap2);
   chain->SetBranchAddress("b_L1preNonisoIphip2", treeVars.L1preNonisoIphip2);
-  chain->SetBranchAddress("b_L1preNonisoRankp2", treeVars.L1preNonisoRankp2);
+  chain->SetBranchAddress("b_L1preNonisoEnergyp2", treeVars.L1preNonisoEnergyp2);
   chain->SetBranchAddress("b_isocounterp2", &treeVars.nbOfL1preIsoCandsp2);
   chain->SetBranchAddress("b_L1preIsoIetap2", treeVars.L1preIsoIetap2);
   chain->SetBranchAddress("b_L1preIsoIphip2", treeVars.L1preIsoIphip2);
-  chain->SetBranchAddress("b_L1preIsoRankp2", treeVars.L1preIsoRankp2);
+  chain->SetBranchAddress("b_L1preIsoEnergyp2", treeVars.L1preIsoEnergyp2);
 
   
   /*
   chain->SetBranchAddress("", & , ) ; 
   chain->SetBranchAddress("", , ) ;
-  chain->SetBranchAddress("", , ) ;
-  chain->SetBranchAddress("", , ) ;
   
-  chain->SetBranchAddress("", , ) ;
-  chain->SetBranchAddress("", , ) ;
-
-  chain->SetBranchAddress("", & , ) ; 
-  
-  chain->SetBranchAddress("", , ) ;
   */
   
 }
@@ -538,23 +465,14 @@ void L1Prefiring(int threshold=16)
   // input TPGTree file
   
   TString inputrootfile;
-  //if (is2017)  inputrootfile = "/eos/cms/store/user/pbarria/TPG/ECALTPGTree_ZeroBias2_Run2017F-Run306425_RAW-RECO.root"; // 2017 with prefiring 
+  //if (is2017)  inputrootfile = "/eos/cms/store/user/khurana//ZeroBias2/crab_prefiringanalysis2017_V1/190510_225110/0000/Merged_2017.root"; //2017 with prefiring
+  if (is2017)  inputrootfile = "/eos/cms/store/user/khurana/ZeroBias2/crab_prefiringanalysis2017_V3/191021_125514/0000/Merged_Histo_L1Prefiring.root"; // 2017 with prefiring after replacing the RANK var with Energy
   
-  // rerun wioth fixed branches 
-  //if (is2017)  inputrootfile = "/eos/cms/store/user/khurana//Shalini/Run_2017/Merged_2017Data.root"; // 2017 with prefiring 
-  //if (is2017)  inputrootfile = "../Histo_L1Prefiring.root"; //2017 with prefiring
-  if (is2017)  inputrootfile = "/eos/cms/store/user/khurana//ZeroBias2/crab_prefiringanalysis2017_V1/190510_225110/0000/Merged_2017.root"; //2017 with prefiring
-  
-  //if (!is2017) inputrootfile = "/afs/cern.ch/user/s/sdutt/work/public/ECALTPGTree_subset.root" ;                          // 2018 without prefiring, full readout 
-  //if (!is2017) inputrootfile = "/eos/cms/store/user/khurana/ECAL/TPGAnalysis/Merged_ECALTPGtree.root" ;                          // 2018 without prefiring, full readout 
-  
-  //if (!is2017) inputrootfile = "/eos/cms/store/user/khurana//Shalini/Run_2018/Merged_2018.root";
   if (!is2017) inputrootfile = "/eos/cms/store/user/khurana/ZeroBias1/crab_prefiringanalysis2018_V1/190509_091144/0000/Merged_2018.root";
   
   
   chain->Add(inputrootfile);
   
-  //std::cout<<" file accessed "<<std::endl;
 
   // if set to true: print debug info on matched and unmatched towers
   
@@ -618,12 +536,17 @@ void L1Prefiring(int threshold=16)
   TH2F* egidx_ttidx_NonIso_dr_   = new TH2F("egidx_ttidx_NonIso_dr_","egidx_ttidx_NonIso_dr_", 5,-2.5,2.5,5,-2.5,2.5);
 
 
-  TH2F* egidx_ttidx_Iso_bin_[4];  
-  TH2F* egidx_ttidx_Iso_dr_bin_[4];  
-  TH2F* egidx_ttidx_NonIso_bin_[4];  
-  TH2F* egidx_ttidx_NonIso_dr_bin_[4];
+  TH2F* DE_vs_DR_Iso_  = new TH2F("DE_vs_DR_Iso_","DE_vs_DR_Iso_",100,-0.05,0.15, 10, 0,10 );
   
-  for (int i=0; i<4; i++){
+      
+  TH2F* egidx_ttidx_Iso_bin_[3];  
+  TH2F* egidx_ttidx_Iso_dr_bin_[3];  
+  TH2F* egidx_ttidx_NonIso_bin_[3];  
+  TH2F* egidx_ttidx_NonIso_dr_bin_[3];
+  
+  
+  
+  for (int i=0; i<3; i++){
     TString postname;
     postname.Form("%d",i+26);
     
@@ -740,16 +663,6 @@ void L1Prefiring(int threshold=16)
     
     if (entry%5000==0) cout << entry << " / " << treeentries
 			    << " events processed" << endl;
-    // for 2018: 4, 257, 336, 415, 811, 1151, 1230, 1309,  2045, 2124, 2302, 2596, 2939, 3117, 3097
-    //     for 2017: 3, 46, 58, 70, 82, 121, 133, 145, 157, 172, 184, 196, 208, 223, 235, 247, 259, 274, 286, 298, 310, 349, 361, 373, 385, 400, 412, 424, 436, 451, 463, 475, 487, 502, 514, 526, 538, 577,
-    // 589, 601, 613, 628, 640, 652, 664, 679, 691, 703, 715, 730, 742, 754, 766, 826, 838, 850, 862, 877, 889, 901, 913, 928, 940, 952, 964, 1003, 1015, 1027, 1039, 1054, 1066, 1078, 1090, 1105, 1117, 1129,
-    // 1141, 1156, 1168, 1180, 1192, 1231, 1243, 1255, 1267, 1282, 1294, 1306, 1318, 1333, 1345, 1357, 1369, 1384, 1396, 1408, 1420, 1459, 1471, 1483, 1495, 1510, 1522, 1534, 1546, 1561, 1573, 1585, 1597, 
-    //1612, 1624, 1636, 1648, 1720, 1732, 1744, 1756, 1771, 1783, 1795, 1807, 1822, 1834, 1846, 1858, 1897, 1909, 1921, 1933, 1948, 1960, 1972, 1984, 1999, 2011, 2023, 2035, 2050, 2062, 2074, 2086, 2125, 
-    //2137, 2149, 2161, 2176, 2188, 2200, 2212, 2227, 2239, 2251, 2263, 2278, 2290, 2302, 2314, 2353, 2365, 2377, 2389, 2404, 2416, 2428, 2440, 2455, 2467, 2479, 2491, 2506, 2518, 2530, 2542, 2614, 2626, 
-    //2638, 2650, 2665, 2677, 2689, 2701, 2716, 2728, 2740, 2752, 2791, 2803, 2815, 2827, 2842, 2854, 2866, 2878, 2893, 2905, 2917, 2929, 2944, 2956, 2968, 2980, 3019, 3031, 3043, 3055, 3070, 3082, 3094,
-    // 3106, 3121, 3133, 3145, 3157, 3172, 3184, 3196, 3208, 3247, 3259, 3271, 3283, 3298, 3310, 3322, 3334, 3349, 3361, 3373, 3385, 3400, 3412, 3424, 3436, 
-    
-
 
     bool goodBX = false;
     
@@ -759,7 +672,7 @@ void L1Prefiring(int threshold=16)
     if (!is2017) goodBX =  ( (treeVars.bxNb == 4) || (treeVars.bxNb ==257) || (treeVars.bxNb ==336) ||(treeVars.bxNb ==415) ||(treeVars.bxNb ==811) ||(treeVars.bxNb ==1151) ||(treeVars.bxNb ==1230) ||(treeVars.bxNb ==1309) ||(treeVars.bxNb ==2045) ||(treeVars.bxNb ==2124) ||(treeVars.bxNb ==2302) ||(treeVars.bxNb ==2596) ||(treeVars.bxNb ==2939) ||(treeVars.bxNb ==3117) ||(treeVars.bxNb ==3097) ); 
 
     
-
+    
 
     //std::cout<<"  ------------------------------------------------------------------------------------ ------------------------------------------------------------------------------------ \n"<<std::endl;
     
@@ -770,6 +683,8 @@ void L1Prefiring(int threshold=16)
     UInt_t bxNb = treeVars.bxNb;;
     UInt_t lumiBlock = treeVars.lumiBlock;
  
+    
+    // since the tuploizer now have the information about the begining of the bunch crossing, therefore the flag goodBX can be set to true in next iteration and the results can be compared. 
     if (goodBX)    {
 
     for (UInt_t tower = 0 ; tower < treeVars.nbOfTowers ; tower++) {
@@ -969,21 +884,12 @@ void L1Prefiring(int threshold=16)
     
     
 
-    bool debug__ = false; 
-    /*
-    // commoin prin
-    if (treeVars.nbOfL1IsoCands>0 || treeVars.nbOfL1NonisoCands > 0 || treeVars.nbOfL1preIsoCands >0 || treeVars.nbOfL1preNonisoCands > 0 || treeVars.nbOfL1postIsoCands > 0 || treeVars.nbOfL1postNonisoCands) {
-      if(debug__) std::cout<<"number of nbOfL1IsoCands "<<treeVars.nbOfL1IsoCands
-	       <<" nbOfL1NonisoCands "<<treeVars.nbOfL1NonisoCands
-	       <<" nbOfL1preIsoCands "<<treeVars.nbOfL1preIsoCands
-	       <<" nbOfL1preNonisoCands "<<treeVars.nbOfL1preNonisoCands
-	       <<" nbOfL1postIsoCands "<<treeVars.nbOfL1postIsoCands
-	       <<" nbOfL1postNonisoCands "<<treeVars.nbOfL1postNonisoCands
-	       <<std::endl;
-      
-    }
-    */
+    bool debug__ = true; 
+
     
+    // ------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+    // ---------------------Fill in all relevant information about the prefiring, postfiring, and intime bunches for both isolated and nonisolated e-gamma objects. -----------
+    // ------------------------------------------------------------------------------------------------------------------------------------------------------------------------
     
     // prefiring isolated -2
     if (treeVars.nbOfL1preIsoCandsm2>0) {
@@ -991,7 +897,7 @@ void L1Prefiring(int threshold=16)
 	if(debug__) std::cout<<" Isolated pre EGamma cadidates number "<<iNL1preIsom2
 		 <<" eta = "<<treeVars.L1preIsoIetam2[iNL1preIsom2]
 		 <<" phi = "<<treeVars.L1preIsoIphim2[iNL1preIsom2]
-		 <<" energy = "<<treeVars.L1preIsoRankm2[iNL1preIsom2]
+		 <<" energy = "<<treeVars.L1preIsoEnergym2[iNL1preIsom2]
 		 <<std::endl;
 	ieta_vs_idx_L1Iso->Fill(1, treeVars.L1preIsoIetam2[iNL1preIsom2]);
 	ieta_vs_idx_L1Iso_binFix->Fill(1, (63./28.)*treeVars.L1preIsoIetam2[iNL1preIsom2] );
@@ -1000,7 +906,7 @@ void L1Prefiring(int threshold=16)
 	egcandidateIso.eta = treeVars.L1preIsoIetam2[iNL1preIsom2];
 	egcandidateIso.phi = treeVars.L1preIsoIphim2[iNL1preIsom2];
 	egcandidateIso.idx = -2;
-	egcandidateIso.energy = treeVars.L1preIsoRankm2[iNL1preIsom2];
+	egcandidateIso.energy = treeVars.L1preIsoEnergym2[iNL1preIsom2];
 	egcandidateIsoVector.push_back(egcandidateIso);
 	
 	
@@ -1020,7 +926,7 @@ void L1Prefiring(int threshold=16)
 	if(debug__) std::cout<<" Isolated pre EGamma cadidates number "<<iNL1preIsom1
 		 <<" eta = "<<treeVars.L1preIsoIetam1[iNL1preIsom1]
 		 <<" phi = "<<treeVars.L1preIsoIphim1[iNL1preIsom1]
-		 <<" energy = "<<treeVars.L1preIsoRankm1[iNL1preIsom1]
+		 <<" energy = "<<treeVars.L1preIsoEnergym1[iNL1preIsom1]
 		 <<std::endl;
 	ieta_vs_idx_L1Iso->Fill(2, treeVars.L1preIsoIetam1[iNL1preIsom1]);
 	ieta_vs_idx_L1Iso_binFix->Fill(2, (63./28.)*treeVars.L1preIsoIetam1[iNL1preIsom1] );
@@ -1029,7 +935,7 @@ void L1Prefiring(int threshold=16)
 	egcandidateIso.eta = treeVars.L1preIsoIetam1[iNL1preIsom1];
 	egcandidateIso.phi = treeVars.L1preIsoIphim1[iNL1preIsom1];
 	egcandidateIso.idx = -1;
-	egcandidateIso.energy = treeVars.L1preIsoRankm1[iNL1preIsom1];
+	egcandidateIso.energy = treeVars.L1preIsoEnergym1[iNL1preIsom1];
 	egcandidateIsoVector.push_back(egcandidateIso);
 	
       }
@@ -1043,7 +949,7 @@ void L1Prefiring(int threshold=16)
 	if(debug__) std::cout<<" Isolated pre EGamma cadidates number "<<iNL1preIsozero
 		 <<" eta = "<<treeVars.L1preIsoIetazero[iNL1preIsozero]
 		 <<" phi = "<<treeVars.L1preIsoIphizero[iNL1preIsozero]
-		 <<" energy = "<<treeVars.L1preIsoRankzero[iNL1preIsozero]
+		 <<" energy = "<<treeVars.L1preIsoEnergyzero[iNL1preIsozero]
 		 <<std::endl;
 	
 	ieta_vs_idx_L1Iso->Fill(3, treeVars.L1preIsoIetazero[iNL1preIsozero]);
@@ -1053,7 +959,7 @@ void L1Prefiring(int threshold=16)
 	egcandidateIso.eta = treeVars.L1preIsoIetazero[iNL1preIsozero];
 	egcandidateIso.phi = treeVars.L1preIsoIphizero[iNL1preIsozero];
 	egcandidateIso.idx = 0;
-	egcandidateIso.energy = treeVars.L1preIsoRankzero[iNL1preIsozero];
+	egcandidateIso.energy = treeVars.L1preIsoEnergyzero[iNL1preIsozero];
 	egcandidateIsoVector.push_back(egcandidateIso);
 	  
       }
@@ -1068,7 +974,7 @@ void L1Prefiring(int threshold=16)
 	if(debug__) std::cout<<" Isolated pre EGamma cadidates number "<<iNL1preIsop1
 		 <<" eta = "<<treeVars.L1preIsoIetap1[iNL1preIsop1]
 		 <<" phi = "<<treeVars.L1preIsoIphip1[iNL1preIsop1]
-		 <<" energy = "<<treeVars.L1preIsoRankp1[iNL1preIsop1]
+		 <<" energy = "<<treeVars.L1preIsoEnergyp1[iNL1preIsop1]
 		 <<std::endl;
 	ieta_vs_idx_L1Iso->Fill(4, treeVars.L1preIsoIetap1[iNL1preIsop1]);
 	ieta_vs_idx_L1Iso_binFix->Fill(4, (63./28.)*treeVars.L1preIsoIetap1[iNL1preIsop1] );
@@ -1077,7 +983,7 @@ void L1Prefiring(int threshold=16)
 	egcandidateIso.eta = treeVars.L1preIsoIetap1[iNL1preIsop1];
 	egcandidateIso.phi = treeVars.L1preIsoIphip1[iNL1preIsop1];
 	egcandidateIso.idx = 1;
-	egcandidateIso.energy = treeVars.L1preIsoRankp1[iNL1preIsop1];
+	egcandidateIso.energy = treeVars.L1preIsoEnergyp1[iNL1preIsop1];
 	egcandidateIsoVector.push_back(egcandidateIso);
 	
       }
@@ -1090,7 +996,7 @@ void L1Prefiring(int threshold=16)
 	if(debug__) std::cout<<" Isolated pre EGamma cadidates number "<<iNL1preIsop2
 		 <<" eta = "<<treeVars.L1preIsoIetap2[iNL1preIsop2]
 		 <<" phi = "<<treeVars.L1preIsoIphip2[iNL1preIsop2]
-		 <<" energy = "<<treeVars.L1preIsoRankp2[iNL1preIsop2]
+		 <<" energy = "<<treeVars.L1preIsoEnergyp2[iNL1preIsop2]
 		 <<std::endl;
 	ieta_vs_idx_L1Iso->Fill(5, treeVars.L1preIsoIetap2[iNL1preIsop2]);
 	ieta_vs_idx_L1Iso_binFix->Fill(5, (63./28.)*treeVars.L1preIsoIetap2[iNL1preIsop2] );
@@ -1099,7 +1005,7 @@ void L1Prefiring(int threshold=16)
 	egcandidateIso.eta = treeVars.L1preIsoIetap2[iNL1preIsop2];
 	egcandidateIso.phi = treeVars.L1preIsoIphip2[iNL1preIsop2];
 	egcandidateIso.idx = 2;
-	egcandidateIso.energy = treeVars.L1preIsoRankp2[iNL1preIsop2];
+	egcandidateIso.energy = treeVars.L1preIsoEnergyp2[iNL1preIsop2];
 	egcandidateIsoVector.push_back(egcandidateIso);
       }
     }
@@ -1118,13 +1024,13 @@ void L1Prefiring(int threshold=16)
     // -----------------  NON Isolated -------------------------------------------------------------------------------------------------------------------------
     // ---------------------------------------------------------------------------------------------------------------------------------------------------------
     // ---------------------------------------------------------------------------------------------------------------------------------------------------------
-    // prefiring isolated -2
+    // prefiring non isolated -2
     if (treeVars.nbOfL1preNonisoCandsm2>0) {
       for (UInt_t iNL1preIsom2 = 0; iNL1preIsom2 < treeVars.nbOfL1preNonisoCandsm2; iNL1preIsom2++) {
 	if(debug__) std::cout<<" Isolated pre EGamma cadidates number "<<iNL1preIsom2
 		 <<" eta = "<<treeVars.L1preNonisoIetam2[iNL1preIsom2]
 		 <<" phi = "<<treeVars.L1preNonisoIphim2[iNL1preIsom2]
-		 <<" energy = "<<treeVars.L1preNonisoRankm2[iNL1preIsom2]
+		 <<" energy = "<<treeVars.L1preNonisoEnergym2[iNL1preIsom2]
 		 <<std::endl;
 	ieta_vs_idx_L1NonIso->Fill(1, treeVars.L1preNonisoIetam2[iNL1preIsom2]);
 	ieta_vs_idx_L1NonIso_binFix->Fill(1, (63./28.)*treeVars.L1preNonisoIetam2[iNL1preIsom2]);
@@ -1133,7 +1039,7 @@ void L1Prefiring(int threshold=16)
 	egcandidateNonIso.eta = treeVars.L1preNonisoIetam2[iNL1preIsom2];
 	egcandidateNonIso.phi = treeVars.L1preNonisoIphim2[iNL1preIsom2];
 	egcandidateNonIso.idx = -2;
-	egcandidateNonIso.energy = treeVars.L1preNonisoRankm2[iNL1preIsom2];
+	egcandidateNonIso.energy = treeVars.L1preNonisoEnergym2[iNL1preIsom2];
 	egcandidateNonIsoVector.push_back(egcandidateNonIso);
 	
       }
@@ -1143,13 +1049,13 @@ void L1Prefiring(int threshold=16)
 
 
     
-    // prefiring isolated -1
+    // prefiring non isolated -1
     if (treeVars.nbOfL1preNonisoCandsm1>0) {
       for (UInt_t iNL1preIsom1 = 0; iNL1preIsom1 < treeVars.nbOfL1preNonisoCandsm1; iNL1preIsom1++) {
 	if(true) std::cout<<" Isolated pre EGamma cadidates number "<<iNL1preIsom1
 		 <<" eta = "<<treeVars.L1preNonisoIetam1[iNL1preIsom1]
 		 <<" phi = "<<treeVars.L1preNonisoIphim1[iNL1preIsom1]
-		 <<" energy = "<<treeVars.L1preNonisoRankm1[iNL1preIsom1]
+		 <<" energy = "<<treeVars.L1preNonisoEnergym1[iNL1preIsom1]
 		 <<std::endl;
 	ieta_vs_idx_L1NonIso->Fill(2, treeVars.L1preNonisoIetam1[iNL1preIsom1]);
 	ieta_vs_idx_L1NonIso_binFix->Fill(2, (63./28.)*treeVars.L1preNonisoIetam1[iNL1preIsom1]);
@@ -1158,7 +1064,7 @@ void L1Prefiring(int threshold=16)
 	egcandidateNonIso.eta = treeVars.L1preNonisoIetam1[iNL1preIsom1];
 	egcandidateNonIso.phi = treeVars.L1preNonisoIphim1[iNL1preIsom1];
 	egcandidateNonIso.idx = -1;
-	egcandidateNonIso.energy = treeVars.L1preNonisoRankm1[iNL1preIsom1];
+	egcandidateNonIso.energy = treeVars.L1preNonisoEnergym1[iNL1preIsom1];
 	egcandidateNonIsoVector.push_back(egcandidateNonIso);
 	
       }
@@ -1166,13 +1072,13 @@ void L1Prefiring(int threshold=16)
     
 
 
-    // in time zero
+    // in time zero non isolated
     if (treeVars.nbOfL1preNonisoCandszero>0) {
       for (UInt_t iNL1preIsozero = 0; iNL1preIsozero < treeVars.nbOfL1preNonisoCandszero; iNL1preIsozero++) {
 	if(debug__) std::cout<<" Isolated pre EGamma cadidates number "<<iNL1preIsozero
 		 <<" eta = "<<treeVars.L1preNonisoIetazero[iNL1preIsozero]
 		 <<" phi = "<<treeVars.L1preNonisoIphizero[iNL1preIsozero]
-		 <<" energy = "<<treeVars.L1preNonisoRankzero[iNL1preIsozero]
+		 <<" energy = "<<treeVars.L1preNonisoEnergyzero[iNL1preIsozero]
 		 <<std::endl;
 	ieta_vs_idx_L1NonIso->Fill(3, treeVars.L1preNonisoIetazero[iNL1preIsozero]);
 	ieta_vs_idx_L1NonIso_binFix->Fill(3, (63./28.)*treeVars.L1preNonisoIetazero[iNL1preIsozero]);
@@ -1181,7 +1087,7 @@ void L1Prefiring(int threshold=16)
 	egcandidateNonIso.eta = treeVars.L1preNonisoIetazero[iNL1preIsozero];
 	egcandidateNonIso.phi = treeVars.L1preNonisoIphizero[iNL1preIsozero];
 	egcandidateNonIso.idx = 0;
-	egcandidateNonIso.energy = treeVars.L1preNonisoRankzero[iNL1preIsozero];
+	egcandidateNonIso.energy = treeVars.L1preNonisoEnergyzero[iNL1preIsozero];
 	egcandidateNonIsoVector.push_back(egcandidateNonIso);
 	
 	
@@ -1189,13 +1095,13 @@ void L1Prefiring(int threshold=16)
     }
     
     
-    // postfiring isolated +1
+    // postfiring non isolated +1
     if (treeVars.nbOfL1preNonisoCandsp1>0) {
       for (UInt_t iNL1preIsop1 = 0; iNL1preIsop1 < treeVars.nbOfL1preNonisoCandsp1; iNL1preIsop1++) {
 	if(debug__) std::cout<<" Isolated pre EGamma cadidates number "<<iNL1preIsop1
 		 <<" eta = "<<treeVars.L1preNonisoIetap1[iNL1preIsop1]
 		 <<" phi = "<<treeVars.L1preNonisoIphip1[iNL1preIsop1]
-		 <<" energy = "<<treeVars.L1preNonisoRankp1[iNL1preIsop1]
+		 <<" energy = "<<treeVars.L1preNonisoEnergyp1[iNL1preIsop1]
 		 <<std::endl;
 	ieta_vs_idx_L1NonIso->Fill(4, treeVars.L1preNonisoIetap1[iNL1preIsop1]);
 	ieta_vs_idx_L1NonIso_binFix->Fill(4, (63./28.)*treeVars.L1preNonisoIetap1[iNL1preIsop1]);
@@ -1204,7 +1110,7 @@ void L1Prefiring(int threshold=16)
 	egcandidateNonIso.eta = treeVars.L1preNonisoIetap1[iNL1preIsop1];
 	egcandidateNonIso.phi = treeVars.L1preNonisoIphip1[iNL1preIsop1];
 	egcandidateNonIso.idx = 1;
-	egcandidateNonIso.energy = treeVars.L1preNonisoRankp1[iNL1preIsop1];
+	egcandidateNonIso.energy = treeVars.L1preNonisoEnergyp1[iNL1preIsop1];
 	egcandidateNonIsoVector.push_back(egcandidateNonIso);
 	
 	
@@ -1212,13 +1118,13 @@ void L1Prefiring(int threshold=16)
     }
     
     
-    // prefiring isolated +2
+    // postfiring non isolated +2
     if (treeVars.nbOfL1preNonisoCandsp2>0) {
       for (UInt_t iNL1preIsop2 = 0; iNL1preIsop2 < treeVars.nbOfL1preNonisoCandsp2; iNL1preIsop2++) {
 	if(debug__) std::cout<<" Isolated pre EGamma cadidates number "<<iNL1preIsop2
 		 <<" eta = "<<treeVars.L1preNonisoIetap2[iNL1preIsop2]
 		 <<" phi = "<<treeVars.L1preNonisoIphip2[iNL1preIsop2]
-		 <<" energy = "<<treeVars.L1preNonisoRankp2[iNL1preIsop2]
+		 <<" energy = "<<treeVars.L1preNonisoEnergyp2[iNL1preIsop2]
 		 <<std::endl;
 	ieta_vs_idx_L1NonIso->Fill(5, treeVars.L1preNonisoIetap2[iNL1preIsop2]);
 	ieta_vs_idx_L1NonIso_binFix->Fill(5, (63./28.)*treeVars.L1preNonisoIetap2[iNL1preIsop2]);
@@ -1227,7 +1133,7 @@ void L1Prefiring(int threshold=16)
 	egcandidateNonIso.eta = treeVars.L1preNonisoIetap2[iNL1preIsop2];
 	egcandidateNonIso.phi = treeVars.L1preNonisoIphip2[iNL1preIsop2];
 	egcandidateNonIso.idx = 2;
-	egcandidateNonIso.energy = treeVars.L1preNonisoRankp2[iNL1preIsop2];
+	egcandidateNonIso.energy = treeVars.L1preNonisoEnergyp2[iNL1preIsop2];
 	egcandidateNonIsoVector.push_back(egcandidateNonIso);
 	
       }
@@ -1255,46 +1161,41 @@ void L1Prefiring(int threshold=16)
       dphiIso_->Fill(MinDeltaPhiIso);
       deta_dphi_Iso_->Fill(MinDeltaEtaIso,MinDeltaPhiIso);
       
+      // 
       std::vector<int> dirIso_ = CalculateDeltaIR(egcandidateIsoVector, maxTowerVector); 
+      // perform this calculation for EE only (for now) 
       if (  ( int ( (28./63.) * abs(egcandidateIsoVector[dirIso_[0]].eta) ) ) > 17 ){
-	std::cout<<" isolated eta works"<<std::endl;
+	if (debug__) std::cout<<" isolated eta works"<<std::endl;
+	
+	// fill the delta R 
 	drMin_Iso_->Fill(dirIso_[2]);
 	
+	// fill the eg index vs trigger tower index, ideally they should be same
 	egidx_ttidx_Iso_->Fill(dirIso_[3], dirIso_[4]-2);
 	
+	// index scatter plot for endcap made in 3 bins 
 	if (abs(maxTowerVector[dirIso_[1]].eta) > 17 && abs(maxTowerVector[dirIso_[1]].eta) < 27)  egidx_ttidx_Iso_bin_[0]->Fill(dirIso_[3], dirIso_[4]-2);
-	if (abs(maxTowerVector[dirIso_[1]].eta) == 27)  {
-	  egidx_ttidx_Iso_bin_[1]->Fill(dirIso_[3], dirIso_[4]-2);
-	  egidx_ttidx_Iso_bin_[3]->Fill(dirIso_[3], dirIso_[4]-2);
+	if (abs(maxTowerVector[dirIso_[1]].eta) == 27)  egidx_ttidx_Iso_bin_[1]->Fill(dirIso_[3], dirIso_[4]-2);
+	if (abs(maxTowerVector[dirIso_[1]].eta) == 28)  egidx_ttidx_Iso_bin_[2]->Fill(dirIso_[3], dirIso_[4]-2);
+	
+	
+	// save DR vs DE to check if the DR matched are also matched in energy
+	std::cout<<" E tower, E eg, DR, eg size, tower size ====== "<<maxTowerVector[dirIso_[1]].energy <<"  "<< egcandidateIsoVector[dirIso_[0]].energy << "   "<< dirIso_[2] << "   "   <<egcandidateIsoVector.size()<< "  "<<maxTowerVector.size()<< std::endl;
+	if (maxTowerVector[dirIso_[1]].energy > 0 && egcandidateIsoVector[dirIso_[0]].energy > 0 ){
+	  DE_vs_DR_Iso_->Fill( -(maxTowerVector[dirIso_[1]].energy - egcandidateIsoVector[dirIso_[0]].energy)/egcandidateIsoVector[dirIso_[0]].energy , dirIso_[2]);
 	}
-	if (abs(maxTowerVector[dirIso_[1]].eta) == 28) {
-	  egidx_ttidx_Iso_bin_[2]->Fill(dirIso_[3], dirIso_[4]-2);
-	  egidx_ttidx_Iso_bin_[3]->Fill(dirIso_[3], dirIso_[4]-2);
-	}
-	
-	
-	
-	
         
-	
+	// fill the histopgrams for DR matched objects
 	if (dirIso_[2] < 7) {
-	  
 	  egidx_ttidx_Iso_dr_->Fill(dirIso_[3], dirIso_[4]-2);
 	  if (abs(maxTowerVector[dirIso_[1]].eta) > 17 && abs(maxTowerVector[dirIso_[1]].eta) < 27)  egidx_ttidx_Iso_dr_bin_[0]->Fill(dirIso_[3], dirIso_[4]-2);
-	  if (abs(maxTowerVector[dirIso_[1]].eta) == 27){
-	    egidx_ttidx_Iso_dr_bin_[1]->Fill(dirIso_[3], dirIso_[4]-2);
-	    egidx_ttidx_Iso_dr_bin_[3]->Fill(dirIso_[3], dirIso_[4]-2);
-	  }
-	  if (abs(maxTowerVector[dirIso_[1]].eta) == 28) {
-	    egidx_ttidx_Iso_dr_bin_[2]->Fill(dirIso_[3], dirIso_[4]-2);
-	    egidx_ttidx_Iso_dr_bin_[3]->Fill(dirIso_[3], dirIso_[4]-2);
-	  }
+	  if (abs(maxTowerVector[dirIso_[1]].eta) == 27)  egidx_ttidx_Iso_dr_bin_[1]->Fill(dirIso_[3], dirIso_[4]-2);
+	  if (abs(maxTowerVector[dirIso_[1]].eta) == 28)  egidx_ttidx_Iso_dr_bin_[2]->Fill(dirIso_[3], dirIso_[4]-2);
 	}
-	
-	
       }
     }
     
+    // similar kind of plots for the non isolated objects
     if (egcandidateNonIsoVector.size() > 0  && maxTowerVector.size() > 0  ){
 
       int MinDeltaEtaNonIso = CalculateDeltaIEta(egcandidateNonIsoVector, maxTowerVector);
@@ -1316,29 +1217,16 @@ void L1Prefiring(int threshold=16)
 	std::cout<<"inside non isolated cands "<<std::endl;
 	
 	if (abs(maxTowerVector[dirNonIso_[1]].eta) > 17 && abs(maxTowerVector[dirNonIso_[1]].eta) < 27)  egidx_ttidx_NonIso_bin_[0]->Fill(dirNonIso_[3], dirNonIso_[4]-2);
-	if (abs(maxTowerVector[dirNonIso_[1]].eta) == 27){
-	  egidx_ttidx_NonIso_bin_[1]->Fill(dirNonIso_[3], dirNonIso_[4]-2);
-	  egidx_ttidx_NonIso_bin_[3]->Fill(dirNonIso_[3], dirNonIso_[4]-2);
-	}
-	if (abs(maxTowerVector[dirNonIso_[1]].eta) == 28){
-	  egidx_ttidx_NonIso_bin_[2]->Fill(dirNonIso_[3], dirNonIso_[4]-2);
-	  egidx_ttidx_NonIso_bin_[3]->Fill(dirNonIso_[3], dirNonIso_[4]-2);
-	}
-	  
+	if (abs(maxTowerVector[dirNonIso_[1]].eta) == 27)  egidx_ttidx_NonIso_bin_[1]->Fill(dirNonIso_[3], dirNonIso_[4]-2);
+	if (abs(maxTowerVector[dirNonIso_[1]].eta) == 28)  egidx_ttidx_NonIso_bin_[2]->Fill(dirNonIso_[3], dirNonIso_[4]-2);
 	
 	
 	if (dirNonIso_[2] < 7) {
 	  
 	  egidx_ttidx_NonIso_dr_->Fill(dirNonIso_[3], dirNonIso_[4]-2);
 	  if (abs(maxTowerVector[dirNonIso_[1]].eta) > 17 && abs(maxTowerVector[dirNonIso_[1]].eta) < 27)  egidx_ttidx_NonIso_dr_bin_[0]->Fill(dirNonIso_[3], dirNonIso_[4]-2);
-	  if (abs(maxTowerVector[dirNonIso_[1]].eta) == 27){
-	    egidx_ttidx_NonIso_dr_bin_[1]->Fill(dirNonIso_[3], dirNonIso_[4]-2);
-	    egidx_ttidx_NonIso_dr_bin_[3]->Fill(dirNonIso_[3], dirNonIso_[4]-2);
-	  }
-	  if (abs(maxTowerVector[dirNonIso_[1]].eta) == 28) {
-	    egidx_ttidx_NonIso_dr_bin_[2]->Fill(dirNonIso_[3], dirNonIso_[4]-2);
-	    egidx_ttidx_NonIso_dr_bin_[3]->Fill(dirNonIso_[3], dirNonIso_[4]-2);
-	  }
+	  if (abs(maxTowerVector[dirNonIso_[1]].eta) == 27)  egidx_ttidx_NonIso_dr_bin_[1]->Fill(dirNonIso_[3], dirNonIso_[4]-2);
+	  if (abs(maxTowerVector[dirNonIso_[1]].eta) == 28)  egidx_ttidx_NonIso_dr_bin_[2]->Fill(dirNonIso_[3], dirNonIso_[4]-2);
 	}
 	
       }
@@ -1409,26 +1297,23 @@ void L1Prefiring(int threshold=16)
   drMin_Iso_->Write();
   drMin_NonIso_->Write();
   
+  DE_vs_DR_Iso_->Write();
   
   egidx_ttidx_Iso_bin_[0]->Write();
   egidx_ttidx_Iso_bin_[1]->Write();
   egidx_ttidx_Iso_bin_[2]->Write();
-  egidx_ttidx_Iso_bin_[3]->Write();
 
   egidx_ttidx_NonIso_bin_[0]->Write();
   egidx_ttidx_NonIso_bin_[1]->Write();
   egidx_ttidx_NonIso_bin_[2]->Write();
-  egidx_ttidx_NonIso_bin_[3]->Write();
 
   egidx_ttidx_Iso_dr_bin_[0]->Write();
   egidx_ttidx_Iso_dr_bin_[1]->Write();
   egidx_ttidx_Iso_dr_bin_[2]->Write();
-  egidx_ttidx_Iso_dr_bin_[3]->Write();
 
   egidx_ttidx_NonIso_dr_bin_[0]->Write();
   egidx_ttidx_NonIso_dr_bin_[1]->Write();
   egidx_ttidx_NonIso_dr_bin_[2]->Write();
-  egidx_ttidx_NonIso_dr_bin_[3]->Write();
   
 
   for (int i=0; i<11; i++){

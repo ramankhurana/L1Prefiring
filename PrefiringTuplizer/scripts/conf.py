@@ -81,12 +81,17 @@ process.ecalTriggerPrimitiveDigis = cms.EDProducer("EcalTrigPrimProducer",
 
 
 
-process.maxEvents = cms.untracked.PSet( input = cms.untracked.int32(500) )
+process.maxEvents = cms.untracked.PSet( input = cms.untracked.int32(-1) )
 
 process.source = cms.Source("PoolSource",
                             # replace 'myfile.root' with the source file you want to use
                             fileNames = cms.untracked.vstring(
-                                #'/store/data/Run2017F/ZeroBias2/RAW-RECO/05Apr2018-v1/30000/00464706-0339-E811-88D8-1866DAEA6C40.root'
+                                #'file:/afs/cern.ch/work/k/khurana/L1Prefiring/EDAnalyzer/CMSSW_10_2_1/src/L1Prefiring/EventGeenration/step2_default.root'
+                                #'file:/afs/cern.ch/work/k/khurana/L1Prefiring/EDAnalyzer/CMSSW_10_2_1/src/L1Prefiring/EventGeneration/rootfiles/step2_p17_singleEle.root'
+                                #'file:/tmp/khurana/test.root' on lkxplus 791
+                                #'file:/afs/cern.ch/user/t/theofil/public/preFiring/step2_m17ns.root'
+                                #'file:/tmp/00464706-0339-E811-88D8-1866DAEA6C40.root' ## 2017
+                                '/store/data/Run2017F/ZeroBias2/RAW-RECO/05Apr2018-v1/30000/00464706-0339-E811-88D8-1866DAEA6C40.root'
                                 #'/store/data/Run2018D/ZeroBias/RAW/v1/000/324/725/00000/38CB8BDB-53A8-9643-A7A1-623BC3992B15.root'
                                 #'/store/data/Run2018D/ZeroBias1/RAW-RECO/LogError-PromptReco-v2/000/324/725/00000/FB50455E-C060-EF43-AB31-733A66A2E6E4.root'
                                 #'file:/afs/cern.ch/work/d/dekumar/public/002BD245-0290-EE4B-878A-EF1D2B234239.root'
@@ -98,7 +103,7 @@ process.source = cms.Source("PoolSource",
                                 #'root://xrootd-cms.infn.it//store/data/Run2018D/ZeroBias1/RAW/v1/000/324/725/00000/3FBCF4C6-6C3A-964B-A293-7D19BE669C3B.root',
                                 #'root://xrootd-cms.infn.it//store/data/Run2018D/ZeroBias1/RAW/v1/000/324/725/00000/C6FA421E-1628-E847-A092-851B296C1421.root',
                                 #'root://xrootd-cms.infn.it//store/data/Run2018D/ZeroBias1/RAW/v1/000/324/725/00000/CC483B27-C8E3-DF45-9C53-D969F9CAB3A1.root',
-                                'root://xrootd-cms.infn.it//store/data/Run2018D/ZeroBias1/RAW/v1/000/324/725/00000/01BF44F6-4157-9649-BBC1-C69EABB42B98.root'
+                                #'root://xrootd-cms.infn.it//store/data/Run2018D/ZeroBias1/RAW/v1/000/324/725/00000/01BF44F6-4157-9649-BBC1-C69EABB42B98.root'
                                 #'file:/tmp/khurana/FB291977-2570-0148-AE34-55E450AF3B90.root'
 
                             )
@@ -112,7 +117,12 @@ process.tuplizer = cms.EDAnalyzer('PrefiringTuplizer',
                                   lastBXInTrainAlgo = cms.untracked.string("L1_LastCollisionInTrain"),
                                   isoBXAlgo = cms.untracked.string("L1_IsolatedBunch"),
                                   stage2CaloLayer2EGammaProducer = cms.InputTag("gtStage2Digis","EGamma"),
-                                  TPCollection = cms.InputTag("ecalDigis","EcalTriggerPrimitives")
+                                  TPCollection = cms.InputTag("ecalDigis","EcalTriggerPrimitives"),
+                                  EBdigis      = cms.InputTag("selectDigi","selectedEcalEBDigiCollection"),
+                                  EEdigis      = cms.InputTag("selectDigi","selectedEcalEEDigiCollection")
+                                  
+                                  #EBdigis      = cms.InputTag("simEcalDigis","ebDigis"),
+                                  #EEdigis      = cms.InputTag("simEcalDigis","eeDigis")
 )
 
 

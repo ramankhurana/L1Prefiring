@@ -1,7 +1,7 @@
 from CRABClient.UserUtilities import config, getUsernameFromSiteDB
 config = config()
 
-config.General.requestName = 'prefiringanalysis2017_V2'
+config.General.requestName = 'prefiringanalysis2018_V3'
 config.General.workArea = 'crab_projects'
 config.General.transferOutputs = True
 config.General.transferLogs = False
@@ -10,26 +10,26 @@ config.JobType.pluginName = 'Analysis'
 config.JobType.psetName = 'conf.py'
 config.JobType.allowUndistributedCMSSW=True
 
-config.Data.inputDataset = '/ZeroBias2/Run2017F-05Apr2018-v1/RAW-RECO'
+#config.Data.inputDataset = '/ZeroBias2/Run2017F-05Apr2018-v1/RAW-RECO'
 
-#config.Data.inputDataset = '/ZeroBias1/Run2018D-v1/RAW'
+config.Data.inputDataset = '/ZeroBias1/Run2018D-v1/RAW'
 
 
 config.Data.inputDBS = 'global'
 #config.Data.splitting = 'Automatic'
 
-config.JobType.maxJobRuntimeMin = 2600 
+config.JobType.maxJobRuntimeMin = 3600 
 #config.JobType.numCores    = 4
-config.JobType.maxMemoryMB = 2500
+config.JobType.maxMemoryMB = 3500
 config.JobType.outputFiles = ['Histo_L1Prefiring.root']
 #config.Data.inputDataset = '/ZeroBias8/Run2018D-v1/RAW'
 #config.Data.inputDBS = 'global'
 
 
-##config.Data.runRange = '324725' # 2018 run
+config.Data.runRange = '324725' # 2018 run
 
 
-config.Data.runRange = '306425' # 2017 run
+##config.Data.runRange = '306425' # 2017 run
 
 config.Data.splitting = 'FileBased'
 config.Data.unitsPerJob = 10
