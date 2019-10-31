@@ -1,12 +1,14 @@
 from pandas import  DataFrame, concat, Series, read_csv
 from ROOT import TCanvas, TColor, TGaxis, TH1F, TPad, TFile, TGraphAsymmErrors,TLatex,TLine,gStyle,TLegend,gROOT
 
+gStyle.SetLegendBorderSize(0)
+gROOT.SetBatch(1)
 
 f = TFile("profiles.root","UPDATE")
 def PrintTProfileData(csvfilename):
     histname = csvfilename.replace(".csv","")
     
-    h = TH1F(histname, histname, 10,0,10)
+    h = TH1F(histname, histname, 10,0.5,10.5)
 
     print "-----------------------------------------------------------------------------------------"
     print "  CSV_file_name                             bin_number  mean     rms "
@@ -29,8 +31,8 @@ def PrintTProfileData(csvfilename):
         ((df_out['adc'].str[i]).astype(float)).mean(): take  the mean of ith datasamples 
         '''
         print csvfilename, i, ((df_out['adc'].str[i]).astype(float)).mean(), ((df_out['adc'].str[i]).astype(float)).std()
-        h.SetBinContent(i,((df_out['adc'].str[i]).astype(float)).mean())
-        h.SetBinError(i,((df_out['adc'].str[i]).astype(float)).std())
+        h.SetBinContent(i+1,((df_out['adc'].str[i]).astype(float)).mean())
+        h.SetBinError(i+i,((df_out['adc'].str[i]).astype(float)).std())
     f.cd()
     h.Write()
         
