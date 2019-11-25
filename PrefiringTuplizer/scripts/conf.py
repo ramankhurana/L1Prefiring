@@ -81,7 +81,7 @@ process.ecalTriggerPrimitiveDigis = cms.EDProducer("EcalTrigPrimProducer",
 
 
 
-process.maxEvents = cms.untracked.PSet( input = cms.untracked.int32(-1) )
+process.maxEvents = cms.untracked.PSet( input = cms.untracked.int32(100) )
 
 process.source = cms.Source("PoolSource",
                             # replace 'myfile.root' with the source file you want to use
@@ -91,7 +91,8 @@ process.source = cms.Source("PoolSource",
                                 #'file:/tmp/khurana/test.root' on lkxplus 791
                                 #'file:/afs/cern.ch/user/t/theofil/public/preFiring/step2_m17ns.root'
                                 #'file:/tmp/00464706-0339-E811-88D8-1866DAEA6C40.root' ## 2017
-                                '/store/data/Run2017F/ZeroBias2/RAW-RECO/05Apr2018-v1/30000/00464706-0339-E811-88D8-1866DAEA6C40.root'
+                                #'/store/data/Run2017F/ZeroBias2/RAW-RECO/05Apr2018-v1/30000/00464706-0339-E811-88D8-1866DAEA6C40.root'
+                                '/store/data/Run2018B/HLTPhysics2/RAW/v1/000/318/581/00000/1E3AA296-7578-E811-A283-FA163E0E994B.root'
                                 #'/store/data/Run2018D/ZeroBias/RAW/v1/000/324/725/00000/38CB8BDB-53A8-9643-A7A1-623BC3992B15.root'
                                 #'/store/data/Run2018D/ZeroBias1/RAW-RECO/LogError-PromptReco-v2/000/324/725/00000/FB50455E-C060-EF43-AB31-733A66A2E6E4.root'
                                 #'file:/afs/cern.ch/work/d/dekumar/public/002BD245-0290-EE4B-878A-EF1D2B234239.root'
@@ -118,9 +119,12 @@ process.tuplizer = cms.EDAnalyzer('PrefiringTuplizer',
                                   isoBXAlgo = cms.untracked.string("L1_IsolatedBunch"),
                                   stage2CaloLayer2EGammaProducer = cms.InputTag("gtStage2Digis","EGamma"),
                                   TPCollection = cms.InputTag("ecalDigis","EcalTriggerPrimitives"),
+                                  
+                                  ## for data
                                   EBdigis      = cms.InputTag("selectDigi","selectedEcalEBDigiCollection"),
                                   EEdigis      = cms.InputTag("selectDigi","selectedEcalEEDigiCollection")
                                   
+                                  ## for mc
                                   #EBdigis      = cms.InputTag("simEcalDigis","ebDigis"),
                                   #EEdigis      = cms.InputTag("simEcalDigis","eeDigis")
 )

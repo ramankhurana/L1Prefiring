@@ -1,32 +1,35 @@
 error TCC=2 channel=40
-Values around the central BX 10 0
+Values around the central BX 30 0
 should move by +1 3470
 error TCC=3 channel=37
 Values around the central BX 1 0
 should move by +1 3470
 error TCC=4 channel=25
-Values around the central BX 10 0
+Values around the central BX 30 0
 should move by +1 3470
 error TCC=4 channel=34
-Values around the central BX 10 0
+Values around the central BX 30 0
 should move by +1 3470
 error TCC=8 channel=15
-Values around the central BX 4 6
+Values around the central BX 9 21
 should move by +1 3470
 should move by -1 3470
 error TCC=8 channel=18
 Values around the central BX 0 1
 phase problem with channel = 18
 error TCC=9 channel=30
-Values around the central BX 3 0
+Values around the central BX 10 0
 should move by +1 3470
 phase problem with channel = 30
 error TCC=10 channel=34
-Values around the central BX 10 0
+Values around the central BX 30 0
 should move by +1 3470
 error TCC=10 channel=36
-Values around the central BX 0 0
+Values around the central BX 1 0
 phase problem with channel = 36
+error TCC=13 channel=40
+Values around the central BX 0 0
+phase problem with channel = 40
 error TCC=51 channel=15
 Values around the central BX 0 0
 phase problem with channel = 15
@@ -35,35 +38,37 @@ Values around the central BX 0 0
 error TCC=66 channel=68
 Values around the central BX 0 0
 error TCC=75 channel=12
-Values around the central BX 0 0
+Values around the central BX 0 1
+phase problem with channel = 12
 error TCC=92 channel=23
 Values around the central BX 0 0
 phase problem with channel = 23
 error TCC=92 channel=33
-Values around the central BX 10 0
+Values around the central BX 28 0
 should move by +1 3470
+phase problem with channel = 33
 error TCC=92 channel=40
-Values around the central BX 1 0
+Values around the central BX 9 5
 phase problem with channel = 40
 error TCC=94 channel=23
-Values around the central BX 10 0
+Values around the central BX 30 0
 should move by +1 3470
 error TCC=100 channel=25
-Values around the central BX 5 1
+Values around the central BX 15 4
 should move by +1 3470
 should move by -1 3470
 error TCC=100 channel=26
-Values around the central BX 10 0
+Values around the central BX 30 0
 should move by +1 3470
 error TCC=100 channel=27
-Values around the central BX 10 0
+Values around the central BX 30 0
 should move by +1 3470
 error TCC=100 channel=33
-Values around the central BX 8 2
+Values around the central BX 25 5
 should move by +1 3470
 should move by -1 3470
 error TCC=103 channel=33
-Values around the central BX 0 10
+Values around the central BX 0 30
 should move by -1 3470
 error TCC=106 channel=37
 Values around the central BX 2 0

@@ -1,44 +1,44 @@
 error TCC=2 channel=37
-Values around the central BX 0 10
+Values around the central BX 0 24
 should move by -1 3470
 TCC=2 bin=37 time_delay_before=3 time_delay=2
 error TCC=18 channel=1
-Values around the central BX 0 10
+Values around the central BX 0 24
 should move by -1 3470
 TCC=18 bin=1 time_delay_before=3 time_delay=2
 error TCC=27 channel=2
-Values around the central BX 8 0
+Values around the central BX 18 0
 should move by +1 3470
 phase problem with channel = 2
 TCC=27 bin=2 time_delay_before=2 time_delay=3
 error TCC=27 channel=8
-Values around the central BX 3 0
+Values around the central BX 5 0
 phase problem with channel = 8
 TCC=27 bin=8 time_phase_before=1 time_phase=0
 error TCC=27 channel=20
-Values around the central BX 0 10
+Values around the central BX 0 24
 should move by -1 3470
 TCC=27 bin=20 time_delay_before=3 time_delay=2
 error TCC=37 channel=12
-Values around the central BX 0 4
+Values around the central BX 0 7
 phase problem with channel = 12
 TCC=37 bin=12 time_phase_before=0 time_phase=1
 error TCC=53 channel=55
-Values around the central BX 0 10
+Values around the central BX 0 23
 should move by -1 1501
 TCC=53 bin=55 time_delay_before=2 time_delay=1
 error TCC=66 channel=68
 Values around the central BX 0 0
 error TCC=77 channel=19
-Values around the central BX 0 1
-should move by -1 3470
-TCC=77 bin=19 time_delay_before=1 time_delay=0
+Values around the central BX 0 2
+phase problem with channel = 19
+TCC=77 bin=19 time_phase_before=0 time_phase=1
 error TCC=89 channel=16
-Values around the central BX 0 10
+Values around the central BX 0 24
 should move by -1 3470
 TCC=89 bin=16 time_delay_before=3 time_delay=2
 error TCC=89 channel=17
-Values around the central BX 0 10
+Values around the central BX 0 24
 should move by -1 3470
 TCC=89 bin=17 time_delay_before=3 time_delay=2
 error TCC=89 channel=20
@@ -46,15 +46,16 @@ Values around the central BX 0 3
 phase problem with channel = 20
 TCC=89 bin=20 time_phase_before=1 time_phase=0
 error TCC=89 channel=38
-Values around the central BX 0 0
+Values around the central BX 0 1
 phase problem with channel = 38
 TCC=89 bin=38 time_phase_before=0 time_phase=1
 error TCC=89 channel=41
-Values around the central BX 0 7
+Values around the central BX 0 12
 should move by -1 3470
+phase problem with channel = 41
 TCC=89 bin=41 time_delay_before=3 time_delay=2
 error TCC=98 channel=13
-Values around the central BX 0 10
+Values around the central BX 0 23
 should move by -1 3470
 TCC=98 bin=13 time_delay_before=1 time_delay=0
 error TCC=105 channel=32

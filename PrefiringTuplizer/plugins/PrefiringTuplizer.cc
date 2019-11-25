@@ -266,12 +266,24 @@ private:
   Int_t L1preIsoEnergyzero[10];
   Int_t L1preIsoEnergyp1[10];
   Int_t L1preIsoEnergyp2[10];
+  
+  Float_t L1preIsoPtm2[10];
+  Float_t L1preIsoPtm1[10];
+  Float_t L1preIsoPtzero[10];
+  Float_t L1preIsoPtp1[10];
+  Float_t L1preIsoPtp2[10];
 
   Int_t L1preNonisoEnergym2[10];
   Int_t L1preNonisoEnergym1[10];
   Int_t L1preNonisoEnergyzero[10];
   Int_t L1preNonisoEnergyp1[10];
   Int_t L1preNonisoEnergyp2[10];
+
+  Float_t L1preNonisoPtm2[10];
+  Float_t L1preNonisoPtm1[10];
+  Float_t L1preNonisoPtzero[10];
+  Float_t L1preNonisoPtp1[10];
+  Float_t L1preNonisoPtp2[10];
 
   // Define histograms 
   TH2F* ibx_vs_ieta_Iso;
@@ -440,6 +452,12 @@ O : [the letter o, not a zero] a boolean (Bool_t)
   prefiringTree->Branch("b_L1preIsoEnergyp1", L1preIsoEnergyp1 , "b_L1preIsoEnergyp1[b_isocounterp1]/I");
   prefiringTree->Branch("b_L1preIsoEnergyp2", L1preIsoEnergyp2 , "b_L1preIsoEnergyp2[b_isocounterp2]/I");
 
+  prefiringTree->Branch("b_L1preIsoPtm2", L1preIsoPtm2 , "b_L1preIsoPtm2[b_isocounterm2]/F");
+  prefiringTree->Branch("b_L1preIsoPtm1", L1preIsoPtm1 , "b_L1preIsoPtm1[b_isocounterm1]/F");
+  prefiringTree->Branch("b_L1preIsoPtzero", L1preIsoPtzero , "b_L1preIsoPtzero[b_isocounterzero]/F");
+  prefiringTree->Branch("b_L1preIsoPtp1", L1preIsoPtp1 , "b_L1preIsoPtp1[b_isocounterp1]/F");
+  prefiringTree->Branch("b_L1preIsoPtp2", L1preIsoPtp2 , "b_L1preIsoPtp2[b_isocounterp2]/F");
+
 
   // non isolated 
   prefiringTree->Branch("b_L1preNonisoIetam2", L1preNonisoIetam2 , "b_L1preNonisoIetam2[b_nonisocounterm2]/I");
@@ -460,6 +478,12 @@ O : [the letter o, not a zero] a boolean (Bool_t)
   prefiringTree->Branch("b_L1preNonisoEnergyzero", L1preNonisoEnergyzero , "b_L1preNonisoEnergyzero[b_nonisocounterzero]/I");
   prefiringTree->Branch("b_L1preNonisoEnergyp1", L1preNonisoEnergyp1 , "b_L1preNonisoEnergyp1[b_nonisocounterp1]/I");
   prefiringTree->Branch("b_L1preNonisoEnergyp2", L1preNonisoEnergyp2 , "b_L1preNonisoEnergyp2[b_nonisocounterp2]/I");
+
+  prefiringTree->Branch("b_L1preNonisoPtm2", L1preNonisoPtm2 , "b_L1preNonisoPtm2[b_nonisocounterm2]/F");
+  prefiringTree->Branch("b_L1preNonisoPtm1", L1preNonisoPtm1 , "b_L1preNonisoPtm1[b_nonisocounterm2]/F");
+  prefiringTree->Branch("b_L1preNonisoPtzero", L1preNonisoPtzero , "b_L1preNonisoPtzero[b_nonisocounterzero]/F");
+  prefiringTree->Branch("b_L1preNonisoPtp1", L1preNonisoPtp1 , "b_L1preNonisoPtp1[b_nonisocounterp1]/F");
+  prefiringTree->Branch("b_L1preNonisoPtp2", L1preNonisoPtp2 , "b_L1preNonisoPtp2[b_nonisocounterp2]/F");
   
   
 
@@ -485,7 +509,14 @@ void
 PrefiringTuplizer::analyze(const edm::Event& e, const edm::EventSetup& c)
 {
    using namespace edm;
-
+   
+   std::cout<<" checking eta values -2.45, -2.7, -3.0, -1.44"
+	    <<" " << abs( -2.45)
+	    <<" " << abs( -2.7 )
+	    <<" " << abs(-3.0 )
+	    <<" " << abs(-1.44 )
+	    <<std::endl;
+   
    
    for (int i=0; i<4032;i++){
      index_df[i] = -999;
@@ -529,6 +560,20 @@ PrefiringTuplizer::analyze(const edm::Event& e, const edm::EventSetup& c)
      L1preNonisoEnergyzero[i] = -999;
      L1preNonisoEnergyp1[i] = -999;
      L1preNonisoEnergyp2[i] = -999;
+
+   
+     L1preIsoPtm2[i] = -999;
+     L1preIsoPtm1[i] = -999;
+     L1preIsoPtzero[i] = -999;
+     L1preIsoPtp1[i] = -999;
+     L1preIsoPtp2[i] = -999;
+
+     L1preNonisoPtm2[i] = -999;
+     L1preNonisoPtm1[i] = -999;
+     L1preNonisoPtzero[i] = -999;
+     L1preNonisoPtp1[i] = -999;
+     L1preNonisoPtp2[i] = -999;
+
    }
    v_nonisocounterm2     = 0 ;
    v_nonisocounterm1     = 0 ;
@@ -694,29 +739,33 @@ PrefiringTuplizer::analyze(const edm::Event& e, const edm::EventSetup& c)
 	   int bxNumberActual = itBX - bxShiftFirst;
 	  	   
 	   
-	   std::cout<<" all candidates ="<<egamma->pt()<<" "<<egamma->hwPt()<<"  "<<egamma->energy()<<std::endl;
+	   std::cout<<" all candidates egamma->pt, egamma->hwPt, egamma->energy, egamma->hwEta, egamma->hwPhi ="<<egamma->pt()<<" "<<egamma->hwPt()<<"  "<<egamma->energy()<<"  "<<egamma->hwEta()<<"  "<<egamma->hwPhi()<<std::endl;
 	   
 	   if ((bool)egamma->hwIso()) {
 	     std::cout<<" isolated bx, eta, counter "<<itBX - bxShiftFirst<<"  "<< egamma->hwEta()<<"  "<<isocounterp2<<std::endl;
 	     ibx_vs_ieta_Iso->Fill(itBX - bxShiftFirst, egamma->hwEta() );
 
-	     
+	     // see the description of variables at the twiki 
+	     //https://twiki.cern.ch/twiki/bin/view/CMSPublic/SWGuideL1TCaloFormats 
 	     
 	     if (bxNumberActual == -2){ 
 	       L1preIsoIetam2[isocounterm2] = egamma->hwEta();
 	       L1preIsoIphim2[isocounterm2] = egamma->hwPhi();
+	       L1preIsoPtm2[isocounterm2] = egamma->pt();
 	       L1preIsoEnergym2[isocounterm2] = egamma->energy();
 	       isocounterm2++;
 	     }
 	     if (bxNumberActual == -1){ 
 	       L1preIsoIetam1[isocounterm1] = egamma->hwEta();
 	       L1preIsoIphim1[isocounterm1] = egamma->hwPhi();
+	       L1preIsoPtm1[isocounterm1]   = egamma->pt();
 	       L1preIsoEnergym1[isocounterm1] = egamma->energy();
 	       isocounterm1++;
 	     }
 	     if (bxNumberActual ==  0){ 
 	       L1preIsoIetazero[isocounterzero] = egamma->hwEta();
 	       L1preIsoIphizero[isocounterzero] = egamma->hwPhi();
+	       L1preIsoPtzero[isocounterzero]   = egamma->pt();
 	       L1preIsoEnergyzero[isocounterzero] = egamma->energy();
 	       isocounterzero++;
 	     }
@@ -729,6 +778,7 @@ PrefiringTuplizer::analyze(const edm::Event& e, const edm::EventSetup& c)
 	     if (bxNumberActual ==  2){
 	       L1preIsoIetap2[isocounterp2] = egamma->hwEta();
 	       L1preIsoIphip2[isocounterp2] = egamma->hwPhi();
+	       L1preIsoPtp2[isocounterp2]   = egamma->pt();
 	       L1preIsoEnergyp2[isocounterp2] = egamma->energy();
 	       isocounterp2++;
 	     }
@@ -746,30 +796,35 @@ PrefiringTuplizer::analyze(const edm::Event& e, const edm::EventSetup& c)
 	   if (bxNumberActual == -2){ 
 	     L1preNonisoIetam2[nonisocounterm2] = egamma->hwEta();
      	     L1preNonisoIphim2[nonisocounterm2] = egamma->hwPhi();
+	     L1preNonisoPtm2[nonisocounterm2]   = egamma->pt();
 	     L1preNonisoEnergym2[nonisocounterm2] = egamma->energy();
 	     nonisocounterm2++;
 	   }
 	   if (bxNumberActual == -1){ 
 	     L1preNonisoIetam1[nonisocounterm1] = egamma->hwEta();
 	     L1preNonisoIphim1[nonisocounterm1] = egamma->hwPhi();
+	     L1preNonisoPtm1[nonisocounterm1]   = egamma->pt();
 	     L1preNonisoEnergym1[nonisocounterm1] = egamma->energy();
 	     nonisocounterm1++;
 	   }
 	   if (bxNumberActual ==  0){ 
 	     L1preNonisoIetazero[nonisocounterzero] = egamma->hwEta();
 	     L1preNonisoIphizero[nonisocounterzero] = egamma->hwPhi();
-	       L1preNonisoEnergyzero[nonisocounterzero] = egamma->energy();
+	     L1preNonisoPtzero[nonisocounterzero]   = egamma->pt();
+	     L1preNonisoEnergyzero[nonisocounterzero] = egamma->energy();
 	       nonisocounterzero++;
 	   }
 	   if (bxNumberActual ==  1){ 
 	     L1preNonisoIetap1[nonisocounterp1] = egamma->hwEta();
 	     L1preNonisoIphip1[nonisocounterp1] = egamma->hwPhi();
+	     L1preNonisoPtp1[nonisocounterp1]   = egamma->pt();
 	     L1preNonisoEnergyp1[nonisocounterp1] = egamma->energy();
 	     nonisocounterp1++;
 	   }
 	   if (bxNumberActual ==  2){
 	     L1preNonisoIetap2[nonisocounterp2] = egamma->hwEta();
 	     L1preNonisoIphip2[nonisocounterp2] = egamma->hwPhi();
+	     L1preNonisoPtp2[nonisocounterp2]   = egamma->pt();
 	     L1preNonisoEnergyp2[nonisocounterp2] = egamma->energy();
 	     nonisocounterp2++;
 	   }
@@ -870,6 +925,11 @@ PrefiringTuplizer::analyze(const edm::Event& e, const edm::EventSetup& c)
    // EEDigiCollection                      "selectDigi"                "selectedEcalEEDigiCollection"   "RECO"
    // EBDigiCollection                      "selectDigi"                "selectedEcalEBDigiCollection"   "RECO"
    
+
+   // begin of mc 
+   bool ismc = false; 
+   if (ismc){
+   
    std::vector<int> Rechit_adc;
    Rechit_adc.clear();
    edm::Handle<EEDigiCollection>  EEdigis;
@@ -902,6 +962,8 @@ PrefiringTuplizer::analyze(const edm::Event& e, const edm::EventSetup& c)
    ndataframe = j;
    nADC       = countNadc;
    
+   
+}// end of mc
    /*
        uint ndataframe;
   uint nADC;

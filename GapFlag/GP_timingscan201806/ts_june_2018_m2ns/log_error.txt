@@ -1,5 +1,5 @@
 error TCC=2 channel=37
-Values around the central BX 0 10
+Values around the central BX 0 27
 should move by -1 3470
 TCC=2 bin=37 time_delay_before=3 time_delay=2
 error TCC=66 channel=68

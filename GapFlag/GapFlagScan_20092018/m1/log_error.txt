@@ -1,10 +1,11 @@
 error TCC=3 channel=38
-Values around the central BX 0 10
+Values around the central BX 0 30
 should move by -1 3470
 error TCC=64 channel=34
 Values around the central BX 0 0
 error TCC=66 channel=68
-Values around the central BX 0 0
+Values around the central BX 0 1
+should move by -1 1501
 error TCC=103 channel=33
-Values around the central BX 0 10
+Values around the central BX 0 30
 should move by -1 3470
