@@ -26,9 +26,9 @@
 using  namespace std;
 
 bool is2017 = true;
-bool timescan_ = false;
+bool timescan_ = true;
 bool debug__ = false; 
-
+TString dataset   = "";
 struct TowerVariables{
 
   int   eta;
@@ -565,6 +565,8 @@ void L1Prefiring(int threshold=16, int lumi1=0, int lumi2=999999)
   std::cout<<" lumi1 = "<<lumi1<< "  lumi2 = "<<lumi2<<std::endl;
   
   TString datasettiming = getDataSetTiming(lumi1, lumi2);
+  dataset = datasettiming;
+  
   std::cout<<" datasettiming = "<<datasettiming<<std::endl;
   time_t timer;
   double initial_t = time(&timer);
@@ -794,7 +796,7 @@ void L1Prefiring(int threshold=16, int lumi1=0, int lumi2=999999)
     
     chain->GetEntry (entry) ;
     
-    if (entry%10000==0) cout << entry << " / " << treeentries
+    if (entry%100000==0) cout << entry << " / " << treeentries
 			    << " events processed" << endl;
     
 
@@ -1445,8 +1447,8 @@ void L1Prefiring(int threshold=16, int lumi1=0, int lumi2=999999)
   TString outputfilename;
   TString cutval;
   cutval.Form("%d",threshold);
-  if (is2017) outputfilename  = "PrefiringRateEE_2017data_FrontTrain_cutval_"+cutval+".root";
-  if (!is2017) outputfilename = "PrefiringRateEE_2018data_FrontTrain_cutval_"+cutval+".root";
+  if (is2017) outputfilename  = "PrefiringRateEE_2017data_FrontTrain_"+dataset+"_cutval_"+cutval+".root";
+  if (!is2017) outputfilename = "PrefiringRateEE_2018data_FrontTrain_"+dataset+"_cutval_"+cutval+".root";
   
   TFile fout(outputfilename,"RECREATE");
   fout.cd();

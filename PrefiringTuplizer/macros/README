@@ -1,0 +1,65 @@
+x## All the relevant code to fill the histogram etc is in: 
+
+L1Prefiring.C 
+
+## this can be compiled and run using the shell script 
+
+source run.sh 
+
+## Once rootfile is available for each cut value, one can use them to fill the plots. 
+
+## All the plots can be saved in PDF using: 
+python PlotSaver_May14.py   
+
+## all the related functions to perform the plotting etc are located in the PlotTemplates.py
+
+## the probability values are dumped into text file for several ring and total, 
+## This can be converted into rootfile and then saved into pdf using: 
+
+python textgraph.py
+python compareProb_all.py
+
+
+
+## to get the probablity from the DQM like histograms use the macro: 
+ProbExtractorFromL1DQM.py
+
+python ProbExtractorFromL1DQM.py 
+
+
+In order to run it for all the time scan points use the shell script: 
+source runalltimeprob.sh ## it also has the usage for this script 
+
+
+## For time scan results run following commands : 
+
+python MakePlotsTimeScan.py -g -c 2
+python MakePlotsTimeScan.py -g -c 4
+python MakePlotsTimeScan.py -g -c 6
+python MakePlotsTimeScan.py -g -c 8
+python MakePlotsTimeScan.py -g -c 10
+
+python MakePlotsTimeScan.py -o 
+
+
+## PlotSaver_TimeScan.py is the script to save the probablities for each ring and each cut value, matched to the emulated TT. 
+
+## this convert the .txt files in graphs textgraph_timescan.py which can be used for plotting using  the files: 
+
+compareProb_all_timescanDQM.py
+compareProb_all_timescan.py
+OverlappingPlots.py
+
+## useful notebooks : 
+DumpProbability**
+ECALPlotsDumper**
+gapFlagDataBaseAnalyzer
+PlotSaver_May14
+compareProb.py**
+compareProb_all.py**
+textgraph.py**
+
+
+
+
+

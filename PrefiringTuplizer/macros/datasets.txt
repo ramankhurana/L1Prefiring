@@ -1,0 +1,22 @@
+/HLTPhysics4/Run2018B-v1/RAW
+/HLTPhysics2/Run2018B-v1/RAW
+/HLTPhysics3/Run2018B-v1/RAW
+/HLTPhysics1/Run2018B-v1/RAW
+/ZeroBias1/Run2018D-v1/RAW
+
+
+RUN 318714
+STEP    LM1        LM2
+-6        0        46
+-5        49        87
+-4        90        111
+-3        113        131
+-2        133        158
+-1        160        186
++0        188        219
++1        221        247
++2        250        267
++3        269        291
++4        293        314
++5        316        336
++6        338        362 
