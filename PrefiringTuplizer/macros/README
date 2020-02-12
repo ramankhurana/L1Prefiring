@@ -33,13 +33,30 @@ source runalltimeprob.sh ## it also has the usage for this script
 
 ## For time scan results run following commands : 
 
-python MakePlotsTimeScan.py -g -c 2
-python MakePlotsTimeScan.py -g -c 4
-python MakePlotsTimeScan.py -g -c 6
-python MakePlotsTimeScan.py -g -c 8
-python MakePlotsTimeScan.py -g -c 10
+python MakePlotsTimeScan.py -g -c 2 -a X  -m 
+python MakePlotsTimeScan.py -g -c 4 -a X  -m 
+python MakePlotsTimeScan.py -g -c 6 -a X  -m 
+python MakePlotsTimeScan.py -g -c 8 -a X  -m 
+python MakePlotsTimeScan.py -g -c 10 -a X -m  
+
+
+python MakePlotsTimeScan.py -g -c 2 -a Y  -m 
+python MakePlotsTimeScan.py -g -c 4 -a Y  -m 
+python MakePlotsTimeScan.py -g -c 6 -a Y  -m 
+python MakePlotsTimeScan.py -g -c 8 -a Y  -m 
+python MakePlotsTimeScan.py -g -c 10 -a Y -m 
 
 python MakePlotsTimeScan.py -o 
+
+
+## To get probablity curve for David's root file use: 
+
+for which in -6 -5 -4 -3 -2 -1 0 1 2 3 4 5 6; do python ProbExtractorFromL1DQM.py -i l1tHistograms.root -T $which -d; done
+
+## convert .txt to .root file and plotting do 
+python  textgraph_timescan_DQM.py
+
+python MakePlotsTimeScan.py -CompareWithDavid
 
 
 ## PlotSaver_TimeScan.py is the script to save the probablities for each ring and each cut value, matched to the emulated TT. 

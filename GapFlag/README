@@ -1,6 +1,10 @@
+## some details about the .C macro phaseMonitoring.C can be found at the TWiki:
+https://twiki.cern.ch/twiki/bin/viewauth/CMS/ECALTriggerOperation#Gap_Flag_Measurement_Timing_Alig 
+
 ## Step 1: Run the .C macro to analyze the scan data in .txt files. 
 
-  - the input path and dir name can be chnaged in the script, gapflag_utgz.sh and run using source gapflag_utgz.sh. 
+  - the input path and dir name can be chnaged in the script, gapflag_utgz.sh and run using source gapflag_utgz.sh.
+     - In the file: gapflag_utgz.sh: change the for loop as per the file names.  
 
   - this will create one rootfile for one time shift. This will contain one histogram for one channel.  
 
@@ -59,3 +63,21 @@ python analyzeupdatedDataBase.py
 
 ### to run previous step for all updated database files run 
 source makeHistAll.sh 
+
+
+
+
+
+
+
+###### for Jan 2020 gap flag data, trying to find coorelations, 
+
+python RootTreeToDataFrame.py ## to convert the rootfile into a .txt file 
+
+python merge_parameters.py ## to merge two parameters files, for endcap only at the moment 
+
+python gapFlagSummary.py ## created .csv file with ecal parameters and probability to be used as next step 
+
+python PlotProbabilityPerBin.py ## to make the plots for each ring for the gap flag data 2020 
+
+python 

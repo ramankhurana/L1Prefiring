@@ -238,11 +238,10 @@ void phaseMonitoring(int tcc=-1, int zoom = -1, int maxData = 10, int ref = -1)
       bool treat ;
 
       while (!in.eof()) {
-	if(debug) cout << "Now count==" <<dec<< count << endl; //modif-alex 
+	if(debug) cout << "Now count==" <<dec<< " "<<count << endl; //modif-alex 
 	count++ ;
 
 	if(count > maxData) break; //modif-alex 
-
 	in >>dec>> sdata ; if(debug) cout << "SDATA=" << sdata << endl; //modif-alex 
 	if (sdata == "") {if(debug) cout << "breaking here, end of file" << endl; break ;} // avoid last line
 	int line = atoi(sdata.c_str()) ;

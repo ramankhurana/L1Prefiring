@@ -16,7 +16,7 @@ void phaseMonitoring(int tcc=-1, int zoom = -1, int maxData = 10, int ref = -1)
     }
   }//loop tccId 
 
-  bool debug = true;
+  bool debug = false;
   bool draw  = true;
 
   int maxNstripsV[109];
@@ -211,7 +211,19 @@ void phaseMonitoring(int tcc=-1, int zoom = -1, int maxData = 10, int ref = -1)
       h2name<<"h_"<<tccId ;      
       h2Gap[tccId-1] = (TH2F *) gROOT->Get(h2name.str().c_str()) ;
       if (h2Gap[tccId-1] == 0) h2Gap[tccId-1] = new TH2F(h2name.str().c_str(), h2name.str().c_str(), 68, 1, 69, 3564,0,3564) ;
+      /*
+      int nXbins=68;
+      int Xbinhi=69;
+
+      if (tccId<37 || tccId>72){
+	nXbins=maxNstripsV[tccId];
+	Xbinhi=maxNstripsV[tccId]+1;
+      }
+            
+      if (h2Gap[tccId-1] == 0) h2Gap[tccId-1] = new TH2F(h2name.str().c_str(), h2name.str().c_str(), nXbins, 1, Xbinhi, 3564,0,3564) ;
+      */
       if (tccId<37 || tccId>72) h2Gap[tccId-1]->GetXaxis()->SetRangeUser(1,49) ;
+      
       stringstream countname ;
       countname<<"c_"<<tccId ;
       hcount[tccId-1] = (TH1F *) gROOT->Get(countname.str().c_str()) ;
@@ -238,11 +250,10 @@ void phaseMonitoring(int tcc=-1, int zoom = -1, int maxData = 10, int ref = -1)
       bool treat ;
 
       while (!in.eof()) {
-	if(debug) cout << "Now count==" <<dec<< count << endl; //modif-alex 
+	if(debug) cout << "Now count==" <<dec<< " "<<count << endl; //modif-alex 
 	count++ ;
 
 	if(count > maxData) break; //modif-alex 
-
 	in >>dec>> sdata ; if(debug) cout << "SDATA=" << sdata << endl; //modif-alex 
 	if (sdata == "") {if(debug) cout << "breaking here, end of file" << endl; break ;} // avoid last line
 	int line = atoi(sdata.c_str()) ;

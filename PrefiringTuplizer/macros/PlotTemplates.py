@@ -126,7 +126,7 @@ def drawenergy(is2017):
 #  
 #  In future, The name of the function should be changed by plotOnCanvas()
 
-def savePDF(f2018, year, dirname, histname, xname, yname):
+def savePDF(f2018, year, dirname, histname, xname, yname, postfix="", setlog=False):
     print "saving", histname
     h2 = f2018.Get(histname)
     #h2.Sumw2()
@@ -139,12 +139,14 @@ def savePDF(f2018, year, dirname, histname, xname, yname):
     pt = drawenergy(year)
     pt.Draw()
     
-    c.SaveAs(dirname+'/pdf/'+histname+'.pdf')
-    c.SaveAs(dirname+'/png/'+histname+'.png')
-
-    c.SetLogz(1)
-    c.SaveAs(dirname+'/pdflog/'+histname+'_logZ.pdf')
-    c.SaveAs(dirname+'/pnglog/'+histname+'_logZ.png')
+    histname = histname+"_"+postfix
+    c.SaveAs(dirname+'/'+histname+'.pdf')
+    c.SaveAs(dirname+'/'+histname+'.png')
+    
+    if setlog:
+        c.SetLogz(1)
+        c.SaveAs(dirname+'/'+histname+'_logZ.pdf')
+        c.SaveAs(dirname+'/'+histname+'_logZ.png')
     return c
 
 
@@ -383,7 +385,8 @@ def NormalizedPrefiringProbability(h2,axis_N="Y"):
 #  
 
 
-def saveNormalised2DWithTProfile(f2018, year, dirname, histname, xname, yname, postfix="", isprofile=False, axis_N="Y"):
+def saveNormalised2DWithTProfile(f2018, year, dirname, histname, xname, yname, postfix="", isprofile=False, axis_N="Y",setlog=False):
+    print " axis_N in the saveNormalised2DWithTProfile ", axis_N
     h2 = f2018.Get(histname)
     h2.SetDirectory(0)
     h2.AddDirectory(0)
@@ -416,9 +419,11 @@ def saveNormalised2DWithTProfile(f2018, year, dirname, histname, xname, yname, p
     c.SaveAs(dirname+'/'+histname+'.pdf')
     c.SaveAs(dirname+'/'+histname+'.png')
     
-    c.SetLogz(1)
-    c.SaveAs(dirname+'/'+histname+'_logZ.pdf')
-    c.SaveAs(dirname+'/'+histname+'_logZ.png')
+    print "setlog -------", setlog
+    if setlog: 
+        c.SetLogz(1)
+        c.SaveAs(dirname+'/'+histname+'_logZ.pdf')
+        c.SaveAs(dirname+'/'+histname+'_logZ.png')
 
 
     

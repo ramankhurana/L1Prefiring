@@ -10,7 +10,9 @@ ybin_ = 2
 postfix_="_"+str(xbin_)+"_"+str(ybin_)
 
 dirname="timescanOutput/"
+
 filenames=['timescanOutput/Prob_2017data_FrontTrain_cutval_DQMHist.txt']
+#filenames=['timescanOutput/Prob_2017data_FrontTrain_cutval_DQMHistDavid.txt']
 
 for filename in filenames:
     #filename = 'probability_scan_ADC_Ring.txt'

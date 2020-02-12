@@ -14,12 +14,17 @@ parser.add_argument("-g", "--creategraphs",  action="store_true", dest="creategr
 parser.add_argument("-o", "--overlay",  action="store_true", dest="overlay")
 parser.add_argument("-m", "--saveMatrix", action="store_true", dest="saveMatrix")
 
+parser.add_argument("-CompareWithDavid", "--CompareWithDavid", action="store_true", dest="CompareWithDavid")
+
+parser.add_argument("-a", "--axis",  dest="axis",default="Y")
+
 
 args = parser.parse_args()
 
 cutval = str(int(args.cutval))
 
 
+axis_N=args.axis
 
 
 def nsd(x):
@@ -36,7 +41,7 @@ def CreateGraphs():
     timestep=[-6,-5,-4,-3,-2,-1,0,1,2,3,4,5,6]
     timestepstr=["m6","m5","m4","m3","m2","m1","nosign0","p1","p2","p3","p4","p5","p6"]
     templaterootstring = 'timescanOutput/PrefiringRateEE_2017data_FrontTrain_TIME_cutval_CUT.root' ## template .root file name 
-    ratefilename_ = (((templaterootstring.replace("TIME_","")).replace(".root",".txt")).replace("PrefiringRateEE","Rate")).replace("CUT",str(cutval))  ## output .txt file with Rate (2,2) matrix
+    ratefilename_ = (((templaterootstring.replace("TIME_","")).replace(".root","_"+axis_N+".txt")).replace("PrefiringRateEE","Rate")).replace("CUT",str(cutval))  ## output .txt file with Rate (2,2) matrix
     probfilename_ = ratefilename_.replace("Rate","Prob")  ## output .txt file with Prob
     timescanfilenames=ratefilename_.replace("Rate","rootfilesList")  ## text file which will contain name of input .root file 
     
@@ -93,14 +98,23 @@ def CreateGraphs():
         
         tfile_ = TFile(inputfile,'READ')
         
-        axis_N="X"
+
         
         print "reading rootfile", inputfile
         ##-----------
         h2 = tfile_.Get('egidx_ttidx_NonIso_dr_')
         
-        saveNormalised2DWithTProfile(tfile_, "2018","plots/",  "egidx_ttidx_NonIso_dr_", "bunch crossing index for e-#gamma candidates", "emulator TP index", timestepstr[ielement], False,  cutval+"_"+axis_N)
+        
+        ## this is to save the 2d normalised matrix histogram for each point. 
+        if args.saveMatrix:
+            os.system("mkdir plots/matrixN")
+            os.system("mkdir plots/matrix")
+            
+            #saveNormalised2DWithTProfile(tfile_, "2018","plots/matrixN/",  "egidx_ttidx_NonIso_dr_", "bunch crossing index for e-#gamma candidates", "emulator TP index", timestepstr[ielement], False,  cutval+"_"+axis_N)
+            saveNormalised2DWithTProfile(tfile_, "2018","plots/matrixN/",  "egidx_ttidx_NonIso_dr_", "bunch crossing index for e-#gamma candidates", "emulator TP index", cutval+"_"+timestepstr[ielement], False,  axis_N)
+            savePDF(tfile_, "2018","plots/matrix/",  "egidx_ttidx_NonIso_dr_", "bunch crossing index for e-#gamma candidates", "emulator TP index", timestepstr[ielement]+"_"+ cutval+"_"+axis_N) ## no need to send axis_N as this is not normalised plot
         ielement = ielement +1 
+        
         
         print "------",h2.Integral()
         prefire_prob_.append(NormalizedPrefiringProbability(h2,axis_N)[0])
@@ -194,8 +208,8 @@ def CreateGraphs():
 
 ################ main function ###########################################################################################
 
-if args.saveMatrix: 
-    SaveMatrix()
+#if args.saveMatrix: 
+#    SaveMatrix()
 
 
 if args.creategraphs:
@@ -209,6 +223,8 @@ if args.overlay:
     dirname = "timescanOutput/"
     files=['Rate_2017data_FrontTrain_cutval_2.root','Rate_2017data_FrontTrain_cutval_4.root','Rate_2017data_FrontTrain_cutval_6.root','Rate_2017data_FrontTrain_cutval_8.root','Rate_2017data_FrontTrain_cutval_10.root']
     files=[dirname+ifile for ifile in files]
+    files = [ ifile.replace(".root", "_"+axis_N+".root")   for ifile in files]
+    
     print files
     
     legend=['>2ADC', '>4ADC', '>6ADC', '>8ADC', '>10ADC' ]
@@ -217,7 +233,8 @@ if args.overlay:
     xtitle='time offset (in ns)'
     ytitle="true pre-firing rate"
     histoname1=['prob_']
-    DrawOverlap(files,histoname1,[xtitle,ytitle],legend,'timescan_rate_summary_allrings',[0,1],[200,1000])
+    os.system('mkdir -p plots/Graphs')
+    DrawOverlap(files,histoname1,[xtitle,ytitle],legend,'plots/Graphs/timescan_rate_summary_allrings_'+axis_N,[0,1],[200,1000])
 
 
     ## overlay prob plots 
@@ -226,6 +243,25 @@ if args.overlay:
     xtitle='time offset (in ns)'
     ytitle="pre-firing probability"
     histoname1=['prob_']
-    DrawOverlap(files,histoname1,[xtitle,ytitle],legend,'timescan_prob_summary_allrings',[0,1],[200,1000])
+    DrawOverlap(files,histoname1,[xtitle,ytitle],legend,'plots/Graphs/timescan_prob_summary_allrings_'+axis_N,[0,1],[200,1000])
 
+
+
+
+if args.CompareWithDavid:
+    from OverlappingPlots import DrawOverlap
+    
+    ## overlay rate plots 
+    dirname = "timescanOutput/"
+    files=['Prob_2017data_FrontTrain_cutval_DQMHistDavid.root','Prob_2017data_FrontTrain_cutval_DQMHist.root']
+    files=[dirname+ifile for ifile in files]
+    
+    legend=['From David', 'From Raman']
+    
+    
+    xtitle='time offset (in ns)'
+    ytitle="true pre-firing rate"
+    histoname1=['noniso_']
+    os.system('mkdir -p plots/Graphs')
+    DrawOverlap(files,histoname1,[xtitle,ytitle],legend,'plots/Graphs/timescan_ProbComparison_L1TDQM',[0,1],[200,1000])
 

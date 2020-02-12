@@ -1,0 +1,209 @@
+error TCC=37 channel=6
+Values around the central BX 1 26
+should move by -1 1501
+phase problem with channel = 6
+error TCC=37 channel=42
+Values around the central BX 0 9
+phase problem with channel = 42
+error TCC=37 channel=52
+Values around the central BX 0 0
+error TCC=38 channel=30
+Values around the central BX 10 19
+should move by +1 1501
+should move by -1 1501
+error TCC=41 channel=37
+Values around the central BX 0 0
+phase problem with channel = 37
+error TCC=43 channel=43
+Values around the central BX 1 0
+phase problem with channel = 43
+error TCC=44 channel=11
+Values around the central BX 29 0
+should move by +1 1501
+error TCC=44 channel=14
+Values around the central BX 29 0
+should move by +1 1501
+error TCC=44 channel=30
+Values around the central BX 10 0
+should move by +1 1501
+phase problem with channel = 30
+error TCC=44 channel=35
+Values around the central BX 4 0
+phase problem with channel = 35
+error TCC=44 channel=42
+Values around the central BX 1 0
+phase problem with channel = 42
+error TCC=45 channel=28
+Values around the central BX 0 0
+error TCC=45 channel=43
+Values around the central BX 11 0
+phase problem with channel = 43
+error TCC=46 channel=4
+Values around the central BX 0 5
+phase problem with channel = 4
+error TCC=47 channel=11
+Values around the central BX 9 2
+phase problem with channel = 11
+error TCC=47 channel=28
+Values around the central BX 0 0
+phase problem with channel = 28
+error TCC=47 channel=30
+Values around the central BX 0 15
+should move by -1 1501
+phase problem with channel = 30
+error TCC=47 channel=42
+Values around the central BX 0 5
+phase problem with channel = 42
+error TCC=47 channel=43
+Values around the central BX 29 0
+should move by +1 1501
+error TCC=47 channel=52
+Values around the central BX 0 1
+phase problem with channel = 52
+error TCC=51 channel=4
+Values around the central BX 0 0
+phase problem with channel = 4
+error TCC=51 channel=43
+Values around the central BX 29 0
+should move by +1 1501
+error TCC=52 channel=7
+Values around the central BX 0 0
+phase problem with channel = 7
+error TCC=52 channel=18
+Values around the central BX 30 0
+should move by +1 1501
+error TCC=52 channel=23
+Values around the central BX 0 0
+phase problem with channel = 23
+error TCC=52 channel=24
+Values around the central BX 6 0
+phase problem with channel = 24
+error TCC=52 channel=26
+Values around the central BX 30 0
+should move by +1 1501
+error TCC=52 channel=27
+Values around the central BX 1 0
+phase problem with channel = 27
+error TCC=52 channel=37
+Values around the central BX 0 0
+phase problem with channel = 37
+error TCC=52 channel=47
+Values around the central BX 6 0
+should move by +1 1501
+error TCC=52 channel=48
+Values around the central BX 30 0
+should move by +1 1501
+error TCC=52 channel=56
+Values around the central BX 0 0
+phase problem with channel = 56
+error TCC=52 channel=59
+Values around the central BX 30 0
+should move by +1 1501
+error TCC=53 channel=36
+Values around the central BX 0 0
+phase problem with channel = 36
+error TCC=61 channel=4
+Values around the central BX 0 1
+should move by -1 1501
+error TCC=61 channel=44
+Values around the central BX 0 29
+should move by -1 1501
+error TCC=61 channel=47
+Values around the central BX 0 0
+error TCC=61 channel=48
+Values around the central BX 11 4
+should move by +1 1501
+phase problem with channel = 48
+error TCC=65 channel=4
+Values around the central BX 0 0
+phase problem with channel = 4
+error TCC=66 channel=68
+Values around the central BX 0 0
+error TCC=75 channel=12
+Values around the central BX 0 5
+should move by -1 3470
+phase problem with channel = 12
+error TCC=80 channel=23
+Values around the central BX 0 0
+error TCC=92 channel=33
+Values around the central BX 28 0
+should move by +1 3470
+phase problem with channel = 33
+error TCC=92 channel=40
+Values around the central BX 9 5
+phase problem with channel = 40
+error TCC=95 channel=21
+Values around the central BX 0 0
+error TCC=98 channel=1
+Values around the central BX 0 0
+phase problem with channel = 1
+error TCC=98 channel=2
+Values around the central BX 0 0
+phase problem with channel = 2
+error TCC=98 channel=3
+Values around the central BX 0 0
+phase problem with channel = 3
+error TCC=98 channel=4
+Values around the central BX 0 0
+phase problem with channel = 4
+error TCC=98 channel=5
+Values around the central BX 0 0
+phase problem with channel = 5
+error TCC=98 channel=6
+Values around the central BX 0 0
+phase problem with channel = 6
+error TCC=98 channel=7
+Values around the central BX 0 0
+phase problem with channel = 7
+error TCC=98 channel=8
+Values around the central BX 0 0
+phase problem with channel = 8
+error TCC=98 channel=9
+Values around the central BX 0 0
+phase problem with channel = 9
+error TCC=98 channel=10
+Values around the central BX 0 0
+phase problem with channel = 10
+error TCC=98 channel=11
+Values around the central BX 0 0
+phase problem with channel = 11
+error TCC=98 channel=12
+Values around the central BX 0 0
+phase problem with channel = 12
+error TCC=98 channel=13
+Values around the central BX 0 0
+phase problem with channel = 13
+error TCC=98 channel=14
+Values around the central BX 0 0
+phase problem with channel = 14
+error TCC=98 channel=15
+Values around the central BX 0 0
+phase problem with channel = 15
+error TCC=98 channel=16
+Values around the central BX 0 0
+phase problem with channel = 16
+error TCC=98 channel=17
+Values around the central BX 0 0
+phase problem with channel = 17
+error TCC=98 channel=18
+Values around the central BX 0 0
+phase problem with channel = 18
+error TCC=99 channel=27
+Values around the central BX 0 0
+error TCC=100 channel=25
+Values around the central BX 26 2
+should move by +1 3470
+should move by -1 3470
+error TCC=100 channel=26
+Values around the central BX 30 0
+should move by +1 3470
+error TCC=100 channel=33
+Values around the central BX 30 0
+should move by +1 3470
+error TCC=105 channel=32
+Values around the central BX 1 0
+phase problem with channel = 32
+error TCC=106 channel=37
+Values around the central BX 11 0
+should move by +1 3470
+phase problem with channel = 37
