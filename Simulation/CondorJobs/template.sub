@@ -1,0 +1,13 @@
+Proxy_filename        = x509up
+Proxy_path            = PROXYPATH$(Proxy_filename)
+executable            = SHELLFILENAME
+output                = output/runpulseshape.$(ClusterId).$(ProcId).out
+error                 = error/runpulseshape.$(ClusterId).$(ProcId).err
+log                   = log/runpulseshape.$(ClusterId).log
++JobFlavour             = "workday"
+transfer_input_files = $(Proxy_path), PulseShapeComparison.py
+#transfer_output_files   = SelectedDataFrames_Histo_L1Prefiring_FromPampa.csv
+
+arguments             = $(Proxy_path) $(transfer_output_files)
+
+queue

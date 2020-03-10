@@ -1,19 +1,17 @@
 import os 
 import sys 
-
 from ROOT import TFile, TTree, TH1F, TH1D, TH1, TCanvas, TChain,TGraphAsymmErrors, TMath, TH2D, TLorentzVector, AddressOf, gROOT, TNamed
-
 from root_pandas import read_root, to_root
-
 from pandas import  DataFrame, concat, Series
 import time
 
 
 filespath="../PrefiringTuplizer/Tuples/"
 #rootfilenae="Histo_L1Prefiring_0ns.root"
-rootfilenae="Histo_L1Prefiring_m17ns.root"
+#rootfilenae="Histo_L1Prefiring_m17ns.root"
 #rootfilenae="Histo_L1Prefiring_p17ns.root"
 
+rootfilenae="Histo_L1Prefiring_FromPampa.root"
 
 filename = filespath+"/"+rootfilenae
 
@@ -23,13 +21,14 @@ vars_ = ["b_ndataframe","b_nADC","b_index_df","b_index_ts","b_count_ADC"]
 df_out= DataFrame(columns=['event','adc'])
 
 ievent=0
-for df in read_root(filename, 'tuplizer/prefiringTree', vars_, chunksize=1000):
+for df in read_root(filename, 'tuplizer/prefiringTree', vars_, chunksize=5000):
     for  ndf, nadc, idx_df, idx_ts, adc  in zip(df.b_ndataframe, df.b_nADC, df.b_index_df, df.b_index_ts, df.b_count_ADC):
         print "event number =",ievent
         
         ## event processing 
         alltimeslices=[]
         for idf in range(ndf):
+            #if ievent > 100: continue 
             #print "inside idf loop ---------"
             adc_timeslice=[]
             #print "entering iadc loop ---------"

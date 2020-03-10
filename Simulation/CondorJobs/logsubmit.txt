@@ -1,0 +1,5 @@
+nohup: ignoring input
+Traceback (most recent call last):
+  File "MultiSubmit.py", line 6, in <module>
+    listfiles = [f for f in os.listdir(folder) if f.endswith('.txt')]
+OSError: [Errno 2] No such file or directory: 'Filelists2017_test'

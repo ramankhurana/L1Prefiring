@@ -1,6 +1,35 @@
+
+
 cmsDriver.py ZEE_13TeV_TuneCUETP8M1_cfi --conditions     auto:phase1_2018_realistic -n 100 --era Run2_2018 --eventcontent  FEVTDEBUG -s GEN,SIM --datatier GEN-SIM --beamspot  Realistic25ns13TeVEarly2017Collision --geometry DB:Extended   --python ZEE_13TeV_TuneCUETP8M1_2018_GenSimFull.py --fileout  file:step1.root --nThreads 8 --no_exec
 
+## dataset with 5000 events
+/CRAB_PrivateMC/khurana-EPlus_EMinus_ParticleGun_Pt100GeV_OnlyEndcap-437d0c4af6d8950ef9feb05370e532aa/USER
+eos path at CERN: /store/group/phys_exotica/monoHiggs/ecal/
+
 cmsDriver.py SingleElectronPt1000_pythia8_cfi  --conditions     auto:phase1_2018_realistic -n 100 --era Run2_2018 --eventcontent  FEVTDEBUG -s GEN,SIM --datatier GEN-SIM --beamspot  Realistic25ns13TeVEarly2017Collision --geometry DB:Extended   --python ZEE_13TeV_TuneCUETP8M1_2018_GenSimFull.py --fileout  file:step1.root --nThreads 8 --no_exec 
+
+
+## dataset with 0 ns 
+Digi_EPlus_EMinus_ParticleGun_Pt100GeV_OnlyEndcap_phase_n0ns.root
+
+## dataset with 4 ns 
+Digi_EPlus_EMinus_ParticleGun_Pt100GeV_OnlyEndcap_phase_p4ns.root
+
+## dataset with 8 ns 
+Digi_EPlus_EMinus_ParticleGun_Pt100GeV_OnlyEndcap_phase_p8ns.root
+
+## dataset with 12 ns 
+Digi_EPlus_EMinus_ParticleGun_Pt100GeV_OnlyEndcap_phase_p12ns.root
+
+## dataset with -4 ns 
+Digi_EPlus_EMinus_ParticleGun_Pt100GeV_OnlyEndcap_phase_m4ns.root
+
+## dataset with -8 ns 
+Digi_EPlus_EMinus_ParticleGun_Pt100GeV_OnlyEndcap_phase_m8ns.root
+
+## dataset with -12 ns 
+Digi_EPlus_EMinus_ParticleGun_Pt100GeV_OnlyEndcap_phase_m12ns.root
+
 
 
 run the ZEE_13TeV_TuneCUETP8M1_2018_GenSimFull.py using cmsRun  
