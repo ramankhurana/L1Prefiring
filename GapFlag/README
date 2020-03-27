@@ -72,9 +72,9 @@ source makeHistAll.sh
 
 ###### for Jan 2020 gap flag data, trying to find coorelations, 
 
-python RootTreeToDataFrame.py ## to convert the rootfile into a .txt file 
+python RootTreeToDataFrame.py ## to convert the EcalTPGParam.root rootfile into a .txt file 
 
-python merge_parameters.py ## to merge two parameters files, for endcap only at the moment 
+python merge_parameters.py ## to merge two parameters files, for endcap only at the moment, this is needed to access the ring information for the EE.  
 
 python gapFlagSummary.py ## created .csv file with ecal parameters and probability to be used as next step 
 
