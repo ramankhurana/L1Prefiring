@@ -20,13 +20,19 @@
 
 /*
  Author: Raman Khurana
+
+This macro works in three modes: 
+1. when we use full readout data as input
+2. when we use time scan data as input 
+3. when we use simulation as input
 */
 
 
 using  namespace std;
 
-bool is2017 = true;
+bool is2017    = true;
 bool timescan_ = true;
+bool isdata    = false;  // when running on the simulation samples it should be false. 
 bool debug__ = false; 
 TString dataset   = "";
 struct TowerVariables{
@@ -381,8 +387,8 @@ std::vector<float> MaskedCoordinate(int icol=1){
   ietaV.clear();
   string line;
   TString maskedfile;
-  if (is2017)  maskedfile = "masked_TT_all_2017.txt";
-  if (!is2017) maskedfile = "masked_TT_all_2018.txt";
+  if (is2017 && isdata)  maskedfile = "masked_TT_all_2017.txt";
+  if (!is2017 && isdata) maskedfile = "masked_TT_all_2018.txt";
   
   ifstream maskedTT (maskedfile);
   if (maskedTT.is_open()){
@@ -582,11 +588,14 @@ void L1Prefiring(int threshold=16, int lumi1=0, int lumi2=999999)
   TString inputrootfile;
   //if (is2017)  inputrootfile = "/eos/cms/store/user/khurana//ZeroBias2/crab_prefiringanalysis2017_V1/190510_225110/0000/Merged_2017.root"; //2017 with prefiring
   
-  if (is2017 && !timescan_)  inputrootfile = "/eos/cms/store/user/khurana//ZeroBias2/crab_prefiringanalysis2017_V4/191104_114219/0000/Merged_ZeroBias2017.root";  // 2017 with prefiring after replacing the RANK var with Energy
+  if (is2017 && !timescan_ && isdata)  inputrootfile = "/eos/cms/store/user/khurana//ZeroBias2/crab_prefiringanalysis2017_V4/191104_114219/0000/Merged_ZeroBias2017.root";  // 2017 with prefiring after replacing the RANK var with Energy
   
-  if (is2017 && timescan_)  inputrootfile = "/eos/cms/store/group/phys_exotica/monoHiggs/ecal/Merged_FilesTimeScan/Merged_files/Merged_HLTPhysics_1_2_3_4.root"; // June 2018 Scan data 
+  if (is2017 && timescan_ && isdata)  inputrootfile = "/eos/cms/store/group/phys_exotica/monoHiggs/ecal/Merged_FilesTimeScan/Merged_files/Merged_HLTPhysics_1_2_3_4.root"; // June 2018 Scan data 
   
-  if (!is2017) inputrootfile = "/eos/cms/store/user/khurana/ZeroBias1/crab_prefiringanalysis2018_V1/190509_091144/0000/Merged_2018.root";
+  if (!is2017 && isdata) inputrootfile = "/eos/cms/store/user/khurana/ZeroBias1/crab_prefiringanalysis2018_V1/190509_091144/0000/Merged_2018.root";
+
+  if (!isdata) inputrootfile = "/eos/cms/store/user/khurana/ECALPrivate/Tuples/Histo_L1Prefiring_0ns.root";
+  
   
   
   std::cout<<" inputrootfile = "<<inputrootfile<<std::endl;
@@ -895,11 +904,13 @@ void L1Prefiring(int threshold=16, int lumi1=0, int lumi2=999999)
 
       // check if this is already tagged by COKE
       bool hasnoisyxtal  = false;
-      if (is2017) hasnoisyxtal = false;
-      if (!is2017) hasnoisyxtal  = (ttflag >3) ; 
+      if (is2017 && isdata) hasnoisyxtal = false;
+      if (!is2017 && isdata ) hasnoisyxtal  = (ttflag >3) ; 
 
       // check if the TT is already masked. 
-      bool masked_ = isMasked(etaV, phiV, ieta, iphi);
+      bool masked_ = false;
+      if (isdata) masked_ = isMasked(etaV, phiV, ieta, iphi);
+      
       
       // skip the tower if this is msked or it is tagged by COKE as noisy. 
       if (masked_) continue;

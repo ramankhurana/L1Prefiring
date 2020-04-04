@@ -1,6 +1,15 @@
-x## All the relevant code to fill the histogram etc is in: 
+
+## All the relevant code to fill the histogram etc is in: 
 
 L1Prefiring.C 
+
+rootfile location at: 
+  if (is2017 && !timescan_)  inputrootfile = "/eos/cms/store/user/khurana//ZeroBias2/crab_prefiringanalysis2017_V4/191104_114219/0000/Merged_ZeroBias2017.root";  //2017 with prefiring after replacing th\
+e RANK var with Energy
+
+  if (is2017 && timescan_)  inputrootfile = "/eos/cms/store/group/phys_exotica/monoHiggs/ecal/Merged_FilesTimeScan/Merged_files/Merged_HLTPhysics_1_2_3_4.root"; // June 2018 Scan data                     
+  if (!is2017) inputrootfile = "/eos/cms/store/user/khurana/ZeroBias1/crab_prefiringanalysis2018_V1/190509_091144/0000/Merged_2018.root"; // 2018 full readout data (1 run) 
+
 
 ## this can be compiled and run using the shell script 
 
@@ -20,7 +29,7 @@ python textgraph.py
 python compareProb_all.py
 
 
-
+############################################################################################################################################################
 ## to get the probablity from the DQM like histograms use the macro: 
 ProbExtractorFromL1DQM.py
 
@@ -30,7 +39,7 @@ python ProbExtractorFromL1DQM.py
 In order to run it for all the time scan points use the shell script: 
 source runalltimeprob.sh ## it also has the usage for this script 
 
-
+############################################################################################################################################################
 ## For time scan results run following commands : 
 
 python MakePlotsTimeScan.py -g -c 2 -a X  -m 
@@ -57,6 +66,12 @@ for which in -6 -5 -4 -3 -2 -1 0 1 2 3 4 5 6; do python ProbExtractorFromL1DQM.p
 python  textgraph_timescan_DQM.py
 
 python MakePlotsTimeScan.py -CompareWithDavid
+
+
+
+
+
+
 
 
 ## PlotSaver_TimeScan.py is the script to save the probablities for each ring and each cut value, matched to the emulated TT. 

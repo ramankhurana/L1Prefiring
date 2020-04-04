@@ -27,7 +27,7 @@ markerStyle=[23,21,22,20,24,25,26,27,28,29,20,21,22,23]
 linestyle=[1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1]
 
 
-def DrawOverlap(fileVec, histVec, titleVec,legendtext,pngname,logstatus=[0,0],xRange=[-99999,99999,1]):
+def DrawOverlap(fileVec, histVec, titleVec,legendtext,pngname,logstatus=[0,0],xRange=[-99999,99999,1],text_="",x_=0.5,y_=0.5):
 
     gStyle.SetOptTitle(0)
     gStyle.SetOptStat(0)
@@ -44,9 +44,9 @@ def DrawOverlap(fileVec, histVec, titleVec,legendtext,pngname,logstatus=[0,0],xR
     maximum=[]
     
     ## Legend    
-    leg = TLegend(0.18, 0.70, 0.89, 0.89)#,NULL,"brNDC");
+    leg = TLegend(0.35, 0.70, 0.69, 0.89)#,NULL,"brNDC");
     leg.SetBorderSize(0)
-    leg.SetNColumns(3)
+    leg.SetNColumns(2)
     leg.SetLineColor(1)
     leg.SetLineStyle(1)
     leg.SetLineWidth(1)
@@ -54,12 +54,13 @@ def DrawOverlap(fileVec, histVec, titleVec,legendtext,pngname,logstatus=[0,0],xR
     leg.SetFillStyle(0)
     leg.SetTextFont(22)
     leg.SetTextSize(0.035)
-     
-    c = TCanvas("c1", "c1",0,0,500,500)
-    c.SetBottomMargin(0.15)
-    c.SetLeftMargin(0.15)
+    
+    from PlotTemplates import myCanvas1D
+    c=myCanvas1D()
     c.SetLogy(logstatus[1])
     c.SetLogx(logstatus[0])
+    #c.SetBottomMargin(0.15)
+    #c.SetLeftMargin(0.15)
     
     #c1_2 = TPad("c1_2","newpad",0.04,0.13,1,0.994)
     #c1_2.Draw()
@@ -134,8 +135,6 @@ def DrawOverlap(fileVec, histVec, titleVec,legendtext,pngname,logstatus=[0,0],xR
         histList[ih].GetYaxis().SetTitle(titleVec[1])
         histList[ih].GetYaxis().SetTitleSize(0.052)
         histList[ih].GetYaxis().SetTitleOffset(1.08)
-        histList[ih].GetYaxis().SetTitleFont(22)
-        histList[ih].GetYaxis().SetLabelFont(22)
         histList[ih].GetYaxis().SetLabelSize(.052)
         histList[ih].GetXaxis().SetRangeUser(xRange[0],xRange[1])
         histList[ih].GetXaxis().SetLabelSize(0.052);
@@ -143,16 +142,16 @@ def DrawOverlap(fileVec, histVec, titleVec,legendtext,pngname,logstatus=[0,0],xR
         histList[ih].GetXaxis().SetLabelSize(0.052)
         histList[ih].GetXaxis().SetTitleSize(0.052)
         histList[ih].GetXaxis().SetTitleOffset(1.14)
-        histList[ih].GetXaxis().SetTitleFont(22)
-        histList[ih].GetXaxis().SetTickLength(0.07)
-        histList[ih].GetXaxis().SetLabelFont(22)
-        histList[ih].GetYaxis().SetLabelFont(22) 
+        #histList[ih].GetXaxis().SetTickLength(0.07)
         histList[ih].GetXaxis().SetNdivisions(508)
+        from PlotTemplates import SetCMSAxis
+        histList[ih] = SetCMSAxis(histList[ih], 1.0, 1.15)
         #histList[ih].GetXaxis().SetMoreLogLabels(); 
         #histList[ih].GetXaxis().SetNoExponent();
         #histList[ih].GetTGaxis().SetMaxDigits(3);
 
         i=i+1
+    '''
     pt = TPaveText(0.0877181,0.9,0.9580537,0.96,"brNDC")
     pt.SetBorderSize(0)
     pt.SetTextAlign(12)
@@ -160,8 +159,27 @@ def DrawOverlap(fileVec, histVec, titleVec,legendtext,pngname,logstatus=[0,0],xR
     pt.SetTextFont(22)
     pt.SetTextSize(0.046)
     text = pt.AddText(0.2,0.5,"CMS Internal")
-    text = pt.AddText(0.65,0.5,"phase scan (2018) ")
-    pt.Draw()
+    '''
+    from PlotTemplates import drawenergy1D
+    pt_ = drawenergy1D(False)
+    for ipt in pt_: ipt.Draw()
+
+    '''
+    if len(text_) >0:
+        ltx = TLatex()
+        ltx.SetTextFont(42)
+        ltx.SetTextSize(0.049)
+        #text_f = "#font[42]{Phase Scan}"
+        ltx.DrawTextNDC(x_,y_,text_)
+    '''
+    
+    from PlotTemplates import ExtraText
+    text_ex  = ExtraText(text_,x_,y_)
+    text_ex.Draw()
+    #text_ex.Draw()
+    #pt = TPaveText(0.0877181,0.9,0.9580537,0.96,"brNDC")
+    #text = pt.AddText(0.65,0.5,"Phase Scan data #sqrt{s} = 13 TeV (2018)")
+    #pt.Draw()
    
     
 

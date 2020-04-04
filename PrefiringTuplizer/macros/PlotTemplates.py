@@ -1,10 +1,9 @@
-
 import ROOT
 import os 
 import sys 
 import time 
 import math 
-from ROOT import TPaveText, TH2
+from ROOT import TPaveText, TH2, TLatex
 from ROOT import TGraph, TFile, TGraphAsymmErrors
 from array import array
 
@@ -16,6 +15,8 @@ ROOT.gStyle.SetLineWidth(3)
 ROOT.gStyle.SetFrameLineWidth(3); 
 ROOT.gStyle.SetPaintTextFormat('4.2f')
 
+#mypalette=[15, 20, 23,30,32]
+ROOT.gStyle.SetPalette(1)
 
 # common/global items are defined here, mainly
 # 
@@ -45,6 +46,36 @@ def setdefaults(is2017, filename):
     return toreturn
 
 
+def SetCMSAxis(h, xoffset=1., yoffset=1.):
+    h.GetXaxis().SetTitleSize(0.047)
+    h.GetYaxis().SetTitleSize(0.047)
+
+    if type(h) is not TGraphAsymmErrors: h.GetZaxis().SetTitleSize(0.047)
+    
+    h.GetXaxis().SetLabelSize(0.047)
+    h.GetYaxis().SetLabelSize(0.047)
+    if type(h) is not TGraphAsymmErrors: h.GetZaxis().SetLabelSize(0.047)
+    
+    
+
+    h.GetXaxis().SetTitleOffset(xoffset)
+    h.GetYaxis().SetTitleOffset(yoffset)
+
+    
+    
+    return h
+
+
+def ExtraText(text_,x_, y_):
+    if not text_: print "nothing provided as text to ExtraText, function crashing"
+    ltx = TLatex()
+    
+    if len(text_)>0:
+        ltx.SetTextFont(42)
+        ltx.SetTextSize(0.049)
+        ltx.DrawTextNDC(x_,y_,text_)
+    return ltx
+
 # This function define  a canvas which is as per CMS Style, This still need changes to be in 100% sync with CMS Style
 #   * This is for 2d plot
 #   * Or a 1d plot which does not need a ratio plot. 
@@ -58,6 +89,14 @@ def myCanvas():
     c.SetBottomMargin(0.1)
     c.SetRightMargin(0.20)
     c.SetLeftMargin(0.1)
+    return c
+
+
+def myCanvas1D():
+    c = ROOT.TCanvas("myCanvasName","The Canvas Title",650,600)
+    c.SetBottomMargin(0.1)
+    c.SetRightMargin(0.050)
+    c.SetLeftMargin(0.15)
     return c
 
 
@@ -104,15 +143,80 @@ def drawenergy(is2017):
     pt.SetBorderSize(0)
     pt.SetTextAlign(12)
     pt.SetFillStyle(0)
-    pt.SetTextFont(42)
-    pt.SetTextSize(0.046)
-    text = pt.AddText(0.03,0.5,"CMS Internal")
+    pt.SetTextFont(52)
+    
+    cmstextSize = 0.07
+    preliminarytextfize = cmstextSize * 0.7
+    lumitextsize = cmstextSize *0.7
+    pt.SetTextSize(cmstextSize)
+    text = pt.AddText(0.03,0.5,"#font[61]{CMS}")
+    
+    pt1 = TPaveText(0.0877181,0.9,0.9580537,0.96,"brNDC")
+    pt1.SetBorderSize(0)
+    pt1.SetTextAlign(12)
+    pt1.SetFillStyle(0)
+    pt1.SetTextFont(52)
+
+    pt1.SetTextSize(preliminarytextfize)
+    text1 = pt1.AddText(0.155,0.4,"Preliminary")
+    
+    pt2 = TPaveText(0.0877181,0.9,0.9580537,0.96,"brNDC")
+    pt2.SetBorderSize(0)
+    pt2.SetTextAlign(12)
+    pt2.SetFillStyle(0)
+    pt2.SetTextFont(52)
+    pt2.SetTextFont(42)
+    pt2.SetTextSize(lumitextsize)
+#    text3 = pt2.AddText(0.53,0.5,"#sqrt{s} = 13 TeV(2017)")
+    
+
     pavetext = ''
     if is2017: pavetext = "#sqrt{s} = 13 TeV(2017)"
     if not is2017: pavetext = "#sqrt{s} = 13 TeV(2018)"
+    text3 = pt2.AddText(0.53,0.5,pavetext)
     
-    text = pt.AddText(0.53,0.5,pavetext)
-    return pt
+    return [pt,pt1,pt2]
+
+
+
+def drawenergy1D(is2017):
+    pt = TPaveText(0.0877181,0.9,0.9580537,0.96,"brNDC")
+    pt.SetBorderSize(0)
+    pt.SetTextAlign(12)
+    pt.SetFillStyle(0)
+    pt.SetTextFont(52)
+    
+    cmstextSize = 0.07
+    preliminarytextfize = cmstextSize * 0.7
+    lumitextsize = cmstextSize *0.7
+    pt.SetTextSize(cmstextSize)
+    text = pt.AddText(0.08,0.5,"#font[61]{CMS}")
+    
+    pt1 = TPaveText(0.0877181,0.9,0.9580537,0.96,"brNDC")
+    pt1.SetBorderSize(0)
+    pt1.SetTextAlign(12)
+    pt1.SetFillStyle(0)
+    pt1.SetTextFont(52)
+
+    pt1.SetTextSize(preliminarytextfize)
+    text1 = pt1.AddText(0.225,0.4,"Preliminary")
+    
+    pt2 = TPaveText(0.0877181,0.9,0.9580537,0.96,"brNDC")
+    pt2.SetBorderSize(0)
+    pt2.SetTextAlign(12)
+    pt2.SetFillStyle(0)
+    pt2.SetTextFont(52)
+    pt2.SetTextFont(42)
+    pt2.SetTextSize(lumitextsize)
+#    text3 = pt2.AddText(0.53,0.5,"#sqrt{s} = 13 TeV(2017)")
+    
+
+    pavetext = ''
+    if is2017: pavetext = "#sqrt{s} = 13 TeV(2017)"
+    if not is2017: pavetext = "#sqrt{s} = 13 TeV(2018)"
+    text3 = pt2.AddText(0.61,0.5,pavetext)
+    
+    return [pt,pt1,pt2]
 
 
 
@@ -133,11 +237,11 @@ def savePDF(f2018, year, dirname, histname, xname, yname, postfix="", setlog=Fal
     c=myCanvas()
     h2 = Save2DHisto(h2,c, xname, yname)
     h2.Draw('COLZTEXT45E')
-    h2.SetMarkerSize(1.5)
+    h2.SetMarkerSize(1.9)
     c.Draw()
     
     pt = drawenergy(year)
-    pt.Draw()
+    #pt.Draw()
     
     histname = histname+"_"+postfix
     c.SaveAs(dirname+'/'+histname+'.pdf')
@@ -161,7 +265,7 @@ def savePDF1D(f2018, year, dirname, histname, xname, yname):
     c.Draw()
     
     pt = drawenergy(year)
-    pt.Draw()
+    #pt.Draw()
     
     c.SaveAs(dirname+'/pdf/'+histname+'.pdf')
     c.SaveAs(dirname+'/png/'+histname+'.png')
@@ -187,7 +291,7 @@ def OverLay1D(files, dirname, histname, xname, yname, legend,year):
     c=myCanvas()
     c.Draw()
     pt = drawenergy(year)
-    pt.Draw()
+    #pt.Draw()
     
     i=0
     for ifile in files:
@@ -228,7 +332,7 @@ def savePDFTProfile(f2018, year, dirname, histname, xname, yname):
     c=myCanvas()
     h2 = Save2DHisto(h2,c, xname, yname)
     h2.Draw('COLZ')
-    h2.SetMarkerSize(1.5)
+    h2.SetMarkerSize(1.9)
     h1 = h2.ProfileX()
     h1.Draw("E1same")
     h1.SetMarkerStyle(20)
@@ -236,7 +340,7 @@ def savePDFTProfile(f2018, year, dirname, histname, xname, yname):
     c.Draw()
     
     pt = drawenergy(year)
-    pt.Draw()
+    #pt.Draw()
 
 
     
@@ -393,11 +497,13 @@ def saveNormalised2DWithTProfile(f2018, year, dirname, histname, xname, yname, p
     c=myCanvas()
     h2 = Save2DHisto(h2,c, xname, yname)
     h2 = NormalizeYAxis(h2, axis_N)
-    h2.Draw('COLZ TEXT 45 E')
+    h2.Draw('COLZ TEXT  E')
 
     #h2.Draw('COLZTEXT')
-    h2.SetMarkerSize(1.5)
+    h2.SetMarkerSize(2.)
+    h2.SetMarkerColor(1)
     
+    h2=SetCMSAxis(h2)
     if isprofile:
         h1 = h2.ProfileX()
         h1.Draw("same")
@@ -408,7 +514,8 @@ def saveNormalised2DWithTProfile(f2018, year, dirname, histname, xname, yname, p
     c.Draw()
     
     pt = drawenergy(year)
-    pt.Draw()
+    
+    for ipt in pt: ipt.Draw()
 
     
     

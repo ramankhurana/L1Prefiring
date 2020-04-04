@@ -227,13 +227,14 @@ if args.overlay:
     
     print files
     
-    legend=['>2ADC', '>4ADC', '>6ADC', '>8ADC', '>10ADC' ]
+    legend=['>1 GeV', '>2 GeV', '>3 GeV', '>4 GeV', '>5 GeV' ]
     
     
     xtitle='time offset (in ns)'
     ytitle="true pre-firing rate"
     histoname1=['prob_']
     os.system('mkdir -p plots/Graphs')
+    files  = [ifile.replace("Rate_","Prob_")for ifile in files]
     DrawOverlap(files,histoname1,[xtitle,ytitle],legend,'plots/Graphs/timescan_rate_summary_allrings_'+axis_N,[0,1],[200,1000])
 
 
@@ -243,9 +244,9 @@ if args.overlay:
     xtitle='time offset (in ns)'
     ytitle="pre-firing probability"
     histoname1=['prob_']
-    DrawOverlap(files,histoname1,[xtitle,ytitle],legend,'plots/Graphs/timescan_prob_summary_allrings_'+axis_N,[0,1],[200,1000])
+    DrawOverlap(files,histoname1,[xtitle,ytitle],legend,'plots/Graphs/timescan_prob_summary_allrings_'+axis_N,[0,1],[200,1000], text_="Phase Scan data", x_=0.6)
 
-
+    os.system("cp plots/Graphs/timescan_prob_summary_allrings_Y.pdf /afs/cern.ch/work/k/khurana/public/AnalysisStuff/ECAL/Plots2017_FrontTrain/")
 
 
 if args.CompareWithDavid:
