@@ -244,9 +244,22 @@ if args.overlay:
     xtitle='time offset (in ns)'
     ytitle="pre-firing probability"
     histoname1=['prob_']
-    DrawOverlap(files,histoname1,[xtitle,ytitle],legend,'plots/Graphs/timescan_prob_summary_allrings_'+axis_N,[0,1],[200,1000], text_="Phase Scan data", x_=0.6)
+    legendpos=[0.53, 0.13, 0.93, 0.39]
+    x__= 0.6
+    y__=0.4
+    
+    if axis_N=="Y":  
+        legendpos=[0.53, 0.13, 0.93, 0.39]
+        x__= 0.6
+        y__=0.4
+    if axis_N=="X":
+        legendpos=[0.35, 0.63, 0.73, 0.83]
+        x__= 0.4
+        y__=0.85
+    DrawOverlap(files,histoname1,[xtitle,ytitle],legend,'plots/Graphs/timescan_prob_summary_allrings_'+axis_N,[0,1],[200,1000], text_="Phase Scan data", x_=x__, y_=y__, legendloc=legendpos)
 
     os.system("cp plots/Graphs/timescan_prob_summary_allrings_Y.pdf /afs/cern.ch/work/k/khurana/public/AnalysisStuff/ECAL/Plots2017_FrontTrain/")
+    os.system("cp plots/Graphs/timescan_prob_summary_allrings_X.pdf /afs/cern.ch/work/k/khurana/public/AnalysisStuff/ECAL/Plots2017_FrontTrain/")
 
 
 if args.CompareWithDavid:

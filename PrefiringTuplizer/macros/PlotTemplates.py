@@ -3,7 +3,7 @@ import os
 import sys 
 import time 
 import math 
-from ROOT import TPaveText, TH2, TLatex
+from ROOT import TPaveText, TH2, TLatex, TLegend
 from ROOT import TGraph, TFile, TGraphAsymmErrors
 from array import array
 
@@ -132,13 +132,28 @@ def Save1DHisto(h1,c, xname, yname):
     h1.Draw()
     return h1
 
+def SetLegend(coordinate_=[.15,.7,.47,.87],ncol=1):
+    c_=coordinate_
+    legend=TLegend(c_[0], c_[1],c_[2],c_[3])
+    legend.SetBorderSize(0)
+    legend.SetNColumns(ncol)
+    legend.SetLineColor(1)
+    legend.SetLineStyle(1)
+    legend.SetLineWidth(1)
+    legend.SetFillColor(0)
+    legend.SetFillStyle(0)
+    legend.SetTextFont(42)
+    legend.SetTextSize(0.05)
+
+    
+    return legend
 
 # This function takes the input as which year it is, Based on this information it draw the legend related to year, energy and lumi. 
 #  * at present 2017 and 2018 legends are added, 
 #  * For future, add 2019 legend. 
 #  * For future, add lumi value, 
 
-def drawenergy(is2017):
+def drawenergy(is2017, data=True):
     pt = TPaveText(0.0877181,0.9,0.9580537,0.96,"brNDC")
     pt.SetBorderSize(0)
     pt.SetTextAlign(12)
@@ -171,15 +186,20 @@ def drawenergy(is2017):
     
 
     pavetext = ''
-    if is2017: pavetext = "#sqrt{s} = 13 TeV(2017)"
-    if not is2017: pavetext = "#sqrt{s} = 13 TeV(2018)"
-    text3 = pt2.AddText(0.53,0.5,pavetext)
+    if is2017 and data: pavetext = "13 TeV(2017)"
+    if (not is2017) and data: pavetext = "13 TeV(2018)"
+
+    if is2017 and not data: pavetext = "13 TeV"
+    if (not is2017) and not data: pavetext = "13 TeV"
+
+    if data: text3 = pt2.AddText(0.65,0.5,pavetext)
+    if not data: text3 = pt2.AddText(0.75,0.5,pavetext)
     
     return [pt,pt1,pt2]
 
 
 
-def drawenergy1D(is2017):
+def drawenergy1D(is2017, text_="Preliminary", data=True):
     pt = TPaveText(0.0877181,0.9,0.9580537,0.96,"brNDC")
     pt.SetBorderSize(0)
     pt.SetTextAlign(12)
@@ -199,7 +219,7 @@ def drawenergy1D(is2017):
     pt1.SetTextFont(52)
 
     pt1.SetTextSize(preliminarytextfize)
-    text1 = pt1.AddText(0.225,0.4,"Preliminary")
+    text1 = pt1.AddText(0.225,0.4,text_)
     
     pt2 = TPaveText(0.0877181,0.9,0.9580537,0.96,"brNDC")
     pt2.SetBorderSize(0)
@@ -211,11 +231,22 @@ def drawenergy1D(is2017):
 #    text3 = pt2.AddText(0.53,0.5,"#sqrt{s} = 13 TeV(2017)")
     
 
-    pavetext = ''
-    if is2017: pavetext = "#sqrt{s} = 13 TeV(2017)"
-    if not is2017: pavetext = "#sqrt{s} = 13 TeV(2018)"
-    text3 = pt2.AddText(0.61,0.5,pavetext)
+    #pavetext = ''
+    #if is2017: pavetext = "#sqrt{s} = 13 TeV(2017)"
+    #if not is2017: pavetext = "#sqrt{s} = 13 TeV(2018)"
+    #text3 = pt2.AddText(0.61,0.5,pavetext)
     
+    pavetext = ''
+    if is2017 and data: pavetext = "13 TeV(2017)"
+    if (not is2017) and data: pavetext = "13 TeV(2018)"
+
+    if is2017 and not data: pavetext = "13 TeV"
+    if (not is2017) and not data: pavetext = "13 TeV"
+
+    if data: text3 = pt2.AddText(0.65,0.5,pavetext)
+    if not data: text3 = pt2.AddText(0.75,0.5,pavetext)
+    
+    return [pt,pt1,pt2]
     return [pt,pt1,pt2]
 
 

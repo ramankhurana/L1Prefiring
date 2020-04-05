@@ -27,7 +27,7 @@ markerStyle=[23,21,22,20,24,25,26,27,28,29,20,21,22,23]
 linestyle=[1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1]
 
 
-def DrawOverlap(fileVec, histVec, titleVec,legendtext,pngname,logstatus=[0,0],xRange=[-99999,99999,1],text_="",x_=0.5,y_=0.5):
+def DrawOverlap(fileVec, histVec, titleVec,legendtext,pngname,logstatus=[0,0],xRange=[-99999,99999,1],text_="",x_=0.5,y_=0.5,legendloc=[0.53, 0.13, 0.93, 0.39]):
 
     gStyle.SetOptTitle(0)
     gStyle.SetOptStat(0)
@@ -44,7 +44,8 @@ def DrawOverlap(fileVec, histVec, titleVec,legendtext,pngname,logstatus=[0,0],xR
     maximum=[]
     
     ## Legend    
-    leg = TLegend(0.35, 0.70, 0.69, 0.89)#,NULL,"brNDC");
+    legpos = legendloc
+    leg = TLegend(legpos[0], legpos[1],legpos[2],legpos[3])
     leg.SetBorderSize(0)
     leg.SetNColumns(2)
     leg.SetLineColor(1)
@@ -52,8 +53,8 @@ def DrawOverlap(fileVec, histVec, titleVec,legendtext,pngname,logstatus=[0,0],xR
     leg.SetLineWidth(1)
     leg.SetFillColor(0)
     leg.SetFillStyle(0)
-    leg.SetTextFont(22)
-    leg.SetTextSize(0.035)
+    leg.SetTextFont(42)
+    leg.SetTextSize(0.049)
     
     from PlotTemplates import myCanvas1D
     c=myCanvas1D()
