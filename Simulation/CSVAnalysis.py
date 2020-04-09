@@ -127,6 +127,8 @@ def Histplot():
      hist3.SetMarkerSize(0.5*2)
      hist3.SetMarkerStyle(20)
      hist3 = SetCMSAxis(hist3,yoffset=1.1)
+     hist3.GetXaxis().SetTitle("time sample")
+     hist3.GetYaxis().SetTitle("<ADC>")
      hist3.Draw('CP')
      
 
@@ -218,7 +220,8 @@ def Histplot():
      leg.AddEntry(hist3,'0 ns','PC')
      leg.AddEntry(hist1_1,'+17 ns','PC')
      leg.Draw()
-     
+     ExtraText("ECAL",0.225,0.65)
+     ExtraText("Endcaps",0.20,0.6)
 
      #
      # txt = 'Path: HLT_PFMETTypeOne200_HBHE_BeamHaloCleaned'

@@ -81,11 +81,12 @@ process.ecalTriggerPrimitiveDigis = cms.EDProducer("EcalTrigPrimProducer",
 
 
 
-process.maxEvents = cms.untracked.PSet( input = cms.untracked.int32(500) )
+process.maxEvents = cms.untracked.PSet( input = cms.untracked.int32(50) )
 
 process.source = cms.Source("PoolSource",
                             # replace 'myfile.root' with the source file you want to use
                             fileNames = cms.untracked.vstring(
+                                'file:/eos/cms/store/group/phys_exotica/monoHiggs/ecal/CRAB_PrivateMC/EPlus_EMinus_ParticleGun_Pt100GeV_OnlyEndcap_Digi/Digi_EPlus_EMinus_ParticleGun_Pt100GeV_OnlyEndcap_phase_n0ns.root'
                                 #'/store/data/Run2017F/ZeroBias2/RAW-RECO/05Apr2018-v1/30000/00464706-0339-E811-88D8-1866DAEA6C40.root'
                                 #'/store/data/Run2018D/ZeroBias/RAW/v1/000/324/725/00000/38CB8BDB-53A8-9643-A7A1-623BC3992B15.root'
                                 #'/store/data/Run2018D/ZeroBias1/RAW-RECO/LogError-PromptReco-v2/000/324/725/00000/FB50455E-C060-EF43-AB31-733A66A2E6E4.root'
@@ -98,7 +99,7 @@ process.source = cms.Source("PoolSource",
                                 #'root://xrootd-cms.infn.it//store/data/Run2018D/ZeroBias1/RAW/v1/000/324/725/00000/3FBCF4C6-6C3A-964B-A293-7D19BE669C3B.root',
                                 #'root://xrootd-cms.infn.it//store/data/Run2018D/ZeroBias1/RAW/v1/000/324/725/00000/C6FA421E-1628-E847-A092-851B296C1421.root',
                                 #'root://xrootd-cms.infn.it//store/data/Run2018D/ZeroBias1/RAW/v1/000/324/725/00000/CC483B27-C8E3-DF45-9C53-D969F9CAB3A1.root',
-                                'root://xrootd-cms.infn.it//store/data/Run2018D/ZeroBias1/RAW/v1/000/324/725/00000/01BF44F6-4157-9649-BBC1-C69EABB42B98.root'
+                                #'root://xrootd-cms.infn.it//store/data/Run2018D/ZeroBias1/RAW/v1/000/324/725/00000/01BF44F6-4157-9649-BBC1-C69EABB42B98.root'
                                 #'file:/tmp/khurana/FB291977-2570-0148-AE34-55E450AF3B90.root'
 
                             )

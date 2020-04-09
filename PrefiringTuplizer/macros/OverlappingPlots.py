@@ -1,4 +1,4 @@
-# In this at the end of filevector I am putting the dirname
+# In this at the end of fitlatexlevector I am putting the dirname
 # so loop over n-1 files and n will give the name of the output dir.
 
 # In legend also the n element will give the name for the ratio plot y axis label.
@@ -177,6 +177,14 @@ def DrawOverlap(fileVec, histVec, titleVec,legendtext,pngname,logstatus=[0,0],xR
     from PlotTemplates import ExtraText
     text_ex  = ExtraText(text_,x_,y_)
     text_ex.Draw()
+    
+    ExtraText("ECAL Endcaps",0.4,0.85)
+    ltx_ = TLatex()
+    ltx_.SetTextFont(42)
+    ltx_.SetTextSize(0.049)
+    ltx_.DrawLatexNDC(0.32,0.81,"L1 e-#gamma object p_{T} > 10 GeV")
+
+
     #text_ex.Draw()
     #pt = TPaveText(0.0877181,0.9,0.9580537,0.96,"brNDC")
     #text = pt.AddText(0.65,0.5,"Phase Scan data #sqrt{s} = 13 TeV (2018)")

@@ -70,6 +70,22 @@ python MakePlotsTimeScan.py -CompareWithDavid
 
 
 
+################################################################################################
+################################################################################################
+############ For simulation run the L1Prefiring.C by chnaging the time value by hand ###########
+################################################################################################
+################################################################################################
+
+Once L1Prering.C is run on all the files, now ready to make the .txt files for prob and then make the overlapping plots. 
+
+
+python MakePlotsSimulation.py -g -c 2 -a Y  -m
+python MakePlotsSimulation.py -g -c 4 -a Y  -m
+python MakePlotsSimulation.py -g -c 6 -a Y  -m
+python MakePlotsSimulation.py -g -c 8 -a Y  -m
+python MakePlotsSimulation.py -g -c 10 -a Y -m
+
+
 
 
 

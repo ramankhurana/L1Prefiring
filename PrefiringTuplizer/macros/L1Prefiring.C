@@ -14,7 +14,7 @@
 #include <TH2.h>
 #include <TH3.h>
 #include <TProfile2D.h>
-
+#include <TSystem.h>
 
 #include <time.h>       /* time_t, struct tm, difftime, time, mktime */
 
@@ -28,11 +28,31 @@ This macro works in three modes:
 */
 
 
+/*File for simulation are at 
+/eos/cms/store/user/khurana/ECALPrivate/Tuples
+-rw-r--r--. 1 khurana zh 32172989 Mar  9 00:10 Histo_L1Prefiring_0ns.root
+-rw-r--r--. 1 khurana zh 31855737 Mar  9 00:10 Histo_L1Prefiring_m12.root
+-rw-r--r--. 1 khurana zh 32119564 Mar  9 00:10 Histo_L1Prefiring_m4ns.root
+-rw-r--r--. 1 khurana zh 32128680 Mar  9 00:10 Histo_L1Prefiring_m8ns.root
+-rw-------. 1 khurana zh 21610345 Mar  9 00:10 Histo_L1Prefiring_p12ns.root
+-rw-r--r--. 1 khurana zh 31805589 Mar  9 00:10 Histo_L1Prefiring_p4ns.root
+-rw-r--r--. 1 khurana zh 23516093 Mar  9 00:10 Histo_L1Prefiring_p8ns.root
+
+
+ */
 using  namespace std;
 
+// DONT FORGET TO CHANGE THE INPUT FILE NAME
 bool is2017    = true;
 bool timescan_ = true;
+// ---------------- following parameters only for MC -------------------------------------
 bool isdata    = false;  // when running on the simulation samples it should be false. 
+TString timeshiftoutput = "_minus12_"; // need to set for mc only 
+TString inputcutval = "m12ns";
+// ----------------------------------------------------------------------------------------
+TString outputdir = "MC_PhaseShift/"; 
+
+
 bool debug__ = false; 
 TString dataset   = "";
 struct TowerVariables{
@@ -594,7 +614,7 @@ void L1Prefiring(int threshold=16, int lumi1=0, int lumi2=999999)
   
   if (!is2017 && isdata) inputrootfile = "/eos/cms/store/user/khurana/ZeroBias1/crab_prefiringanalysis2018_V1/190509_091144/0000/Merged_2018.root";
 
-  if (!isdata) inputrootfile = "/eos/cms/store/user/khurana/ECALPrivate/Tuples/Histo_L1Prefiring_0ns.root";
+  if (!isdata) inputrootfile = "/eos/cms/store/user/khurana/ECALPrivate/Tuples/Histo_L1Prefiring_"+inputcutval+".root";
   
   
   
@@ -912,11 +932,12 @@ void L1Prefiring(int threshold=16, int lumi1=0, int lumi2=999999)
       if (isdata) masked_ = isMasked(etaV, phiV, ieta, iphi);
       
       
+      std::cout<<" masked_ and hasnoisyxtal : "<<masked_<<" "<<hasnoisyxtal<<std::endl;
       // skip the tower if this is msked or it is tagged by COKE as noisy. 
       if (masked_) continue;
       if (hasnoisyxtal) continue;
       
-      
+      std::cout<<" after masked_ "<<std::endl;
       
       // data TP has energy > threshold ADC
       if (tp>threshold){
@@ -1182,7 +1203,7 @@ void L1Prefiring(int threshold=16, int lumi1=0, int lumi2=999999)
 
 
 
-
+    
     // ---------------------------------------------------------------------------------------------------------------------------------------------------------
     // ---------------------------------------------------------------------------------------------------------------------------------------------------------
     // -----------------  NON Isolated -------------------------------------------------------------------------------------------------------------------------
@@ -1458,9 +1479,16 @@ void L1Prefiring(int threshold=16, int lumi1=0, int lumi2=999999)
   TString outputfilename;
   TString cutval;
   cutval.Form("%d",threshold);
-  if (is2017) outputfilename  = "PrefiringRateEE_2017data_FrontTrain_"+dataset+"_cutval_"+cutval+".root";
-  if (!is2017) outputfilename = "PrefiringRateEE_2018data_FrontTrain_"+dataset+"_cutval_"+cutval+".root";
+  TString datastr="data";
+  if (!isdata)  TString datastr="mc";
+  if (is2017 && isdata) outputfilename  = "PrefiringRateEE_2017"+datastr+"_FrontTrain_"+dataset+"_cutval_"+cutval+".root";
+  if (!is2017 && isdata) outputfilename = "PrefiringRateEE_2018data_FrontTrain_"+dataset+"_cutval_"+cutval+".root";
+  if (!isdata) outputfilename = "PrefiringRateEE_"+datastr+"_FrontTrain_"+dataset+timeshiftoutput+"cutval_"+cutval+".root";
   
+  
+  gSystem->Exec("mkdir -p "+outputdir);
+  
+  outputfilename = outputdir + outputfilename; 
   TFile fout(outputfilename,"RECREATE");
   fout.cd();
 
