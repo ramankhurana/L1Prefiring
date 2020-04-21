@@ -192,15 +192,16 @@ def DrawOverlap(fileVec, histVec, titleVec,legendtext,pngname,logstatus=[0,0],xR
    
     
 
-#    t2a = TPaveText(0.0877181,0.81,0.9580537,0.89,"brNDC")
-#    t2a.SetBorderSize(0)
-#    t2a.SetFillStyle(0)
-#    t2a.SetTextSize(0.040) 
-#    t2a.SetTextAlign(12)
-#    t2a.SetTextFont(62)
-#    histolabel1= str(fileVec[(len(fileVec)-1)])
-#    text1 = t2a.AddText(0.06,0.5,"CMS Internal") 
-#    t2a.Draw()
+    #    t2a = TPaveText(0.0877181,0.81,0.9580537,0.89,"brNDC")
+    #    t2a.SetBorderSize(0)
+    #    t2a.SetFillStyle(0)
+    #    t2a.SetTextSize(0.040) 
+    #    t2a.SetTextAlign(12)
+    #    t2a.SetTextFont(62)
+    #    histolabel1= str(fileVec[(len(fileVec)-1)])
+    #    text1 = t2a.AddText(0.06,0.5,"CMS Internal") 
+    #    t2a.Draw()
+    leg.SetHeader("Matched TP energy")
     leg.Draw()
 #
 #    c.cd()

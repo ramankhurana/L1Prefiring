@@ -1,4 +1,4 @@
-// -*- C++ -*-v_
+// -*- C++ -*-v
 //
 // Package:    L1Prefiring/PrefiringTuplizer
 // Class:      PrefiringTuplizer
@@ -595,6 +595,7 @@ PrefiringTuplizer::analyze(const edm::Event& e, const edm::EventSetup& c)
    // Get the trigger menu information
    gtUtil_->retrieveL1Setup(c);
    
+   /*
    // Get the algo bits needed for the timing histograms
    if (!gtUtil_->getAlgBitFromName(algoNameFirstBxInTrain_, algoBitFirstBxInTrain_)) {
      edm::LogWarning("L1TObjectsTiming") << "Algo \"" << algoNameFirstBxInTrain_ << "\" not found in the trigger menu " << gtUtil_->gtTriggerMenuName() << ". Could not retrieve algo bit number.";
@@ -607,7 +608,7 @@ PrefiringTuplizer::analyze(const edm::Event& e, const edm::EventSetup& c)
    if (!gtUtil_->getAlgBitFromName(algoNameIsoBx_, algoBitIsoBx_)) {
      edm::LogWarning("L1TObjectsTiming") << "Algo \"" << algoNameIsoBx_ << "\" not found in the trigger menu " << gtUtil_->gtTriggerMenuName() << ". Could not retrieve algo bit number.";
    }
-   
+   */
    // ------------------------------*----------------*-------------**********--------------------------------------------------------------------------------------------
    // ------------------------------*--------------*-*------------------*------------------------------------------------------------------------------------------------
    // ------------------------------*----------------*------------------*------------------------------------------------------------------------------------------------
@@ -630,7 +631,7 @@ PrefiringTuplizer::analyze(const edm::Event& e, const edm::EventSetup& c)
 
    
      
-   
+   /*
    // Find out in which BX the first collision in train, isolated bunch, and last collision in train have fired.
    // In case of pre firing it will be in BX 1 or BX 2 and this will determine the BX shift that
    // will be applied to the timing histogram later.
@@ -699,7 +700,7 @@ PrefiringTuplizer::analyze(const edm::Event& e, const edm::EventSetup& c)
    
    
    std::cout<<" bxShiftFirst = " << bxShiftFirst<< " "<<bxShiftIso<< " "<<bxShiftLast<<std::endl;
-   
+   */
    // the following shifting is needed for following reason: 
    // we want to use only those events which comes as a result of the begining of the bunch train, each bunch train can have crossings multiple times. 
    // if the egamma triggering happended one bx before the begining of bunch train i.e. egamma trigger pre-fired then we need to correct for this effect. 
@@ -724,30 +725,26 @@ PrefiringTuplizer::analyze(const edm::Event& e, const edm::EventSetup& c)
    
 
    
-   for (int itBX = std::max(EGammaBxCollection->getFirstBX(), EGammaBxCollection->getFirstBX() + bxShiftFirst); itBX <= std::min(EGammaBxCollection->getLastBX(), EGammaBxCollection->getLastBX() + bxShiftFirst); ++itBX) {
-     std::cout<<"inside itBx" <<std::endl;
+   
+   for (int itBX = 0; itBX<1; itBX++){
+     std::cout<<"inside itBx: " <<itBX<<std::endl;
      
-     int index = itBX - bxShiftFirst - uGtAlgs->getFirstBX();
-     for (l1t::EGammaBxCollection::const_iterator egamma = EGammaBxCollection->begin(itBX); egamma != EGammaBxCollection->end(itBX); ++egamma) {
-       std::cout<<"inside egamma" <<std::endl;
+     for (l1t::EGammaBxCollection::const_iterator egamma = EGammaBxCollection->begin(); egamma != EGammaBxCollection->end(); ++egamma) {
+       std::cout<<"inside egamma: " <<EGammaBxCollection->size()<<std::endl;
        
        
        for (size_t i = 0; i < egammaPtCuts_.size(); ++i) {
 	 std::cout<<" for pt cut "<<egammaPtCuts_[i]<<"  "<<egamma->pt() << std::endl;
 	 if (egamma->pt() >= egammaPtCuts_.at(i)) {
-	   //if (index >= 0 and index < (int)egamma_eta_phi_firstbunch.size()) {
-	   //denominator_egamma_firstbunch.at(i)->Fill(egamma->eta(), egamma->phi());
-	   //egamma_eta_phi_firstbunch.at(i).at(index)->Fill(egamma->eta(), egamma->phi());
-	   //}
 	   
-	   int bxNumberActual = itBX - bxShiftFirst;
+	   
+	   int bxNumberActual = itBX;
 	  	   
 	   
 	   std::cout<<" all candidates egamma->pt, egamma->hwPt, egamma->energy, egamma->hwEta, egamma->hwPhi ="<<egamma->pt()<<" "<<egamma->hwPt()<<"  "<<egamma->energy()<<"  "<<egamma->hwEta()<<"  "<<egamma->hwPhi()<<std::endl;
 	   
 	   if ((bool)egamma->hwIso()) {
-	     std::cout<<" isolated bx, eta, counter "<<itBX - bxShiftFirst<<"  "<< egamma->hwEta()<<"  "<<isocounterp2<<std::endl;
-	     ibx_vs_ieta_Iso->Fill(itBX - bxShiftFirst, egamma->hwEta() );
+	     ibx_vs_ieta_Iso->Fill(itBX, egamma->hwEta() );
 
 	     // see the description of variables at the twiki 
 	     //https://twiki.cern.ch/twiki/bin/view/CMSPublic/SWGuideL1TCaloFormats 
@@ -792,7 +789,7 @@ PrefiringTuplizer::analyze(const edm::Event& e, const edm::EventSetup& c)
 	   // ----------------------------------------------------------
 	   // -------- non-isolated branches starts from here. ---------
 	   // ----------------------------------------------------------
-	   ibx_vs_ieta_NonIso->Fill(itBX - bxShiftFirst, egamma->hwEta());
+	   ibx_vs_ieta_NonIso->Fill(itBX , egamma->hwEta());
 
 	   std::cout<<" eta and hweta "<<egamma->hwEta() <<" "<<egamma->eta() <<std::endl;
 	   

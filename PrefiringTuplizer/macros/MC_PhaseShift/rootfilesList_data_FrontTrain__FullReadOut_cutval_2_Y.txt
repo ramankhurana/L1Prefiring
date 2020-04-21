@@ -1,0 +1,7 @@
+-12 MC_PhaseShift//PrefiringRateEE_data_FrontTrain__FullReadOut_minus12_cutval_2.root 
+-8 MC_PhaseShift//PrefiringRateEE_data_FrontTrain__FullReadOut_minus8_cutval_2.root 
+-4 MC_PhaseShift//PrefiringRateEE_data_FrontTrain__FullReadOut_minus4_cutval_2.root 
+0 MC_PhaseShift//PrefiringRateEE_data_FrontTrain__FullReadOut_nosign0_cutval_2.root 
+4 MC_PhaseShift//PrefiringRateEE_data_FrontTrain__FullReadOut_plus4_cutval_2.root 
+8 MC_PhaseShift//PrefiringRateEE_data_FrontTrain__FullReadOut_plus8_cutval_2.root 
+12 MC_PhaseShift//PrefiringRateEE_data_FrontTrain__FullReadOut_plus12_cutval_2.root 

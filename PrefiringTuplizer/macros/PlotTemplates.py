@@ -49,12 +49,13 @@ def setdefaults(is2017, filename):
 def SetCMSAxis(h, xoffset=1., yoffset=1.):
     h.GetXaxis().SetTitleSize(0.047)
     h.GetYaxis().SetTitleSize(0.047)
-
-    if type(h) is not TGraphAsymmErrors: h.GetZaxis().SetTitleSize(0.047)
+    
+    print (type(h))
+    if type(h) is ( (not TGraphAsymmErrors) or (not TGraph)):  h.GetZaxis().SetTitleSize(0.047)
     
     h.GetXaxis().SetLabelSize(0.047)
     h.GetYaxis().SetLabelSize(0.047)
-    if type(h) is not TGraphAsymmErrors: h.GetZaxis().SetLabelSize(0.047)
+    if type(h) is ( (not TGraphAsymmErrors) or (not TGraph)): h.GetZaxis().SetLabelSize(0.047)
     
     
 
@@ -166,7 +167,7 @@ def drawenergy(is2017, data=True):
     preliminarytextfize = cmstextSize * 0.7
     lumitextsize = cmstextSize *0.7
     pt.SetTextSize(cmstextSize)
-    text = pt.AddText(0.03,0.5,"#font[61]{CMS}")
+    text = pt.AddText(0.01,0.57,"#font[61]{CMS}")
     
     pt1 = TPaveText(0.0877181,0.9,0.9580537,0.96,"brNDC")
     pt1.SetBorderSize(0)
@@ -175,7 +176,8 @@ def drawenergy(is2017, data=True):
     pt1.SetTextFont(52)
 
     pt1.SetTextSize(preliminarytextfize)
-    text1 = pt1.AddText(0.155,0.4,"Preliminary")
+    #text1 = pt1.AddText(0.155,0.4,"Preliminary")
+    text1 = pt1.AddText(0.125,0.4,"Work in progress 2017")
     
     pt2 = TPaveText(0.0877181,0.9,0.9580537,0.96,"brNDC")
     pt2.SetBorderSize(0)
@@ -188,20 +190,20 @@ def drawenergy(is2017, data=True):
     
 
     pavetext = ''
-    if is2017 and data: pavetext = "13 TeV(2017)"
-    if (not is2017) and data: pavetext = "13 TeV(2018)"
+    if is2017 and data: pavetext = "(13 TeV)"
+    if (not is2017) and data: pavetext = "(13 TeV)"
 
-    if is2017 and not data: pavetext = "13 TeV"
-    if (not is2017) and not data: pavetext = "13 TeV"
+    if is2017 and not data: pavetext = "(13 TeV)"
+    if (not is2017) and not data: pavetext = "(13 TeV)"
 
-    if data: text3 = pt2.AddText(0.65,0.5,pavetext)
+    if data: text3 = pt2.AddText(0.735,0.5,pavetext)
     if not data: text3 = pt2.AddText(0.75,0.5,pavetext)
     
     return [pt,pt1,pt2]
 
 
 
-def drawenergy1D(is2017, text_="Preliminary", data=True):
+def drawenergy1D(is2017, text_="Work in progress 2018", data=True):
     pt = TPaveText(0.0877181,0.9,0.9580537,0.96,"brNDC")
     pt.SetBorderSize(0)
     pt.SetTextAlign(12)
@@ -212,7 +214,7 @@ def drawenergy1D(is2017, text_="Preliminary", data=True):
     preliminarytextfize = cmstextSize * 0.7
     lumitextsize = cmstextSize *0.7
     pt.SetTextSize(cmstextSize)
-    text = pt.AddText(0.08,0.5,"#font[61]{CMS}")
+    text = pt.AddText(0.063,0.57,"#font[61]{CMS}")
     
     pt1 = TPaveText(0.0877181,0.9,0.9580537,0.96,"brNDC")
     pt1.SetBorderSize(0)
@@ -221,7 +223,7 @@ def drawenergy1D(is2017, text_="Preliminary", data=True):
     pt1.SetTextFont(52)
 
     pt1.SetTextSize(preliminarytextfize)
-    text1 = pt1.AddText(0.225,0.4,text_)
+    text1 = pt1.AddText(0.215,0.4,text_)
     
     pt2 = TPaveText(0.0877181,0.9,0.9580537,0.96,"brNDC")
     pt2.SetBorderSize(0)
@@ -239,14 +241,14 @@ def drawenergy1D(is2017, text_="Preliminary", data=True):
     #text3 = pt2.AddText(0.61,0.5,pavetext)
     
     pavetext = ''
-    if is2017 and data: pavetext = "13 TeV(2017)"
-    if (not is2017) and data: pavetext = "13 TeV(2018)"
+    if is2017 and data: pavetext = "(13 TeV)"
+    if (not is2017) and data: pavetext = "(13 TeV)"
 
     if is2017 and not data: pavetext = "13 TeV"
     if (not is2017) and not data: pavetext = "13 TeV"
 
-    if data: text3 = pt2.AddText(0.65,0.5,pavetext)
-    if not data: text3 = pt2.AddText(0.75,0.5,pavetext)
+    if data: text3 = pt2.AddText(0.81,0.5,pavetext)
+    if not data: text3 = pt2.AddText(0.85,0.5,pavetext)
     
     return [pt,pt1,pt2]
     return [pt,pt1,pt2]
@@ -530,6 +532,8 @@ def saveNormalised2DWithTProfile(f2018, year, dirname, histname, xname, yname, p
     c=myCanvas()
     h2 = Save2DHisto(h2,c, xname, yname)
     h2 = NormalizeYAxis(h2, axis_N)
+    h2.GetXaxis().SetNdivisions(505)
+    h2.GetYaxis().SetNdivisions(505)
     h2.Draw('COLZ TEXT  E')
 
     #h2.Draw('COLZTEXT')
@@ -537,6 +541,12 @@ def saveNormalised2DWithTProfile(f2018, year, dirname, histname, xname, yname, p
     h2.SetMarkerColor(1)
     
     h2=SetCMSAxis(h2)
+    tt = ExtraText("ECAL",0.132, 0.8)
+    tt.Draw()
+    
+    tt1 = ExtraText("Endcaps",0.113, 0.75)
+    tt1.Draw()
+    
     if isprofile:
         h1 = h2.ProfileX()
         h1.Draw("same")

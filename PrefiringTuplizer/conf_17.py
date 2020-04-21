@@ -81,12 +81,12 @@ process.ecalTriggerPrimitiveDigis = cms.EDProducer("EcalTrigPrimProducer",
 
 
 
-process.maxEvents = cms.untracked.PSet( input = cms.untracked.int32(100) )
+process.maxEvents = cms.untracked.PSet( input = cms.untracked.int32(-1) )
 
 process.source = cms.Source("PoolSource",
                             # replace 'myfile.root' with the source file you want to use
                             fileNames = cms.untracked.vstring(
-                                'file:/eos/cms/store/group/phys_exotica/monoHiggs/ecal/CRAB_PrivateMC/EPlus_EMinus_ParticleGun_Pt100GeV_OnlyEndcap_Digi/Digi_EPlus_EMinus_ParticleGun_Pt100GeV_OnlyEndcap_phase_n0ns.root'
+                                'file:/eos/cms/store/group/phys_exotica/monoHiggs/ecal/CRAB_PrivateMC/EPlus_EMinus_ParticleGun_Pt100GeV_OnlyEndcap_Digi/Digi_EPlus_EMinus_ParticleGun_Pt100GeV_OnlyEndcap_phase_TIME.root',
                                 #'file:/afs/cern.ch/work/k/khurana/L1Prefiring/EDAnalyzer/CMSSW_10_2_1/src/L1Prefiring/EventGeenration/step2_default.root'
                                 #'file:/afs/cern.ch/work/k/khurana/L1Prefiring/EDAnalyzer/CMSSW_10_2_1/src/L1Prefiring/EventGeneration/rootfiles/step2_p17_singleEle.root'
                                 #'file:/tmp/khurana/test.root' on lkxplus 791
@@ -133,7 +133,7 @@ process.tuplizer = cms.EDAnalyzer('PrefiringTuplizer',
 
 
 process.TFileService = cms.Service("TFileService",
-                                   fileName = cms.string('Histo_L1Prefiring.root')
+                                   fileName = cms.string('Histo_L1Prefiring_TIME.root')
                                   )
 
 

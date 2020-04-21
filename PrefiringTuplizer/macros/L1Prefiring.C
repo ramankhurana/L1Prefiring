@@ -47,8 +47,8 @@ bool is2017    = true;
 bool timescan_ = true;
 // ---------------- following parameters only for MC -------------------------------------
 bool isdata    = false;  // when running on the simulation samples it should be false. 
-TString timeshiftoutput = "_minus12_"; // need to set for mc only 
-TString inputcutval = "m12ns";
+//TString timeshiftoutput = "_minus12_"; // need to set for mc only 
+//TString inputcutval = "m12ns";
 // ----------------------------------------------------------------------------------------
 TString outputdir = "MC_PhaseShift/"; 
 
@@ -585,7 +585,7 @@ UInt_t getTtf(UInt_t val) {return ((val>>9)&0x7) ;}
 ///////  Main program /////////
 
 //void tpgreader()
-void L1Prefiring(int threshold=16, int lumi1=0, int lumi2=999999)
+void L1Prefiring(int threshold=16,TString timeshiftoutput="_minus12_", TString inputcutval="m12ns", int lumi1=0, int lumi2=999999)
 {  
   std::cout<<" threshold = "<<threshold << std::endl;
   std::cout<<" lumi1 = "<<lumi1<< "  lumi2 = "<<lumi2<<std::endl;

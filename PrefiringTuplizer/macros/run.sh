@@ -3,23 +3,23 @@ root -l -b <<EOF
  .L L1Prefiring.C++
 L1Prefiring(2)
 EOF
-
-root -l -b <<EOF
-.L L1Prefiring.C++
-L1Prefiring(4)
-EOF
-
-
-root -l -b <<EOF
-.L L1Prefiring.C++
-L1Prefiring(6)
-EOF
-
-root -l -b <<EOF
-.L L1Prefiring.C++
-L1Prefiring(8)
-EOF
-
+#
+#root -l -b <<EOF
+#.L L1Prefiring.C++
+#L1Prefiring(4)
+#EOF
+#
+#
+#root -l -b <<EOF
+#.L L1Prefiring.C++
+#L1Prefiring(6)
+#EOF
+#
+#root -l -b <<EOF
+#.L L1Prefiring.C++
+#L1Prefiring(8)
+#EOF
+#
 
 #
 #
