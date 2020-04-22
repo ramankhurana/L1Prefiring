@@ -585,7 +585,7 @@ UInt_t getTtf(UInt_t val) {return ((val>>9)&0x7) ;}
 ///////  Main program /////////
 
 //void tpgreader()
-void L1Prefiring(int threshold=16,TString timeshiftoutput="_minus12_", TString inputcutval="m12ns", int lumi1=0, int lumi2=999999)
+void L1Prefiring(int threshold=16,TString timeshiftoutput="_plus8_", TString inputcutval="p8ns", int lumi1=0, int lumi2=999999)
 {  
   std::cout<<" threshold = "<<threshold << std::endl;
   std::cout<<" lumi1 = "<<lumi1<< "  lumi2 = "<<lumi2<<std::endl;
@@ -614,7 +614,7 @@ void L1Prefiring(int threshold=16,TString timeshiftoutput="_minus12_", TString i
   
   if (!is2017 && isdata) inputrootfile = "/eos/cms/store/user/khurana/ZeroBias1/crab_prefiringanalysis2018_V1/190509_091144/0000/Merged_2018.root";
 
-  if (!isdata) inputrootfile = "/eos/cms/store/user/khurana/ECALPrivate/Tuples/Histo_L1Prefiring_"+inputcutval+".root";
+  if (!isdata) inputrootfile = "../simulation_tuples/Histo_L1Prefiring_"+inputcutval+".root";
   
   
   
@@ -677,6 +677,11 @@ void L1Prefiring(int threshold=16,TString timeshiftoutput="_minus12_", TString i
 
   TH1F* drMin_Iso_               = new TH1F("drMin_Iso_","drMin_Iso_",10,0,10);
   TH1F* drMin_NonIso_            = new TH1F("drMin_NonIso_","drMin_NonIso_",10,0,10);
+  
+  // new histogram to get the probability in simulation 
+  TH1F* ttidx_Iso_dr_         = new TH1F("ttidx_Iso_dr_","ttidx_Iso_dr_",5,-2.5,2.5);
+  TH1F* ttidx_NonIso_dr_      = new TH1F("ttidx_NonIso_dr_","ttidx_Iso_dr_",5,-2.5,2.5);
+  
   
   TH2F* egidx_ttidx_Iso_   = new TH2F("egidx_ttidx_Iso_","egidx_ttidx_Iso_", 5,-2.5,2.5,5,-2.5,2.5);
   TH2F* egidx_ttidx_Iso_dr_   = new TH2F("egidx_ttidx_Iso_dr_","egidx_ttidx_Iso_dr_", 5,-2.5,2.5,5,-2.5,2.5);
@@ -932,13 +937,12 @@ void L1Prefiring(int threshold=16,TString timeshiftoutput="_minus12_", TString i
       if (isdata) masked_ = isMasked(etaV, phiV, ieta, iphi);
       
       
-      std::cout<<" masked_ and hasnoisyxtal : "<<masked_<<" "<<hasnoisyxtal<<std::endl;
+      
       // skip the tower if this is msked or it is tagged by COKE as noisy. 
       if (masked_) continue;
       if (hasnoisyxtal) continue;
       
-      std::cout<<" after masked_ "<<std::endl;
-      
+            
       // data TP has energy > threshold ADC
       if (tp>threshold){
 	ieta_vs_iphi_TP16->Fill(ieta, iphi);
@@ -955,7 +959,7 @@ void L1Prefiring(int threshold=16,TString timeshiftoutput="_minus12_", TString i
       // emiulated Tp has energy > 16 ADC and it can be in any bunch crossing. 
       if(maxOfTPEmul>threshold){
 	ieta_vs_iphi_ETP16_IDXAny->Fill(ieta, iphi);
-	idx_vs_ieta_ETP16_IDXAny->Fill(ieta, indexOfTPEmulMax);
+	idx_vs_ieta_ETP16_IDXAny->Fill(abs(ieta), indexOfTPEmulMax);
       }
 
 
@@ -974,7 +978,12 @@ void L1Prefiring(int threshold=16,TString timeshiftoutput="_minus12_", TString i
 	//  this histogram will be compared with L1T real data. so that data and emulator is side by side. This is also used to make 2d corelation matrix after matching with the eg candidates .
 	
 	ieta_vs_idx_TP_ETP->Fill(abs(ieta), indexOfTPEmulMax);
-	
+	std::cout<<" filling maxTower "
+		 <<" "<<ieta
+		 <<" "<<iphi
+		 <<" "<<indexOfTPEmulMax
+		 <<" "<<maxOfTPEmul
+		 <<std::endl;
 	// fill these towers in  avector so that they can be used later. 
 	maxTower.eta = ieta;
 	maxTower.phi = iphi; 
@@ -1128,7 +1137,7 @@ void L1Prefiring(int threshold=16,TString timeshiftoutput="_minus12_", TString i
     // in time zero isolated 
     if (treeVars.nbOfL1preIsoCandszero>0) {
       for (UInt_t iNL1preIsozero = 0; iNL1preIsozero < treeVars.nbOfL1preIsoCandszero; iNL1preIsozero++) {
-	if(debug__) std::cout<<" Isolated pre EGamma cadidates number "<<iNL1preIsozero
+        std::cout<<" Isolated pre EGamma cadidates number "<<iNL1preIsozero
 		 <<" eta = "<<treeVars.L1preIsoIetazero[iNL1preIsozero]
 		 <<" phi = "<<treeVars.L1preIsoIphizero[iNL1preIsozero]
 		 <<" energy = "<<treeVars.L1preIsoEnergyzero[iNL1preIsozero]
@@ -1342,6 +1351,8 @@ void L1Prefiring(int threshold=16,TString timeshiftoutput="_minus12_", TString i
     // this has to be tuned. 
     // ---------------------- ---------------------- ---------------------- ---------------------- ---------------------- ----------------------
 
+    cout << entry << " / " << treeentries << " events processed" << endl;
+    std::cout<<" sizecondition = "<<(egcandidateIsoVector.size() > 0  && maxTowerVector.size() > 0  )<<" "<<(egcandidateIsoVector.size() > 0) <<" "<<(maxTowerVector.size() > 0 )<<std::endl;
     if (egcandidateIsoVector.size() > 0  && maxTowerVector.size() > 0  ){
       
       int MinDeltaEtaIso    = CalculateDeltaIEta(egcandidateIsoVector, maxTowerVector);
@@ -1415,6 +1426,7 @@ void L1Prefiring(int threshold=16,TString timeshiftoutput="_minus12_", TString i
 	  // fill the histopgrams for DR matched objects
 	  if (dirIso_[2] < 7) {
 	    egidx_ttidx_Iso_dr_->Fill(dirIso_[3], dirIso_[4]-2);
+	    ttidx_Iso_dr_->Fill(dirIso_[4]-2);
 	    //for (int ii=0; ii<3; ii++){
 	    //if()
 	    //	egidx_ttidx_Iso_dr_eta_egamma_[i]->Fill(dirIso_[3], dirIso_[4]-2);
@@ -1449,6 +1461,7 @@ void L1Prefiring(int threshold=16,TString timeshiftoutput="_minus12_", TString i
 	  
 	  drMin_NonIso_->Fill(dirNonIso_[2]);
 	  egidx_ttidx_NonIso_->Fill(dirNonIso_[3], dirNonIso_[4]-2);
+	  
 	  //std::cout<<"inside non isolated cands "<<std::endl;
 	  
 	  if (abs(maxTowerVector[dirNonIso_[1]].eta) > 17 && abs(maxTowerVector[dirNonIso_[1]].eta) < 27)  egidx_ttidx_NonIso_bin_[0]->Fill(dirNonIso_[3], dirNonIso_[4]-2);
@@ -1460,6 +1473,8 @@ void L1Prefiring(int threshold=16,TString timeshiftoutput="_minus12_", TString i
 	  if (dirNonIso_[2] < 7) {
 	    
 	    egidx_ttidx_NonIso_dr_->Fill(dirNonIso_[3], dirNonIso_[4]-2);
+	    ttidx_NonIso_dr_->Fill(dirNonIso_[4]-2);
+
 	    if (abs(maxTowerVector[dirNonIso_[1]].eta) > 17 && abs(maxTowerVector[dirNonIso_[1]].eta) < 27)  egidx_ttidx_NonIso_dr_bin_[0]->Fill(dirNonIso_[3], dirNonIso_[4]-2);
 	    if (abs(maxTowerVector[dirNonIso_[1]].eta) == 27)  egidx_ttidx_NonIso_dr_bin_[1]->Fill(dirNonIso_[3], dirNonIso_[4]-2);
 	    if (abs(maxTowerVector[dirNonIso_[1]].eta) == 28)  egidx_ttidx_NonIso_dr_bin_[2]->Fill(dirNonIso_[3], dirNonIso_[4]-2);
@@ -1539,6 +1554,9 @@ void L1Prefiring(int threshold=16,TString timeshiftoutput="_minus12_", TString i
 
   egidx_ttidx_Iso_dr_->Write();
   egidx_ttidx_Iso_de_->Write();
+  
+  ttidx_Iso_dr_->Write();
+  ttidx_NonIso_dr_->Write();
   
   egidx_ttidx_NonIso_dr_->Write();
 

@@ -271,7 +271,7 @@ def savePDF(f2018, year, dirname, histname, xname, yname, postfix="", setlog=Fal
     #h2.Sumw2()
     c=myCanvas()
     h2 = Save2DHisto(h2,c, xname, yname)
-    h2.Draw('COLZTEXT45E')
+    h2.Draw('COLZTEXT45')
     h2.SetMarkerSize(1.9)
     c.Draw()
     
