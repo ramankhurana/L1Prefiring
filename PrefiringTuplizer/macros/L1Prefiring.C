@@ -614,7 +614,10 @@ void L1Prefiring(int threshold=16,TString timeshiftoutput="_plus8_", TString inp
   
   if (!is2017 && isdata) inputrootfile = "/eos/cms/store/user/khurana/ZeroBias1/crab_prefiringanalysis2018_V1/190509_091144/0000/Merged_2018.root";
 
-  if (!isdata) inputrootfile = "../simulation_tuples/Histo_L1Prefiring_"+inputcutval+".root";
+  // for mc scan 
+  //if (!isdata) inputrootfile = "../simulation_tuples/Histo_L1Prefiring_"+inputcutval+".root";
+  // for one mc sample
+  if (!isdata) inputrootfile = "../Histo_L1Prefiring_0ns.root";
   
   
   
@@ -650,7 +653,9 @@ void L1Prefiring(int threshold=16,TString timeshiftoutput="_plus8_", TString inp
   TH2F* ieta_vs_iphi_TP16           = new TH2F("ieta_vs_iphi_TP16","ieta_vs_iphi_TP16", 57,-28.5,28.5,72,0.5,72.5);
   TH2F* ieta_vs_iphi_ETP16_IDX2     = new TH2F("ieta_vs_iphi_ETP16_IDX2","ieta_vs_iphi_ETP16_IDX2",57,-28.5,28.5,72,0.5,72.5);
   TH2F* ieta_vs_iphi_ETP16_IDXAny   = new TH2F("ieta_vs_iphi_ETP16_IDXAny","ieta_vs_iphi_ETP16_IDXAny",57,-28.5,28.5,72,0.5,72.5);
-
+  
+  TH1F* maxOfTPEmul_                = new TH1F("maxOfTPEmul_", "maxOfTPEmul_", 100, 0,200);
+  
   TH2F* idx_vs_ieta_TP16           = new TH2F("idx_vs_ieta_TP16","idx_vs_ieta_TP16", 11,17.5,28.5,5, -0.5, 4.5 );
   TH2F* idx_vs_ieta_ETP16_IDX2     = new TH2F("idx_vs_ieta_ETP16_IDX2","idx_vs_ieta_ETP16_IDX2",11,17.5,28.5, 5, -0.5, 4.5);
   TH2F* idx_vs_ieta_ETP16_IDXAny   = new TH2F("idx_vs_ieta_ETP16_IDXAny","idx_vs_ieta_ETP16_IDXAny",11,17.5,28.5,5, -0.5, 4.5);
@@ -956,6 +961,8 @@ void L1Prefiring(int threshold=16,TString timeshiftoutput="_plus8_", TString inp
 	idx_vs_ieta_ETP16_IDX2->Fill(ieta, indexOfTPEmulMax);
       }
       
+      
+      maxOfTPEmul_->Fill(maxOfTPEmul);
       // emiulated Tp has energy > 16 ADC and it can be in any bunch crossing. 
       if(maxOfTPEmul>threshold){
 	ieta_vs_iphi_ETP16_IDXAny->Fill(ieta, iphi);
@@ -1531,7 +1538,8 @@ void L1Prefiring(int threshold=16,TString timeshiftoutput="_plus8_", TString inp
   ieta_vs_iphi_TP16->Write();
   ieta_vs_iphi_ETP16_IDX2->Write();
   ieta_vs_iphi_ETP16_IDXAny->Write();
-
+  maxOfTPEmul_->Write();
+  
   idx_vs_ieta_TP16->Write();
   idx_vs_ieta_ETP16_IDX2->Write();
   idx_vs_ieta_ETP16_IDXAny->Write();

@@ -9,7 +9,14 @@ eos path at CERN: /store/group/phys_exotica/monoHiggs/ecal/
 cmsDriver.py SingleElectronPt1000_pythia8_cfi  --conditions     auto:phase1_2018_realistic -n 100 --era Run2_2018 --eventcontent  FEVTDEBUG -s GEN,SIM --datatier GEN-SIM --beamspot  Realistic25ns13TeVEarly2017Collision --geometry DB:Extended   --python ZEE_13TeV_TuneCUETP8M1_2018_GenSimFull.py --fileout  file:step1.root --nThreads 8 --no_exec 
 
 
+Step Gen Sim: /CRAB_PrivateMC/khurana-EPlus_EMinus_ParticleGun_Pt100GeV_OnlyEndcapV2-c0a8ae399a681abb0ec5dc040fbc70be/USER
+EOS path is: /eos/cms/store/group/phys_exotica/monoHiggs/ecalV1/CRAB_PrivateMC/EPlus_EMinus_ParticleGun_Pt100GeV_OnlyEndcapV2/200512_132055/0000
+
+
+
 ## Output of the Step 2 i.e. dataset DIGIS are stored at: /eos/cms/store/group/phys_exotica/monoHiggs/ecal/CRAB_PrivateMC/EPlus_EMinus_ParticleGun_Pt100GeV_OnlyEndcap_Digi 
+
+
 
 
 ## dataset with 0 ns 

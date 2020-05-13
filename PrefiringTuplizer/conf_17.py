@@ -86,8 +86,9 @@ process.maxEvents = cms.untracked.PSet( input = cms.untracked.int32(-1) )
 process.source = cms.Source("PoolSource",
                             # replace 'myfile.root' with the source file you want to use
                             fileNames = cms.untracked.vstring(
-                                'file:/eos/cms/store/group/phys_exotica/monoHiggs/ecal/CRAB_PrivateMC/EPlus_EMinus_ParticleGun_Pt100GeV_OnlyEndcap_Digi/Digi_EPlus_EMinus_ParticleGun_Pt100GeV_OnlyEndcap_phase_TIME.root',
-                                #'file:/afs/cern.ch/work/k/khurana/L1Prefiring/EDAnalyzer/CMSSW_10_2_1/src/L1Prefiring/EventGeenration/step2_default.root'
+                                'file:/eos/cms/store/group/phys_exotica/monoHiggs/ecalV1/CRAB_PrivateMC/EPlus_EMinus_ParticleGun_Pt100GeV_OnlyEndcapV2_Digi/step2_0ns.root'
+                                #'file:/eos/cms/store/group/phys_exotica/monoHiggs/ecal/CRAB_PrivateMC/EPlus_EMinus_ParticleGun_Pt100GeV_OnlyEndcap_Digi/Digi_EPlus_EMinus_ParticleGun_Pt100GeV_OnlyEndcap_phase_TIME.root',
+                            #'file:/afs/cern.ch/work/k/khurana/L1Prefiring/EDAnalyzer/CMSSW_10_2_1/src/L1Prefiring/EventGeenration/step2_default.root'
                                 #'file:/afs/cern.ch/work/k/khurana/L1Prefiring/EDAnalyzer/CMSSW_10_2_1/src/L1Prefiring/EventGeneration/rootfiles/step2_p17_singleEle.root'
                                 #'file:/tmp/khurana/test.root' on lkxplus 791
                                 #'file:/afs/cern.ch/user/t/theofil/public/preFiring/step2_m17ns.root'
@@ -118,8 +119,11 @@ process.tuplizer = cms.EDAnalyzer('PrefiringTuplizer',
                                   firstBXInTrainAlgo = cms.untracked.string("L1_FirstCollisionInTrain"),
                                   lastBXInTrainAlgo = cms.untracked.string("L1_LastCollisionInTrain"),
                                   isoBXAlgo = cms.untracked.string("L1_IsolatedBunch"),
-                                  stage2CaloLayer2EGammaProducer = cms.InputTag("gtStage2Digis","EGamma"),
                                   TPCollection = cms.InputTag("ecalDigis","EcalTriggerPrimitives"),
+                                  ## for data 
+                                  #stage2CaloLayer2EGammaProducer = cms.InputTag("gtStage2Digis","EGamma"),
+                                  ## for mc 
+                                  stage2CaloLayer2EGammaProducer = cms.InputTag("hltGtStage2Digis","EGamma"),
                                   
                                   ## for data
                                   #EBdigis      = cms.InputTag("selectDigi","selectedEcalEBDigiCollection"),
@@ -133,7 +137,8 @@ process.tuplizer = cms.EDAnalyzer('PrefiringTuplizer',
 
 
 process.TFileService = cms.Service("TFileService",
-                                   fileName = cms.string('Histo_L1Prefiring_TIME.root')
+                                   #fileName = cms.string('Histo_L1Prefiring_TIME.root')
+                                   fileName = cms.string('Histo_L1Prefiring_0ns_FixLabel.root')
                                   )
 
 

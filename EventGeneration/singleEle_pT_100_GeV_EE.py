@@ -26,7 +26,7 @@ process.load('Configuration.StandardSequences.EndOfProcess_cff')
 process.load('Configuration.StandardSequences.FrontierConditions_GlobalTag_cff')
 
 process.maxEvents = cms.untracked.PSet(
-    input = cms.untracked.int32(100)
+    input = cms.untracked.int32(7000)
 )
 
 # Input source
@@ -69,10 +69,10 @@ process.GlobalTag = GlobalTag(process.GlobalTag, 'auto:phase1_2018_realistic', '
 process.generator = cms.EDFilter("Pythia8PtGun",
     PGunParameters = cms.PSet(
         AddAntiParticle = cms.bool(True),
-        MaxEta = cms.double(3.0),
+        MaxEta = cms.double(2.5),
         MaxPhi = cms.double(3.14159265359),
         MaxPt = cms.double(100.01),
-        MinEta = cms.double(2.5),
+        MinEta = cms.double(2.0),
         MinPhi = cms.double(-3.14159265359),
         MinPt = cms.double(99.99),
         ParticleID = cms.vint32(11)
