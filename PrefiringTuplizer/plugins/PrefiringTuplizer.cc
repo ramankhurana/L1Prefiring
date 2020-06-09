@@ -34,7 +34,7 @@
 #include <TTree.h>
 #include "FWCore/ServiceRegistry/interface/Service.h"
 #include "CommonTools/UtilAlgos/interface/TFileService.h"
-
+#include "DataFormats/HepMCCandidate/interface/GenParticle.h"
 
 #include "DataFormats/EcalDigi/interface/EcalTriggerPrimitiveDigi.h"
 #include "DataFormats/EcalDigi/interface/EcalDigiCollections.h"
@@ -145,7 +145,7 @@ private:
   edm::EDGetTokenT<EBDigiCollection> EBdigistoken_ ;
   edm::EDGetTokenT<EEDigiCollection> EEdigistoken_ ;
   
-  
+  edm::EDGetTokenT<reco::GenParticleCollection> genParticleToken;
   std::string monitorDir_;
   
   // To get the algo bits corresponding to algo names
@@ -156,134 +156,152 @@ private:
   
   // not all of the following are needed, clean later on 
   // For the timing histograms
-  int algoBitFirstBxInTrain_;
-  int algoBitLastBxInTrain_;
-  int algoBitIsoBx_;
-  const std::string algoNameFirstBxInTrain_;
-  const std::string algoNameLastBxInTrain_;
-  const std::string algoNameIsoBx_;
+  int                    algoBitFirstBxInTrain_;
+  int                    algoBitLastBxInTrain_;
+  int                    algoBitIsoBx_;
+  const std::string      algoNameFirstBxInTrain_;
+  const std::string      algoNameLastBxInTrain_;
+  const std::string      algoNameIsoBx_;
   //const unsigned int bxrange_; //this is the out bx range
 
   unsigned int useAlgoDecision_;
   edm::Service<TFileService> fs;
 
   // variables for branches 
-  uint runNb ;
-  ULong64_t evtNb ;
-  uint bxNb ;
-  //uint bxGT ;
-  ULong64_t orbitNb ;
-  uint lumiBlock ;
-  double timeStamp ;
+  int                     nGenPar_;
+  std::vector<float>      genParPx_;
+  std::vector<float>      genParPy_;
+  std::vector<float>      genParPz_;
+  std::vector<float>      genParE_;
+  		          
+  		          
+  std::vector<int>        genParQ_;
+  std::vector<int>        genParId_;
+  std::vector<int>        genParSt_;
+  std::vector<int>        genMomParId_; // added by Eiko
+  std::vector<int>        genParIndex_;    // added by Eiko
+  std::vector<int>        genNMo_;
+  std::vector<int>        genNDa_;
+  std::vector<int>        genMo1_;
+  std::vector<int>        genMo2_;
+  std::vector<int>        genDa1_;
+  std::vector<int>        genDa2_;
+  std::vector<int>        genStFlag_;
   
-  uint nbOfActiveTriggers ;
-  int activeTriggers[160] ;
-  int activeTriggersBX[160] ;  // all triggers from gt even disabled                                                                                                                                      
-
-  uint nbOfActiveTechTriggers ;
-  int activeTechTriggers[64] ;
+  int MAXNGENPAR_ = 30;
+  uint            runNb ;
+  ULong64_t       evtNb ;
+  uint            bxNb ;
+  ULong64_t       orbitNb ;
+  uint            lumiBlock ;
+  double          timeStamp ;
+  uint            nbOfActiveTriggers ;
+  int             activeTriggers[160] ;
+  int             activeTriggersBX[160] ;  // all triggers from gt even disabled
+  uint            nbOfActiveTechTriggers ;
+  int             activeTechTriggers[64] ;
   
   // variables for pulse shape
-  uint ndataframe;
-  uint nADC;
-  int index_df[14032];
-  int index_ts[14032];
-  int count_ADC[14032];
+  uint       ndataframe;
+  uint       nADC;
+  int        index_df[14032];
+  int        index_ts[14032];
+  int        count_ADC[14032];
   
   
   
-  uint nbOfTowers ; //max 4032 EB+EE                                                                                                                                                                      
-  int ieta[4032] ;
-  int iphi[4032] ;
-  int nbOfXtals[4032] ;
-  int rawTPData[4032] ;
-  int rawTPEmul1[4032] ;
-  int rawTPEmul2[4032] ;
-  int rawTPEmul3[4032] ;
-  int rawTPEmul4[4032] ;
-  int rawTPEmul5[4032] ;
-  int rawTPEmulttFlag1[4032] ;
-  int rawTPEmulttFlag2[4032] ;
-  int rawTPEmulttFlag3[4032] ;
-  int rawTPEmulttFlag4[4032] ;
-  int rawTPEmulttFlag5[4032] ;
-  int rawTPEmulsFGVB1[4032] ;
-  int rawTPEmulsFGVB2[4032] ;
-  int rawTPEmulsFGVB3[4032] ;
-  int rawTPEmulsFGVB4[4032] ;
-  int rawTPEmulsFGVB5[4032] ;
-  float eRec[4032] ;
-  int crystNb[4032];
-  int sevlv[4032];
-  int spike[4032] ;
-  int twrADC[4032];
-  int sFGVB[4032];
+  uint         nbOfTowers ; //max 4032 EB+EE                                                                                                                                                                      
+  int          ieta[4032] ;
+  int          iphi[4032] ;
+  int          nbOfXtals[4032] ;
+  int          rawTPData[4032] ;
+  int          rawTPEmul1[4032] ;
+  int          rawTPEmul2[4032] ;
+  int          rawTPEmul3[4032] ;
+  int          rawTPEmul4[4032] ;
+  int          rawTPEmul5[4032] ;
+  int          rawTPEmulttFlag1[4032] ;
+  int          rawTPEmulttFlag2[4032] ;
+  int          rawTPEmulttFlag3[4032] ;
+  int          rawTPEmulttFlag4[4032] ;
+  int          rawTPEmulttFlag5[4032] ;
+  int          rawTPEmulsFGVB1[4032] ;
+  int          rawTPEmulsFGVB2[4032] ;
+  int          rawTPEmulsFGVB3[4032] ;
+  int          rawTPEmulsFGVB4[4032] ;
+  int          rawTPEmulsFGVB5[4032] ;
+  float        eRec[4032] ;
+  int          crystNb[4032];
+  int          sevlv[4032];
+  int          spike[4032] ;
+  int          twrADC[4032];
+  int          sFGVB[4032];
+               
+  int          ttFlag[4032];
+  int          TCCid[4032];
+  int          TowerInTCC[4032] ;
+  int          strip[4032];
 
-  int ttFlag[4032];
-  int TCCid[4032];
-  int TowerInTCC[4032] ;
-  int strip[4032];
-
-  Int_t v_nonisocounterm2     ;
-  Int_t v_nonisocounterm1     ;
-  Int_t v_nonisocounterzero   ;
-  Int_t v_nonisocounterp1     ;
-  Int_t v_nonisocounterp2     ;
-
-  Int_t v_isocounterm2     ;
-  Int_t v_isocounterm1     ;
-  Int_t v_isocounterzero   ;
-  Int_t v_isocounterp1     ;
-  Int_t v_isocounterp2     ;
-
-
-  Int_t L1preIsoIetam2[10];
-  Int_t L1preIsoIetam1[10];
-  Int_t L1preIsoIetazero[10];
-  Int_t L1preIsoIetap1[10];
-  Int_t L1preIsoIetap2[10];
-
-  Int_t L1preNonisoIetam2[10];
-  Int_t L1preNonisoIetam1[10];
-  Int_t L1preNonisoIetazero[10];
-  Int_t L1preNonisoIetap1[10];
-  Int_t L1preNonisoIetap2[10];
-
-  Int_t L1preIsoIphim2[10];
-  Int_t L1preIsoIphim1[10];
-  Int_t L1preIsoIphizero[10];
-  Int_t L1preIsoIphip1[10];
-  Int_t L1preIsoIphip2[10];
-
-  Int_t L1preNonisoIphim2[10];
-  Int_t L1preNonisoIphim1[10];
-  Int_t L1preNonisoIphizero[10];
-  Int_t L1preNonisoIphip1[10];
-  Int_t L1preNonisoIphip2[10];
-
-  Int_t L1preIsoEnergym2[10];
-  Int_t L1preIsoEnergym1[10];
-  Int_t L1preIsoEnergyzero[10];
-  Int_t L1preIsoEnergyp1[10];
-  Int_t L1preIsoEnergyp2[10];
+  Int_t          v_nonisocounterm2     ;
+  Int_t          v_nonisocounterm1     ;
+  Int_t          v_nonisocounterzero   ;
+  Int_t          v_nonisocounterp1     ;
+  Int_t          v_nonisocounterp2     ;
+	         
+  Int_t          v_isocounterm2     ;
+  Int_t          v_isocounterm1     ;
+  Int_t          v_isocounterzero   ;
+  Int_t          v_isocounterp1     ;
+  Int_t          v_isocounterp2     ;
+	         
+	         
+  Int_t          L1preIsoIetam2[10];
+  Int_t          L1preIsoIetam1[10];
+  Int_t          L1preIsoIetazero[10];
+  Int_t          L1preIsoIetap1[10];
+  Int_t          L1preIsoIetap2[10];
+	         
+  Int_t          L1preNonisoIetam2[10];
+  Int_t          L1preNonisoIetam1[10];
+  Int_t          L1preNonisoIetazero[10];
+  Int_t          L1preNonisoIetap1[10];
+  Int_t          L1preNonisoIetap2[10];
+	         
+  Int_t          L1preIsoIphim2[10];
+  Int_t          L1preIsoIphim1[10];
+  Int_t          L1preIsoIphizero[10];
+  Int_t          L1preIsoIphip1[10];
+  Int_t          L1preIsoIphip2[10];
+	         
+  Int_t          L1preNonisoIphim2[10];
+  Int_t          L1preNonisoIphim1[10];
+  Int_t          L1preNonisoIphizero[10];
+  Int_t          L1preNonisoIphip1[10];
+  Int_t          L1preNonisoIphip2[10];
+	         
+  Int_t          L1preIsoEnergym2[10];
+  Int_t          L1preIsoEnergym1[10];
+  Int_t          L1preIsoEnergyzero[10];
+  Int_t          L1preIsoEnergyp1[10];
+  Int_t          L1preIsoEnergyp2[10];
   
-  Float_t L1preIsoPtm2[10];
-  Float_t L1preIsoPtm1[10];
-  Float_t L1preIsoPtzero[10];
-  Float_t L1preIsoPtp1[10];
-  Float_t L1preIsoPtp2[10];
+  Float_t        L1preIsoPtm2[10];
+  Float_t        L1preIsoPtm1[10];
+  Float_t        L1preIsoPtzero[10];
+  Float_t        L1preIsoPtp1[10];
+  Float_t        L1preIsoPtp2[10];
 
-  Int_t L1preNonisoEnergym2[10];
-  Int_t L1preNonisoEnergym1[10];
-  Int_t L1preNonisoEnergyzero[10];
-  Int_t L1preNonisoEnergyp1[10];
-  Int_t L1preNonisoEnergyp2[10];
+  Int_t          L1preNonisoEnergym2[10];
+  Int_t          L1preNonisoEnergym1[10];
+  Int_t          L1preNonisoEnergyzero[10];
+  Int_t          L1preNonisoEnergyp1[10];
+  Int_t          L1preNonisoEnergyp2[10];
 
-  Float_t L1preNonisoPtm2[10];
-  Float_t L1preNonisoPtm1[10];
-  Float_t L1preNonisoPtzero[10];
-  Float_t L1preNonisoPtp1[10];
-  Float_t L1preNonisoPtp2[10];
+  Float_t        L1preNonisoPtm2[10];
+  Float_t        L1preNonisoPtm1[10];
+  Float_t        L1preNonisoPtzero[10];
+  Float_t        L1preNonisoPtp1[10];
+  Float_t        L1preNonisoPtp2[10];
 
   // Define histograms 
   TH2F* ibx_vs_ieta_Iso;
@@ -318,9 +336,8 @@ PrefiringTuplizer::PrefiringTuplizer(const edm::ParameterSet& ps)
   tpEmulatorCollection_(consumes<EcalTrigPrimDigiCollection>(ps.getParameter<edm::InputTag>("TPEmulatorCollection"))),
   tpCollection_(consumes<EcalTrigPrimDigiCollection>(ps.getParameter<edm::InputTag>("TPCollection"))),
   EBdigistoken_(consumes<EBDigiCollection>(ps.getParameter<edm::InputTag>("EBdigis") )  ),
-  EEdigistoken_(consumes<EEDigiCollection>(ps.getParameter<edm::InputTag>("EEdigis") )  )
-
-
+  EEdigistoken_(consumes<EEDigiCollection>(ps.getParameter<edm::InputTag>("EEdigis") )  ),
+  genParticleToken(consumes<reco::GenParticleCollection>(ps.getParameter<edm::InputTag>("genparticles") ) )
 {
   
 
@@ -368,6 +385,18 @@ L : a 64 bit signed integer (Long64_t)
 l : a 64 bit unsigned integer (ULong64_t)
 O : [the letter o, not a zero] a boolean (Bool_t)
   */
+  
+  prefiringTree->Branch("nGenPar_",      &nGenPar_,    "nGenPar/i");
+  prefiringTree->Branch("genParPx_",  "vector<float>",    &genParPx_);//,    "genParPx/F");
+  
+  prefiringTree->Branch("genParPy_",   "vector<float>",  &genParPy_);//,    "genParPy/F");
+  prefiringTree->Branch("genParPz_",   "vector<float>",  &genParPz_);//,    "genParPz/F");
+  prefiringTree->Branch("genParE_",    "vector<float>",  &genParE_);//,     "genParE/F");
+
+  prefiringTree->Branch("genParId_",   "vector<int>",  &genParId_);//,    "genParId/I");
+  prefiringTree->Branch("genParSt_",   "vector<int>",  &genParSt_);//,    "genParSt/I");
+  prefiringTree->Branch("genMomParId_", "vector<int>", &genMomParId_);//, "genMomParId/I");
+  
   
   prefiringTree->Branch("b_runNb", &runNb ,"b_runNb/i");
   prefiringTree->Branch("b_evtNb", &evtNb ,"b_evtNb/L");
@@ -510,6 +539,28 @@ PrefiringTuplizer::analyze(const edm::Event& e, const edm::EventSetup& c)
 {
    using namespace edm;
    
+   
+   nGenPar_ =0;
+   //genParP4_->Clear();
+   genParPx_.clear();
+   genParPy_.clear();
+   genParPz_.clear();
+   genParE_.clear();
+
+   genParQ_.clear();
+   genParId_.clear();
+   genParSt_.clear();
+   genMomParId_.clear();
+   genParIndex_.clear();
+   genNMo_.clear();
+   genNDa_.clear();
+   genMo1_.clear();
+   genMo2_.clear();
+   genDa1_.clear();
+   genDa2_.clear();
+   genStFlag_.clear();
+   
+   
    std::cout<<" checking eta values -2.45, -2.7, -3.0, -1.44"
 	    <<" " << abs( -2.45)
 	    <<" " << abs( -2.7 )
@@ -523,6 +574,7 @@ PrefiringTuplizer::analyze(const edm::Event& e, const edm::EventSetup& c)
      index_ts[i] = -999;
      count_ADC[i] = -999;
    }
+   
 
    for (int i=0; i<10; i++){
      L1preIsoIetam2[i] = -999;
@@ -594,6 +646,125 @@ PrefiringTuplizer::analyze(const edm::Event& e, const edm::EventSetup& c)
    // begin job does not have the event setup infp 
    // Get the trigger menu information
    gtUtil_->retrieveL1Setup(c);
+   
+   
+   //vector<reco::GenParticle>             "genParticles"              ""                "HLT"
+   // GenParticles for MC 
+   
+   if(e.isRealData())
+     return;
+
+   using namespace edm;
+   edm::Handle<reco::GenParticleCollection> genParticleHandle;
+   e.getByToken(genParticleToken, genParticleHandle);
+
+
+   // first save the vector of candidates
+   unsigned int nParticles_=0;
+   bool hasStatusFlag=false; // status flags are not always in every sample, need to check first
+   std::vector<const reco::Candidate*> cands;
+   std::vector<std::vector<reco::GenParticle>::const_iterator> myParticles;
+   for( std::vector<reco::GenParticle>::const_iterator
+	  it_gen = genParticleHandle->begin();
+	it_gen != genParticleHandle->end(); it_gen++ )
+     {
+       reco::GenParticle gen = *it_gen;
+       nParticles_++;
+       if(nParticles_==1){
+	 const reco::GenStatusFlags& cmsswStatus = it_gen->statusFlags();
+	 int status=0;
+	 for(unsigned int ist=0; ist<cmsswStatus.flags_.size(); ist++)
+	   {
+	     if(cmsswStatus.flags_[ist])
+	       status |= (0x1 << (ist+1));
+	   }
+	 if(status>0)hasStatusFlag=true;
+	 else hasStatusFlag=false;
+       }
+       bool applyPromptSelection_ = false;
+       bool applyStatusSelection_ = true;
+       // particle needs to have status < 30 or isPrompt if statusFlag information is available
+       if( ( applyStatusSelection_ && !applyPromptSelection_ && gen.status()>=30 )
+	      ||
+	   ( applyPromptSelection_ &&
+	     (
+	      ( hasStatusFlag && !gen.statusFlags().isPrompt() && gen.status()>=30) ||
+	      (!hasStatusFlag && gen.status()>=30)
+	      )
+	     )
+	   )continue; // only save beam particle, hard scattering and stable particles
+       cands.push_back(&*it_gen);
+       myParticles.push_back(it_gen);
+     }
+
+
+   
+
+   // now loop
+   std::vector<const reco::Candidate*>::const_iterator found = cands.begin();
+   for(unsigned int genIndex=0; genIndex < MAXNGENPAR_ && genIndex < myParticles.size(); genIndex++){
+
+     std::vector<reco::GenParticle>::const_iterator geni = myParticles[genIndex];
+     nGenPar_++;
+
+     //TLorentzVector p4(geni->px(),geni->py(),geni->pz(),geni->energy());
+     //new( (*genParP4_)[nGenPar_-1]) TLorentzVector(p4);
+
+     genParPx_.push_back(geni->px());
+     genParPy_.push_back(geni->py());
+     genParPz_.push_back(geni->pz());
+     genParE_.push_back(geni->energy());
+    
+     genParQ_.push_back(geni->charge());
+     genParId_.push_back(geni->pdgId());
+     genParSt_.push_back(geni->status());
+
+     int mompid = -9999;
+     if( geni->numberOfMothers() ==1 )
+       mompid = geni->mother()->pdgId();
+     else
+       mompid = 10000+geni->numberOfMothers();
+
+     genMomParId_.push_back(mompid);
+
+     genParIndex_.push_back(genIndex);
+
+     int iMo1 = -1;
+     int iMo2 = -1;
+     int iDa1 = -1;
+     int iDa2 = -1;
+     int NMo = geni->numberOfMothers();
+     int NDa = geni->numberOfDaughters();
+     found = find(cands.begin(), cands.end(), geni->mother(0));
+     if(found != cands.end()) iMo1 = found - cands.begin() ;
+
+     found = find(cands.begin(), cands.end(), geni->mother(1));
+     if(found != cands.end()) iMo2 = found - cands.begin() ;
+
+     found = find(cands.begin(), cands.end(), geni->daughter(0));
+     if(found != cands.end()) iDa1 = found - cands.begin() ;
+
+     found = find(cands.begin(), cands.end(), geni->daughter(1));
+     if(found != cands.end()) iDa2 = found - cands.begin() ;
+     genNMo_.push_back(NMo);
+     genNDa_.push_back(NDa);
+     genMo1_.push_back(iMo1);
+     genMo2_.push_back(iMo2);
+     genDa1_.push_back(iDa1);
+     genDa2_.push_back(iDa2);
+     const reco::GenStatusFlags& cmsswStatus = geni->statusFlags();
+     int status=0;
+     for(unsigned int ist=0; ist<cmsswStatus.flags_.size(); ist++)
+       {
+	 if(cmsswStatus.flags_[ist])
+	   status |= (0x1 << (ist+1));
+       }
+     genStFlag_.push_back(status);
+
+   } // end of loop over particles
+   
+
+
    
    /*
    // Get the algo bits needed for the timing histograms
@@ -928,7 +1099,7 @@ PrefiringTuplizer::analyze(const edm::Event& e, const edm::EventSetup& c)
    
 
    // begin of mc 
-   bool ismc = false; 
+   bool ismc = true; 
    if (ismc){
    
    std::vector<int> Rechit_adc;
@@ -948,7 +1119,7 @@ PrefiringTuplizer::analyze(const edm::Event& e, const edm::EventSetup& c)
      EEDataFrame df(*hitItr);
      
      for(int i=0; i<10;++i){
-       std::cout<<" ADC count for EEDataFrame number = "<<j << "  sample number "<<i<<"  "<<df.sample(i).adc()<<std::endl;
+       //std::cout<<" ADC count for EEDataFrame number = "<<j << "  sample number "<<i<<"  "<<df.sample(i).adc()<<std::endl;
        //Rechit_adc.push_back(df.sample(i).adc());
        index_df[countNadc] = j;
        index_ts[countNadc] = i;

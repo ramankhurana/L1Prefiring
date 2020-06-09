@@ -86,8 +86,8 @@ process.maxEvents = cms.untracked.PSet( input = cms.untracked.int32(-1) )
 process.source = cms.Source("PoolSource",
                             # replace 'myfile.root' with the source file you want to use
                             fileNames = cms.untracked.vstring(
-                                'file:/eos/cms/store/group/phys_exotica/monoHiggs/ecalV1/CRAB_PrivateMC/EPlus_EMinus_ParticleGun_Pt100GeV_OnlyEndcapV2_Digi/step2_0ns.root'
-                                #'file:/eos/cms/store/group/phys_exotica/monoHiggs/ecal/CRAB_PrivateMC/EPlus_EMinus_ParticleGun_Pt100GeV_OnlyEndcap_Digi/Digi_EPlus_EMinus_ParticleGun_Pt100GeV_OnlyEndcap_phase_TIME.root',
+                                #'file:/eos/cms/store/group/phys_exotica/monoHiggs/ecalV1/CRAB_PrivateMC/EPlus_EMinus_ParticleGun_Pt100GeV_OnlyEndcapV2_Digi/step2_0ns.root'
+                                'file:/eos/cms/store/group/phys_exotica/monoHiggs/ecalV1/CRAB_PrivateMC/EPlus_EMinus_ParticleGun_Pt100GeV_OnlyEndcapV2_Digi/step2_TIME.root',
                             #'file:/afs/cern.ch/work/k/khurana/L1Prefiring/EDAnalyzer/CMSSW_10_2_1/src/L1Prefiring/EventGeenration/step2_default.root'
                                 #'file:/afs/cern.ch/work/k/khurana/L1Prefiring/EDAnalyzer/CMSSW_10_2_1/src/L1Prefiring/EventGeneration/rootfiles/step2_p17_singleEle.root'
                                 #'file:/tmp/khurana/test.root' on lkxplus 791
@@ -131,14 +131,15 @@ process.tuplizer = cms.EDAnalyzer('PrefiringTuplizer',
                                   
                                   ## for mc
                                   EBdigis      = cms.InputTag("simEcalDigis","ebDigis"),
-                                  EEdigis      = cms.InputTag("simEcalDigis","eeDigis")
+                                  EEdigis      = cms.InputTag("simEcalDigis","eeDigis"),
+                                  genparticles = cms.InputTag("genParticles")
 )
 
 
 
 process.TFileService = cms.Service("TFileService",
-                                   #fileName = cms.string('Histo_L1Prefiring_TIME.root')
-                                   fileName = cms.string('Histo_L1Prefiring_0ns_FixLabel.root')
+                                   fileName = cms.string('Histo_L1Prefiring_TIME.root')
+                                   #fileName = cms.string('Histo_L1Prefiring_0ns_FixLabel.root')
                                   )
 
 

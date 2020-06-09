@@ -615,9 +615,9 @@ void L1Prefiring(int threshold=16,TString timeshiftoutput="_plus8_", TString inp
   if (!is2017 && isdata) inputrootfile = "/eos/cms/store/user/khurana/ZeroBias1/crab_prefiringanalysis2018_V1/190509_091144/0000/Merged_2018.root";
 
   // for mc scan 
-  //if (!isdata) inputrootfile = "../simulation_tuples/Histo_L1Prefiring_"+inputcutval+".root";
+  if (!isdata) inputrootfile = "../simulation_tuples_Eta_2p0_to_2p5/Histo_L1Prefiring_"+inputcutval+".root";
   // for one mc sample
-  if (!isdata) inputrootfile = "../Histo_L1Prefiring_0ns.root";
+  //if (!isdata) inputrootfile = "../Histo_L1Prefiring_0ns.root";
   
   
   

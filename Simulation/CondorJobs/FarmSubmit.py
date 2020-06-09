@@ -20,11 +20,11 @@ def strsplit(word):
 
 
 
-usage = "python FarmSubmit.py --proxypathtmp /tmp/x509up --inputdir path_to_all_files_to_run_on --outputdir path_where_all_output_will_be_saved "
+usage = "python FarmSubmit.py --proxypathtmp /tmp/x509up --inputdir path_to_all_files_to_run_on --outputdir path_where_all_output_will_be_saved -outformat .csv"
 parser = argparse.ArgumentParser(description=usage)
-parser.add_argument("-proxypathtmp", "--proxypathtmp",  dest="proxypathtmp",default="")
-parser.add_argument("-inputdir", "--inputdir",  dest="inputdir",default="/eos/cms/store/user/khurana/ECALPrivate/Tuples")
-parser.add_argument("-outputdir", "--outputdir",  dest="outputdir",default="/eos/cms/store/user/khurana/ECALPrivate/CSVFiles")
+parser.add_argument("-proxypathtmp", "--proxypathtmp",  dest="proxypathtmp",default="/tmp/x509up")
+parser.add_argument("-inputdir", "--inputdir",  dest="inputdir",default="/eos/cms/store/user/khurana/ECAL/SimulationTuples/simulation_tuples_Eta_2p0_to_2p5")
+parser.add_argument("-outputdir", "--outputdir",  dest="outputdir",default="/eos/cms/store/user/khurana/ECALPrivate/CSVFiles_Eta_2p0_to_2p5")
 parser.add_argument("-outformat","--outformat", dest="outformat", default=".root")
 parser.add_argument("-mainsrc","--mainsrc", dest="mainsrc", default="")
 
@@ -101,6 +101,6 @@ i=0
 for ifile in rootfilepathlist:
     print "submit job for ",rootfilepathlist[i],".................."
     cond_file_list = PrepareSubmissionFile(".sh", rootfilepathlist[i], outoutfilepathlist[i])
-    #SubmitCondor(cond_file_list[1].replace(SUBMITDIR+"/",""))
+    SubmitCondor(cond_file_list[1].replace(SUBMITDIR+"/",""))
     i = i+1
 

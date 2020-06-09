@@ -6,12 +6,14 @@ from pandas import  DataFrame, concat, Series
 import time
 
 
-filespath="../PrefiringTuplizer/Tuples/"
-#rootfilenae="Histo_L1Prefiring_0ns.root"
+filespath="/eos/cms/store/user/khurana/ECAL/SimulationTuples/simulation_tuples_Eta_2p0_to_2p5/"
+
+#filespath="../PrefiringTuplizer/Tuples/"
+rootfilenae="Histo_L1Prefiring_0ns.root"
 #rootfilenae="Histo_L1Prefiring_m17ns.root"
 #rootfilenae="Histo_L1Prefiring_p17ns.root"
 
-rootfilenae="Histo_L1Prefiring_FromPampa.root"
+#rootfilenae="Histo_L1Prefiring_FromPampa.root"
 
 filename = filespath+"/"+rootfilenae
 

@@ -3,6 +3,10 @@
 
 L1Prefiring.C 
 
+## Save tghe pt plots using the trees, just to make sure pt peak is at 100 not at 40-50 GeV like in old smaples, 
+Quick dirty macro: 
+root -l -b -q SavePtPlots.C
+
 rootfile location at: 
   if (is2017 && !timescan_)  inputrootfile = "/eos/cms/store/user/khurana//ZeroBias2/crab_prefiringanalysis2017_V4/191104_114219/0000/Merged_ZeroBias2017.root";  //2017 with prefiring after replacing th\
 e RANK var with Energy
@@ -10,7 +14,17 @@ e RANK var with Energy
   if (is2017 && timescan_)  inputrootfile = "/eos/cms/store/group/phys_exotica/monoHiggs/ecal/Merged_FilesTimeScan/Merged_files/Merged_HLTPhysics_1_2_3_4.root"; // June 2018 Scan data                     
   if (!is2017) inputrootfile = "/eos/cms/store/user/khurana/ZeroBias1/crab_prefiringanalysis2018_V1/190509_091144/0000/Merged_2018.root"; // 2018 full readout data (1 run) 
 
-
+For simulation the files are located at [for eta 2-2.5]
+/eos/cms/store/user/khurana/ECAL/SimulationTuples/simulation_tuples_Eta_2p0_to_2p5
+																									   Histo_L1Prefiring_0ns.root 
+Histo_L1Prefiring_m12.root                                                                                                                                 
+Histo_L1Prefiring_m4ns.root
+Histo_L1Prefiring_m8ns.root                      
+Histo_L1Prefiring_p12ns.root    
+Histo_L1Prefiring_p4ns.root
+Histo_L1Prefiring_p8ns.root                                                                                                                                  
+: 
+ 
 ## this can be compiled and run using the shell script 
 
 source run.sh 
@@ -77,7 +91,7 @@ python MakePlotsTimeScan.py -CompareWithDavid
 ################################################################################################
 
 Once L1Prering.C is run on all the files, now ready to make the .txt files for prob and then make the overlapping plots. 
-
+For simulation it makes more sense to make the -X plots becuase this is what is emulator prob is. 
 
 python MakePlotsSimulation.py -g -c 2 -a Y  -m
 python MakePlotsSimulation.py -g -c 4 -a Y  -m
@@ -87,6 +101,16 @@ python MakePlotsSimulation.py -g -c 10 -a Y -m
 
 
 
+python MakePlotsSimulation.py -g -c 2 -a X  -m
+python MakePlotsSimulation.py -g -c 4 -a X  -m
+python MakePlotsSimulation.py -g -c 6 -a X  -m
+python MakePlotsSimulation.py -g -c 8 -a X  -m
+python MakePlotsSimulation.py -g -c 10 -a X -m
+
+
+To draw the overlapping histogrmas, one need to run the command, 
+
+python MakePlotsSimulation.py -o -a X
 
 
 

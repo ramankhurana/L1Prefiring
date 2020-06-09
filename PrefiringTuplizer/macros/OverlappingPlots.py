@@ -102,7 +102,7 @@ def DrawOverlap(fileVec, histVec, titleVec,legendtext,pngname,logstatus=[0,0],xR
     for ih in range(len(histList)):
         tt = type(histList[ih])
         if logstatus[1] is 1 :
-            histList[ih].SetMaximum(1) #1.4 for log
+            histList[ih].SetMaximum(100) #1.4 for log
             histList[ih].SetMinimum(0.00001) #1.4 for log
         if logstatus[1] is 0 :
             histList[ih].SetMaximum(1.4) #1.4 for log
@@ -122,7 +122,7 @@ def DrawOverlap(fileVec, histVec, titleVec,legendtext,pngname,logstatus=[0,0],xR
                 histList[ih].Draw("hist same")   
 
         if tt is TGraphAsymmErrors :
-            histList[ih].SetMaximum(1) 
+            histList[ih].SetMaximum(10) 
             histList[ih].SetMarkerColor(colors[ih])
             histList[ih].SetLineColor(colors[ih])
             histList[ih].SetMarkerStyle(markerStyle[ih])

@@ -1,6 +1,7 @@
 import os 
-#timelist=['m4ns','m12ns','p12ns','p4ns','p8ns','n0ns','m8ns']
-timelist=['p8ns']
+#timelist=['m5ns','m6ns','m7ns']
+timelist=['m4ns','m12ns','p12ns','p4ns','0ns','m8ns','p8ns']
+#timelist=['p8ns']
 
 inputconfig = open('conf_17.py','r').read()
 
@@ -16,5 +17,5 @@ for itime in timelist:
     
     os.system('cmsRun '+filename_r)
     
-    os.system('rm '+filename_r)
+    #os.system('rm '+filename_r)
     

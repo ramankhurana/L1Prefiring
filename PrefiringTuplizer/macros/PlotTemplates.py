@@ -501,8 +501,11 @@ def NormalizedPrefiringProbability(h2,axis_N="Y"):
                 verticalsum = verticalsum + h2.GetBinContent(ibx, iby)
                 #print 'old bin content = ',ibx, iby,  h2.GetBinContent(ibx, iby)
             Vsum_.append(verticalsum)
-            
-    prob_ = Vsum_[1]/(Vsum_[1]+Vsum_[2]) 
+    
+    print "Vsum_ = ", Vsum_
+    prob_ = 0.
+    if (Vsum_[1]+Vsum_[2]) > 0.0:
+        prob_ = Vsum_[1]/(Vsum_[1]+Vsum_[2]) 
     delta_a = 0.0
     if Vsum_[1]>0.0: delta_a = math.sqrt(Vsum_[1])/Vsum_[1]
     delta_b = 0.0 

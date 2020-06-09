@@ -253,9 +253,9 @@ if args.overlay:
         x__= 0.6
         y__=0.4
     if axis_N=="X":
-        legendpos=[0.35, 0.63, 0.73, 0.83]
+        legendpos=[0.35, 0.55, 0.73, 0.75]
         x__= 0.4
-        y__=0.85
+        y__=0.76
     DrawOverlap(files,histoname1,[xtitle,ytitle],legend,'plots/Graphs/timescan_prob_summary_allrings_'+axis_N,[0,1],[200,1000], text_="Phase Scan data", x_=x__, y_=y__, legendloc=legendpos)
 
     os.system("cp plots/Graphs/timescan_prob_summary_allrings_Y.pdf /afs/cern.ch/work/k/khurana/public/AnalysisStuff/ECAL/Plots2017_FrontTrain/")
