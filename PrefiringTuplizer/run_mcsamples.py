@@ -1,7 +1,7 @@
 import os 
-#timelist=['m5ns','m6ns','m7ns']
-timelist=['m4ns','m12ns','p12ns','p4ns','0ns','m8ns','p8ns']
-#timelist=['p8ns']
+timelist=['m5ns','m6ns','m7ns']
+#timelist=['m4ns','m12ns','p12ns','p4ns','0ns','m8ns','p8ns']
+#timelist=['m8ns']
 
 inputconfig = open('conf_17.py','r').read()
 

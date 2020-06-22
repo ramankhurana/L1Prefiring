@@ -15,7 +15,7 @@
 #include <TH3.h>
 #include <TProfile2D.h>
 #include <TSystem.h>
-
+#include <TLorentzVector.h>
 #include <time.h>       /* time_t, struct tm, difftime, time, mktime */
 
 /*
@@ -28,18 +28,7 @@ This macro works in three modes:
 */
 
 
-/*File for simulation are at 
-/eos/cms/store/user/khurana/ECALPrivate/Tuples
--rw-r--r--. 1 khurana zh 32172989 Mar  9 00:10 Histo_L1Prefiring_0ns.root
--rw-r--r--. 1 khurana zh 31855737 Mar  9 00:10 Histo_L1Prefiring_m12.root
--rw-r--r--. 1 khurana zh 32119564 Mar  9 00:10 Histo_L1Prefiring_m4ns.root
--rw-r--r--. 1 khurana zh 32128680 Mar  9 00:10 Histo_L1Prefiring_m8ns.root
--rw-------. 1 khurana zh 21610345 Mar  9 00:10 Histo_L1Prefiring_p12ns.root
--rw-r--r--. 1 khurana zh 31805589 Mar  9 00:10 Histo_L1Prefiring_p4ns.root
--rw-r--r--. 1 khurana zh 23516093 Mar  9 00:10 Histo_L1Prefiring_p8ns.root
 
-
- */
 using  namespace std;
 
 // DONT FORGET TO CHANGE THE INPUT FILE NAME
@@ -201,9 +190,61 @@ struct EcalTPGVariables
   Int_t           L1preIsoEnergyp2[12];   
   Int_t           L1preIsoPtp2[12];   
 
+  // Gen Level information for MC samples 
+  int                  nGenPar;
+  Float_t   genParPx[2];
+  Float_t   genParPy[2];
+  Float_t   genParPz[2];
+  Float_t   genParE[2];
+  int     genParId[2];
+  int     genParSt[2];
+  int     genMomParId[2];
+  
+  
   
 };
 
+int etaToiEta(float eta){
+  int sign =0;
+  if (eta < 0) sign = -1;
+  if (eta > 0) sign = +1;
+  
+  int ieta=0;
+  if (fabs(eta) <1.566) ieta = 0; /// zero means barrel, i am not considering it yet so set it to zero 
+  if (fabs(eta)>=1.566  && fabs(eta) <1.653) ieta = 19;
+  if (fabs(eta)>=1.653  && fabs(eta) <1.740) ieta = 20;
+  if (fabs(eta)>=1.74   && fabs(eta) <1.830) ieta = 21;
+  if (fabs(eta)>=1.830  && fabs(eta) <1.930) ieta = 22;
+  if (fabs(eta)>=1.930  && fabs(eta) <2.043) ieta = 23;
+  if (fabs(eta)>=2.043  && fabs(eta) <2.172) ieta = 24;
+  if (fabs(eta)>=2.172  && fabs(eta) <2.322) ieta = 25;
+  if (fabs(eta)>=2.322  && fabs(eta) <2.500) ieta = 26;
+  if (fabs(eta)>=2.500  && fabs(eta) <2.650) ieta = 27;
+  if (fabs(eta)>=2.650  && fabs(eta) <3.000) ieta = 28;
+  
+  int signed_ieta = ieta * sign;
+  return signed_ieta;
+}
+
+
+int phiToiPhi(float phi){
+
+  float kPI = 3.14159265358979323846;
+  if (phi>0) phi = phi;
+  if (phi<0) phi = phi + 2*kPI;
+  
+  /*
+
+  float kPI = 3.14159265358979323846;
+  float kTWOPI = 2 * kPI;
+  
+  while (phi >= kPI) phi = phi - kTWOPI;
+  while (phi < -kPI) phi = phi + kTWOPI;
+  */
+  int iphi = int(360*phi / (5.0*2*kPI) ) ;
+  return iphi;
+  
+}
 
 
 
@@ -452,6 +493,38 @@ TString getDataSetTiming(int lumi1, int lumi2){
 }  
 	
 
+
+
+// This function is only for MC, it need the gen level information 
+// it matches the gen level particle with closest TP and return the matched TP information
+// index of TP is returned 
+void GetGenMatchedTP(EcalTPGVariables & treeVars){
+  
+
+}
+
+// similar to previous one, instead of just one TP you get a list of TPs which are around matched TP, 
+// maximum of 9 TPs, one matched and 8 neighbouring to make (almost) a 3x3 matrix, 
+// a vector of indices is returned 
+void GetGenMatchedTPs(){
+
+}
+
+// DRTowerElectron checks that eta and phi are within +- 1 towers, so we will collect maximum of 9 towers to make the L1T candidate 
+//   - in addition dphi can be +-2 
+//   - if dphi is 72 it is set to 0 [think a bit this is correct, i couldn't find  a better way to do this]
+bool DRTowerElectron(int eta1, int phi1, int eta2, int phi2){
+
+  bool matched = false ;
+  
+  int deta = abs(eta1 - eta2) ;
+  int dphi = abs(phi1 - phi2);
+  if (dphi == 72) dphi = 0;
+  if (  (deta<=1) && (dphi <=2) ) matched = true;
+  return matched ;
+}
+
+
 void setBranchAddresses (TChain * chain, EcalTPGVariables & treeVars)
 {
   chain->SetBranchAddress ("b_runNb",&treeVars.runNb) ; 
@@ -562,6 +635,15 @@ void setBranchAddresses (TChain * chain, EcalTPGVariables & treeVars)
   chain->SetBranchAddress("b_L1preIsoEnergyp2", treeVars.L1preIsoEnergyp2);
   chain->SetBranchAddress("b_L1preIsoPtp2", treeVars.L1preIsoPtp2);
 
+  // Read the gen level info branches 
+  chain->SetBranchAddress("nGenPar_",&treeVars.nGenPar);
+  chain->SetBranchAddress("genParPx_", treeVars.genParPx) ;
+  chain->SetBranchAddress("genParPy_", treeVars.genParPy) ;
+  chain->SetBranchAddress("genParPz_", treeVars.genParPz) ;
+  chain->SetBranchAddress("genParE_", treeVars.genParE) ;
+  chain->SetBranchAddress("genParId_", treeVars.genParId) ;
+  chain->SetBranchAddress("genParSt_", treeVars.genParSt) ;
+  chain->SetBranchAddress("genMomParId_", treeVars.genMomParId) ;
   
   /*
   chain->SetBranchAddress("", & , ) ; 
@@ -587,13 +669,18 @@ UInt_t getTtf(UInt_t val) {return ((val>>9)&0x7) ;}
 //void tpgreader()
 void L1Prefiring(int threshold=16,TString timeshiftoutput="_plus8_", TString inputcutval="p8ns", int lumi1=0, int lumi2=999999)
 {  
-  std::cout<<" threshold = "<<threshold << std::endl;
-  std::cout<<" lumi1 = "<<lumi1<< "  lumi2 = "<<lumi2<<std::endl;
+
+
+
+
+  
+  //std::cout<<" threshold = "<<threshold << std::endl;
+  //std::cout<<" lumi1 = "<<lumi1<< "  lumi2 = "<<lumi2<<std::endl;
   
   TString datasettiming = getDataSetTiming(lumi1, lumi2);
   dataset = datasettiming;
   
-  std::cout<<" datasettiming = "<<datasettiming<<std::endl;
+  //std::cout<<" datasettiming = "<<datasettiming<<std::endl;
   time_t timer;
   double initial_t = time(&timer);
   
@@ -621,7 +708,7 @@ void L1Prefiring(int threshold=16,TString timeshiftoutput="_plus8_", TString inp
   
   
   
-  std::cout<<" inputrootfile = "<<inputrootfile<<std::endl;
+  //std::cout<<" inputrootfile = "<<inputrootfile<<std::endl;
   chain->Add(inputrootfile);
   
 
@@ -629,7 +716,16 @@ void L1Prefiring(int threshold=16,TString timeshiftoutput="_plus8_", TString inp
   
   bool debug=false;
 
+  // -- Gen Level Histogram and Pseudo L1T candidates information 
+  TH1F* h_PL1T_nTowers_             = new TH1F("h_PL1T_nTowers_","h_PL1T_nTowers_;# of Towers; # of Events",11,-0.5,10.5);
+  TH1F* h_PL1T_Energy0_             = new TH1F("h_PL1T_Energy0_", "h_PL1T_Energy0_;Pseudo L1T candidate Energy in emulator BX=1;  # of Events", 50,0,200);
+  TH1F* h_PL1T_Energy1_             = new TH1F("h_PL1T_Energy1_", "h_PL1T_Energy1_;Pseudo L1T candidate Energy in emulator BX=2;  # of Events", 50,0,200);
+  TH1F* h_PL1T_Energy2_             = new TH1F("h_PL1T_Energy2_", "h_PL1T_Energy2_;Pseudo L1T candidate Energy in emulator BX=3;  # of Events", 50,0,200);
+  TH1F* h_PL1T_Energy3_             = new TH1F("h_PL1T_Energy3_", "h_PL1T_Energy3_;Pseudo L1T candidate Energy in emulator BX=4;  # of Events", 50,0,200);
+  TH1F* h_PL1T_Energy4_             = new TH1F("h_PL1T_Energy4_", "h_PL1T_Energy4_;Pseudo L1T candidate Energy in emulator BX=5;  # of Events", 50,0,200);
+  TH1F* h_PL1T_maxIndex_            = new TH1F("h_PL1T_maxIndex_","h_PL1T_maxIndex_;Index of max Emul energy; # of Events",5,0.5,5.5);
 
+  
   // define output histograms
   
   TH2F* ieta_vs_iphi_TP             = new TH2F("ieta_vs_iphi_TP","ieta_vs_iphi_TP", 57,-28.5,28.5,72,0.5,72.5);
@@ -759,49 +855,13 @@ void L1Prefiring(int threshold=16,TString timeshiftoutput="_plus8_", TString inp
   TH1F* ieta_TP0                   = new TH1F("ieta_TP0","ieta_TP0",57,-28.5,28.5);
 
   
-  /*
-  
-  TH1F *realTP=new TH1F("realTP","",256,0,256);
-  TH1F *emulTP=new TH1F("emulTP","",256,0,256);
-
-  TH1F *realTP_sev=new TH1F("realTP_sev","",256,0,256);
-  TH1F *emulTP_sev=new TH1F("emulTP_sev","",256,0,256);
-
-  TH2F *realvsemulTP=new TH2F("realVsEmulTP","",256,0,256,256,0,256);
-
-  TH2F *etaphimismatch=new TH2F("etaphimismatch","",35,-17.5,17.5,72,0.5,72.5);
-
-  TH2F *etaphimatch=new TH2F("etaphimatch","",35,-17.5,17.5,72,0.5,72.5);
-
-  TH2F *realminusemulTPvsreal=new TH2F("realminusEmulTPvsreal","",32,0,256,21,-10.5,10.5);
-
-  TH1F *realminusemulTP=new TH1F("realminusEmulTP","",21,-10.5,10.5);
-
-
-  TH2F *realminusemulTPvsieta=new TH2F("realminusEmulTPvsieta","",57,-28.5,28.5,41,-20.5,20.5);
-
-  TH2F *realminusemulTPratvsieta=new TH2F("realminusEmulTPratvsieta","",57,-28.5,28.5,41,-1.05,1.05);
-
-  TH1F *realTPEE=new TH1F("realTPEE","",256,0,256);
-  TH1F *emulTPEE=new TH1F("emulTPEE","",256,0,256);
-
-  TH2F *realvsemulTPEE=new TH2F("realVsEmulTPEE","",256,0,256,256,0,256);
-
-  TH2F *etaphimismatchEE=new TH2F("etaphimismatchEE","",57,-28.5,28.5,72,0.5,72.5);
-
-  TH2F *etaphimatchEE=new TH2F("etaphimatchEE","",57,-28.5,28.5,72,0.5,72.5);
-
-  TH2F *realminusemulTPvsrealEE=new TH2F("realminusEmulTPvsrealEE","",32,0,256,21,-10.5,10.5);
-
-  TH1F *realminusemulTPEE=new TH1F("realminusEmulTPEE","",21,-10.5,10.5);
-  */
-
 
   // set branch addresses to read trees
   
   EcalTPGVariables treeVars ;
   setBranchAddresses (chain, treeVars) ;
    
+  
   
   Int_t treeentries=chain->GetEntries();
 
@@ -835,9 +895,29 @@ void L1Prefiring(int threshold=16,TString timeshiftoutput="_plus8_", TString inp
     
     chain->GetEntry (entry) ;
     
-    if (entry%100000==0) cout << entry << " / " << treeentries
+    if (entry%1==0) cout << entry << " / " << treeentries
 			    << " events processed" << endl;
     
+    
+    
+    // accessing the gen level information for MC samples 
+    std::cout<<" n gen particles  = "<<treeVars.nGenPar<<std::endl;
+    chain->SetBranchAddress("genParPy_", treeVars.genParPy) ;
+    chain->SetBranchAddress("genParPz_", treeVars.genParPz) ;
+    chain->SetBranchAddress("genParE_", treeVars.genParE) ;
+    chain->SetBranchAddress("genParId_", treeVars.genParId) ;
+    chain->SetBranchAddress("genParSt_", treeVars.genParSt) ;
+    chain->SetBranchAddress("genMomParId_", treeVars.genMomParId) ;
+
+    std::cout<<" px 1 = "<<treeVars.genParPx[0]
+	     <<"  "<<treeVars.genParPy[0]
+	     <<"  "<<treeVars.genParPz[0]
+	     <<"  "<<treeVars.genParE[0]
+	     <<"  "<<treeVars.genParId[0]
+	     <<"  "<<treeVars.genParSt[0]
+	     <<"  "<<treeVars.genMomParId[0]
+	     <<std::endl;
+
 
     
     bool goodBX = false;
@@ -851,14 +931,6 @@ void L1Prefiring(int threshold=16,TString timeshiftoutput="_plus8_", TString inp
         
     	
 
-    if (is2017) goodBX =  ( (treeVars.bxNb == 3) || (treeVars.bxNb == 46) || (treeVars.bxNb == 58) || (treeVars.bxNb == 70) || (treeVars.bxNb == 82) || (treeVars.bxNb == 121) || (treeVars.bxNb == 133) || (treeVars.bxNb == 145) || (treeVars.bxNb == 157) || (treeVars.bxNb == 172) || (treeVars.bxNb == 184) || (treeVars.bxNb == 196) || (treeVars.bxNb == 208) || (treeVars.bxNb == 223) || (treeVars.bxNb == 235) || (treeVars.bxNb == 247) || (treeVars.bxNb == 259) || (treeVars.bxNb == 274) || (treeVars.bxNb == 286) || (treeVars.bxNb == 298) || (treeVars.bxNb == 310) || (treeVars.bxNb == 349) || (treeVars.bxNb == 361) || (treeVars.bxNb == 373) || (treeVars.bxNb == 385) || (treeVars.bxNb == 400) || (treeVars.bxNb == 412) || (treeVars.bxNb == 424) || (treeVars.bxNb == 436) || (treeVars.bxNb == 451) || (treeVars.bxNb == 463) || (treeVars.bxNb == 475) || (treeVars.bxNb == 487) || (treeVars.bxNb == 502) || (treeVars.bxNb == 514) || (treeVars.bxNb == 526) || (treeVars.bxNb == 538) || (treeVars.bxNb == 577) || (treeVars.bxNb == 589) || (treeVars.bxNb == 601) || (treeVars.bxNb == 613) || (treeVars.bxNb == 628) || (treeVars.bxNb == 640) || (treeVars.bxNb == 652) || (treeVars.bxNb == 664) || (treeVars.bxNb == 679) || (treeVars.bxNb == 691) || (treeVars.bxNb == 703) || (treeVars.bxNb == 715) || (treeVars.bxNb == 730) || (treeVars.bxNb == 742) || (treeVars.bxNb == 754) || (treeVars.bxNb == 766) || (treeVars.bxNb == 826) || (treeVars.bxNb == 838) || (treeVars.bxNb == 850) || (treeVars.bxNb == 862) || (treeVars.bxNb == 877) || (treeVars.bxNb == 889) || (treeVars.bxNb == 901) || (treeVars.bxNb == 913) || (treeVars.bxNb == 928) || (treeVars.bxNb == 940) || (treeVars.bxNb == 952) || (treeVars.bxNb == 964) || (treeVars.bxNb == 1003) || (treeVars.bxNb == 1015) || (treeVars.bxNb == 1027) || (treeVars.bxNb == 1039) || (treeVars.bxNb == 1054) || (treeVars.bxNb == 1066) || (treeVars.bxNb == 1078) || (treeVars.bxNb == 1090) || (treeVars.bxNb == 1105) || (treeVars.bxNb == 1117) || (treeVars.bxNb == 1129) || (treeVars.bxNb == 1141) || (treeVars.bxNb == 1156) || (treeVars.bxNb == 1168) || (treeVars.bxNb == 1180) || (treeVars.bxNb == 1192) || (treeVars.bxNb == 1231) || (treeVars.bxNb == 1243) || (treeVars.bxNb == 1255) || (treeVars.bxNb == 1267) || (treeVars.bxNb == 1282) || (treeVars.bxNb == 1294) || (treeVars.bxNb == 1306) || (treeVars.bxNb == 1318) || (treeVars.bxNb == 1333) || (treeVars.bxNb == 1345) || (treeVars.bxNb == 1357) || (treeVars.bxNb == 1369) || (treeVars.bxNb == 1384) || (treeVars.bxNb == 1396) || (treeVars.bxNb == 1408) || (treeVars.bxNb == 1420) || (treeVars.bxNb == 1459) || (treeVars.bxNb == 1471) || (treeVars.bxNb == 1483) || (treeVars.bxNb == 1495) || (treeVars.bxNb == 1510) || (treeVars.bxNb == 1522) || (treeVars.bxNb == 1534) || (treeVars.bxNb == 1546) || (treeVars.bxNb == 1561) || (treeVars.bxNb == 1573) || (treeVars.bxNb == 1585) || (treeVars.bxNb == 1597) || (treeVars.bxNb == 1612) || (treeVars.bxNb == 1624) || (treeVars.bxNb == 1636) || (treeVars.bxNb == 1648) || (treeVars.bxNb == 1720) || (treeVars.bxNb == 1732) || (treeVars.bxNb == 1744) || (treeVars.bxNb == 1756) || (treeVars.bxNb == 1771) || (treeVars.bxNb == 1783) || (treeVars.bxNb == 1795) || (treeVars.bxNb == 1807) || (treeVars.bxNb == 1822) || (treeVars.bxNb == 1834) || (treeVars.bxNb == 1846) || (treeVars.bxNb == 1858) || (treeVars.bxNb == 1897) || (treeVars.bxNb == 1909) || (treeVars.bxNb == 1921) || (treeVars.bxNb == 1933) || (treeVars.bxNb == 1948) || (treeVars.bxNb == 1960) || (treeVars.bxNb == 1972) || (treeVars.bxNb == 1984) || (treeVars.bxNb == 1999) || (treeVars.bxNb == 2011) || (treeVars.bxNb == 2023) || (treeVars.bxNb == 2035) || (treeVars.bxNb == 2050) || (treeVars.bxNb == 2062) || (treeVars.bxNb == 2074) || (treeVars.bxNb == 2086) || (treeVars.bxNb == 2125) || (treeVars.bxNb == 2137) || (treeVars.bxNb == 2149) || (treeVars.bxNb == 2161) || (treeVars.bxNb == 2176) || (treeVars.bxNb == 2188) || (treeVars.bxNb == 2200) || (treeVars.bxNb == 2212) || (treeVars.bxNb == 2227) || (treeVars.bxNb == 2239) || (treeVars.bxNb == 2251) || (treeVars.bxNb == 2263) || (treeVars.bxNb == 2278) || (treeVars.bxNb == 2290) || (treeVars.bxNb == 2302) || (treeVars.bxNb == 2314) || (treeVars.bxNb == 2353) || (treeVars.bxNb == 2365) || (treeVars.bxNb == 2377) || (treeVars.bxNb == 2389) || (treeVars.bxNb == 2404) || (treeVars.bxNb == 2416) || (treeVars.bxNb == 2428) || (treeVars.bxNb == 2440) || (treeVars.bxNb == 2455) || (treeVars.bxNb == 2467) || (treeVars.bxNb == 2479) || (treeVars.bxNb == 2491) || (treeVars.bxNb == 2506) || (treeVars.bxNb == 2518) || (treeVars.bxNb == 2530) || (treeVars.bxNb == 2542) || (treeVars.bxNb == 2614) || (treeVars.bxNb == 2626) || (treeVars.bxNb == 2638) || (treeVars.bxNb == 2650) || (treeVars.bxNb == 2665) || (treeVars.bxNb == 2677) || (treeVars.bxNb == 2689) || (treeVars.bxNb == 2701) || (treeVars.bxNb == 2716) || (treeVars.bxNb == 2728) || (treeVars.bxNb == 2740) || (treeVars.bxNb == 2752) || (treeVars.bxNb == 2791) || (treeVars.bxNb == 2803) || (treeVars.bxNb == 2815) || (treeVars.bxNb == 2827) || (treeVars.bxNb == 2842) || (treeVars.bxNb == 2854) || (treeVars.bxNb == 2866) || (treeVars.bxNb == 2878) || (treeVars.bxNb == 2893) || (treeVars.bxNb == 2905) || (treeVars.bxNb == 2917) || (treeVars.bxNb == 2929) || (treeVars.bxNb == 2944) || (treeVars.bxNb == 2956) || (treeVars.bxNb == 2968) || (treeVars.bxNb == 2980) || (treeVars.bxNb == 3019) || (treeVars.bxNb == 3031) || (treeVars.bxNb == 3043) || (treeVars.bxNb == 3055) || (treeVars.bxNb == 3070) || (treeVars.bxNb == 3082) || (treeVars.bxNb == 3094) || (treeVars.bxNb == 3106) || (treeVars.bxNb == 3121) || (treeVars.bxNb == 3133) || (treeVars.bxNb == 3145) || (treeVars.bxNb == 3157) || (treeVars.bxNb == 3172) || (treeVars.bxNb == 3184) || (treeVars.bxNb == 3196) || (treeVars.bxNb == 3208) || (treeVars.bxNb == 3247) || (treeVars.bxNb == 3259) || (treeVars.bxNb == 3271) || (treeVars.bxNb == 3283) || (treeVars.bxNb == 3298) || (treeVars.bxNb == 3310) || (treeVars.bxNb == 3322) || (treeVars.bxNb == 3334) || (treeVars.bxNb == 3349) || (treeVars.bxNb == 3361) || (treeVars.bxNb == 3373) || (treeVars.bxNb == 3385) || (treeVars.bxNb == 3400) || (treeVars.bxNb == 3412) || (treeVars.bxNb == 3424) || (treeVars.bxNb == 3436) );  
-
-
-    if (!is2017) goodBX =  ( (treeVars.bxNb == 4) || (treeVars.bxNb ==257) || (treeVars.bxNb ==336) ||(treeVars.bxNb ==415) ||(treeVars.bxNb ==811) ||(treeVars.bxNb ==1151) ||(treeVars.bxNb ==1230) ||(treeVars.bxNb ==1309) ||(treeVars.bxNb ==2045) ||(treeVars.bxNb ==2124) ||(treeVars.bxNb ==2302) ||(treeVars.bxNb ==2596) ||(treeVars.bxNb ==2939) ||(treeVars.bxNb ==3117) ||(treeVars.bxNb ==3097) ); 
-
-    
-    
-
     //std::cout<<"  ------------------------------------------------------------------------------------ ------------------------------------------------------------------------------------ \n"<<std::endl;
     
     //cout << "event number is " << entry << "  bxn is "<<treeVars.bxNb<<"\n" ;
@@ -867,13 +939,28 @@ void L1Prefiring(int threshold=16,TString timeshiftoutput="_plus8_", TString inp
     ULong64_t evtNb = treeVars.evtNb;
     UInt_t bxNb = treeVars.bxNb;;
     UInt_t lumiBlock = treeVars.lumiBlock;
- 
+    
+    // these vars are for gen matching 
+    //    - for first electron
+    std::vector<int> tower_index1;
+    float pseudo_L1T_sum1[5]={0.}; // it will store five values, one for each index
+    tower_index1.clear();
+    //   - for second electron 
+    std::vector<int> tower_index2;
+    float pseudo_L1T_sum2[5]={0.}; // it will store five values, one for each index
+    tower_index2.clear();
+    
+
+
+    // gen matching vars ends here 
+
+    
     
     // since the tuploizer now have the information about the begining of the bunch crossing, therefore the flag goodBX can be set to true in next iteration and the results can be compared. 
     goodBX = true;
     if (goodBX)    {
 
-    for (UInt_t tower = 0 ; tower < treeVars.nbOfTowers ; tower++) {
+      for (UInt_t tower = 0 ; tower < treeVars.nbOfTowers ; tower++) {
       
       int ieta = treeVars.ieta[tower] ;
       int iphi = treeVars.iphi[tower] ;
@@ -921,7 +1008,89 @@ void L1Prefiring(int threshold=16,TString timeshiftoutput="_plus8_", TString inp
 	  }
       }
       
+      
+      
+      
+      
+      //-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+      //-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+      //--------------------------------------------    gen match related information is all here, gen matching with TPs, making pseudo L1T candidates ------------------------------------------
+      //-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+      //-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+      
+      // this piece of code assume that we will use e+ e- gun, without any PU. 
+      // for generic code we need more dedicated algorithm 
+      
+      /* Algorithm for Pseudo L1T 
 
+	 - match electron with the towers, 
+	 - all matched towers index enter a index vector [can be used later if needed ]
+	 - create 5 energy sum variables; sum1, sum2, sum3, sum4, sum5 [right now pt: incorrect ]
+	 - when a matched tower is found in addition to pushing it to index vector add energy energy to the energy sum variable, 
+	 - sum1 = sum1 + emul[0]
+	 - These 5 energy values can now be used for L1T candidates 
+	 - We can now check the max of the sum1, sum2, sum3, sum4, sum5, and the index where we get max of sum can be used for 2d plotting 
+	 
+      */
+
+      if (maxOfTPEmul>0){
+	TLorentzVector p41;
+	TLorentzVector p42; 
+	p41.SetPxPyPzE(treeVars.genParPx[0], treeVars.genParPy[0], treeVars.genParPz[0], treeVars.genParE[0]);
+	p42.SetPxPyPzE(treeVars.genParPx[1], treeVars.genParPy[1], treeVars.genParPz[1], treeVars.genParE[1]);
+	
+	// DRTowerElectron checks that eta and phi are within +- 1 towers, so we will collect maximum of 9 towers to make the L1T candidate 
+	//   - in addition dphi can be +-2 
+	//   - if dphi is 72 it is set to 0 [think a bit this is correct, i couldn't find  a better way to do this]
+	
+	bool match1 = DRTowerElectron(ieta, iphi, etaToiEta(p41.Eta()), phiToiPhi(p41.Phi()) );
+	bool match2 = DRTowerElectron(ieta, iphi, etaToiEta(p42.Eta()), phiToiPhi(p42.Phi()) );
+	
+	if (match1) {
+	  tower_index1.push_back(tower);
+	  pseudo_L1T_sum1[0] = pseudo_L1T_sum1[0] + emul[0];
+	  pseudo_L1T_sum1[1] = pseudo_L1T_sum1[1] + emul[1];
+	  pseudo_L1T_sum1[2] = pseudo_L1T_sum1[2] + emul[2];
+	  pseudo_L1T_sum1[3] = pseudo_L1T_sum1[3] + emul[3];
+	  pseudo_L1T_sum1[4] = pseudo_L1T_sum1[4] + emul[4];
+	}
+	
+	if (match2) {
+	  tower_index2.push_back(tower);
+	  pseudo_L1T_sum2[0] = pseudo_L1T_sum2[0] + emul[0];
+	  pseudo_L1T_sum2[1] = pseudo_L1T_sum2[1] + emul[1];
+	  pseudo_L1T_sum2[2] = pseudo_L1T_sum2[2] + emul[2];
+	  pseudo_L1T_sum2[3] = pseudo_L1T_sum2[3] + emul[3];
+	  pseudo_L1T_sum2[4] = pseudo_L1T_sum2[4] + emul[4];
+	}
+	//int seed_tower = GetGenMatchedTP();
+	if (maxOfTPEmul>0) std::cout<<" tower number "<<tower
+			     //<<" maxOfTPEmul =  "<<maxOfTPEmul
+				    <<" index = "<<indexOfTPEmulMax
+			     /*	  <<" eta = "<<ieta
+				  <<" iphi = "<<iphi
+				  <<" ele1 eta "<<etaToiEta(p41.Eta())
+				  <<" ele1 phi  "<<phiToiPhi(p41.Phi())
+				  <<" ele2 eta "<<etaToiEta(p42.Eta())
+				  <<" ele2 phi  "<<phiToiPhi(p42.Phi())*/
+				    <<" deta1, dphi1 = ("<<fabs(ieta - etaToiEta(p41.Eta()))<<", "<<fabs(iphi-phiToiPhi(p41.Phi()))<<")"
+				    <<" deta2, dphi2 = ("<<fabs(ieta - etaToiEta(p42.Eta()))<<", "<<fabs(iphi-phiToiPhi(p42.Phi()))<<")"
+				    <<" match 1, 2 = ("<<match1<<", "<<match2<<")"
+			     //<<" deta2 = "<<fabs(ieta - etaToiEta(p42.Eta()))
+			     //	  <<" dphi1 = "<<fabs(iphi-phiToiPhi(p41.Phi()))
+			     //	  <<" dphi2 = "<<fabs(iphi-phiToiPhi(p42.Phi()))
+				    <<std::endl;
+	
+      }
+
+
+      //-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+      //--------------------------------------------    gen match related information ends here ------------------------------------------------------ ------------------------------------------
+      //-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+    
+          
+      
+      
       //if (tp > threshold) std::cout<<" tower number = "<<tower<<" with eta phi = "<<ieta <<"  "<<iphi <<"  "<<" and energy "<< tp << " emul max "<< maxOfTPEmul <<" at emul idx = "<<indexOfTPEmulMax<<std::endl;
 
       
@@ -985,12 +1154,12 @@ void L1Prefiring(int threshold=16,TString timeshiftoutput="_plus8_", TString inp
 	//  this histogram will be compared with L1T real data. so that data and emulator is side by side. This is also used to make 2d corelation matrix after matching with the eg candidates .
 	
 	ieta_vs_idx_TP_ETP->Fill(abs(ieta), indexOfTPEmulMax);
-	std::cout<<" filling maxTower "
-		 <<" "<<ieta
-		 <<" "<<iphi
-		 <<" "<<indexOfTPEmulMax
-		 <<" "<<maxOfTPEmul
-		 <<std::endl;
+	//std::cout<<" filling maxTower "
+	//	 <<" "<<ieta
+	//	 <<" "<<iphi
+	//	 <<" "<<indexOfTPEmulMax
+	//	 <<" "<<maxOfTPEmul
+	//	 <<std::endl;
 	// fill these towers in  avector so that they can be used later. 
 	maxTower.eta = ieta;
 	maxTower.phi = iphi; 
@@ -1065,9 +1234,63 @@ void L1Prefiring(int threshold=16,TString timeshiftoutput="_plus8_", TString inp
       // endcap: abs(ieta) >= 18 (10 TT on each side)
       
       
-    }//for (UInt_t tower = 0 ; tower < treeVars.nbOfTowers ; tower++) {
+      }//for (UInt_t tower = 0 ; tower < treeVars.nbOfTowers ; tower++) {
     
-    
+      
+      // After the Tower loop we can now print the Pseudo L1T variables just fulled 
+      std::cout<<"for ele 1 n towers ="<<tower_index1.size()
+	       <<"; L1T idx 1 "<<pseudo_L1T_sum1[0]
+	       <<"; L1T idx 2 "<<pseudo_L1T_sum1[1]
+	       <<"; L1T idx 3 "<<pseudo_L1T_sum1[2]
+	       <<"; L1T idx 4 "<<pseudo_L1T_sum1[3]
+	       <<"; L1T idx 5 "<<pseudo_L1T_sum1[4];
+		 
+	  
+	  
+      for (int idx_=0; idx_<int(tower_index1.size());idx_++){
+	std::cout<<" tower: "<<tower_index1[idx_]<<" ";
+      }
+      std::cout<<std::endl;
+
+      std::cout<<"for ele 2 n towers ="<<tower_index2.size()
+	       <<"; L1T idx 1 "<<pseudo_L1T_sum2[0]
+	       <<"; L1T idx 2 "<<pseudo_L1T_sum2[1]
+	       <<"; L1T idx 3 "<<pseudo_L1T_sum2[2]
+	       <<"; L1T idx 4 "<<pseudo_L1T_sum2[3]
+	       <<"; L1T idx 5 "<<pseudo_L1T_sum2[4];
+		 
+	  
+	  
+      for (int idx_=0; idx_<int(tower_index2.size());idx_++){
+	std::cout<<" tower: "<<tower_index2[idx_]<<" ";
+      }
+      std::cout<<std::endl;
+
+      // Fill the information to validate the Pseudo L1T candidates 
+      // -- Number of towers used to make L1T candidates for both electrons in same histogram 
+      h_PL1T_nTowers_->Fill(tower_index1.size());
+      h_PL1T_nTowers_->Fill(tower_index2.size());
+      // -- L1T energy in each BX for both electrons [for both electron in same histogram]
+      h_PL1T_Energy0_->Fill(pseudo_L1T_sum1[0]);       h_PL1T_Energy0_->Fill(pseudo_L1T_sum2[0]);
+      h_PL1T_Energy1_->Fill(pseudo_L1T_sum1[1]);       h_PL1T_Energy1_->Fill(pseudo_L1T_sum2[1]);
+      h_PL1T_Energy2_->Fill(pseudo_L1T_sum1[2]);       h_PL1T_Energy2_->Fill(pseudo_L1T_sum2[2]);
+      h_PL1T_Energy3_->Fill(pseudo_L1T_sum1[3]);       h_PL1T_Energy3_->Fill(pseudo_L1T_sum2[3]);
+      h_PL1T_Energy4_->Fill(pseudo_L1T_sum1[4]);       h_PL1T_Energy4_->Fill(pseudo_L1T_sum2[4]);
+      
+      // -- Idx for max energy deposit 
+      const int N = sizeof(pseudo_L1T_sum1) / sizeof(float);
+      //float max_sum1 = std::max_element(pseudo_L1T_sum1, pseudo_L1T_sum1+N);
+      //float max_sum2 = std::max_element(pseudo_L1T_sum2, pseudo_L1T_sum2+N);
+      int max_idx1 = std::distance(pseudo_L1T_sum1, std::max_element(pseudo_L1T_sum1, pseudo_L1T_sum1+N) );
+      int max_idx2 = std::distance(pseudo_L1T_sum2, std::max_element(pseudo_L1T_sum2, pseudo_L1T_sum2+N) );
+      
+      h_PL1T_maxIndex_->Fill(max_idx1+1);     h_PL1T_maxIndex_->Fill(max_idx2+1);
+      
+      
+      
+      
+      
+
     }// end of if (goodBX)    {
   
     
@@ -1144,7 +1367,7 @@ void L1Prefiring(int threshold=16,TString timeshiftoutput="_plus8_", TString inp
     // in time zero isolated 
     if (treeVars.nbOfL1preIsoCandszero>0) {
       for (UInt_t iNL1preIsozero = 0; iNL1preIsozero < treeVars.nbOfL1preIsoCandszero; iNL1preIsozero++) {
-        std::cout<<" Isolated pre EGamma cadidates number "<<iNL1preIsozero
+        if(debug__) std::cout<<" Isolated pre EGamma cadidates number "<<iNL1preIsozero
 		 <<" eta = "<<treeVars.L1preIsoIetazero[iNL1preIsozero]
 		 <<" phi = "<<treeVars.L1preIsoIphizero[iNL1preIsozero]
 		 <<" energy = "<<treeVars.L1preIsoEnergyzero[iNL1preIsozero]
@@ -1358,8 +1581,8 @@ void L1Prefiring(int threshold=16,TString timeshiftoutput="_plus8_", TString inp
     // this has to be tuned. 
     // ---------------------- ---------------------- ---------------------- ---------------------- ---------------------- ----------------------
 
-    cout << entry << " / " << treeentries << " events processed" << endl;
-    std::cout<<" sizecondition = "<<(egcandidateIsoVector.size() > 0  && maxTowerVector.size() > 0  )<<" "<<(egcandidateIsoVector.size() > 0) <<" "<<(maxTowerVector.size() > 0 )<<std::endl;
+    if(debug__) cout << entry << " / " << treeentries << " events processed" << endl;
+    if(debug__) std::cout<<" sizecondition = "<<(egcandidateIsoVector.size() > 0  && maxTowerVector.size() > 0  )<<" "<<(egcandidateIsoVector.size() > 0) <<" "<<(maxTowerVector.size() > 0 )<<std::endl;
     if (egcandidateIsoVector.size() > 0  && maxTowerVector.size() > 0  ){
       
       int MinDeltaEtaIso    = CalculateDeltaIEta(egcandidateIsoVector, maxTowerVector);
@@ -1513,6 +1736,17 @@ void L1Prefiring(int threshold=16,TString timeshiftoutput="_plus8_", TString inp
   outputfilename = outputdir + outputfilename; 
   TFile fout(outputfilename,"RECREATE");
   fout.cd();
+  
+  //   -- Writing the gen level and Pseudo L1T candidate information 
+  h_PL1T_nTowers_->Write();
+  h_PL1T_Energy0_->Write();
+  h_PL1T_Energy1_->Write();
+  h_PL1T_Energy2_->Write();
+  h_PL1T_Energy3_->Write();
+  h_PL1T_Energy4_->Write();
+  h_PL1T_maxIndex_->Write();
+
+  
 
   ieta_vs_iphi_TP->Write();
   ieta_vs_iphi_ETP->Write();

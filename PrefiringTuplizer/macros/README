@@ -7,6 +7,14 @@ L1Prefiring.C
 Quick dirty macro: 
 root -l -b -q SavePtPlots.C
 
+
+## Save the Pseudo L1T plots, using 
+### save the number of towers, save max index plot 
+python SavePseudoL1TPlots.py
+
+### Save the Energy sum plot [right now pt sum but has to be corrected soon]
+
+
 rootfile location at: 
   if (is2017 && !timescan_)  inputrootfile = "/eos/cms/store/user/khurana//ZeroBias2/crab_prefiringanalysis2017_V4/191104_114219/0000/Merged_ZeroBias2017.root";  //2017 with prefiring after replacing th\
 e RANK var with Energy
@@ -89,6 +97,9 @@ python MakePlotsTimeScan.py -CompareWithDavid
 ############ For simulation run the L1Prefiring.C by chnaging the time value by hand ###########
 ################################################################################################
 ################################################################################################
+
+run for all MC points using: source run_allsimulation.sh
+
 
 Once L1Prering.C is run on all the files, now ready to make the .txt files for prob and then make the overlapping plots. 
 For simulation it makes more sense to make the -X plots becuase this is what is emulator prob is. 

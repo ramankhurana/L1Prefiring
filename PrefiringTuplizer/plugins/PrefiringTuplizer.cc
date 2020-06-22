@@ -169,24 +169,24 @@ private:
 
   // variables for branches 
   int                     nGenPar_;
-  std::vector<float>      genParPx_;
-  std::vector<float>      genParPy_;
-  std::vector<float>      genParPz_;
-  std::vector<float>      genParE_;
+  Float_t      genParPx_[2];
+  Float_t      genParPy_[2];
+  Float_t      genParPz_[2];
+  Float_t      genParE_[2];
   		          
   		          
-  std::vector<int>        genParQ_;
-  std::vector<int>        genParId_;
-  std::vector<int>        genParSt_;
-  std::vector<int>        genMomParId_; // added by Eiko
-  std::vector<int>        genParIndex_;    // added by Eiko
-  std::vector<int>        genNMo_;
-  std::vector<int>        genNDa_;
-  std::vector<int>        genMo1_;
-  std::vector<int>        genMo2_;
-  std::vector<int>        genDa1_;
-  std::vector<int>        genDa2_;
-  std::vector<int>        genStFlag_;
+  int        genParQ_[2];
+  int        genParId_[2];
+  int        genParSt_[2];
+  int        genMomParId_[2];
+  int        genParIndex_[2];
+  int        genNMo_[2];
+  int        genNDa_[2];
+  int        genMo1_[2];
+  int        genMo2_[2];
+  int        genDa1_[2];
+  int        genDa2_[2];
+  int        genStFlag_[2];
   
   int MAXNGENPAR_ = 30;
   uint            runNb ;
@@ -386,16 +386,19 @@ l : a 64 bit unsigned integer (ULong64_t)
 O : [the letter o, not a zero] a boolean (Bool_t)
   */
   
-  prefiringTree->Branch("nGenPar_",      &nGenPar_,    "nGenPar/i");
-  prefiringTree->Branch("genParPx_",  "vector<float>",    &genParPx_);//,    "genParPx/F");
+  prefiringTree->Branch("nGenPar_",      &nGenPar_,    "nGenPar_/i");
   
-  prefiringTree->Branch("genParPy_",   "vector<float>",  &genParPy_);//,    "genParPy/F");
-  prefiringTree->Branch("genParPz_",   "vector<float>",  &genParPz_);//,    "genParPz/F");
-  prefiringTree->Branch("genParE_",    "vector<float>",  &genParE_);//,     "genParE/F");
 
-  prefiringTree->Branch("genParId_",   "vector<int>",  &genParId_);//,    "genParId/I");
-  prefiringTree->Branch("genParSt_",   "vector<int>",  &genParSt_);//,    "genParSt/I");
-  prefiringTree->Branch("genMomParId_", "vector<int>", &genMomParId_);//, "genMomParId/I");
+
+  prefiringTree->Branch("genParPx_",    genParPx_,   "genParPx_[nGenPar_]/F");
+  prefiringTree->Branch("genParPy_",    genParPy_,   "genParPy_[nGenPar_]/F");
+  prefiringTree->Branch("genParPz_",    genParPz_,   "genParPz_[nGenPar_]/F");
+  prefiringTree->Branch("genParE_",     genParE_ ,   "genParE_[nGenPar_]/F");
+  
+  
+  prefiringTree->Branch("genParId_",   genParId_,    "genParId[nGenPar_]/I");
+  prefiringTree->Branch("genParSt_",   genParSt_,    "genParSt[nGenPar_]/I");
+  prefiringTree->Branch("genMomParId_",genMomParId_, "genMomParId[nGenPar_]/I");
   
   
   prefiringTree->Branch("b_runNb", &runNb ,"b_runNb/i");
@@ -541,24 +544,24 @@ PrefiringTuplizer::analyze(const edm::Event& e, const edm::EventSetup& c)
    
    
    nGenPar_ =0;
-   //genParP4_->Clear();
-   genParPx_.clear();
-   genParPy_.clear();
-   genParPz_.clear();
-   genParE_.clear();
-
-   genParQ_.clear();
-   genParId_.clear();
-   genParSt_.clear();
-   genMomParId_.clear();
-   genParIndex_.clear();
-   genNMo_.clear();
-   genNDa_.clear();
-   genMo1_.clear();
-   genMo2_.clear();
-   genDa1_.clear();
-   genDa2_.clear();
-   genStFlag_.clear();
+   for (int ip=0; ip<2; ip++){
+     genParPx_[ip] = -99999.;
+     genParPy_[ip] = -99999.;
+     genParPz_[ip] = -99999.;
+     genParE_[ip] = -99999.;
+     genParQ_[ip] = -99999.;
+     genParId_[ip] = -99999.;
+     genParSt_[ip] = -99999.;
+     genMomParId_[ip] = -99999.;
+     genParIndex_[ip] = -99999.;
+     genNMo_[ip] = -99999.;
+     genNDa_[ip] = -99999.;
+     genMo1_[ip] = -99999.;
+     genMo2_[ip] = -99999.;
+     genDa1_[ip] = -99999.;
+     genDa2_[ip] = -99999.;
+     genStFlag_[ip] = -99999.;
+   }
    
    
    std::cout<<" checking eta values -2.45, -2.7, -3.0, -1.44"
@@ -710,14 +713,14 @@ PrefiringTuplizer::analyze(const edm::Event& e, const edm::EventSetup& c)
      //TLorentzVector p4(geni->px(),geni->py(),geni->pz(),geni->energy());
      //new( (*genParP4_)[nGenPar_-1]) TLorentzVector(p4);
 
-     genParPx_.push_back(geni->px());
-     genParPy_.push_back(geni->py());
-     genParPz_.push_back(geni->pz());
-     genParE_.push_back(geni->energy());
-    
-     genParQ_.push_back(geni->charge());
-     genParId_.push_back(geni->pdgId());
-     genParSt_.push_back(geni->status());
+     genParPx_[nGenPar_-1] = geni->px();
+     genParPy_[nGenPar_-1] = geni->py();
+     genParPz_[nGenPar_-1] = geni->pz();
+     genParE_[nGenPar_-1] = geni->energy();
+     
+     genParQ_[nGenPar_-1] = geni->charge();
+     genParId_[nGenPar_-1] =  geni->pdgId();
+     genParSt_[nGenPar_-1] = geni->status();
 
      int mompid = -9999;
      if( geni->numberOfMothers() ==1 )
@@ -725,9 +728,9 @@ PrefiringTuplizer::analyze(const edm::Event& e, const edm::EventSetup& c)
      else
        mompid = 10000+geni->numberOfMothers();
 
-     genMomParId_.push_back(mompid);
+     genMomParId_[nGenPar_-1] = mompid;
 
-     genParIndex_.push_back(genIndex);
+     genParIndex_[nGenPar_-1] = genIndex;
 
      int iMo1 = -1;
      int iMo2 = -1;
@@ -746,12 +749,12 @@ PrefiringTuplizer::analyze(const edm::Event& e, const edm::EventSetup& c)
 
      found = find(cands.begin(), cands.end(), geni->daughter(1));
      if(found != cands.end()) iDa2 = found - cands.begin() ;
-     genNMo_.push_back(NMo);
-     genNDa_.push_back(NDa);
-     genMo1_.push_back(iMo1);
-     genMo2_.push_back(iMo2);
-     genDa1_.push_back(iDa1);
-     genDa2_.push_back(iDa2);
+     genNMo_[nGenPar_-1] = NMo;
+     genNDa_[nGenPar_-1] = NDa;
+     genMo1_[nGenPar_-1] = iMo1;
+     genMo2_[nGenPar_-1] = iMo2;
+     genDa1_[nGenPar_-1] = iDa1;
+     genDa2_[nGenPar_-1] = iDa2;
      const reco::GenStatusFlags& cmsswStatus = geni->statusFlags();
      int status=0;
      for(unsigned int ist=0; ist<cmsswStatus.flags_.size(); ist++)
@@ -759,7 +762,7 @@ PrefiringTuplizer::analyze(const edm::Event& e, const edm::EventSetup& c)
 	 if(cmsswStatus.flags_[ist])
 	   status |= (0x1 << (ist+1));
        }
-     genStFlag_.push_back(status);
+     genStFlag_[nGenPar_-1] = status;
 
    } // end of loop over particles
    

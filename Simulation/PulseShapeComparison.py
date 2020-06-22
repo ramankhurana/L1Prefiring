@@ -9,7 +9,7 @@ import time
 filespath="/eos/cms/store/user/khurana/ECAL/SimulationTuples/simulation_tuples_Eta_2p0_to_2p5/"
 
 #filespath="../PrefiringTuplizer/Tuples/"
-rootfilenae="Histo_L1Prefiring_0ns.root"
+rootfilenae="Histo_L1Prefiring_p8ns.root"
 #rootfilenae="Histo_L1Prefiring_m17ns.root"
 #rootfilenae="Histo_L1Prefiring_p17ns.root"
 
@@ -23,7 +23,7 @@ vars_ = ["b_ndataframe","b_nADC","b_index_df","b_index_ts","b_count_ADC"]
 df_out= DataFrame(columns=['event','adc'])
 
 ievent=0
-for df in read_root(filename, 'tuplizer/prefiringTree', vars_, chunksize=5000):
+for df in read_root(filename, 'tuplizer/prefiringTree', vars_, chunksize=1000):
     for  ndf, nadc, idx_df, idx_ts, adc  in zip(df.b_ndataframe, df.b_nADC, df.b_index_df, df.b_index_ts, df.b_count_ADC):
         print "event number =",ievent
         
@@ -44,7 +44,7 @@ for df in read_root(filename, 'tuplizer/prefiringTree', vars_, chunksize=5000):
                             alltimeslices.append(adc_timeslice)
                             
                         break
-        print alltimeslices
+        #print alltimeslices
 
         ievent=ievent+1
         
