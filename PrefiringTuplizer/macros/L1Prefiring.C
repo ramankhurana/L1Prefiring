@@ -392,6 +392,48 @@ std::vector<int> CalculateDeltaIR(std::vector<EGVariables> candvec, std::vector<
 
 
 
+
+
+// it returns i index, j index and drmin value, eg bx index, tower bx index. One can cut on this and see the respective values of index
+std::vector<int> PseudoCalculateDeltaIR(std::vector<EGVariables> candvec, std::vector<TowerVariables> maxtowervec){
+  
+  std::vector<int> dIR;
+  dIR.clear();
+  //std::cout<<" size = "<<candvec.size()<<"  "<<maxtowervec.size()<<std::endl;
+  
+  float drMin = 999.;
+  int imin=-1;
+  int jmin=-1;
+  
+  for (int i =0; i<(int)candvec.size(); i++){
+    if (debug__) std::cout<<" inside the candidate loop "<<candvec[i].energy<<"  "<<candvec[i].eta<<"  "<<candvec[i].phi<<std::endl;
+    for (int j = 0; j<(int)maxtowervec.size(); j++){
+      if (debug__) std::cout<<" inside the max tower loop "<<maxtowervec[j].energy<<"  "<<maxtowervec[j].eta<<"  "<<maxtowervec[j].phi<<std::endl;
+      // converted the candidate ieta to tower ieta, works, approximately. 
+      int dieta = abs (int(candvec[i].eta) -   maxtowervec[j].eta) ; 
+      int diphi = abs(  (int(candvec[i].phi)+1) - maxtowervec[j].phi) ;
+      
+      int dr = (dieta*dieta)  +   (diphi*diphi) ; 
+      if (dr<drMin){
+	drMin = (dr);
+	imin = i;
+	jmin = j;
+      }
+      
+    }
+  }
+  
+  dIR.push_back(imin);
+  dIR.push_back(jmin);
+  dIR.push_back(int(drMin));
+  dIR.push_back(candvec[imin].idx);
+  dIR.push_back(maxtowervec[jmin].idx);
+  
+  return dIR;
+}
+
+
+
 class mysort{
 public:
   bool operator() (MatchedTowers m1, MatchedTowers m2){
@@ -667,7 +709,7 @@ UInt_t getTtf(UInt_t val) {return ((val>>9)&0x7) ;}
 ///////  Main program /////////
 
 //void tpgreader()
-void L1Prefiring(int threshold=16,TString timeshiftoutput="_plus8_", TString inputcutval="p8ns", int lumi1=0, int lumi2=999999)
+void L1Prefiring(int threshold=2,TString timeshiftoutput="_plus8_", TString inputcutval="p8ns", int lumi1=0, int lumi2=999999)
 {  
 
 
@@ -792,12 +834,13 @@ void L1Prefiring(int threshold=16,TString timeshiftoutput="_plus8_", TString inp
   TH2F* egidx_ttidx_NonIso_dr_   = new TH2F("egidx_ttidx_NonIso_dr_","egidx_ttidx_NonIso_dr_", 5,-2.5,2.5,5,-2.5,2.5);
   TH2F* egidx_ttidx_NonIso_de_   = new TH2F("egidx_ttidx_NonIso_de_","egidx_ttidx_NonIso_de_", 5,-2.5,2.5,5,-2.5,2.5);
 
-
+  
   TH2F* DE_vs_DR_Iso_              = new TH2F("DE_vs_DR_Iso_","DE_vs_DR_Iso_",100,-100,100, 10, 0,10 );
   TH2F* DEbyE_vs_DR_Iso_              = new TH2F("DEbyE_vs_DR_Iso_","DEbyE_vs_DR_Iso_",100,-1,10, 10, 0,10 );
   TH2F* DEbyE_c_vs_DR_Iso_              = new TH2F("DEbyE_c_vs_DR_Iso_","DEbyE_vs_DR_Iso_",100,-1,10, 10, 0,10 );
   TH2F* Etower_vs_Ecandidate_Iso_  = new TH2F("Etower_vs_Ecandidate_Iso_","Etower_vs_Ecandidate_Iso_",100,0,200, 100, 0,200);
   
+  TH2F* pseudo_egidx_ttidx_NonIso_ = new TH2F("pseudo_egidx_ttidx_NonIso_","pseudo_egidx_ttidx_NonIso_", 5,-2.5,2.5,5,-2.5,2.5);
   
   //TH2F* egidx_ttidx_Iso_dr_eta_egamma_[3]; //  1.442-2.0, 2.0-2.5, 2.5-3.0 
   
@@ -876,11 +919,24 @@ void L1Prefiring(int threshold=16,TString timeshiftoutput="_plus8_", TString inp
   
   TowerVariables maxTower;
   std::vector<TowerVariables> maxTowerVector;
+
+  TowerVariables Pseudo_maxTower;
+  std::vector<TowerVariables> Pseudo_maxTowerVector;
+
+
   
   EGVariables egcandidateIso;
   EGVariables egcandidateNonIso;
+  
+  EGVariables Pseudo_egcandidateIso;
+  EGVariables Pseudo_egcandidateNonIso;
+  
   std::vector<EGVariables> egcandidateIsoVector;
   std::vector<EGVariables> egcandidateNonIsoVector;
+
+  std::vector<EGVariables> Pseudo_egcandidateIsoVector;
+  std::vector<EGVariables> Pseudo_egcandidateNonIsoVector;
+  
   
   
   std::cout<<" treeentries = "<<treeentries<<std::endl;
@@ -891,17 +947,22 @@ void L1Prefiring(int threshold=16,TString timeshiftoutput="_plus8_", TString inp
     egcandidateIsoVector.clear();
     egcandidateNonIsoVector.clear();
     
+    Pseudo_maxTowerVector.clear();
+    Pseudo_egcandidateIsoVector.clear();
+    Pseudo_egcandidateNonIsoVector.clear();
+    
+    
     //for (int entry = 15000 ; entry < 16000 ; ++entry) {
     
     chain->GetEntry (entry) ;
     
-    if (entry%1==0) cout << entry << " / " << treeentries
+    if (entry%1000==0) cout << entry << " / " << treeentries
 			    << " events processed" << endl;
     
     
     
     // accessing the gen level information for MC samples 
-    std::cout<<" n gen particles  = "<<treeVars.nGenPar<<std::endl;
+    if (debug__) std::cout<<" n gen particles  = "<<treeVars.nGenPar<<std::endl;
     chain->SetBranchAddress("genParPy_", treeVars.genParPy) ;
     chain->SetBranchAddress("genParPz_", treeVars.genParPz) ;
     chain->SetBranchAddress("genParE_", treeVars.genParE) ;
@@ -909,14 +970,14 @@ void L1Prefiring(int threshold=16,TString timeshiftoutput="_plus8_", TString inp
     chain->SetBranchAddress("genParSt_", treeVars.genParSt) ;
     chain->SetBranchAddress("genMomParId_", treeVars.genMomParId) ;
 
-    std::cout<<" px 1 = "<<treeVars.genParPx[0]
-	     <<"  "<<treeVars.genParPy[0]
-	     <<"  "<<treeVars.genParPz[0]
-	     <<"  "<<treeVars.genParE[0]
-	     <<"  "<<treeVars.genParId[0]
-	     <<"  "<<treeVars.genParSt[0]
-	     <<"  "<<treeVars.genMomParId[0]
-	     <<std::endl;
+    if (debug__) std::cout<<" px 1 = "<<treeVars.genParPx[0]
+			  <<"  "<<treeVars.genParPy[0]
+			  <<"  "<<treeVars.genParPz[0]
+			  <<"  "<<treeVars.genParE[0]
+			  <<"  "<<treeVars.genParId[0]
+			  <<"  "<<treeVars.genParSt[0]
+			  <<"  "<<treeVars.genMomParId[0]
+			  <<std::endl;
 
 
     
@@ -956,10 +1017,6 @@ void L1Prefiring(int threshold=16,TString timeshiftoutput="_plus8_", TString inp
 
     
     
-    // since the tuploizer now have the information about the begining of the bunch crossing, therefore the flag goodBX can be set to true in next iteration and the results can be compared. 
-    goodBX = true;
-    if (goodBX)    {
-
       for (UInt_t tower = 0 ; tower < treeVars.nbOfTowers ; tower++) {
       
       int ieta = treeVars.ieta[tower] ;
@@ -1007,7 +1064,7 @@ void L1Prefiring(int threshold=16,TString timeshiftoutput="_plus8_", TString inp
 	    emulttf=emulTTF[i];
 	  }
       }
-      
+        
       
       
       
@@ -1064,24 +1121,20 @@ void L1Prefiring(int threshold=16,TString timeshiftoutput="_plus8_", TString inp
 	  pseudo_L1T_sum2[4] = pseudo_L1T_sum2[4] + emul[4];
 	}
 	//int seed_tower = GetGenMatchedTP();
-	if (maxOfTPEmul>0) std::cout<<" tower number "<<tower
-			     //<<" maxOfTPEmul =  "<<maxOfTPEmul
+	if (maxOfTPEmul>0 && debug__) std::cout<<" tower number "<<tower
 				    <<" index = "<<indexOfTPEmulMax
-			     /*	  <<" eta = "<<ieta
-				  <<" iphi = "<<iphi
-				  <<" ele1 eta "<<etaToiEta(p41.Eta())
-				  <<" ele1 phi  "<<phiToiPhi(p41.Phi())
-				  <<" ele2 eta "<<etaToiEta(p42.Eta())
-				  <<" ele2 phi  "<<phiToiPhi(p42.Phi())*/
+				    <<" eta = "<<ieta
+				    <<" iphi = "<<iphi
+				    <<" ele1 eta "<<etaToiEta(p41.Eta())
+				    <<" ele1 phi  "<<phiToiPhi(p41.Phi())
+				    <<" ele2 eta "<<etaToiEta(p42.Eta())
+				    <<" ele2 phi  "<<phiToiPhi(p42.Phi())
 				    <<" deta1, dphi1 = ("<<fabs(ieta - etaToiEta(p41.Eta()))<<", "<<fabs(iphi-phiToiPhi(p41.Phi()))<<")"
 				    <<" deta2, dphi2 = ("<<fabs(ieta - etaToiEta(p42.Eta()))<<", "<<fabs(iphi-phiToiPhi(p42.Phi()))<<")"
 				    <<" match 1, 2 = ("<<match1<<", "<<match2<<")"
-			     //<<" deta2 = "<<fabs(ieta - etaToiEta(p42.Eta()))
-			     //	  <<" dphi1 = "<<fabs(iphi-phiToiPhi(p41.Phi()))
-			     //	  <<" dphi2 = "<<fabs(iphi-phiToiPhi(p42.Phi()))
 				    <<std::endl;
 	
-      }
+      }//if (maxOfTPEmul>0){
 
 
       //-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
@@ -1099,8 +1152,6 @@ void L1Prefiring(int threshold=16,TString timeshiftoutput="_plus8_", TString inp
       if (maxOfTPEmul > 0.0) ieta_vs_iphi_ETP->Fill(ieta,iphi);
       // masked towers ends here. 
       
-      
-
       // check if this is already tagged by COKE
       bool hasnoisyxtal  = false;
       if (is2017 && isdata) hasnoisyxtal = false;
@@ -1109,7 +1160,6 @@ void L1Prefiring(int threshold=16,TString timeshiftoutput="_plus8_", TString inp
       // check if the TT is already masked. 
       bool masked_ = false;
       if (isdata) masked_ = isMasked(etaV, phiV, ieta, iphi);
-      
       
       
       // skip the tower if this is msked or it is tagged by COKE as noisy. 
@@ -1124,11 +1174,13 @@ void L1Prefiring(int threshold=16,TString timeshiftoutput="_plus8_", TString inp
 
       }
       
+      
       // emulated TP has energy > 16 ADC and it is in right bunch crossing 
       if(maxOfTPEmul>threshold && indexOfTPEmulMax==2){
 	ieta_vs_iphi_ETP16_IDX2->Fill(ieta, iphi);
 	idx_vs_ieta_ETP16_IDX2->Fill(ieta, indexOfTPEmulMax);
       }
+      
       
       
       maxOfTPEmul_->Fill(maxOfTPEmul);
@@ -1139,7 +1191,7 @@ void L1Prefiring(int threshold=16,TString timeshiftoutput="_plus8_", TString inp
       }
 
 
-
+      
       
       // denominator for condition 1 and 2 are same. The denominator for condition 3 is defined differently. 
       // I might have to change this  (ask David?) 
@@ -1187,7 +1239,20 @@ void L1Prefiring(int threshold=16,TString timeshiftoutput="_plus8_", TString inp
 	  //std::cout<<" numerator for the cond2"<<std::endl;
 	}
       }// if (tp>16 && maxOfTPEmul>0){
-      
+
+
+
+      // for matching with Pseudo L1EG candidates 
+      // we can't use the maxTowerVector because is has a condition that energy deposit in the intime bX should be > 0; tp > threshold which we don't want. 
+      if (maxOfTPEmul > threshold){
+	Pseudo_maxTower.eta = ieta;
+	Pseudo_maxTower.phi = iphi; 
+	Pseudo_maxTower.idx = indexOfTPEmulMax;
+	Pseudo_maxTower.energy = maxOfTPEmul;
+	Pseudo_maxTower.tpenergy = tp;
+	Pseudo_maxTowerVector.push_back(Pseudo_maxTower);
+      }// maxOfTPEmul > threshold 
+
       
       
       // denominator for condition 3: 
@@ -1238,21 +1303,21 @@ void L1Prefiring(int threshold=16,TString timeshiftoutput="_plus8_", TString inp
     
       
       // After the Tower loop we can now print the Pseudo L1T variables just fulled 
-      std::cout<<"for ele 1 n towers ="<<tower_index1.size()
-	       <<"; L1T idx 1 "<<pseudo_L1T_sum1[0]
-	       <<"; L1T idx 2 "<<pseudo_L1T_sum1[1]
-	       <<"; L1T idx 3 "<<pseudo_L1T_sum1[2]
-	       <<"; L1T idx 4 "<<pseudo_L1T_sum1[3]
-	       <<"; L1T idx 5 "<<pseudo_L1T_sum1[4];
-		 
+      if (debug__) std::cout<<"for ele 1 n towers ="<<tower_index1.size()
+			    <<"; L1T idx 1 "<<pseudo_L1T_sum1[0]
+			    <<"; L1T idx 2 "<<pseudo_L1T_sum1[1]
+			    <<"; L1T idx 3 "<<pseudo_L1T_sum1[2]
+			    <<"; L1T idx 4 "<<pseudo_L1T_sum1[3]
+			    <<"; L1T idx 5 "<<pseudo_L1T_sum1[4];
+      
 	  
 	  
       for (int idx_=0; idx_<int(tower_index1.size());idx_++){
-	std::cout<<" tower: "<<tower_index1[idx_]<<" ";
+	if (debug__) std::cout<<" tower: "<<tower_index1[idx_]<<" ";
       }
-      std::cout<<std::endl;
+      if (debug__) std::cout<<std::endl;
 
-      std::cout<<"for ele 2 n towers ="<<tower_index2.size()
+      if (debug__) std::cout<<"for ele 2 n towers ="<<tower_index2.size()
 	       <<"; L1T idx 1 "<<pseudo_L1T_sum2[0]
 	       <<"; L1T idx 2 "<<pseudo_L1T_sum2[1]
 	       <<"; L1T idx 3 "<<pseudo_L1T_sum2[2]
@@ -1262,9 +1327,9 @@ void L1Prefiring(int threshold=16,TString timeshiftoutput="_plus8_", TString inp
 	  
 	  
       for (int idx_=0; idx_<int(tower_index2.size());idx_++){
-	std::cout<<" tower: "<<tower_index2[idx_]<<" ";
+	if (debug__) std::cout<<" tower: "<<tower_index2[idx_]<<" ";
       }
-      std::cout<<std::endl;
+      if (debug__)std::cout<<std::endl;
 
       // Fill the information to validate the Pseudo L1T candidates 
       // -- Number of towers used to make L1T candidates for both electrons in same histogram 
@@ -1277,23 +1342,67 @@ void L1Prefiring(int threshold=16,TString timeshiftoutput="_plus8_", TString inp
       h_PL1T_Energy3_->Fill(pseudo_L1T_sum1[3]);       h_PL1T_Energy3_->Fill(pseudo_L1T_sum2[3]);
       h_PL1T_Energy4_->Fill(pseudo_L1T_sum1[4]);       h_PL1T_Energy4_->Fill(pseudo_L1T_sum2[4]);
       
+      
+      
       // -- Idx for max energy deposit 
       const int N = sizeof(pseudo_L1T_sum1) / sizeof(float);
-      //float max_sum1 = std::max_element(pseudo_L1T_sum1, pseudo_L1T_sum1+N);
-      //float max_sum2 = std::max_element(pseudo_L1T_sum2, pseudo_L1T_sum2+N);
-      int max_idx1 = std::distance(pseudo_L1T_sum1, std::max_element(pseudo_L1T_sum1, pseudo_L1T_sum1+N) );
-      int max_idx2 = std::distance(pseudo_L1T_sum2, std::max_element(pseudo_L1T_sum2, pseudo_L1T_sum2+N) );
       
-      h_PL1T_maxIndex_->Fill(max_idx1+1);     h_PL1T_maxIndex_->Fill(max_idx2+1);
+      int max_idx1 = std::distance(pseudo_L1T_sum1, std::max_element(pseudo_L1T_sum1, pseudo_L1T_sum1+N) ) + 1; // +1 is done becuase by default index start from zero
+      int max_idx2 = std::distance(pseudo_L1T_sum2, std::max_element(pseudo_L1T_sum2, pseudo_L1T_sum2+N) ) + 1;
       
       
+      h_PL1T_maxIndex_->Fill(max_idx1);     h_PL1T_maxIndex_->Fill(max_idx2);
       
-      
+      // For 2d correlation plot of indices: Tower vs Pseudo L1 G candidate 
+      // we have to fill it twice becuase we know there are 2 candidates 
+      // filling everything in the non iso vector (no particular choice) 
+      // we don't know if it is isolated or not, there is no definition as of now. 
+      Pseudo_egcandidateNonIso.iso = false;
+      Pseudo_egcandidateNonIso.eta = Pseudo_maxTowerVector[0].eta; // take the eta phi of tower with max energy and contributing to the L1 candidate 
+      Pseudo_egcandidateNonIso.phi = Pseudo_maxTowerVector[0].phi; // but for now we set to -1 as it is likely not needed 
+      Pseudo_egcandidateNonIso.idx = max_idx1; 
+      Pseudo_egcandidateNonIso.energy = pseudo_L1T_sum1[max_idx1]; // assuming same value for energy and pt sum; 
+      Pseudo_egcandidateNonIso.pt = pseudo_L1T_sum1[max_idx1]; // not correct but ok for zeroth order effect, given that eta phi of towers making the L1 egamma candidates are almost same,. 
+      Pseudo_egcandidateNonIsoVector.push_back(Pseudo_egcandidateNonIso);
       
 
-    }// end of if (goodBX)    {
-  
+      Pseudo_egcandidateNonIso.iso = false;
+      Pseudo_egcandidateNonIso.eta = Pseudo_maxTowerVector[0].eta; // take the eta phi of tower with max energy and contributing to the L1 candidate 
+      Pseudo_egcandidateNonIso.phi = Pseudo_maxTowerVector[0].phi; // but for now we set to -1 as it is likely not needed 
+      Pseudo_egcandidateNonIso.idx = max_idx2; 
+      Pseudo_egcandidateNonIso.energy = pseudo_L1T_sum2[max_idx2]; // assuming same value for energy and pt sum; 
+      Pseudo_egcandidateNonIso.pt = pseudo_L1T_sum2[max_idx2]; // not correct but ok for zeroth order effect, given that eta phi of towers making the L1 egamma candidates are almost same,. 
+      Pseudo_egcandidateNonIsoVector.push_back(Pseudo_egcandidateNonIso);
+      
+      
+      // Now the Pseudo_egcandidateNonIsoVector vector is ready 
+      // loop over Pseudo_MaxTower vector and find the max energy tower 
+      // check the index of this max energy tower  i_idx
+      // check the max index of pseudo L1 candidate j_idx 
+      // do the correlation plot of i_idx and j_idx 
+      
+      /*
+      int pseudo_tower_emul_idxmax=-1;
+      float maxenergy = 0;
+      for (int itwr=0; itwr<(int)Pseudo_maxTowerVector.size(); itwr++){
+	if (Pseudo_maxTowerVector[itwr].energy > maxenergy){
+	  maxenergy = Pseudo_maxTowerVector[itwr].energy; 
+	  pseudo_tower_emul_idxmax = itwr;
+	}
+
+      }
+      
+      pseudo_egidx_ttidx_NonIso_->Fill(  , Pseudo_maxTowerVector[pseudo_tower_emul_idxmax].idx-2);
+      
+      std::cout<<" index of the max emul tower  = "<<Pseudo_maxTowerVector[pseudo_tower_emul_idxmax].idx+1<<std::endl;
+      */
+
     
+      if (Pseudo_egcandidateNonIsoVector.size()>0 && Pseudo_maxTowerVector.size()>0){
+	std::vector<int> pseudo_dirIso_ = PseudoCalculateDeltaIR(Pseudo_egcandidateNonIsoVector, Pseudo_maxTowerVector);
+	pseudo_egidx_ttidx_NonIso_->Fill( pseudo_dirIso_[3]-3 , pseudo_dirIso_[4]-2);
+      }
+      
     // once the maxTowerVector is filled and loop over the towers is over one can print what ios inside 
     //TowerVariablesShow(maxTowerVector);
     
@@ -1793,7 +1902,9 @@ void L1Prefiring(int threshold=16,TString timeshiftoutput="_plus8_", TString inp
   
   egidx_ttidx_Iso_->Write();
   egidx_ttidx_NonIso_->Write();
-
+  
+  pseudo_egidx_ttidx_NonIso_->Write();
+  
   egidx_ttidx_Iso_dr_->Write();
   egidx_ttidx_Iso_de_->Write();
   

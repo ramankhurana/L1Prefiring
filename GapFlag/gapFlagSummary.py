@@ -175,6 +175,7 @@ def SaveSummary():
     for ifile in range(len(rootfilename)): 
         print "--------- calling summary for ", rootfilename[ifile]
         h_out = PlotGapFlagErrorSummary(rootfilename[ifile], rootfiles[ifile].replace(".root",""), timeshift[ifile])
+        print "PlotGapFlagErrorSummary work is now finished"
         rootfout.cd()
         for ih in h_out: ih.Write()
 

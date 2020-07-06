@@ -669,3 +669,52 @@ def TextToGraphTimeScan(textfilename):
 
 
 
+
+
+
+
+def PseudoTextToGraphTimeScan(textfilename):
+    print "parsing: ", textfilename
+    dirname="timescanOutput/"
+    filename = textfilename
+    f = open(filename,"r").readlines()
+    firstLine = f.pop(0) #removes the first line
+
+    
+    adc_        =  array('f')
+    adc_1       =  array('f')
+    adc_2       =  array('f')
+    adc_3       =  array('f')
+    adc_4       =  array('f')
+    
+    prob        =  array('f')
+    prob_e      =  array('f')
+    
+    errx        =  array('f')
+    
+
+    for line in f:
+        adc_.append(      float(  line.rstrip().split()[0]))
+        adc_1.append(      float(  line.rstrip().split()[0]) + 0.1)
+        adc_2.append(      float(  line.rstrip().split()[0]) + 0.2)
+        adc_3.append(      float(  line.rstrip().split()[0]) + 0.3)
+        adc_4.append(      float(  line.rstrip().split()[0]) + 0.4)
+
+        prob.append(      float(  line.rstrip().split()[1]) )
+        prob_e.append(    float(  line.rstrip().split()[2]) )
+        
+        errx.append(0.0)
+        
+        
+    g_prob_     = TGraphAsymmErrors(int(len(adc_)),   adc_,   prob,     errx, errx, prob_e,    prob_e    )   ;  g_prob_.SetName("prob_")
+
+
+        
+    f1 = TFile(filename.replace('.txt','.root'), 'RECREATE')
+    
+    g_prob_.Write()
+    f1.Close()
+
+
+
+
