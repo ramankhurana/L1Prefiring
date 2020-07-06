@@ -35,11 +35,12 @@ using  namespace std;
 bool is2017    = true;
 bool timescan_ = true;
 // ---------------- following parameters only for MC -------------------------------------
-bool isdata    = false;  // when running on the simulation samples it should be false. 
+bool isdata    = true;  // when running on the simulation samples it should be false. 
 //TString timeshiftoutput = "_minus12_"; // need to set for mc only 
 //TString inputcutval = "m12ns";
 // ----------------------------------------------------------------------------------------
-TString outputdir = "MC_PhaseShift/"; 
+//TString outputdir = "MC_PhaseShift/"; 
+TString outputdir = "Data_2018_PhaseScan_PostBugFix/"; 
 
 
 bool debug__ = false; 
@@ -191,6 +192,9 @@ struct EcalTPGVariables
   Int_t           L1preIsoPtp2[12];   
 
   // Gen Level information for MC samples 
+  
+  /*
+  if (!isdata){
   int                  nGenPar;
   Float_t   genParPx[2];
   Float_t   genParPy[2];
@@ -199,8 +203,8 @@ struct EcalTPGVariables
   int     genParId[2];
   int     genParSt[2];
   int     genMomParId[2];
-  
-  
+  }
+  */
   
 };
 
@@ -676,8 +680,11 @@ void setBranchAddresses (TChain * chain, EcalTPGVariables & treeVars)
   chain->SetBranchAddress("b_L1preIsoIphip2", treeVars.L1preIsoIphip2);
   chain->SetBranchAddress("b_L1preIsoEnergyp2", treeVars.L1preIsoEnergyp2);
   chain->SetBranchAddress("b_L1preIsoPtp2", treeVars.L1preIsoPtp2);
-
+  
+  
   // Read the gen level info branches 
+  /*
+  if (!isdata){
   chain->SetBranchAddress("nGenPar_",&treeVars.nGenPar);
   chain->SetBranchAddress("genParPx_", treeVars.genParPx) ;
   chain->SetBranchAddress("genParPy_", treeVars.genParPy) ;
@@ -686,7 +693,8 @@ void setBranchAddresses (TChain * chain, EcalTPGVariables & treeVars)
   chain->SetBranchAddress("genParId_", treeVars.genParId) ;
   chain->SetBranchAddress("genParSt_", treeVars.genParSt) ;
   chain->SetBranchAddress("genMomParId_", treeVars.genMomParId) ;
-  
+  }
+  */
   /*
   chain->SetBranchAddress("", & , ) ; 
   chain->SetBranchAddress("", , ) ;
@@ -709,7 +717,9 @@ UInt_t getTtf(UInt_t val) {return ((val>>9)&0x7) ;}
 ///////  Main program /////////
 
 //void tpgreader()
-void L1Prefiring(int threshold=2,TString timeshiftoutput="_plus8_", TString inputcutval="p8ns", int lumi1=0, int lumi2=999999)
+
+//void L1Prefiring(int threshold=2,TString timeshiftoutput="_plus8_", TString inputcutval="p8ns", int lumi1=0, int lumi2=999999)
+void L1Prefiring(int threshold=2, int lumi1=0, int lumi2=999999,TString timeshiftoutput="_plus8_", TString inputcutval="p8ns")
 {  
 
 
@@ -956,11 +966,13 @@ void L1Prefiring(int threshold=2,TString timeshiftoutput="_plus8_", TString inpu
     
     chain->GetEntry (entry) ;
     
-    if (entry%1000==0) cout << entry << " / " << treeentries
+    if (entry%100000==0) cout << entry << " / " << treeentries
 			    << " events processed" << endl;
     
     
     
+    /*
+    if (!isdata){
     // accessing the gen level information for MC samples 
     if (debug__) std::cout<<" n gen particles  = "<<treeVars.nGenPar<<std::endl;
     chain->SetBranchAddress("genParPy_", treeVars.genParPy) ;
@@ -978,10 +990,10 @@ void L1Prefiring(int threshold=2,TString timeshiftoutput="_plus8_", TString inpu
 			  <<"  "<<treeVars.genParSt[0]
 			  <<"  "<<treeVars.genMomParId[0]
 			  <<std::endl;
-
+    }
+    */
 
     
-    bool goodBX = false;
     
     // this ensures that the lumi block is selected for given timing 
     
@@ -1090,7 +1102,9 @@ void L1Prefiring(int threshold=2,TString timeshiftoutput="_plus8_", TString inpu
 	 
       */
 
-      if (maxOfTPEmul>0){
+      
+      /*
+      if (maxOfTPEmul>0 && !isdata){
 	TLorentzVector p41;
 	TLorentzVector p42; 
 	p41.SetPxPyPzE(treeVars.genParPx[0], treeVars.genParPy[0], treeVars.genParPz[0], treeVars.genParE[0]);
@@ -1135,7 +1149,7 @@ void L1Prefiring(int threshold=2,TString timeshiftoutput="_plus8_", TString inpu
 				    <<std::endl;
 	
       }//if (maxOfTPEmul>0){
-
+      */
 
       //-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
       //--------------------------------------------    gen match related information ends here ------------------------------------------------------ ------------------------------------------
@@ -1196,9 +1210,14 @@ void L1Prefiring(int threshold=2,TString timeshiftoutput="_plus8_", TString inpu
       // denominator for condition 1 and 2 are same. The denominator for condition 3 is defined differently. 
       // I might have to change this  (ask David?) 
      
-
+      
       // denominator seelction for 1 and 2
-      if (tp>threshold && maxOfTPEmul>0){
+      //if (tp>threshold && maxOfTPEmul>0){
+      // bug fixed, the maxOfTPEmul should be > threshold ont the tp itself, 
+      //when we ask for tp > threshol it means: we require that energy in 
+      //intime BX should be greater than threshold 
+      
+      if (  maxOfTPEmul> threshold){
 	ieta_vs_iphi_TP_ETP->Fill(ieta, iphi);
 	ieta_TP_ETP->Fill(ieta);
 
@@ -1244,7 +1263,8 @@ void L1Prefiring(int threshold=2,TString timeshiftoutput="_plus8_", TString inpu
 
       // for matching with Pseudo L1EG candidates 
       // we can't use the maxTowerVector because is has a condition that energy deposit in the intime bX should be > 0; tp > threshold which we don't want. 
-      if (maxOfTPEmul > threshold){
+      /*
+      if (maxOfTPEmul > threshold && !isdata ){
 	Pseudo_maxTower.eta = ieta;
 	Pseudo_maxTower.phi = iphi; 
 	Pseudo_maxTower.idx = indexOfTPEmulMax;
@@ -1252,7 +1272,7 @@ void L1Prefiring(int threshold=2,TString timeshiftoutput="_plus8_", TString inpu
 	Pseudo_maxTower.tpenergy = tp;
 	Pseudo_maxTowerVector.push_back(Pseudo_maxTower);
       }// maxOfTPEmul > threshold 
-
+      */
       
       
       // denominator for condition 3: 
@@ -1302,7 +1322,11 @@ void L1Prefiring(int threshold=2,TString timeshiftoutput="_plus8_", TString inpu
       }//for (UInt_t tower = 0 ; tower < treeVars.nbOfTowers ; tower++) {
     
       
-      // After the Tower loop we can now print the Pseudo L1T variables just fulled 
+
+      /*
+      if( !isdata ){  
+	
+       // After the Tower loop we can now print the Pseudo L1T variables just fulled 
       if (debug__) std::cout<<"for ele 1 n towers ="<<tower_index1.size()
 			    <<"; L1T idx 1 "<<pseudo_L1T_sum1[0]
 			    <<"; L1T idx 2 "<<pseudo_L1T_sum1[1]
@@ -1381,27 +1405,32 @@ void L1Prefiring(int threshold=2,TString timeshiftoutput="_plus8_", TString inpu
       // check the max index of pseudo L1 candidate j_idx 
       // do the correlation plot of i_idx and j_idx 
       
-      /*
-      int pseudo_tower_emul_idxmax=-1;
-      float maxenergy = 0;
-      for (int itwr=0; itwr<(int)Pseudo_maxTowerVector.size(); itwr++){
-	if (Pseudo_maxTowerVector[itwr].energy > maxenergy){
-	  maxenergy = Pseudo_maxTowerVector[itwr].energy; 
-	  pseudo_tower_emul_idxmax = itwr;
-	}
-
-      }
       
-      pseudo_egidx_ttidx_NonIso_->Fill(  , Pseudo_maxTowerVector[pseudo_tower_emul_idxmax].idx-2);
+      //int pseudo_tower_emul_idxmax=-1;
+      //float maxenergy = 0;
+      //for (int itwr=0; itwr<(int)Pseudo_maxTowerVector.size(); itwr++){
+      //	if (Pseudo_maxTowerVector[itwr].energy > maxenergy){
+      //	  maxenergy = Pseudo_maxTowerVector[itwr].energy; 
+      //	  pseudo_tower_emul_idxmax = itwr;
+      //	}
+      //
+      //}
+      //
+      //pseudo_egidx_ttidx_NonIso_->Fill(  , Pseudo_maxTowerVector[pseudo_tower_emul_idxmax].idx-2);
+      //
+      //std::cout<<" index of the max emul tower  = "<<Pseudo_maxTowerVector[pseudo_tower_emul_idxmax].idx+1<<std::endl;
       
-      std::cout<<" index of the max emul tower  = "<<Pseudo_maxTowerVector[pseudo_tower_emul_idxmax].idx+1<<std::endl;
-      */
 
     
       if (Pseudo_egcandidateNonIsoVector.size()>0 && Pseudo_maxTowerVector.size()>0){
 	std::vector<int> pseudo_dirIso_ = PseudoCalculateDeltaIR(Pseudo_egcandidateNonIsoVector, Pseudo_maxTowerVector);
 	pseudo_egidx_ttidx_NonIso_->Fill( pseudo_dirIso_[3]-3 , pseudo_dirIso_[4]-2);
       }
+      
+      
+
+  }// if(!isdata){
+  */
       
     // once the maxTowerVector is filled and loop over the towers is over one can print what ios inside 
     //TowerVariablesShow(maxTowerVector);

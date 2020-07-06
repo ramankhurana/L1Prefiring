@@ -146,3 +146,15 @@ textgraph.py**
 
 
 
+For Simulation use: 
+bool is2017    = true;
+bool timescan_ = true;
+// ---------------- following parameters only for MC -------------------------------------                                                                                                                  
+bool isdata    = false;  // when running on the simulation samples it should be false.                                                                                                                      
+
+
+For 2017 Data Full Readout use 
+bool is2017    = true;
+bool timescan_ = false;
+// ---------------- following parameters only for MC -------------------------------------                                                                                                                  
+bool isdata    = true;  // when running on the simulation samples it should be false.                                                                                                                       

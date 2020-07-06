@@ -125,8 +125,9 @@ def FileInfo(year_2017_):
     inputfiles = ''
     
     if year_2017_ == True:
-        ## this is being commented to incorporate the MC part. 
-        inputfiles = 'files2017_November.txt'
+        ## this is old version 
+        ## inputfiles = 'files2017_November.txt'## this is old version 
+        inputfiles = 'files2017_July2020.txt'
         #inputfiles = 'files_mc.txt'
     if year_2017_ == False:
         inputfiles = 'files2018.txt'
@@ -213,8 +214,8 @@ legend=['ADC>2','ADC>4','ADC>8']
 
 histname='detaIso_'
 dirname=''
-if year_2017_ == True: dirname = 'Plots2017_FrontTrain'
-if year_2017_ == False: dirname = 'Plots2018_FrontTrain'
+if year_2017_ == True: dirname = 'Plots2017_FrontTrain_Bug_Fix'
+if year_2017_ == False: dirname = 'Plots2018_FrontTrain_Bug_Fix'
 
 #OverLay1D(files, dirname, histname, "#Delta i#ieta^{Iso}", "# of events", legend,year_2017_)
 

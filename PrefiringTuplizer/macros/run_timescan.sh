@@ -1,32 +1,32 @@
-root -l -b <<EOF
- .L L1Prefiring.C++
-L1Prefiring(6,0,46)
-EOF
-
-
-root -l -b <<EOF
- .L L1Prefiring.C++
-L1Prefiring(6,49,87)
-EOF
-
-
-root -l -b <<EOF
- .L L1Prefiring.C++
-L1Prefiring(6,90,111)
-EOF
-
-
-root -l -b <<EOF
- .L L1Prefiring.C++
-L1Prefiring(6,113,131)
-EOF
-
-
-root -l -b <<EOF
- .L L1Prefiring.C++
-L1Prefiring(6,133,158)
-EOF
-
+#root -l -b <<EOF
+# .L L1Prefiring.C++
+#L1Prefiring(6,0,46)
+#EOF
+#
+#
+#root -l -b <<EOF
+# .L L1Prefiring.C++
+#L1Prefiring(6,49,87)
+#EOF
+#
+#
+#root -l -b <<EOF
+# .L L1Prefiring.C++
+#L1Prefiring(6,90,111)
+#EOF
+#
+#
+#root -l -b <<EOF
+# .L L1Prefiring.C++
+#L1Prefiring(6,113,131)
+#EOF
+#
+#
+#root -l -b <<EOF
+# .L L1Prefiring.C++
+#L1Prefiring(6,133,158)
+#EOF
+#
 
 root -l -b <<EOF
  .L L1Prefiring.C++
